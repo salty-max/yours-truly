@@ -5,8 +5,8 @@
 -- character, from each of its side's three capitals), and writers: every
 -- neutral one's, and a few writers' own, named for their letter (Nathanos
 -- Blightcaller's Hate Mail, Gazlowe's Still Owed...). One the letters don't
--- reach yet (twenty-five, the capitals before Stormwind and the Undercity
--- write) stays unlisted until a wave brings it. Each character earns its
+-- reach yet (as twenty-five and the capitals were, before the first wave's
+-- last letters) stays unlisted until a wave brings it. Each character earns its
 -- own, and each remembers when and at what level:
 --   YoursTrulyChar.milestones[id] = { at, level, retro }
 -- Earned as the game's own achievements are: its fanfare, a banner among its

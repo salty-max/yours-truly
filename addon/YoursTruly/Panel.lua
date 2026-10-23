@@ -14,8 +14,9 @@
 --
 -- The backlog's bundle (Core: ns.bundle) comes first when there is one: the
 -- same seal, "N letters from the road behind you, tied with string". A click
--- unties it: the letters go into the book, sealed, and the panel says so,
--- with a button to open the book. Fresh letters still wait behind it.
+-- unties it: the letters go into the book, sealed, and the panel says so on
+-- the same face ("N letters, in your book now, sealed"), a click or a button
+-- opening the book. Fresh letters still wait behind it.
 --
 -- Docked to the mail window: beside the open letter (OpenMailFrame) when one
 -- is open, else where that would stand (beside the inbox). A mailbox addon
@@ -33,6 +34,7 @@ local TEXT_W = SHEET_W - 18 - 44
 
 local panel, current
 local BUNDLE, UNTIED = "bundle", "untied" -- (the bundle shown, then its note)
+local untiedCount = 0 -- (how many the bundle held, for its note)
 ns.panelParts = {} -- (for the tests)
 
 -- What the panel holds: the bundle first, if there is one, then each letter
@@ -56,6 +58,15 @@ local function ink(parent, size, colour)
   fs:SetJustifyH("LEFT")
   fs:SetSpacing(3)
   return fs
+end
+
+-- The window's title: "A letter", "A bundle of letters" while the bundle shows.
+local function title(text)
+  if panel.SetTitle then
+    panel:SetTitle(text)
+  elseif type(panel.TitleText) == "table" and panel.TitleText.SetText then
+    panel.TitleText:SetText(text)
+  end
 end
 
 -- ── where it stands ──────────────────────────────────────────────────────────
@@ -166,8 +177,12 @@ local function build()
     if not current then return end
     if PlaySound and SOUNDKIT and SOUNDKIT.IG_ABILITY_PAGE_TURN then PlaySound(SOUNDKIT.IG_ABILITY_PAGE_TURN) end
     if current == BUNDLE then
-      ns.untie()
+      untiedCount = ns.untie()
       show(UNTIED)
+      return
+    end
+    if current == UNTIED then
+      if ns.openTab then ns.openTab(ns.TAB.letters) end
       return
     end
     ns.read(current)
@@ -227,11 +242,14 @@ show = function(id)
   local P = ns.panelParts
   current = id
   local q = queue()
-  local others = 0
+  local others, rest = 0, 0 -- (letters besides this one, and anything besides it)
   for _, w in ipairs(q) do
-    if w ~= id and w ~= BUNDLE then others = others + 1 end
+    if w ~= id then
+      rest = rest + 1
+      if w ~= BUNDLE then others = others + 1 end
+    end
   end
-  P.next:SetShown(#q > (id == UNTIED and 0 or 1))
+  P.next:SetShown(rest > 0)
   P.waiting:SetText(
     others > 0 and ns.kit.plural(others, "%d more letter waits.", "%d more letters wait."):format(others) or ""
   )
@@ -249,6 +267,7 @@ show = function(id)
     fs:Show()
     y = y + fs:GetStringHeight() + gap
   end
+  title((id == BUNDLE or id == UNTIED) and L["A bundle of letters"] or L["A letter"])
   if id == BUNDLE then
     local n = #ns.bundle()
     P.scroll:Hide()
@@ -262,14 +281,12 @@ show = function(id)
   P.from:SetText(L["A letter from"])
   P.hint:SetText(L["Click to break the seal."])
   if id == UNTIED then
-    P.envelope:Hide()
-    P.scroll:Show()
-    for _, fs in ipairs({ P.place, P.signoff, P.ps, P.footer }) do
-      fs:Hide()
-    end
-    lay(P.main, L["They are in your book now, sealed, to open when you like."], 4)
-    P.scroll.child:SetHeight(y + 8)
-    P.scroll:ScrollTo(0)
+    P.scroll:Hide()
+    P.envelope:Show()
+    P.from:SetText("")
+    P.writer:SetText(ns.kit.plural(untiedCount, "%d letter", "%d letters"):format(untiedCount))
+    P.where:SetText(L["in your book now, sealed"])
+    P.hint:SetText(L["Open them there whenever you like."])
     return
   end
   local r = ns.record(id)

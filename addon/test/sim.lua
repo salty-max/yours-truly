@@ -105,28 +105,35 @@ check(char.letters[GRYAN] and char.letters[GRYAN].backlog, "a chain done before:
 check(not char.letters[NATHANOS], "not the other side's")
 check(#s.printed == 0 or not said("letter"), "quietly")
 check(#ns.bundle() == 5, "five found: one bundle")
-check(#ns.due() == 0 or ns.due()[1] == GAZLOWE, "the bundle's letters aren't in the post")
 play(ns.POST + 1)
+check(#ns.due() == 1 and ns.due()[1] == GAZLOWE, "the bundle's letters aren't in the post: only the fresh one is due")
 G.mailbox(true)
 check(char.letters[GAZLOWE].delivered, "a fresh letter still comes by the post")
 check(not char.letters[GRYAN].delivered, "the bundle not untied yet")
 check(ns.panelLetter() == "bundle", "the bundle first in the panel")
 check(P.writer:GetText():find("5", 1, true), "its count on it")
 check(P.next:IsShown(), "and the fresh letter behind it")
+P.next.scripts.OnClick(P.next)
+check(ns.panelLetter() == GAZLOWE and P.next:IsShown(), "next: the fresh letter, sealed, the bundle still behind it")
+P.envelope.scripts.OnClick(P.envelope)
+check(char.letters[GAZLOWE].read and P.next:IsShown(), "its seal broken: the bundle still reachable")
+P.next.scripts.OnClick(P.next)
+check(ns.panelLetter() == "bundle", "next: back to the bundle")
+G.mailbox(false)
+G.mailbox(true)
+check(ns.panelLetter() == "bundle", "the next visit: the bundle still there, untouched")
 P.envelope.scripts.OnClick(P.envelope)
 check(ns.panelLetter() == "untied" and P.book:IsShown(), "untied: the note, and a button to the book")
+check(P.writer:GetText():find("5", 1, true), "the note keeps the count")
 for _, id in ipairs({ GRYAN, SARA, MAYBELL, BERNICE, REJOLD }) do
   local r = char.letters[id]
   check(r.delivered and r.bundled and not r.read, "into the book, sealed: " .. id)
 end
-check(#ns.bundle() == 0, "the bundle gone")
-check(#ns.waiting() == 1 and ns.waiting()[1] == GAZLOWE, "only the fresh letter waits at the mailbox")
-P.next.scripts.OnClick(P.next)
-check(ns.panelLetter() == GAZLOWE and not P.book:IsShown(), "next: the fresh letter, sealed")
-check(not P.next:IsShown(), "and no other")
+check(#ns.bundle() == 0 and #ns.waiting() == 0, "the bundle gone, nothing waiting at the mailbox")
+check(not P.next:IsShown(), "and no next")
 G.mailbox(false)
 G.mailbox(true)
-check(ns.panelLetter() == GAZLOWE, "the next visit: the fresh letter still sealed, not the bundle's")
+check(not ns.panelLetter(), "the next visit: no panel, the bundle's letters in the book")
 G.mailbox(false)
 -- (one alone is a letter like any other: by the post)
 local lone = 20 -- (Hinderweir's: A Dark Threat Looms)
@@ -145,7 +152,7 @@ play(ns.POST + 1)
 s.noMailFrame = true
 G.mailbox(true)
 check(char.letters[DENALAN].delivered, "delivered without the game's mail window")
-check(ns.panelLetter() == GAZLOWE and not P.panel.docked, "the panel on its own, the oldest sealed letter first")
+check(ns.panelLetter() == lone and not P.panel.docked, "the panel on its own, the oldest sealed letter first")
 G.mailbox(false)
 s.noMailFrame = nil
 -- (a mailbox addon that keeps the game's window open but transparent)
@@ -205,6 +212,15 @@ for _, id in ipairs(ns.letters()) do
   end
 end
 play(ns.POST + 1)
+do
+  local due = #ns.due()
+  G.mailbox(true)
+  check(due > 3 and #ns.due() == due - 2, "more than three due: two a visit")
+  check(P.next:IsShown(), "the second behind the first")
+  P.envelope.scripts.OnClick(P.envelope)
+  check(P.next:IsShown(), "the first's seal broken: the second still reachable")
+  G.mailbox(false)
+end
 for _ = 1, 20 do
   G.mailbox(true)
   G.mailbox(false)
@@ -288,7 +304,8 @@ check(
 check(
   ns.milestoneVisible(ns.milestoneById["double-agent"])
     and ns.milestoneVisible(ns.milestoneById["precious-skulls"])
-    and not ns.milestoneById["brush"].visible(),
+    and not ns.milestoneById["brush"].visible()
+    and ns.milestoneById["better-late"].visible(),
   "the Horde's writers' achievements, not the Alliance's (earned ones stay listed)"
 )
 s.faction = nil
