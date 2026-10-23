@@ -1,7 +1,7 @@
 ## Interface: 16001
 ## Title: Yours Truly
-## Notes: The people whose quest chains you finished write you a letter. It waits at the next mailbox.
-## Notes-frFR: Les gens dont vous avez achevé les quêtes vous écrivent une lettre. Elle vous attend à la prochaine boîte aux lettres.
+## Notes: Finish a quest chain and the person it changed writes you a letter, waiting sealed at your next mailbox. Quest immersion and roleplay, in English and French.
+## Notes-frFR: Achevez une suite de quêtes et la personne qu'elle a changée vous écrit une lettre, qui vous attend scellée à votre prochaine boîte aux lettres. Immersion et jeu de rôle, en anglais et en français.
 ## Category: Quests
 ## Author: salty-max
 ## Version: 0.1.0

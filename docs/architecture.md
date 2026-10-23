@@ -100,7 +100,13 @@ are in `assets/README.md`.
 
 ## Not done yet
 
-- The store page.
+- The stores themselves: `addon/CURSEFORGE.md` is drafted and read cold
+  (23 October 2026), but no CurseForge or Wago project exists yet. The name
+  was checked on Wago's search (no addon by it) and by web search for
+  CurseForge (none found), CurseForge's own search unreachable headless:
+  its slug, `yours-truly`, is confirmed when the project is made. The
+  projects' ids then go into the TOCs (`X-Curse-Project-ID`, `X-Wago-ID`)
+  before the first release.
 - The panel's look checked in the game: rendered offline with the game's
   paper and a serif in Morpheus's place (wago.tools, where the client's font
   is, didn't answer on 23 October 2026).
