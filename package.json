@@ -1,0 +1,17 @@
+{
+  "name": "yours-truly",
+  "private": true,
+  "description": "Yours Truly, a World of Warcraft addon: the people whose quest chains you finished write you a letter, waiting at the next mailbox",
+  "license": "MIT",
+  "scripts": {
+    "kit:sync": "bun scripts/root.ts --run addon-kit/sync.ts addon/YoursTruly",
+    "ids": "bun scripts/root.ts --run addon-kit/ids.ts check",
+    "kit:check": "bun scripts/root.ts --run addon-kit/sync.ts --check addon/YoursTruly",
+    "letters": "bun scripts/letters.ts",
+    "locales": "bun scripts/locales.ts",
+    "lint:lua": "stylua --check addon && selene addon/YoursTruly",
+    "format:lua": "stylua addon",
+    "check": "bun run kit:check && bun run ids && bun scripts/letters.ts --check && bun scripts/locales.ts --check && bun run lint:lua && luajit addon/test/sim.lua && FOREVER=1 luajit addon/test/sim.lua && LOCALE=frFR luajit addon/test/sim.lua && LOCALE=frFR FOREVER=1 luajit addon/test/sim.lua && bun scripts/package.ts --check",
+    "package": "bun scripts/package.ts"
+  }
+}

@@ -1,0 +1,68 @@
+# Yours Truly
+
+A World of Warcraft addon: the people whose quest chains you finished write
+you a letter, in their own voice, about what the chain changed for them. It
+waits at the next mailbox you open, sealed, in a panel beside the game's mail
+window, and stays in the book. Planned in `../ideas/letters.md` (every call
+the user's, 23 October 2026: its Decided section), the voices and their rules
+in `../ideas/letters-voices.md`. Started 23 October 2026. Local only, not on
+GitHub yet. Classic Era (11509) and Forever (16001), one package. Read the
+family's CLAUDE.md (`../CLAUDE.md`) first.
+
+## Where things are
+
+| What | Where |
+|---|---|
+| The addon file by file: the package, Core (the post, the mailbox), Panel, the book's tabs, Achievements, Settings, Welcome, the tests, languages | `docs/architecture.md` |
+| The letters: the files, their parts, the ids, the generator (`scripts/letters.ts`) and what it checks | `docs/letters.md` |
+| The letters themselves, each with its writer's card | `letters/<zone>/<writer>.md`, French in `i18n/frFR/letters/<zone>/` |
+| The plan, the waves to come, the voices' rules and the six first letters' history | `../ideas/letters.md`, `../ideas/letters-voices.md` |
+
+## Commands
+
+```bash
+bun run check        # kit, saved ids, letters, languages, lint, the sim on four clients, TOCs
+bun run ids          # every table saved-ids.json lists keeps the ids it had at the fork point from origin/main
+bun scripts/root.ts --run addon-kit/q.ts check -- bun run check   # the same, quiet, stamping the tree for the push
+bun run package      # dist/YoursTruly-<version>.zip for a test in the game
+bun run letters      # the letters again, after a letters/ edit or wow-data's change (--stamp once a translation is read)
+bun scripts/letters.ts --names   # the game's names each letter holds, those outside its chain marked, to look at
+bun run kit:sync     # after a change to the kit (Kit.lua, Media, scripts/root.ts)
+bun run locales      # after a new L["..."] (then --keys for i18n/words.json)
+scripts/release.sh [--version X.Y.Z] [--hold] NOTES.md   # check, tag, push; Actions publish
+```
+
+## Hard rules
+
+- The letters' rules are the plan's (`../ideas/letters.md` §1, §4, §6):
+  the writer's life since the chain is ours, small and off-screen; who the
+  writer is, what the player did and what happened are the game's, exactly,
+  from the quests the anchor requires and nothing else. Nothing enclosed,
+  no errand, nothing to wait for, nothing the writer can't know, no enemy
+  gone for good that the game brings back, nothing anachronic. If two
+  writers could swap a paragraph, one of them is wrong.
+- Every new letter: the chain's texts from wow-data (`bun
+  ../wow-data/bin/card.ts quest`), the writer's card, the English, the French
+  written as French, the game's names by id in both; the prose-reader reads
+  each language cold before the user does.
+- The game's data comes from wow-data's databases only (`scripts/letters.ts`,
+  through `scripts/root.ts`, the kit's copy). Generated files
+  (`Letters_*.lua`, `Text_*.lua`, `i18n/names.json`) are never edited by
+  hand; `--check` fails a stale one.
+- A letter's id never changes and is never reused: characters keep it
+  (`saved-ids.json`, `bun run ids` in the check). An id leaves only with the
+  user's go, under `removed`.
+- Saved data (`YoursTrulyChar`) keeps ids only. Writers, quests and places
+  are named by id in the client's language, never matched by an English
+  name.
+- Letters in plain ASCII in English, no semicolons in any language, 100 to
+  150 words of body (terse from 70, a few big to 180), the game's tokens
+  only. A translation is stamped against its English.
+- No notice before the mailbox: nothing says a letter is in the post.
+- `Kit.lua`, `Media/Ring.tga` and `scripts/root.ts` are the kit's copies:
+  edit addon-kit, then `bun run kit:sync`.
+- No other addon's API, even optional (a mailbox addon is stepped aside
+  for, never touched). Stepping aside for a rival is fine.
+- Conventional Commits, lowercase subjects, no AI trailers. Commit locally;
+  ask before any push, release or deploy. The pre-push hook wants a check
+  stamp on the tree (q), which `release.sh` makes after the version bump.

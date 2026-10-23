@@ -1,0 +1,30 @@
+## Interface: 11509
+## Title: Yours Truly
+## Notes: The people whose quest chains you finished write you a letter. It waits at the next mailbox.
+## Notes-frFR: Les gens dont vous avez achevé les quêtes vous écrivent une lettre. Elle vous attend à la prochaine boîte aux lettres.
+## Category: Quests
+## Author: salty-max
+## Version: 0.1.0
+## SavedVariablesPerCharacter: YoursTrulyChar
+## SavedVariables: YoursTrulySettings
+## IconTexture: Interface\Icons\INV_Letter_04
+## X-Website: https://github.com/salty-max/yours-truly
+## X-License: MIT
+
+# Each game loads its own TOC (_Vanilla: Classic Era, _Camelot: Forever), the
+# same but for the interface and its letters, Letters_<game>.lua
+# (scripts/package.ts checks).
+Letters_Classic.lua
+Kit.lua
+Locale.lua
+Text_[TextLocale].lua
+Letters_[TextLocale].lua
+Core.lua
+Settings.lua
+Achievements.lua
+Panel.lua
+Book.lua
+LettersBook.lua
+AchievementsBook.lua
+Welcome.lua
+Minimap.lua

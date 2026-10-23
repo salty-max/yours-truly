@@ -1,0 +1,7 @@
+{
+  "//": "The tables naming the ids a character's letters keep (YoursTrulyChar.letters: a letter's id): a regeneration never drops one (bun run ids, in check). An id leaves on purpose only with the user's go: under removed, with why and approved.",
+  "tables": {
+    "letters": { "lua": "addon/YoursTruly/Letters_*.lua", "at": "data.letters" }
+  },
+  "removed": []
+}
