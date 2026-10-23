@@ -66,6 +66,8 @@ const added = ls("--others", "--exclude-standard");
 const files = [...ls(), ...added].filter((f) => existsSync(join(SRC, f)));
 for (const f of added) console.warn(`! ${f}: not in git yet (a release would leave it out)`);
 for (const f of files) if (f.endsWith(".lua") && !f.includes("/") && !loaded.has(f)) fail(`${f}: no TOC loads it`);
+// (a file a TOC loads that git doesn't carry, ignored: the package would leave it out)
+for (const f of loaded) if (!files.includes(f)) fail(`${f}: a TOC loads it, but git doesn't carry it (ignored?): the package would leave it out`);
 if (process.argv.includes("--check")) {
   console.log(`✓ ${GAMES.map((g) => g.toc).join(", ")}`);
   process.exit(0);
