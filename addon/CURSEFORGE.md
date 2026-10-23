@@ -35,7 +35,7 @@ A letter only tells what the chain itself told you, then a little of the writer'
 
 ## The book
 
-Every letter you receive is kept in Yours Truly's book, newest first: who wrote, where from, the chain it answers and when it came. The book counts letters by zone for your faction ("Westfall: 1 of 2") without naming the ones still to come. A few achievements follow, from your first broken seal to the last letter you can receive.
+Every letter you receive is kept in Yours Truly's book, newest first: who wrote, where from, the chain it answers and when it came. The book counts letters by zone for your faction ("Westfall: 1 of 2") without naming the ones still to come. Achievements follow too: your first broken seal, letters from far and wide and from every starting zone, a few writers' own, and the last letter you can receive.
 
 ## Compatibility
 

@@ -181,6 +181,12 @@ check(ns.zoneLine(MAYBELL) == L["%s: %d of %d"]:format("Zone 12", 2, 2), "Elwynn
 check(ns.earnedMilestone("five") and ns.earnedMilestone("still-owed"), "five letters, and Gazlowe's")
 check(not ns.earnedMilestone("every"), "not every letter yet: Hemet's and the later waves' still to come")
 check(not ns.milestoneVisible(ns.milestoneById["hate-mail"]), "Nathanos's achievement isn't the Alliance's")
+check(not ns.earnedMilestone("ten"), "eight letters: not ten yet")
+if G.FOREVER then
+  check(not ns.earnedMilestone("where-it-began"), "Forever: Zephras Isle's letter still to come")
+else
+  check(ns.earnedMilestone("where-it-began"), "every starting zone: Teldrassil, Elwynn, Dun Morogh")
+end
 G.turnIn(208)
 -- (Forever: the Skyborne's island writes too, Elaadrin to any Alliance race the
 -- quest allows, Falorne to the High Order alone: a dwarf never gets his)
@@ -211,6 +217,25 @@ if G.FOREVER then
   check(mine[18] and not mine[16], "Forever: Elaadrin's letter a dwarf may earn, Falorne's the High Order's alone")
 end
 check(ns.earnedMilestone("every") and ns.earnedMilestone("neutral"), "every letter, every neutral writer")
+check(ns.earnedMilestone("ten") and ns.earnedMilestone("far-and-wide"), "ten letters, eight zones")
+check(ns.earnedMilestone("where-it-began"), "every starting zone that writes")
+check(
+  ns.earnedMilestone("still-standing") and ns.earnedMilestone("brush") and ns.earnedMilestone("handle-with-care"),
+  "the Alliance writers' own: Hinderweir's, Remtravel's, Gaxim's"
+)
+check(
+  not ns.milestoneVisible(ns.milestoneById["double-agent"])
+    and not ns.milestoneVisible(ns.milestoneById["precious-skulls"]),
+  "Neeru's and Samsa's achievements aren't the Alliance's"
+)
+check(
+  not ns.milestoneVisible(ns.milestoneById["twenty-five"]) and not ns.milestoneVisible(ns.milestoneById["capitals"]),
+  "twenty-five and the capitals unlisted until the letters reach them"
+)
+do
+  local n, shown = ns.milestoneCount()
+  check(n == shown, "every listed achievement earned: " .. n .. " of " .. shown)
+end
 ns.openMilestones("every")
 play(0.3)
 check(YoursTrulyFrame.selectedTab == ns.TAB.milestones, "the achievements' tab")
@@ -238,6 +263,12 @@ end
 check(
   horde[NATHANOS] and horde[GAZLOWE] and not horde[GRYAN],
   "a Horde character's letters: the Horde's and the neutral ones"
+)
+check(
+  ns.milestoneVisible(ns.milestoneById["double-agent"])
+    and ns.milestoneVisible(ns.milestoneById["precious-skulls"])
+    and not ns.milestoneById["brush"].visible(),
+  "the Horde's writers' achievements, not the Alliance's (earned ones stay listed)"
 )
 s.faction = nil
 

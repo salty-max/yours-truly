@@ -1,9 +1,13 @@
 -- The achievements ("achievements" to the player, as the family's other
--- books): a few, light, on the letters read. The first seal broken, five
--- letters, every letter this character's side can receive, every neutral
--- writer's, and two writers' own: Nathanos Blightcaller's (Hate Mail) and
--- Gazlowe's (Still Owed). Each character earns its own, and each remembers
--- when and at what level:
+-- books): light, on the letters read. Counts (the first seal broken, five,
+-- ten, twenty-five, every letter this character can receive), places
+-- (letters from eight zones, from every starting zone that writes to this
+-- character, from each of its side's three capitals), and writers: every
+-- neutral one's, and a few writers' own, named for their letter (Nathanos
+-- Blightcaller's Hate Mail, Gazlowe's Still Owed...). One the letters don't
+-- reach yet (twenty-five, the capitals before Stormwind and the Undercity
+-- write) stays unlisted until a wave brings it. Each character earns its
+-- own, and each remembers when and at what level:
 --   YoursTrulyChar.milestones[id] = { at, level, retro }
 -- Earned as the game's own achievements are: its fanfare, a banner among its
 -- alerts (the kit's), a line in chat. Those already deserved when the book
@@ -37,6 +41,33 @@ local function count(which)
   return done, all
 end
 local function neutral(id) return D.letters[id].side == "N" end
+-- The zones (the count's: the place's top area) among those letters that
+-- `which` keeps: how many in all, how many with a letter read.
+local function zones(which)
+  local all, done = {}, {}
+  for _, id in ipairs(ns.letters()) do
+    local z = D.letters[id].zone
+    if not which or which(z) then
+      all[z] = true
+      if read(id) == 1 then done[z] = true end
+    end
+  end
+  local n, d = 0, 0
+  for z in pairs(all) do
+    n = n + 1
+    if done[z] then d = d + 1 end
+  end
+  return d, n
+end
+-- The starting zones (Elwynn Forest, Dun Morogh, Teldrassil, Durotar,
+-- Mulgore, Tirisfal Glades, Forever's Zephras Isle), and each side's
+-- capitals (Stormwind, Ironforge, Darnassus, Orgrimmar, Thunder Bluff,
+-- the Undercity), by area id.
+local STARTING = { [12] = true, [1] = true, [141] = true, [14] = true, [215] = true, [85] = true, [16593] = true }
+local CAPITALS =
+  { A = { [1519] = true, [1537] = true, [1657] = true }, H = { [1637] = true, [1638] = true, [1497] = true } }
+local function starting(z) return STARTING[z] end
+local function capital(z) return CAPITALS[ns.side()][z] end
 local function writerLetter(npc)
   for _, id in ipairs(ns.letters()) do
     if D.letters[id].npc == npc then return id end
@@ -59,7 +90,55 @@ add(
   function() return math.min(ns.readCount(), 5), 5 end,
   function() return #ns.letters() >= 5 end
 )
+for _, n in ipairs({
+  { "ten", 10, L["A Bundle of Letters"], L["Read ten letters."] },
+  { "twenty-five", 25, L["A Drawer Full"], L["Read twenty-five letters."] },
+}) do
+  add(
+    "letters",
+    n[1],
+    n[3],
+    n[4],
+    function() return math.min(ns.readCount(), n[2]), n[2] end,
+    function() return #ns.letters() >= n[2] end
+  )
+end
 add("letters", "every", L["Every Last One"], L["Read every letter you can receive."], function() return count() end)
+
+-- ── the places ───────────────────────────────────────────────────────────────
+local FAR = 8
+add("places", "far-and-wide", L["Far and Wide"], L["Read letters from eight different zones."], function()
+  local done = zones()
+  return math.min(done, FAR), FAR
+end, function()
+  local _, all = zones()
+  return all >= FAR
+end)
+add(
+  "places",
+  "where-it-began",
+  L["Where It All Began"],
+  L["Read a letter from every starting zone that writes to you."],
+  function() return zones(starting) end,
+  function()
+    local _, all = zones(starting)
+    return all > 1
+  end
+)
+add(
+  "places",
+  "capitals",
+  L["Letters from the Capitals"],
+  L["Read a letter from each of your side's three capitals."],
+  function()
+    local done = zones(capital)
+    return done, 3
+  end,
+  function()
+    local _, all = zones(capital)
+    return all >= 3
+  end
+)
 
 -- ── the writers ──────────────────────────────────────────────────────────────
 add(
@@ -73,10 +152,17 @@ add(
     return all > 1
   end
 )
-local NATHANOS, GAZLOWE = 11878, 3391
+-- (each where its writer's letter reaches: Nathanos, Neeru and Samsa write
+-- to the Horde, Hinderweir, Remtravel and Gaxim to the Alliance, Gazlowe to
+-- both)
 for _, w in ipairs({
-  { "hate-mail", NATHANOS, L["Hate Mail"] },
-  { "still-owed", GAZLOWE, L["Still Owed"] },
+  { "hate-mail", 11878, L["Hate Mail"] }, -- (Nathanos Blightcaller)
+  { "still-owed", 3391, L["Still Owed"] }, -- (Gazlowe)
+  { "still-standing", 1093, L["Still Standing"] }, -- (Chief Engineer Hinderweir VII)
+  { "brush", 2917, L["Where Is My Brush?"] }, -- (Prospector Remtravel)
+  { "handle-with-care", 4077, L["Handle with Care"] }, -- (Gaxim Rustfizzle)
+  { "double-agent", 3216, L["Double Agent"] }, -- (Neeru Fireblade)
+  { "precious-skulls", 2418, L["Precious Skulls"] }, -- (Deathguard Samsa)
 }) do
   add("writers", w[1], w[3], function()
     local id = writerLetter(w[2])
@@ -112,6 +198,7 @@ local function fanfare() pcall(PlaySound, FANFARE, "Master") end
 
 local GROUP_ICONS = {
   letters = "Interface\\Icons\\INV_Letter_03",
+  places = "Interface\\Icons\\INV_Misc_Map_01",
   writers = "Interface\\Icons\\INV_Letter_09",
 }
 ns.milestoneIcons = GROUP_ICONS

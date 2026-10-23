@@ -11,6 +11,7 @@ local picked -- (one opened from its banner: picked out, in view)
 
 local GROUPS = {
   { "letters", L["Letters read"], ns.milestoneIcons.letters, "all" },
+  { "places", L["Places"], ns.milestoneIcons.places, "all" },
   { "writers", L["Correspondents"], ns.milestoneIcons.writers, "all" },
 }
 local FIGURES = { { "all", L["earned"] } }

@@ -49,11 +49,19 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
   else where that would stand (beside InboxFrame); on its own, movable and
   remembered (`panelX`, `panelY`), when a mailbox addon keeps the game's
   mail window hidden.
-- `Achievements.lua`: six, on the letters read (the first seal, five, every
-  letter of the side, every neutral writer, Nathanos's, Gazlowe's), each
-  character's own with when and at what level; announced with the game's
-  fanfare, a banner and a line in chat, quietly at the login. One a
-  character can't earn isn't listed.
+- `Achievements.lua`: on the letters read, in three groups. Counts: the
+  first seal, five, ten, twenty-five, every letter the character can
+  receive. Places: letters from eight zones, from every starting zone that
+  writes to the character, from each of its side's three capitals (zones by
+  area id, the letter's `zone`). Writers: every neutral writer's, and seven
+  writers' own, named for their letter (Nathanos's Hate Mail, Gazlowe's
+  Still Owed, Hinderweir's Still Standing, Remtravel's Where Is My Brush?,
+  Gaxim's Handle with Care, Neeru's Double Agent, Samsa's Precious Skulls).
+  Each character's own, with when and at what level; announced with the
+  game's fanfare, a banner and a line in chat, quietly at the login. One a
+  character can't earn isn't listed, nor one the letters don't reach yet
+  (twenty-five, the capitals until Stormwind and the Undercity write): a
+  wave brings it. Earned stays listed.
 - `Book.lua`: the family's window and tabs in Yours Truly's theme (the red
   of the game's sealing wax, a letter's ink warm), the parts every tab uses
   (`ns.ui`). `LettersBook.lua`: every letter delivered, newest first, each
