@@ -52,7 +52,11 @@
     "3391": "Gazlowe",
     "8584": "Iverron",
     "11378": "Foreman Thazz'ril",
-    "11878": "Nathanos Blightcaller"
+    "11878": "Nathanos Blightcaller",
+    "251371": "Falorne Fallwind",
+    "251487": "Ventaari Brightwish",
+    "251968": "Ayessa Dawnsinger",
+    "252475": "Elaadrin Evengale"
    },
    "quests": {
     "87": "Goldtooth",
@@ -69,7 +73,11 @@
     "930": "The Glowing Fruit",
     "3522": "Iverron's Antidote",
     "5441": "Lazy Peons",
-    "6163": "Ramstein"
+    "6163": "Ramstein",
+    "92597": "Reading the Ley Lines",
+    "92598": "The Gift of Skysight",
+    "92834": "Avenged Tenfold",
+    "93740": "Blood for Blood"
    }
   }
  },
@@ -126,7 +134,11 @@
     "3391": "Gazlowe",
     "8584": "Iverron",
     "11378": "Foreman Thazz'ril",
-    "11878": "Nathanos Blightcaller"
+    "11878": "Nathanos Blightcaller",
+    "251371": "Falorne Fallwind",
+    "251487": "Ventaari Brightwish",
+    "251968": "Ayessa Dawnsinger",
+    "252475": "Elaadrin Evengale"
    },
    "quests": {
     "87": "Goldtooth",
@@ -143,7 +155,11 @@
     "930": "The Glowing Fruit",
     "3522": "Iverron's Antidote",
     "5441": "Lazy Peons",
-    "6163": "Ramstein"
+    "6163": "Ramstein",
+    "92597": "Reading the Ley Lines",
+    "92598": "The Gift of Skysight",
+    "92834": "Avenged Tenfold",
+    "93740": "Blood for Blood"
    }
   }
  },
@@ -200,7 +216,11 @@
     "3391": "Gazlowe",
     "8584": "Iverron",
     "11378": "Großknecht Thazz'ril",
-    "11878": "Nathanos Blightcaller"
+    "11878": "Nathanos Blightcaller",
+    "251371": "Falorne Fallwind",
+    "251487": "Ventaari Brightwish",
+    "251968": "Ayessa Dawnsinger",
+    "252475": "Elaadrin Evengale"
    },
    "quests": {
     "87": "Goldzahn",
@@ -217,7 +237,11 @@
     "930": "Die leuchtende Frucht",
     "3522": "Iverrons Gegengift",
     "5441": "Faule Peons",
-    "6163": "Ramstein"
+    "6163": "Ramstein",
+    "92597": "In den Leylinien lesen",
+    "92598": "Die Gabe der Himmelssicht",
+    "92834": "Zehnfache Vergeltung",
+    "93740": "Blut für Blut"
    }
   }
  },
@@ -274,7 +298,11 @@
     "3391": "Gazlowe",
     "8584": "Iverron",
     "11378": "Contremaître Thazz'ril",
-    "11878": "Nathanos le Flétrisseur"
+    "11878": "Nathanos le Flétrisseur",
+    "251371": "Falorne Tombevent",
+    "251487": "Ventaari Vœu-Radieux",
+    "251968": "Ayessa Chantelaube",
+    "252475": "Elaadrin Trombecalme"
    },
    "quests": {
     "87": "Dent-d'or",
@@ -291,7 +319,11 @@
     "930": "Le fruit luminescent",
     "3522": "Antidote d'Iverron",
     "5441": "Les péons paresseux",
-    "6163": "Ramstein"
+    "6163": "Ramstein",
+    "92597": "Lecture des lignes telluriques",
+    "92598": "Le don de vue céleste",
+    "92834": "Rendre au centuple",
+    "93740": "Sang pour sang"
    }
   }
  },
@@ -348,7 +380,11 @@
     "3391": "Gazlowe",
     "8584": "Iverron",
     "11378": "Supervisor Thazz'ril",
-    "11878": "Nathanos Clamañublo"
+    "11878": "Nathanos Clamañublo",
+    "251371": "Falorne Trombaviento",
+    "251487": "Ventaari Deseo Claro",
+    "251968": "Ayessa Cantoalba",
+    "252475": "Elaadrin Vendaval del Atardecer"
    },
    "quests": {
     "87": "Dientes de oro",
@@ -365,7 +401,11 @@
     "930": "El fruto resplandeciente",
     "3522": "En antídoto de Iverron",
     "5441": "Peones vagos",
-    "6163": "Ramstein"
+    "6163": "Ramstein",
+    "92597": "Lectura de líneas Ley",
+    "92598": "El don de la Visión cielonata",
+    "92834": "Venganza desmedida",
+    "93740": "Sangre por sangre"
    }
   }
  },
@@ -422,7 +462,9 @@
     "3391": "Gazlowe",
     "8584": "Iverron",
     "11378": "Supervisor Thazz'ril",
-    "11878": "Nathanos Clamañublo"
+    "11878": "Nathanos Clamañublo",
+    "251371": "Falorne Ventocaída",
+    "251487": "Ventaari Deseoalegre"
    },
    "quests": {
     "87": "Dientes de Oro",
@@ -496,7 +538,11 @@
     "3391": "Газлоу",
     "8584": "Иверрон",
     "11378": "Штейгер Тазз'рил",
-    "11878": "Натанос Гнилостень"
+    "11878": "Натанос Гнилостень",
+    "251371": "Фалорн Умолкший Ветер",
+    "251487": "Вентаари Яркая Мечта",
+    "251968": "Айесса Певица Рассвета",
+    "252475": "Элаадрин Вечерняя Буря"
    },
    "quests": {
     "87": "Фикс",
@@ -570,7 +616,11 @@
     "3391": "Gasganete",
     "8584": "Iverron",
     "11378": "Encarregado Thazz'ril",
-    "11878": "Nathanos Arauto da Praga"
+    "11878": "Nathanos Arauto da Praga",
+    "251371": "Falorne Ventoutono",
+    "251487": "Ventaari Desebrilho",
+    "251968": "Ayessa Cantalva",
+    "252475": "Elaadrin Plenovento"
    },
    "quests": {
     "87": "Dentadouro",
@@ -628,7 +678,9 @@
     "3391": "Gazlowe",
     "8584": "Iverron",
     "11378": "Foreman Thazz'ril",
-    "11878": "Nathanos Blightcaller"
+    "11878": "Nathanos Blightcaller",
+    "251371": "Furia Piumarossa",
+    "251487": "Furia Piumarossa"
    },
    "quests": {}
   }
@@ -686,7 +738,11 @@
     "3391": "가즈로",
     "8584": "이베론",
     "11378": "작업반장 타즈릴",
-    "11878": "나타노스 블라이트콜러"
+    "11878": "나타노스 블라이트콜러",
+    "251371": "팔로른 폴윈드",
+    "251487": "벤타리 브라이트위시",
+    "251968": "아에사 돈싱어",
+    "252475": "엘라드린 에벤게일"
    },
    "quests": {
     "87": "황금니 코볼트",
@@ -760,7 +816,11 @@
     "3391": "加兹鲁维",
     "8584": "埃沃隆",
     "11378": "工头塔兹利尔",
-    "11878": "纳萨诺斯·凋零者"
+    "11878": "纳萨诺斯·凋零者",
+    "251371": "法罗恩·秋风",
+    "251487": "文塔里·明愿",
+    "251968": "阿耶莎·晨歌",
+    "252475": "伊拉德林·晚风"
    },
    "quests": {
     "87": "金牙",
@@ -834,7 +894,11 @@
     "3391": "加茲魯維",
     "8584": "埃沃隆",
     "11378": "工頭塔茲利爾",
-    "11878": "納薩諾斯·凋零者"
+    "11878": "納薩諾斯·凋零者",
+    "251371": "法羅恩‧秋風",
+    "251487": "凡塔莉‧亮願",
+    "251968": "阿雅莎‧曦詠",
+    "252475": "伊拉德林‧和風"
    },
    "quests": {
     "87": "金牙",

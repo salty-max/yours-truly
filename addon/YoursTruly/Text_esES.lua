@@ -55,6 +55,10 @@ ns.names({
       [8584] = "Iverron",
       [11378] = "Supervisor Thazz'ril",
       [11878] = "Nathanos Clamañublo",
+      [251371] = "Falorne Trombaviento",
+      [251487] = "Ventaari Deseo Claro",
+      [251968] = "Ayessa Cantoalba",
+      [252475] = "Elaadrin Vendaval del Atardecer",
     },
     quests = {
       [87] = "Dientes de oro",
@@ -72,6 +76,10 @@ ns.names({
       [3522] = "En antídoto de Iverron",
       [5441] = "Peones vagos",
       [6163] = "Ramstein",
+      [92597] = "Lectura de líneas Ley",
+      [92598] = "El don de la Visión cielonata",
+      [92834] = "Venganza desmedida",
+      [93740] = "Sangre por sangre",
     },
   },
 })

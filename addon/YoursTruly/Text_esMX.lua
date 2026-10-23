@@ -55,6 +55,8 @@ ns.names({
       [8584] = "Iverron",
       [11378] = "Supervisor Thazz'ril",
       [11878] = "Nathanos Clamañublo",
+      [251371] = "Falorne Ventocaída",
+      [251487] = "Ventaari Deseoalegre",
     },
     quests = {
       [87] = "Dientes de Oro",

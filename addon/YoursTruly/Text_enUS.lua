@@ -55,6 +55,10 @@ ns.names({
       [8584] = "Iverron",
       [11378] = "Foreman Thazz'ril",
       [11878] = "Nathanos Blightcaller",
+      [251371] = "Falorne Fallwind",
+      [251487] = "Ventaari Brightwish",
+      [251968] = "Ayessa Dawnsinger",
+      [252475] = "Elaadrin Evengale",
     },
     quests = {
       [87] = "Goldtooth",
@@ -72,6 +76,10 @@ ns.names({
       [3522] = "Iverron's Antidote",
       [5441] = "Lazy Peons",
       [6163] = "Ramstein",
+      [92597] = "Reading the Ley Lines",
+      [92598] = "The Gift of Skysight",
+      [92834] = "Avenged Tenfold",
+      [93740] = "Blood for Blood",
     },
   },
 })

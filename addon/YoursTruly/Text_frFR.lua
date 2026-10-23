@@ -147,6 +147,10 @@ ns.names({
       [8584] = "Iverron",
       [11378] = "Contremaître Thazz'ril",
       [11878] = "Nathanos le Flétrisseur",
+      [251371] = "Falorne Tombevent",
+      [251487] = "Ventaari Vœu-Radieux",
+      [251968] = "Ayessa Chantelaube",
+      [252475] = "Elaadrin Trombecalme",
     },
     quests = {
       [87] = "Dent-d'or",
@@ -164,6 +168,10 @@ ns.names({
       [3522] = "Antidote d'Iverron",
       [5441] = "Les péons paresseux",
       [6163] = "Ramstein",
+      [92597] = "Lecture des lignes telluriques",
+      [92598] = "Le don de vue céleste",
+      [92834] = "Rendre au centuple",
+      [93740] = "Sang pour sang",
     },
   },
 })

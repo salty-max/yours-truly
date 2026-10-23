@@ -55,6 +55,10 @@ ns.names({
       [8584] = "Iverron",
       [11378] = "Großknecht Thazz'ril",
       [11878] = "Nathanos Blightcaller",
+      [251371] = "Falorne Fallwind",
+      [251487] = "Ventaari Brightwish",
+      [251968] = "Ayessa Dawnsinger",
+      [252475] = "Elaadrin Evengale",
     },
     quests = {
       [87] = "Goldzahn",
@@ -72,6 +76,10 @@ ns.names({
       [3522] = "Iverrons Gegengift",
       [5441] = "Faule Peons",
       [6163] = "Ramstein",
+      [92597] = "In den Leylinien lesen",
+      [92598] = "Die Gabe der Himmelssicht",
+      [92834] = "Zehnfache Vergeltung",
+      [93740] = "Blut für Blut",
     },
   },
 })

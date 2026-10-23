@@ -40,6 +40,8 @@ ns.names({
       [8584] = "Iverron",
       [11378] = "Foreman Thazz'ril",
       [11878] = "Nathanos Blightcaller",
+      [251371] = "Furia Piumarossa",
+      [251487] = "Furia Piumarossa",
     },
     quests = {
     },

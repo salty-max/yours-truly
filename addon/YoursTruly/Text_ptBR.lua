@@ -55,6 +55,10 @@ ns.names({
       [8584] = "Iverron",
       [11378] = "Encarregado Thazz'ril",
       [11878] = "Nathanos Arauto da Praga",
+      [251371] = "Falorne Ventoutono",
+      [251487] = "Ventaari Desebrilho",
+      [251968] = "Ayessa Cantalva",
+      [252475] = "Elaadrin Plenovento",
     },
     quests = {
       [87] = "Dentadouro",

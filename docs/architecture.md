@@ -25,7 +25,9 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
   only), the events (`ns.on`), the clock (the seconds played while logged
   in, counted by the addon's own frame: `RequestTimePlayed` prints to the
   chat), the letters this character may receive (`ns.letters`: its side's
-  and the neutral writers', this game's), the post (`QUEST_TURNED_IN`: a
+  and the neutral writers', this game's, its race's and class's by the
+  anchors' masks, the client's race bits where they differ: Forever's
+  Skyborne are bits 32 and 33, so a dwarf never counts Falorne's letter), the post (`QUEST_TURNED_IN`: a
   letter's last quest posts it, the game flagging the quest or not yet; at
   each login, `ns.catchUp`: every letter earned before, posted at once,
   `backlog`), the delivery (`MAIL_SHOW`, once a visit until `MAIL_CLOSED`:

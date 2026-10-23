@@ -41,7 +41,9 @@ first writers' history: `../ideas/letters-voices.md`.
 Each game's letters (`Letters_Classic.lua`, `Letters_Forever.lua`): those its
 `client` names, the anchors, the writer and the place checked in that
 game's database, the zone (the place's top area in the client's AreaTable),
-the level (the anchors' highest: the backlog's order). Every language's
+the level (the anchors' highest: the backlog's order), who can earn it (the
+anchors' race and class masks, and the client's race bits where a race's
+isn't its id less one). Every language's
 texts (`Letters_<locale>.lua`), the translation else the English. The
 writers' and anchors' names in every language (`i18n/names.json`, read by
 `scripts/locales.ts`).
@@ -79,6 +81,16 @@ quests' own words (VanCleef, Stratholme), each on the writer's card.
 | 13 | durotar/gadrin | first hour |
 | 14 | mulgore/mull-thunderhorn | first hour |
 | 15 | tirisfal-glades/sevren | first hour |
+| 16 | zephras-isle/falorne-fallwind | first hour (Forever: the High Order) |
+| 17 | zephras-isle/ventaari-brightwish | first hour (Forever: the Windshapers) |
+| 18 | zephras-isle/elaadrin-evengale | Zephras Isle (Forever: the High Order) |
+| 19 | zephras-isle/ayessa-dawnsinger | Zephras Isle (Forever: the Windshapers) |
+
+Zephras Isle's four (23 October 2026) are Forever's only (`client: forever`),
+written from Wowhead's texts of the beta as wow-data holds them: to read
+again against the launch's client (4 November 2026). Their writers' sex is
+their model's (CreatureDisplayInfoExtra's DisplaySexID), as the quests don't
+say.
 
 ## Read
 

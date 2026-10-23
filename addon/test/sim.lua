@@ -182,10 +182,24 @@ check(ns.earnedMilestone("five") and ns.earnedMilestone("still-owed"), "five let
 check(not ns.earnedMilestone("every"), "not every letter yet: Hemet's still to come")
 check(not ns.milestoneVisible(ns.milestoneById["hate-mail"]), "Nathanos's achievement isn't the Alliance's")
 G.turnIn(208)
+-- (Forever: the Skyborne's island writes too, Elaadrin to any Alliance race the
+-- quest allows, Falorne to the High Order alone: a dwarf never gets his)
+if G.FOREVER then G.turnIn(92834) end
 play(ns.POST + 1)
-G.mailbox(true)
-ns.read(HEMET)
-G.mailbox(false)
+for _ = 1, 2 do
+  G.mailbox(true)
+  G.mailbox(false)
+end
+for _, id in ipairs(ns.received()) do
+  ns.read(id)
+end
+if G.FOREVER then
+  local mine = {}
+  for _, id in ipairs(ns.letters()) do
+    mine[id] = true
+  end
+  check(mine[18] and not mine[16], "Forever: Elaadrin's letter a dwarf may earn, Falorne's the High Order's alone")
+end
 check(ns.earnedMilestone("every") and ns.earnedMilestone("neutral"), "every letter, every neutral writer")
 ns.openMilestones("every")
 play(0.3)
@@ -206,7 +220,7 @@ if G.LOCALE == "frFR" then
 end
 
 -- ── the other side ───────────────────────────────────────────────────────────
-s.faction = "Horde"
+s.faction, s.race = "Horde", 2 -- (an orc: a Horde letter's anchors allow the Horde's races)
 local horde = {}
 for _, id in ipairs(ns.letters()) do
   horde[id] = true

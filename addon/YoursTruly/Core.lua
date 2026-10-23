@@ -77,11 +77,25 @@ end)
 -- ── the letters ──────────────────────────────────────────────────────────────
 -- The character's side, as the data writes it (A, H; N: both).
 function ns.side() return UnitFactionGroup("player") == "Horde" and "H" or "A" end
+-- The character's race and class against a letter's masks (its anchors'):
+-- a race's bit is its id's, one less, but where the client says otherwise
+-- (Forever's Skyborne, races 95 and 96, are bits 32 and 33: the data's
+-- raceBits). No mask: anyone.
+local function hasBit(mask, n)
+  if not mask or mask == 0 then return true end
+  return math.floor(mask / 2 ^ n) % 2 == 1
+end
+local function canEarn(l)
+  local _, _, race = UnitRace("player")
+  local _, _, class = UnitClass("player")
+  local raceBit = race and ((D.raceBits and D.raceBits[race]) or race - 1)
+  return (not raceBit or hasBit(l.races, raceBit)) and (not class or hasBit(l.classes, class - 1))
+end
 -- A letter this character may receive: this game's (the data holds it), its
--- side's or both sides'.
+-- side's or both sides', its race's and class's (the Skyborne's own island).
 function ns.mine(id)
   local l = D.letters[id]
-  return l ~= nil and (l.side == "N" or l.side == ns.side())
+  return l ~= nil and (l.side == "N" or l.side == ns.side()) and canEarn(l)
 end
 -- Every letter this character may receive, by id.
 function ns.letters()
