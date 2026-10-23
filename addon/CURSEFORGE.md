@@ -5,7 +5,7 @@ The project's title on the stores: "Yours Truly: Letters from the People You
 Helped" (the addon's own name stays Yours Truly: the words players search
 for in the title, ../ideas/letters.md §9). A draft, 23 October 2026: Yours
 Truly is not released yet. Read it again against
-what ships (the count of letters: 30 in Classic Era, 34 in Forever on 23
+what ships (the count of letters: 69 in Classic Era, 73 in Forever on 23
 October, the writers named) before the first release. -->
 
 <!-- Summary (the project's summary on CurseForge and Wago, and the TOCs' Notes):
@@ -21,7 +21,7 @@ For Classic Era (Hardcore included) and World of Warcraft: Forever, in one downl
 
 A militia captain thanks you for a job he didn't enjoy asking of you. A soldier's widow tells you how her boys ask for their father's letter again. A goblin still owes you, on paper. A young elf writes from the cave you found him by, because the spiders are still between him and home.
 
-Thirty letters so far in Classic Era, thirty-four in Forever with the Skyborne's Zephras Isle: one from every starting zone, so a new character usually has a letter within its first hour or two, then the road from level 10 to 30 on both sides, from the Defias Brotherhood to Mankrik's wife, and a few of the best-loved chains beyond, like Hemet Nesingwary's big game. More are planned, a level range at a time.
+Sixty-nine letters in Classic Era, seventy-three in Forever with the Skyborne's Zephras Isle: one from every starting zone, so a new character usually has a letter within its first hour or two, then the whole road to level 60 on both sides, from the Defias Brotherhood and Mankrik's wife to Linken's sword and Tirion Fordring's son. More will come.
 
 A letter only tells what the chain itself told you, then a little of the writer's life since. It never sends you anywhere, never promises a reward, and never spoils a chain you haven't finished: a letter only comes once its chain is done.
 

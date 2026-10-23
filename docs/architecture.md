@@ -53,15 +53,17 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
   first seal, five, ten, twenty-five, every letter the character can
   receive. Places: letters from eight zones, from every starting zone that
   writes to the character, from each of its side's three capitals (zones by
-  area id, the letter's `zone`). Writers: every neutral writer's, and seven
+  area id, the letter's `zone`). Writers: every neutral writer's, and eight
   writers' own, named for their letter (Nathanos's Hate Mail, Gazlowe's
   Still Owed, Hinderweir's Still Standing, Remtravel's Where Is My Brush?,
-  Gaxim's Handle with Care, Neeru's Double Agent, Samsa's Precious Skulls).
+  Gaxim's Handle with Care, Neeru's Double Agent, Samsa's Precious Skulls,
+  and Better Late Than Never, the Felstone parcel's: Ol' Emma's to the
+  Alliance, Jeremiah Payson's to the Horde).
   Each character's own, with when and at what level; announced with the
   game's fanfare, a banner and a line in chat, quietly at the login. One a
   character can't earn isn't listed, nor one the letters don't reach yet
-  (twenty-five, the capitals until Stormwind and the Undercity write): a
-  wave brings it. Earned stays listed.
+  (none, since the first wave's sixty-nine: twenty-five and the capitals
+  were unlisted until it): a wave brings it. Earned stays listed.
 - `Book.lua`: the family's window and tabs in Yours Truly's theme (the red
   of the game's sealing wax, a letter's ink warm), the parts every tab uses
   (`ns.ui`). `LettersBook.lua`: every letter delivered, newest first, each

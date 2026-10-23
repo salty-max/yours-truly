@@ -68,9 +68,16 @@ local CAPITALS =
   { A = { [1519] = true, [1537] = true, [1657] = true }, H = { [1637] = true, [1638] = true, [1497] = true } }
 local function starting(z) return STARTING[z] end
 local function capital(z) return CAPITALS[ns.side()][z] end
+-- (npc: a writer's id, or several: the first of them this character can hear from)
 local function writerLetter(npc)
   for _, id in ipairs(ns.letters()) do
-    if D.letters[id].npc == npc then return id end
+    local w = D.letters[id].npc
+    if w == npc then return id end
+    if type(npc) == "table" then
+      for _, n in ipairs(npc) do
+        if n == w then return id end
+      end
+    end
   end
 end
 
@@ -154,7 +161,8 @@ add(
 )
 -- (each where its writer's letter reaches: Nathanos, Neeru and Samsa write
 -- to the Horde, Hinderweir, Remtravel and Gaxim to the Alliance, Gazlowe to
--- both)
+-- both, and Janice Felstone's parcel to each side its own: Ol' Emma's letter
+-- to the Alliance, Jeremiah Payson's to the Horde)
 for _, w in ipairs({
   { "hate-mail", 11878, L["Hate Mail"] }, -- (Nathanos Blightcaller)
   { "still-owed", 3391, L["Still Owed"] }, -- (Gazlowe)
@@ -163,6 +171,7 @@ for _, w in ipairs({
   { "handle-with-care", 4077, L["Handle with Care"] }, -- (Gaxim Rustfizzle)
   { "double-agent", 3216, L["Double Agent"] }, -- (Neeru Fireblade)
   { "precious-skulls", 2418, L["Precious Skulls"] }, -- (Deathguard Samsa)
+  { "better-late", { 3520, 8403 }, L["Better Late Than Never"] }, -- (the Felstone parcel: Ol' Emma, Jeremiah Payson)
 }) do
   add("writers", w[1], w[3], function()
     local id = writerLetter(w[2])

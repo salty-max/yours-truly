@@ -229,9 +229,10 @@ check(
   "Neeru's and Samsa's achievements aren't the Alliance's"
 )
 check(
-  not ns.milestoneVisible(ns.milestoneById["twenty-five"]) and not ns.milestoneVisible(ns.milestoneById["capitals"]),
-  "twenty-five and the capitals unlisted until the letters reach them"
+  ns.earnedMilestone("twenty-five") and ns.earnedMilestone("capitals"),
+  "twenty-five letters, and one from each of the side's three capitals"
 )
+check(ns.earnedMilestone("better-late"), "the Felstone parcel's letter, the Alliance's: Ol' Emma's")
 do
   local n, shown = ns.milestoneCount()
   check(n == shown, "every listed achievement earned: " .. n .. " of " .. shown)

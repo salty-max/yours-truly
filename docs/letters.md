@@ -100,6 +100,45 @@ quests' own words (VanCleef, Stratholme), each on the writer's card.
 | 32 | the-barrens/mangletooth | 10 to 30 |
 | 33 | the-barrens/seereth-stonebreak | 10 to 30 |
 | 34 | hillsbrad-foothills/deathguard-samsa | 10 to 30 |
+| 35 | wetlands/captain-stoutfist | 30 to 60, the Alliance |
+| 36 | stormwind-city/baros-alexston | 30 to 60, the Alliance |
+| 37 | duskwood/sven-yorgen | 30 to 60, the Alliance |
+| 38 | duskwood/madame-eva | 30 to 60, the Alliance |
+| 39 | desolace/dalinda-malem | 30 to 60, the Alliance |
+| 40 | hillsbrad-foothills/phin-odelic | 30 to 60, the Alliance |
+| 41 | stormwind-city/elling-trias | 30 to 60, the Alliance |
+| 42 | dustwallow-marsh/garran-vimes | 30 to 60, the Alliance |
+| 43 | hillsbrad-foothills/henry-maleb | 30 to 60, the Alliance |
+| 44 | ironforge/advisor-belgrum | 30 to 60, the Alliance |
+| 45 | stranglethorn-vale/brother-nimetz | 30 to 60, the Alliance |
+| 46 | the-hinterlands/agnar-beastamer | 30 to 60, the Alliance |
+| 47 | the-hinterlands/gryphon-master-talonaxe | 30 to 60, the Alliance |
+| 48 | stormwind-city/ol-emma | 30 to 60, the Alliance |
+| 49 | hillsbrad-foothills/krusk | 30 to 60, the Horde |
+| 50 | thousand-needles/dorn-plainstalker | 30 to 60, the Horde |
+| 51 | undercity/sharlindra | 30 to 60, the Horde |
+| 52 | dustwallow-marsh/drazzilb | 30 to 60, the Horde |
+| 53 | orgrimmar/zor-lonetree | 30 to 60, the Horde |
+| 54 | arathi-highlands/torgan | 30 to 60, the Horde |
+| 55 | arathi-highlands/zengu | 30 to 60, the Horde |
+| 56 | stranglethorn-vale/nimboya | 30 to 60, the Horde |
+| 57 | swamp-of-sorrows/felzerul | 30 to 60, the Horde |
+| 58 | feralas/hadoken-swiftstrider | 30 to 60, the Horde |
+| 59 | feralas/witch-doctor-uzeri | 30 to 60, the Horde |
+| 60 | felwood/trull-failbane | 30 to 60, the Horde |
+| 61 | tirisfal-glades/high-executor-derrington | 30 to 60, the Horde |
+| 62 | undercity/jeremiah-payson | 30 to 60, the Horde |
+| 63 | thousand-needles/razzeric | 30 to 60, neutral |
+| 64 | badlands/lotwil-veriatus | 30 to 60, neutral |
+| 65 | desolace/uthek-the-wise | 30 to 60, neutral |
+| 66 | stranglethorn-vale/crank-fizzlebub | 30 to 60, neutral |
+| 67 | tanaris/marin-noggenfogger | 30 to 60, neutral |
+| 68 | ungoro-crater/linken | 30 to 60, neutral |
+| 69 | felwood/greta-mosshoof | 30 to 60, neutral |
+| 70 | winterspring/umi-rumplesnicker | 30 to 60, neutral |
+| 71 | eastern-plaguelands/carlin-redpath | 30 to 60, neutral |
+| 72 | eastern-plaguelands/tirion-fordring | 30 to 60, neutral |
+| 73 | azshara/duke-hydraxis | 30 to 60, neutral |
 
 Zephras Isle's four (23 October 2026) are Forever's only (`client: forever`),
 written from Wowhead's texts of the beta as wow-data holds them: to read
@@ -112,7 +151,15 @@ say.
 The first hour's nine read cold twice by the prose-reader, English and
 French separately, 23 October 2026, and fixed; the six samples cold-read in
 `../ideas/letters-voices.md`. The 10 to 30 wave's fifteen likewise, 23
-October 2026. Waiting on the user's read.
+October 2026, and the first wave's last thirty-nine (ids 35 to 73, three
+batches), so the plan's sixty-nine are all written. Waiting on the user's
+read.
+
+Two anchors differ from the plan's table: Nimboya's is Saving Yenniku (592),
+where Yenniku's story ends, not Speaking with Gan'zulah (586), and the
+Felstone parcel's two letters need both the side's road and the end
+(`quests: [5048, 5051]` for Ol' Emma, `[5049, 5051]` for Jeremiah Payson).
+High Executor Derrington stands at the Bulwark, in Tirisfal Glades.
 
 A writer's folder is the zone where the writer stands, not the chain's:
 Thyn'tel Bladeweaver's chain runs through Ashenvale, she is in Darnassus;
