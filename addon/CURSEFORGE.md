@@ -21,7 +21,7 @@ For Classic Era (Hardcore included) and World of Warcraft: Forever, in one downl
 
 A militia captain thanks you for a job he didn't enjoy asking of you. A soldier's widow tells you how her boys ask for their father's letter again. A goblin still owes you, on paper. A young elf writes from the cave you found him by, because the spiders are still between him and home.
 
-Fifteen letters so far: one from every starting zone, so a new character usually has a letter within its first hour or two, and a few of the old world's best-loved chains, from the Defias Brotherhood to Hemet Nesingwary's big game. More are planned, a level range at a time.
+Fifteen letters so far: one from each of the old world's starting zones, so a new character there usually has a letter within its first hour or two, and a few of the old world's best-loved chains, from the Defias Brotherhood to Hemet Nesingwary's big game. More are planned, a level range at a time.
 
 A letter only tells what the chain itself told you, then a little of the writer's life since. It never sends you anywhere, never promises a reward, and never spoils a chain you haven't finished: a letter only comes once its chain is done.
 
