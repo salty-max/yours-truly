@@ -45,8 +45,13 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
   once that zone has written), `/yourstruly` (`achievements`, `minimap`,
   `settings`, `welcome`, `export`, `import CODE`).
 - `Panel.lua`: the panel beside the mail window (`ns.showPanel` at a
-  mailbox with a letter waiting, never empty; `ns.hidePanel` when it
-  closes): the sealed envelope (the logo's wax seal, the writer, the
+  mailbox with a letter or the backlog's bundle waiting, never empty;
+  `ns.hidePanel` when it closes): the bundle first when there is one, on
+  the envelope's face ("From the road behind you", the count, "tied with
+  string", the window titled a bundle of letters), a click untying it into
+  the book, then its note on the same face (the count, "in your book now,
+  sealed", a click or "Open the book" opening the book), "Next letter"
+  going round the bundle and the letters waiting; the sealed envelope (the logo's wax seal, the writer, the
   place; a click breaks it, the game's page sound), the letter on the mail
   reader's own paper in its own face, scrolling as the game's reader does,
   the chain and the zone's count under it, "Next letter" while another
