@@ -51,12 +51,13 @@ function keys(): string[] {
 
 const q = (s: string) => `"${s.replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/\n/g, "\\n")}"`;
 const json = (file: string) => (existsSync(file) ? JSON.parse(readFileSync(file, "utf8")) : {});
-// (a blank's kind and order: its width is the language's, French days unpadded: "%d %s %d" for "%02d %s %d")
+// (a blank's kind, precision and order: its width is the language's, French days unpadded: "%d %s %d"
+// for "%02d %s %d"; "%.1f" stays "%.1f")
 const blanks = (s: string) =>
   [...s.matchAll(/%%|%[0-9.]*[sdf]/g)]
     .map((m) => m[0])
     .filter((b) => b !== "%%")
-    .map((b) => `%${b.slice(-1)}`);
+    .map((b) => `%${b.match(/\.\d+/)?.[0] ?? ""}${b.slice(-1)}`);
 
 // The game's own names a language's file carries, every language's whole
 // (English one of them): each game's writers and quests by id
