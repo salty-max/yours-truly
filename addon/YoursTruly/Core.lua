@@ -25,8 +25,12 @@
 local _, ns = ...
 local L, D = ns.kit.L, ns.data
 ns.PREFIX = "|cffe8a08aYours Truly:|r "
--- The addon's sealed-letter mark. Read letters retain the game's open icon.
+-- The addon's mark (its logo: the book's and the panel's portrait, the
+-- minimap button, the welcome page, the banners); its wax seal cut round
+-- (Media/Seal, assets/README.md): a letter still sealed, on its envelope and in
+-- the book; a letter read: the game's open letter.
 ns.ICON = "Interface\\AddOns\\YoursTruly\\Media\\Logo"
+ns.SEAL = "Interface\\AddOns\\YoursTruly\\Media\\Seal"
 ns.ICON_READ = "Interface\\Icons\\INV_Letter_15"
 -- (a letter's time in the post, in seconds played)
 ns.POST = 15 * 60

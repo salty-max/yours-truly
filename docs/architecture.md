@@ -39,7 +39,7 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
   `settings`, `welcome`, `export`, `import CODE`).
 - `Panel.lua`: the panel beside the mail window (`ns.showPanel` at a
   mailbox with a letter waiting, never empty; `ns.hidePanel` when it
-  closes): the sealed envelope (the game's sealed letter, the writer, the
+  closes): the sealed envelope (the logo's wax seal, the writer, the
   place; a click breaks it, the game's page sound), the letter on the mail
   reader's own paper in its own face, scrolling as the game's reader does,
   the chain and the zone's count under it, "Next letter" while another
@@ -73,9 +73,11 @@ The sealed parchment envelope, red wax and ivory quill mark is kept in
 `assets/`, with its master, 1024px and 512px PNG exports, and exact
 generation prompt. `Media/Logo.tga` is the uncompressed 256px RGBA game
 texture with rounded corners. Both TOCs and `ns.ICON` use it, covering the
-book, welcome page, minimap and achievement banners. `ns.ICON_READ` keeps
-the game's open-letter icon so read letters remain distinct. Export details
-are in `assets/README.md`.
+book, welcome page, minimap and achievement banners. `Media/Seal.tga` is its
+wax seal cut round (`ns.SEAL`): a sealed letter's seal on the envelope in the
+mailbox panel, in the book's list and on its page. `ns.ICON_READ` keeps the
+game's open-letter icon so read letters remain distinct. Export details are
+in `assets/README.md`.
 
 ## Tests
 

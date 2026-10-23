@@ -7,6 +7,10 @@ references are in [logo-prompts.json](logo-prompts.json).
 - `logo-master.png`: original generated master, 1254px square.
 - `logo-1024.png`: 1024px square for store and project artwork.
 - `logo.png`: 512px square for general use.
+- `seal.png`, `../addon/YoursTruly/Media/Seal.tga`: the logo's wax seal
+  cut round from the master (centre 498, 504 and radius 152 of 1024, a soft
+  round edge), 128px, the TGA uncompressed 32-bit with a top-left origin as
+  Logo.tga: a sealed letter's seal on its envelope and in the book.
 - `../addon/YoursTruly/Media/Logo.tga`: uncompressed 256px RGBA game texture,
   with rounded corners (radius 34), used by the addon listing and `ns.ICON`.
 

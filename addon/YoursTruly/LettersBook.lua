@@ -1,5 +1,6 @@
 -- The Letters tab: every letter delivered to this character, newest first,
--- each row its seal (red wax until it is broken), its writer, its place and
+-- each row its seal (the logo's red wax until it is broken, then the game's
+-- open letter), its writer, its place and
 -- its first line; the page the letter itself, in another hand (the kit's
 -- aside, signed), then the chain it answers, when it came, and its zone's
 -- count ("Westfall: 1 of 2"). A letter delivered and left sealed (the mailbox
@@ -46,7 +47,7 @@ end
 
 local function seal(id)
   local r = ns.record(id)
-  return r and r.read and ns.ICON_READ or ns.ICON
+  return r and r.read and ns.ICON_READ or ns.SEAL
 end
 local function firstLine(id)
   local r = ns.record(id)
