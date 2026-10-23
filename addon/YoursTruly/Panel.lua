@@ -168,8 +168,8 @@ local function build()
     end
   end)
 
-  -- (a letter opened beside it: the panel moves beside that)
-  for _, f in ipairs({ OpenMailFrame }) do
+  -- (the mail window shown late, a letter opened beside it: the panel moves)
+  for _, f in ipairs({ MailFrame, OpenMailFrame }) do
     if f and f.HookScript then
       f:HookScript("OnShow", function()
         if panel:IsShown() then dock() end

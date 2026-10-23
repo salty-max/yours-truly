@@ -356,6 +356,7 @@ function G.mailbox(open)
   if open then
     if not state.noMailFrame then MailFrame:Show() end
     G.fire("MAIL_SHOW")
+    G.advance(0.01)
   else
     OpenMailFrame:Hide()
     MailFrame:Hide()

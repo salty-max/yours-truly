@@ -220,13 +220,17 @@ end
 
 -- ── the mailbox ──────────────────────────────────────────────────────────────
 -- A visit: from the mailbox opened to the mailbox closed (MAIL_SHOW may come
--- again within it).
+-- again within it). The panel a moment later: the game opens its mail window
+-- on an event of its own (the interaction manager's), in no order against
+-- this one, and the panel docks to it.
 local visiting = false
 ns.on("MAIL_SHOW", function()
   if visiting then return end
   visiting = true
   ns.deliver()
-  if #ns.waiting() > 0 and ns.showPanel then ns.showPanel() end
+  C_Timer.After(0, function()
+    if visiting and #ns.waiting() > 0 and ns.showPanel then ns.showPanel() end
+  end)
   if ns.onChange then ns.onChange() end
 end)
 ns.on("MAIL_CLOSED", function()
