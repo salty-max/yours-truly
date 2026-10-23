@@ -4,7 +4,7 @@
 The project's title on the stores: "Yours Truly: Letters from the People You
 Helped" (the addon's own name stays Yours Truly: the words players search
 for in the title, ../ideas/letters.md §9). A draft, 23 October 2026: Yours
-Truly is not released yet, fifteen letters written. Read it again against
+Truly is not released yet. Read it again against
 what ships (the count of letters: 15 in Classic Era, 19 in Forever on 23
 October, the writers named) before the first release. -->
 
@@ -35,7 +35,7 @@ A letter only tells what the chain itself told you, then a little of the writer'
 
 ## The book
 
-Every letter you receive is kept in Yours Truly's book, newest first: who wrote, where from, the chain it answers and when it came. The book counts letters by zone for your faction ("Westfall: 1 of 2") without naming the ones still to come. A few achievements follow, from your first broken seal to the last letter your faction can receive.
+Every letter you receive is kept in Yours Truly's book, newest first: who wrote, where from, the chain it answers and when it came. The book counts letters by zone for your faction ("Westfall: 1 of 2") without naming the ones still to come. A few achievements follow, from your first broken seal to the last letter you can receive.
 
 ## Compatibility
 

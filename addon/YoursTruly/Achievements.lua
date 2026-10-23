@@ -59,13 +59,7 @@ add(
   function() return math.min(ns.readCount(), 5), 5 end,
   function() return #ns.letters() >= 5 end
 )
-add(
-  "letters",
-  "every",
-  L["Every Last One"],
-  L["Read every letter your side can receive."],
-  function() return count() end
-)
+add("letters", "every", L["Every Last One"], L["Read every letter you can receive."], function() return count() end)
 
 -- ── the writers ──────────────────────────────────────────────────────────────
 add(

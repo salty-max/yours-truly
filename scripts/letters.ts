@@ -213,6 +213,9 @@ function gameData(game: Game) {
         missing = true;
       } else {
         level = Math.max(level, row.level ?? 0);
+        // (two anchors no race or class can both take: a letter nobody earns, never "anyone")
+        if (races && row.races && !and(races, row.races)) problems.push(`${l.file}: its anchors' race masks share no race (${game})`);
+        if (classes && row.classes && !and(classes, row.classes)) problems.push(`${l.file}: its anchors' class masks share no class (${game})`);
         races = and(races, row.races ?? 0);
         classes = and(classes, row.classes ?? 0);
       }

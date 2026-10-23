@@ -65,7 +65,7 @@ ns.translate({
     ["Paste the code (/yourstruly export on the other character), then press Enter."] = "Collez le code (/yourstruly export sur l'autre personnage), puis appuyez sur Entrée.",
     ["Read %s's letter."] = "Lisez la lettre de %s.",
     ["Read a letter from every writer who takes no side."] = "Lisez une lettre de chaque correspondant qui ne prend aucun parti.",
-    ["Read every letter your side can receive."] = "Lisez toutes les lettres que votre camp peut recevoir.",
+    ["Read every letter you can receive."] = "Lisez toutes les lettres que vous pouvez recevoir.",
     ["Read five letters."] = "Lisez cinq lettres.",
     ["Received"] = "Reçue",
     ["Sealed"] = "Scellée",
