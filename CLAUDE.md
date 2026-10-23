@@ -5,8 +5,8 @@ you a letter, in their own voice, about what the chain changed for them. It
 waits at the next mailbox you open, sealed, in a panel beside the game's mail
 window, and stays in the book. Planned in `../ideas/letters.md` (every call
 the user's, 23 October 2026: its Decided section), the voices and their rules
-in `../ideas/letters-voices.md`. Started 23 October 2026. Local only, not on
-GitHub yet. Classic Era (11509) and Forever (16001), one package. Read the
+in `../ideas/letters-voices.md`. Started 23 October 2026. On GitHub (salty-max/yours-truly, public,
+23 October 2026), not yet released. Classic Era (11509) and Forever (16001), one package. Read the
 family's CLAUDE.md (`../CLAUDE.md`) first.
 
 ## Where things are
