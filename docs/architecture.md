@@ -30,9 +30,14 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
   Skyborne are bits 32 and 33, so a dwarf never counts Falorne's letter), the post (`QUEST_TURNED_IN`: a
   letter's last quest posts it, the game flagging the quest or not yet; at
   each login, `ns.catchUp`: every letter earned before, posted at once,
-  `backlog`), the delivery (`MAIL_SHOW`, once a visit until `MAIL_CLOSED`:
-  the letters fifteen minutes of play in the post, oldest first, then the
-  chain's level; one, two when more than three wait), the seal broken
+  `backlog`), the bundle (`ns.bundle`: two or more backlog letters come
+  together at the next mailbox, with no wait, and `ns.untie` files them in
+  the book, sealed, `bundled`: a level 60 installing the addon, or a new
+  wave of letters for chains already done, gets one bundle and not a dozen
+  visits of old news; one alone goes by the post), the delivery
+  (`MAIL_SHOW`, once a visit until `MAIL_CLOSED`: the letters fifteen
+  minutes of play in the post, oldest first, then the chain's level; one,
+  two when more than three wait), the seal broken
   (`ns.read`), a letter's words (`ns.letter`: Classic Era's names swapped in
   there, agreed to the reader, `$N`, `$C`, `$R` filled, the class's name for
   a woman where the client has one), the writer's, the place's and the
@@ -99,8 +104,8 @@ in `assets/README.md`.
   the mail's face, the client's area names, race, class and sex) and
   `addon/test/sim.lua`: a letter turned in, its fifteen minutes in the post,
   the mailbox, the envelope and its seal broken, the tokens filled, the other
-  side's letters held back, a neutral writer's, the backlog trickled in the
-  chains' order, the panel beside an open letter and alone for a mailbox
+  side's letters held back, a neutral writer's, the backlog as one bundle
+  untied into the book (and a backlog of one by the post), the panel beside an open letter and alone for a mailbox
   addon, the book's tabs, the achievements, a French reader who is a woman,
   Classic Era's names, on Classic Era, Forever and a French client of each
   (`bun run check` runs all four).

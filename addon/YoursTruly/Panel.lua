@@ -12,6 +12,11 @@
 -- margin clear of the paper's torn edge. Under it, small:
 -- the chain it answers and its zone's count. "Next letter" when another waits.
 --
+-- The backlog's bundle (Core: ns.bundle) comes first when there is one: the
+-- same seal, "N letters from the road behind you, tied with string". A click
+-- unties it: the letters go into the book, sealed, and the panel says so,
+-- with a button to open the book. Fresh letters still wait behind it.
+--
 -- Docked to the mail window: beside the open letter (OpenMailFrame) when one
 -- is open, else where that would stand (beside the inbox). A mailbox addon
 -- that hides the game's mail window: the panel stands on its own instead,
@@ -27,7 +32,16 @@ local SHEET_W = W - 20
 local TEXT_W = SHEET_W - 18 - 44
 
 local panel, current
+local BUNDLE, UNTIED = "bundle", "untied" -- (the bundle shown, then its note)
 ns.panelParts = {} -- (for the tests)
+
+-- What the panel holds: the bundle first, if there is one, then each letter
+-- waiting at the mailbox.
+local function queue()
+  local q = ns.waiting()
+  if #ns.bundle() > 0 then table.insert(q, 1, BUNDLE) end
+  return q
+end
 
 -- The mail's own face where the client has it, else the books' display face.
 local function ink(parent, size, colour)
@@ -151,9 +165,24 @@ local function build()
   envelope:SetScript("OnClick", function()
     if not current then return end
     if PlaySound and SOUNDKIT and SOUNDKIT.IG_ABILITY_PAGE_TURN then PlaySound(SOUNDKIT.IG_ABILITY_PAGE_TURN) end
+    if current == BUNDLE then
+      ns.untie()
+      show(UNTIED)
+      return
+    end
     ns.read(current)
     show(current)
   end)
+
+  -- (the bundle untied: to the book)
+  local bookButton = CreateFrame("Button", "YoursTrulyPanelBook", panel, "UIPanelButtonTemplate")
+  bookButton:SetSize(120, 22)
+  bookButton:SetPoint("BOTTOMLEFT", 12, 12)
+  bookButton:SetText(L["Open the book"])
+  bookButton:SetScript("OnClick", function()
+    if ns.openTab then ns.openTab(ns.TAB.letters) end
+  end)
+  bookButton:Hide()
 
   -- the next one
   local nextButton = CreateFrame("Button", "YoursTrulyPanelNext", panel, "UIPanelButtonTemplate")
@@ -162,17 +191,17 @@ local function build()
   nextButton:SetText(L["Next letter"])
   local waitingLine = K.label(panel, K.BODY_FONT, 11, K.T.soft)
   waitingLine:SetPoint("BOTTOMLEFT", 16, 17)
-  -- (the one after this one among those waiting, round to the first)
+  -- (the one after this one in the panel, round to the first)
   nextButton:SetScript("OnClick", function()
-    local waiting = ns.waiting()
-    for i, id in ipairs(waiting) do
+    local q = queue()
+    for i, id in ipairs(q) do
       if id == current then
-        local after = waiting[i % #waiting + 1]
+        local after = q[i % #q + 1]
         if after ~= current then show(after) end
         return
       end
     end
-    if waiting[1] then show(waiting[1]) end
+    if q[1] then show(q[1]) end
   end)
 
   -- (the mail window shown late, a letter opened beside it: the panel moves)
@@ -190,32 +219,24 @@ local function build()
   local P = ns.panelParts
   P.panel, P.scroll, P.place, P.main, P.signoff, P.ps, P.footer = panel, scroll, place, main, signoff, ps, footer
   P.envelope, P.writer, P.where, P.next, P.waiting = envelope, writer, where, nextButton, waitingLine
+  P.from, P.hint, P.book = from, hint, bookButton
 end
 
 -- A letter in the panel: sealed (its envelope) or open (its words).
 show = function(id)
   local P = ns.panelParts
   current = id
-  local r = ns.record(id)
+  local q = queue()
   local others = 0
-  for _, w in ipairs(ns.waiting()) do
-    if w ~= id then others = others + 1 end
+  for _, w in ipairs(q) do
+    if w ~= id and w ~= BUNDLE then others = others + 1 end
   end
-  P.next:SetShown(others > 0)
+  P.next:SetShown(#q > (id == UNTIED and 0 or 1))
   P.waiting:SetText(
     others > 0 and ns.kit.plural(others, "%d more letter waits.", "%d more letters wait."):format(others) or ""
   )
-  if not (r and r.read) then
-    P.scroll:Hide()
-    P.envelope:Show()
-    P.writer:SetText(ns.writer(id))
-    P.where:SetText(ns.place(id))
-    return
-  end
-  P.envelope:Hide()
-  P.scroll:Show()
-  local t = ns.letter(id)
-  if not t then return end
+  P.book:SetShown(id == UNTIED)
+  P.waiting:SetShown(id ~= UNTIED)
   local y = 0
   local function lay(fs, text, gap)
     fs:ClearAllPoints()
@@ -228,6 +249,41 @@ show = function(id)
     fs:Show()
     y = y + fs:GetStringHeight() + gap
   end
+  if id == BUNDLE then
+    local n = #ns.bundle()
+    P.scroll:Hide()
+    P.envelope:Show()
+    P.from:SetText(L["From the road behind you"])
+    P.writer:SetText(ns.kit.plural(n, "%d letter", "%d letters"):format(n))
+    P.where:SetText(L["tied with string"])
+    P.hint:SetText(L["Click to untie them."])
+    return
+  end
+  P.from:SetText(L["A letter from"])
+  P.hint:SetText(L["Click to break the seal."])
+  if id == UNTIED then
+    P.envelope:Hide()
+    P.scroll:Show()
+    for _, fs in ipairs({ P.place, P.signoff, P.ps, P.footer }) do
+      fs:Hide()
+    end
+    lay(P.main, L["They are in your book now, sealed, to open when you like."], 4)
+    P.scroll.child:SetHeight(y + 8)
+    P.scroll:ScrollTo(0)
+    return
+  end
+  local r = ns.record(id)
+  if not (r and r.read) then
+    P.scroll:Hide()
+    P.envelope:Show()
+    P.writer:SetText(ns.writer(id))
+    P.where:SetText(ns.place(id))
+    return
+  end
+  P.envelope:Hide()
+  P.scroll:Show()
+  local t = ns.letter(id)
+  if not t then return end
   lay(P.place, ns.place(id), 14)
   lay(P.main, t.greeting .. "\n\n" .. table.concat(t.body, "\n\n"), 14)
   lay(P.signoff, t.signoff, 16)
@@ -243,13 +299,14 @@ show = function(id)
   P.scroll:ScrollTo(0)
 end
 
--- At a mailbox: the oldest letter waiting, sealed.
+-- At a mailbox: the bundle if there is one, else the oldest letter waiting,
+-- sealed.
 function ns.showPanel()
-  local waiting = ns.waiting()
-  if #waiting == 0 then return end
+  local q = queue()
+  if #q == 0 then return end
   if not panel then build() end
   dock()
-  show(waiting[1])
+  show(q[1])
   panel:Show()
 end
 

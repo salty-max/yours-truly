@@ -1,6 +1,8 @@
 {
   "%02d %s %d": "",
+  "%d letter": "",
   "%d letter received.": "",
+  "%d letters": "",
   "%d letters received.": "",
   "%d more letter waits.": "",
   "%d more letters wait.": "",
@@ -30,6 +32,7 @@
   "Click it to open the book, or drag it around the minimap.": "",
   "Click to break the seal.": "",
   "Click to open the book, right-click for the settings. Drag to move this button.": "",
+  "Click to untie them.": "",
   "Copy it (Ctrl+C), then on another character: Use a code, or /yourstruly import CODE.": "",
   "Copy settings from": "",
   "Copy their choices": "",
@@ -40,6 +43,7 @@
   "Far and Wide": "",
   "Feb": "",
   "From another character": "",
+  "From the road behind you": "",
   "Give a code": "",
   "Handle with Care": "",
   "Hate Mail": "",
@@ -95,6 +99,7 @@
   "The seal is unbroken.": "",
   "The zone": "",
   "Their letter waits at the next mailbox you open, sealed. Nothing tells you it is coming. Keep every letter in the book.": "",
+  "They are in your book now, sealed, to open when you like.": "",
   "Use a code": "",
   "Welcome to Yours Truly": "",
   "When you finish a quest chain that changed someone's life, they may write to you. Their letter waits at the next mailbox you open.": "",
@@ -103,5 +108,6 @@
   "Your choices": "",
   "Yours Truly achievement": "",
   "earned": "",
-  "the game's achievement alert could not be set up (%s): the book shows its own banner.": ""
+  "the game's achievement alert could not be set up (%s): the book shows its own banner.": "",
+  "tied with string": ""
 }

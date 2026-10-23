@@ -31,7 +31,7 @@ A letter only tells what the chain itself told you, then a little of the writer'
 - Nothing tells you it's coming. It opens in a window beside the mail.
 - It opens on the game's own letter paper, signed by its writer, and keeps the chain it answers at the bottom.
 - At most two letters per mailbox visit, so they never arrive in a pile.
-- Chains you finished before installing Yours Truly count too. Their letters reach you over your next visits to a mailbox, a couple at a time, the lowest-level chains first.
+- Chains you finished before installing Yours Truly count too. Their letters come together, in one bundle at the next mailbox: untie it, and they go into the book, sealed, to open whenever you like.
 
 ## The book
 

@@ -1,8 +1,10 @@
 -- Yours Truly played through: a first login with nothing done, a chain's last
 -- quest turned in (its letter in the post, fifteen minutes of play, then the
 -- next mailbox), the sealed envelope and its seal broken, the other side's
--- letters held back, the backlog found at a login and trickled in the chains'
--- order (one a visit, two when more than three wait), the panel docked beside
+-- letters held back, the backlog found at a login and come as one bundle
+-- (untied into the book, sealed, a fresh letter still behind it, a backlog of
+-- one by the post), the mailbox's pace (one a visit, two when more than three
+-- wait), the panel docked beside
 -- an open letter or standing alone for a mailbox addon, the book's tabs, the
 -- achievements, a French reader who is a woman. FOREVER=1, LOCALE=frFR: those
 -- clients.
@@ -94,7 +96,7 @@ G.turnIn(888, false) -- (Stolen Booty: the game tells it before flagging it)
 check(char.letters[GAZLOWE], "a neutral writer writes to either side")
 play(60)
 
--- ── the backlog ──────────────────────────────────────────────────────────────
+-- ── the backlog: one bundle ─────────────────────────────────────────────────
 for _, q in ipairs({ 166, 700, 114, 87, 414, 6163 }) do
   s.done[q] = true
 end
@@ -102,36 +104,39 @@ G.login()
 check(char.letters[GRYAN] and char.letters[GRYAN].backlog, "a chain done before: found at the login")
 check(not char.letters[NATHANOS], "not the other side's")
 check(#s.printed == 0 or not said("letter"), "quietly")
+check(#ns.bundle() == 5, "five found: one bundle")
+check(#ns.due() == 0 or ns.due()[1] == GAZLOWE, "the bundle's letters aren't in the post")
 play(ns.POST + 1)
 G.mailbox(true)
--- (five due: Gazlowe's, posted first, then the backlog in the chains' order)
-check(
-  char.letters[GAZLOWE].delivered and char.letters[MAYBELL].delivered,
-  "more than three wait: two delivered, oldest first"
-)
-check(not char.letters[BERNICE].delivered and not char.letters[SARA].delivered, "the rest still in the post")
-check(ns.panelLetter() == GAZLOWE and P.next:IsShown(), "the first sealed, and a next")
-P.next.scripts.OnClick(P.next)
-check(ns.panelLetter() == MAYBELL, "next: the second")
-G.mailbox(false)
-G.mailbox(true)
-check(char.letters[BERNICE].delivered and char.letters[REJOLD].delivered, "a second visit: two more")
--- (four sealed now: next goes round them all, then back to the first)
-local seen = { [ns.panelLetter()] = true }
-for _ = 1, 3 do
-  P.next.scripts.OnClick(P.next)
-  seen[ns.panelLetter()] = true
+check(char.letters[GAZLOWE].delivered, "a fresh letter still comes by the post")
+check(not char.letters[GRYAN].delivered, "the bundle not untied yet")
+check(ns.panelLetter() == "bundle", "the bundle first in the panel")
+check(P.writer:GetText():find("5", 1, true), "its count on it")
+check(P.next:IsShown(), "and the fresh letter behind it")
+P.envelope.scripts.OnClick(P.envelope)
+check(ns.panelLetter() == "untied" and P.book:IsShown(), "untied: the note, and a button to the book")
+for _, id in ipairs({ GRYAN, SARA, MAYBELL, BERNICE, REJOLD }) do
+  local r = char.letters[id]
+  check(r.delivered and r.bundled and not r.read, "into the book, sealed: " .. id)
 end
-check(seen[GAZLOWE] and seen[MAYBELL] and seen[BERNICE] and seen[REJOLD], "next reaches every sealed letter")
+check(#ns.bundle() == 0, "the bundle gone")
+check(#ns.waiting() == 1 and ns.waiting()[1] == GAZLOWE, "only the fresh letter waits at the mailbox")
 P.next.scripts.OnClick(P.next)
-check(ns.panelLetter() == GAZLOWE, "and comes round to the first")
+check(ns.panelLetter() == GAZLOWE and not P.book:IsShown(), "next: the fresh letter, sealed")
+check(not P.next:IsShown(), "and no other")
 G.mailbox(false)
 G.mailbox(true)
-check(char.letters[GRYAN].delivered and not char.letters[SARA].delivered, "then one a visit")
+check(ns.panelLetter() == GAZLOWE, "the next visit: the fresh letter still sealed, not the bundle's")
 G.mailbox(false)
+-- (one alone is a letter like any other: by the post)
+local lone = 20 -- (Hinderweir's: A Dark Threat Looms)
+s.done[283] = true
+G.login()
+check(char.letters[lone] and char.letters[lone].backlog and #ns.bundle() == 0, "a backlog of one: no bundle")
+play(ns.POST + 1)
+check(ns.due()[1] == lone, "it goes by the post")
 G.mailbox(true)
-check(char.letters[SARA].delivered, "the last")
-check(#ns.due() == 0, "the post empty")
+check(char.letters[lone].delivered and not char.letters[lone].bundled, "and reaches the mailbox as a letter")
 G.mailbox(false)
 
 -- ── a mailbox addon: the game's window hidden ────────────────────────────────
@@ -168,7 +173,7 @@ G.mailbox(false)
 ns.toggle()
 check(YoursTrulyFrame and YoursTrulyFrame:IsShown(), "the book opens")
 play(0.5)
-check(YoursTrulyFrame.count:GetText():find("8", 1, true), "eight letters received")
+check(YoursTrulyFrame.count:GetText():find("9", 1, true), "nine letters received")
 for _, id in ipairs(ns.received()) do
   ns.openLetter(id)
   play(0.1)
@@ -176,12 +181,12 @@ end
 for _, id in ipairs(ns.received()) do
   ns.read(id)
 end
-check(ns.readCount() == 8, "every letter received read")
+check(ns.readCount() == 9, "every letter received read")
 check(ns.zoneLine(MAYBELL) == L["%s: %d of %d"]:format("Zone 12", 2, 2), "Elwynn's count: two of two")
 check(ns.earnedMilestone("five") and ns.earnedMilestone("still-owed"), "five letters, and Gazlowe's")
 check(not ns.earnedMilestone("every"), "not every letter yet: Hemet's and the later waves' still to come")
 check(not ns.milestoneVisible(ns.milestoneById["hate-mail"]), "Nathanos's achievement isn't the Alliance's")
-check(not ns.earnedMilestone("ten"), "eight letters: not ten yet")
+check(not ns.earnedMilestone("ten"), "nine letters: not ten yet")
 if G.FOREVER then
   check(not ns.earnedMilestone("where-it-began"), "Forever: Zephras Isle's letter still to come")
 else
