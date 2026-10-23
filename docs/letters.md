@@ -85,6 +85,21 @@ quests' own words (VanCleef, Stratholme), each on the writer's card.
 | 17 | zephras-isle/ventaari-brightwish | first hour (Forever: the Windshapers) |
 | 18 | zephras-isle/elaadrin-evengale | Zephras Isle (Forever: the High Order) |
 | 19 | zephras-isle/ayessa-dawnsinger | Zephras Isle (Forever: the Windshapers) |
+| 20 | loch-modan/hinderweir | 10 to 30 |
+| 21 | redridge-mountains/magistrate-solomon | 10 to 30 |
+| 22 | darkshore/prospector-remtravel | 10 to 30 |
+| 23 | stonetalon-mountains/gaxim-rustfizzle | 10 to 30 |
+| 24 | ashenvale/raene-wolfrunner | 10 to 30 |
+| 25 | darnassus/thyntel-bladeweaver | 10 to 30 |
+| 26 | orgrimmar/neeru-fireblade | 10 to 30 |
+| 27 | silverpine-forest/dalar-dawnweaver | 10 to 30 |
+| 28 | silverpine-forest/high-executor-hadrec | 10 to 30 |
+| 29 | the-barrens/mankrik | 10 to 30 |
+| 30 | thunder-bluff/nara-wildmane | 10 to 30 |
+| 31 | the-barrens/regthar-deathgate | 10 to 30 |
+| 32 | the-barrens/mangletooth | 10 to 30 |
+| 33 | the-barrens/seereth-stonebreak | 10 to 30 |
+| 34 | hillsbrad-foothills/deathguard-samsa | 10 to 30 |
 
 Zephras Isle's four (23 October 2026) are Forever's only (`client: forever`),
 written from Wowhead's texts of the beta as wow-data holds them: to read
@@ -96,4 +111,10 @@ say.
 
 The first hour's nine read cold twice by the prose-reader, English and
 French separately, 23 October 2026, and fixed; the six samples cold-read in
-`../ideas/letters-voices.md`. Waiting on the user's read.
+`../ideas/letters-voices.md`. The 10 to 30 wave's fifteen likewise, 23
+October 2026. Waiting on the user's read.
+
+A writer's folder is the zone where the writer stands, not the chain's:
+Thyn'tel Bladeweaver's chain runs through Ashenvale, she is in Darnassus;
+Seereth Stonebreak's is in the Stonetalon Mountains, she stands at Honor's
+Stand, in the Barrens.

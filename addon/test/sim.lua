@@ -179,17 +179,27 @@ end
 check(ns.readCount() == 8, "every letter received read")
 check(ns.zoneLine(MAYBELL) == L["%s: %d of %d"]:format("Zone 12", 2, 2), "Elwynn's count: two of two")
 check(ns.earnedMilestone("five") and ns.earnedMilestone("still-owed"), "five letters, and Gazlowe's")
-check(not ns.earnedMilestone("every"), "not every letter yet: Hemet's still to come")
+check(not ns.earnedMilestone("every"), "not every letter yet: Hemet's and the later waves' still to come")
 check(not ns.milestoneVisible(ns.milestoneById["hate-mail"]), "Nathanos's achievement isn't the Alliance's")
 G.turnIn(208)
 -- (Forever: the Skyborne's island writes too, Elaadrin to any Alliance race the
 -- quest allows, Falorne to the High Order alone: a dwarf never gets his)
 if G.FOREVER then G.turnIn(92834) end
+-- (and every other letter this character can earn: the waves since)
+for _, id in ipairs(ns.letters()) do
+  if not char.letters[id] then
+    for _, q in ipairs(D.letters[id].quests) do
+      G.turnIn(q)
+    end
+  end
+end
 play(ns.POST + 1)
-for _ = 1, 2 do
+for _ = 1, 20 do
   G.mailbox(true)
   G.mailbox(false)
+  if #ns.due() == 0 then break end
 end
+check(#ns.due() == 0, "the backlog delivered, a mailbox at a time")
 for _, id in ipairs(ns.received()) do
   ns.read(id)
 end
