@@ -25,8 +25,8 @@
 local _, ns = ...
 local L, D = ns.kit.L, ns.data
 ns.PREFIX = "|cffe8a08aYours Truly:|r "
--- (a letter sealed in red wax, the game's own; read: the open one)
-ns.ICON = "Interface\\Icons\\INV_Letter_04"
+-- The addon's sealed-letter mark. Read letters retain the game's open icon.
+ns.ICON = "Interface\\AddOns\\YoursTruly\\Media\\Logo"
 ns.ICON_READ = "Interface\\Icons\\INV_Letter_15"
 -- (a letter's time in the post, in seconds played)
 ns.POST = 15 * 60

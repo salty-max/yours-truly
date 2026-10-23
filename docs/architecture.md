@@ -67,6 +67,16 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
   copied). `Welcome.lua`: the kit's welcome page, once per character.
   `Minimap.lua`: the book's button, as the siblings'.
 
+## Artwork
+
+The sealed parchment envelope, red wax and ivory quill mark is kept in
+`assets/`, with its master, 1024px and 512px PNG exports, and exact
+generation prompt. `Media/Logo.tga` is the uncompressed 256px RGBA game
+texture with rounded corners. Both TOCs and `ns.ICON` use it, covering the
+book, welcome page, minimap and achievement banners. `ns.ICON_READ` keeps
+the game's open-letter icon so read letters remain distinct. Export details
+are in `assets/README.md`.
+
 ## Tests
 
 - `addon/test/game.lua` (the addon's files loaded as its TOC lists them;
@@ -90,8 +100,7 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
 
 ## Not done yet
 
-- The logo (the book's picture is the game's sealed letter,
-  `INV_Letter_04`, rendered from the classic branch's PNGs), the store page.
+- The store page.
 - The panel's look checked in the game: rendered offline with the game's
   paper and a serif in Morpheus's place (wago.tools, where the client's font
   is, didn't answer on 23 October 2026).

@@ -7,7 +7,7 @@
 ## Version: 0.1.0
 ## SavedVariablesPerCharacter: YoursTrulyChar
 ## SavedVariables: YoursTrulySettings
-## IconTexture: Interface\Icons\INV_Letter_04
+## IconTexture: Interface\AddOns\YoursTruly\Media\Logo
 ## X-Website: https://github.com/salty-max/yours-truly
 ## X-License: MIT
 
