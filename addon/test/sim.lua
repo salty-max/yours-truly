@@ -251,6 +251,21 @@ if G.LOCALE == "frFR" then
   local g = table.concat(ns.letter(GAZLOWE).body, " ")
   check(g:find(G.FOREVER and "Cabestan" or "Ratchet", 1, true), "Ratchet as this client writes it")
   check(not g:find(G.FOREVER and "Ratchet" or "Cabestan", 1, true), "and not the other client's")
+  local sol = table.concat(ns.letter(21).body, " ") -- (Magistrate Solomon's)
+  for forever, classic in pairs({
+    ["Comté-du-Lac"] = "Lakeshire",
+    ["Sombre-Comté"] = "Darkshire",
+    Hurlevent = "Stormwind",
+  }) do
+    local this, other = forever, classic
+    if not G.FOREVER then
+      this, other = classic, forever
+    end
+    check(
+      sol:find(this, 1, true) and not sol:find(other, 1, true),
+      this .. " as this client writes it, in Solomon's letter"
+    )
+  end
   s.sex = 2
 end
 
