@@ -116,6 +116,15 @@ check(ns.panelLetter() == MAYBELL, "next: the second")
 G.mailbox(false)
 G.mailbox(true)
 check(char.letters[BERNICE].delivered and char.letters[REJOLD].delivered, "a second visit: two more")
+-- (four sealed now: next goes round them all, then back to the first)
+local seen = { [ns.panelLetter()] = true }
+for _ = 1, 3 do
+  P.next.scripts.OnClick(P.next)
+  seen[ns.panelLetter()] = true
+end
+check(seen[GAZLOWE] and seen[MAYBELL] and seen[BERNICE] and seen[REJOLD], "next reaches every sealed letter")
+P.next.scripts.OnClick(P.next)
+check(ns.panelLetter() == GAZLOWE, "and comes round to the first")
 G.mailbox(false)
 G.mailbox(true)
 check(char.letters[GRYAN].delivered and not char.letters[SARA].delivered, "then one a visit")
@@ -134,6 +143,26 @@ check(char.letters[DENALAN].delivered, "delivered without the game's mail window
 check(ns.panelLetter() == GAZLOWE and not P.panel.docked, "the panel on its own, the oldest sealed letter first")
 G.mailbox(false)
 s.noMailFrame = nil
+-- (a mailbox addon that keeps the game's window open but transparent)
+G.turnIn(5441) -- (nothing for the Alliance: no new letter, the sealed ones still wait)
+MailFrame:SetAlpha(0)
+G.mailbox(true)
+check(ns.panelLetter() and not P.panel.docked, "a transparent mail window: the panel on its own")
+G.mailbox(false)
+MailFrame:SetAlpha(1)
+-- (a language lacking the chain's name: the footer without it, no error)
+G.mailbox(true)
+local shown = ns.panelLetter()
+local q = D.letters[shown].quests[#D.letters[shown].quests]
+local name = ns.questNames[q]
+ns.questNames[q] = nil
+P.envelope.scripts.OnClick(P.envelope)
+check(
+  char.letters[shown].read and not P.footer:GetText():find(name, 1, true),
+  "a chain without its name: the footer without it"
+)
+ns.questNames[q] = name
+G.mailbox(false)
 
 -- ── the book ─────────────────────────────────────────────────────────────────
 ns.toggle()

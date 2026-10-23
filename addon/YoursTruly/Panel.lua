@@ -47,7 +47,9 @@ end
 -- ── where it stands ──────────────────────────────────────────────────────────
 local function dock()
   panel:ClearAllPoints()
-  if MailFrame and MailFrame:IsShown() then
+  -- (a mailbox addon may hide the game's window without closing it: parented
+  -- to a hidden frame, or made transparent)
+  if MailFrame and MailFrame:IsVisible() and (MailFrame:GetAlpha() or 1) > 0 then
     panel.docked = true
     local beside = (OpenMailFrame and OpenMailFrame:IsShown() and OpenMailFrame) or InboxFrame or MailFrame
     panel:SetPoint("TOPLEFT", beside, "TOPRIGHT", 0, 0)
@@ -159,13 +161,17 @@ local function build()
   nextButton:SetText(L["Next letter"])
   local waitingLine = K.label(panel, K.BODY_FONT, 11, K.T.soft)
   waitingLine:SetPoint("BOTTOMLEFT", 16, 17)
+  -- (the one after this one among those waiting, round to the first)
   nextButton:SetScript("OnClick", function()
-    for _, id in ipairs(ns.waiting()) do
-      if id ~= current then
-        show(id)
+    local waiting = ns.waiting()
+    for i, id in ipairs(waiting) do
+      if id == current then
+        local after = waiting[i % #waiting + 1]
+        if after ~= current then show(after) end
         return
       end
     end
+    if waiting[1] then show(waiting[1]) end
   end)
 
   -- (the mail window shown late, a letter opened beside it: the panel moves)
@@ -225,7 +231,12 @@ show = function(id)
   lay(P.main, t.greeting .. "\n\n" .. table.concat(t.body, "\n\n"), 14)
   lay(P.signoff, t.signoff, 16)
   lay(P.ps, table.concat(t.ps, "\n\n"), 16)
-  local under = { ns.chain(id), ns.zoneLine(id) }
+  -- (either may be missing: a language without the quest's name, a zone's
+  -- count before it has written)
+  local under = {}
+  for _, part in ipairs({ ns.chain(id) or false, ns.zoneLine(id) or false }) do
+    if part then table.insert(under, part) end
+  end
   lay(P.footer, table.concat(under, "  -  "), 4)
   P.scroll.child:SetHeight(y + 8)
   P.scroll:ScrollTo(0)

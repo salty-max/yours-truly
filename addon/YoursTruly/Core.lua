@@ -273,8 +273,9 @@ function ns.letter(id)
   return { greeting = fit(t.greeting), body = body, signoff = fit(t.signoff), ps = ps }
 end
 
--- The writer's name, the game's (a letter's writer always has one in English;
--- another language may lack it: its English then).
+-- The writer's name, the game's (a letter's writer always has one in English,
+-- the build refuses one without; a language lacking it: "a friend", never an
+-- English name in its place, the family's rule).
 function ns.writer(id)
   local l = D.letters[id]
   return l and ns.npcNames and ns.npcNames[l.npc] or L["A friend"]
@@ -288,7 +289,7 @@ function ns.place(id)
   local l = D.letters[id]
   return l and ns.areaName(l.place) or ""
 end
--- The chain a letter answers: its last quest's name.
+-- The chain a letter answers: its last quest's name (nil: this language lacks it).
 function ns.chain(id)
   local l = D.letters[id]
   local q = l and l.quests[#l.quests]
