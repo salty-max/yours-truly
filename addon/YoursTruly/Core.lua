@@ -365,7 +365,8 @@ ns.kit.commands({
   welcome = function(mode)
     if ns.showWelcome then ns.showWelcome(mode) end
   end,
-  minimap = { get = ns.option, set = ns.setOption },
+  -- (looked up when used: Settings.lua makes them, after this file)
+  minimap = { get = function(k) return ns.option(k) end, set = function(k, v) ns.setOption(k, v) end },
   commands = {
     achievements = function()
       if ns.openMilestones then ns.openMilestones() end
