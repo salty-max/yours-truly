@@ -62,8 +62,8 @@ scripts/release.sh [--version X.Y.Z] [--hold] NOTES.md   # check, tag, push; Act
   only. A translation is stamped against its English.
 - No notice before the mailbox: nothing says a letter is in the post.
 - `Kit.lua`, `Media/`, `scripts/root.ts` (and `root.py`), `scripts/locales-lib.ts`,
-  `i18n/kit/` (the kit's words, translated once), `wow.yml` and `stylua.toml`
-  are the kit's copies: edit addon-kit, then `bun run kit:sync`. The addon's
+  `i18n/kit/` (the kit's words, translated once), `wow.yml`, `stylua.toml` and
+  `addon/test/wowmock.lua` (the tests' game) are the kit's copies: edit addon-kit, then `bun run kit:sync`. The addon's
   own globals for selene are `yourstruly.yml`.
 - No other addon's API, even optional (a mailbox addon is stepped aside
   for, never touched). Stepping aside for a rival is fine.
