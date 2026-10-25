@@ -11,7 +11,7 @@ release. The siblings' "Other addons" lists take Yours Truly in once it's
 on the stores, and this one takes Goodwill in once it is. -->
 
 <!-- Summary (the project's summary on CurseForge and Wago, and the TOCs' Notes):
-Finish a quest chain and the person it changed writes you a letter, sealed and waiting at your next mailbox. Quest immersion and roleplay, in English and French. -->
+Finish a quest chain and the person it changed writes you a letter, sealed and waiting at your next mailbox. -->
 
 You deliver a lot of letters in World of Warcraft: a soldier's last words home, a girl's love letter. Hardly anyone writes back. Yours Truly does.
 
