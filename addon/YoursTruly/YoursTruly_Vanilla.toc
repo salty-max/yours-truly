@@ -1,6 +1,6 @@
 ## Interface: 11509
 ## Title: Yours Truly
-## Notes: Finish a quest chain and the person it changed writes you a letter, waiting sealed at your next mailbox. Quest immersion and roleplay, in English and French.
+## Notes: Finish a quest chain and the person it changed writes you a letter, sealed and waiting at your next mailbox. Quest immersion and roleplay, in English and French.
 ## Notes-frFR: Achevez une suite de quêtes et la personne qu'elle a changée vous écrit une lettre, qui vous attend scellée à votre prochaine boîte aux lettres. Immersion et jeu de rôle, en anglais et en français.
 ## Category: Quests
 ## Author: salty-max

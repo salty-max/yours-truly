@@ -6,42 +6,45 @@ Helped" (the addon's own name stays Yours Truly: the words players search
 for in the title, ../ideas/letters.md §9). A draft, 23 October 2026: Yours
 Truly is not released yet. Read it again against
 what ships (the count of letters: 69 in Classic Era, 73 in Forever on 23
-October, the writers named) before the first release. -->
+October, still so on 25 October, the writers named) before the first
+release. The siblings' "Other addons" lists take Yours Truly in once it's
+on the stores, and this one takes Goodwill in once it is. -->
 
 <!-- Summary (the project's summary on CurseForge and Wago, and the TOCs' Notes):
-Finish a quest chain and the person it changed writes you a letter, waiting sealed at your next mailbox. Quest immersion and roleplay, in English and French. -->
+Finish a quest chain and the person it changed writes you a letter, sealed and waiting at your next mailbox. Quest immersion and roleplay, in English and French. -->
 
 You deliver a lot of letters in World of Warcraft: a soldier's last words home, a girl's love letter. Hardly anyone writes back. Yours Truly does.
 
-Finish a quest chain that changed someone's life, and that person writes you a letter, in their own voice, about what happened and what came after. About fifteen minutes of play later, it waits at the next mailbox you open, sealed. Click to break the seal.
+Finish a quest chain that changed someone's life, and that person writes you a letter, in their own voice, about what happened and what came after. Fifteen minutes of play later, it waits for you at the next mailbox you open, sealed. Click to break the seal.
 
 For Classic Era (Hardcore included) and World of Warcraft: Forever, in one download.
 
 ## The letters
 
-A militia captain thanks you for a job he didn't enjoy asking of you. A soldier's widow tells you how her boys ask for their father's letter again. A goblin still owes you, on paper. A young elf writes from the cave you found him by, because the spiders are still between him and home.
+A militia captain thanks you for a job he didn't enjoy asking of you. A soldier's widow tells you how her boys ask for their father's letter again. A goblin still owes you, on paper. A young elf writes from the cave where you found him, because the spiders are still between him and home.
 
-Sixty-nine letters in Classic Era, seventy-three in Forever with the Skyborne's Zephras Isle: one from every starting zone, so a new character usually has a letter within its first hour or two, then the whole road to level 60 on both sides, from the Defias Brotherhood and Mankrik's wife to Linken's sword and Tirion Fordring's son. More will come.
+Classic Era has sixty-nine letters and Forever seventy-three, the extra ones from the Skyborne's start on Zephras Isle. There is one from every starting zone, so a new character usually gets a letter in its first hour or two, then a trail of them up to level 60 on both sides, from the Defias Brotherhood and Mankrik's wife to Linken's sword and Tirion Fordring's son. More will come.
 
-A letter only tells what the chain itself told you, then a little of the writer's life since. It never sends you anywhere, never promises a reward, and never spoils a chain you haven't finished: a letter only comes once its chain is done.
+A letter tells what the chain itself told you, then a little of the writer's life since. It never sends you anywhere and never promises a reward. It arrives only once its chain is done, so it can't spoil one you haven't finished.
 
 ## At the mailbox
 
-- A letter waits fifteen minutes of play after you finish its chain, then the next mailbox you open has it.
-- Nothing tells you it's coming. It opens in a window beside the mail.
-- It opens on the game's own letter paper, signed by its writer, and keeps the chain it answers at the bottom.
-- At most two new letters per mailbox visit, so they never arrive in a pile.
-- Chains you finished before installing Yours Truly count too. When there are several, they come together, in one bundle at the next mailbox: untie it, and they go into the book, sealed, to open whenever you like.
+- A letter waits fifteen minutes of play after you finish its chain, then comes with the next mailbox you open.
+- Nothing warns you a letter is on its way. It opens in a window beside the mail, on the game's own letter paper, signed by its writer, with the chain it answers named at the bottom.
+- New letters never pile up: one or two arrive per visit.
+- Chains you finished before installing Yours Truly count too. If there are several, they come as one bundle at the next mailbox, with no wait: untie it, and the letters go into the book, sealed, to open whenever you like.
 
 ## The book
 
-Every letter you receive is kept in Yours Truly's book, newest first: who wrote, where from, the chain it answers and when it came. The book counts letters by zone for your faction ("Westfall: 1 of 2") without naming the ones still to come. Achievements follow too: your first broken seal, letters from far and wide and from every starting zone, a few writers' own, and the last letter you can receive.
+Every letter you receive is kept in Yours Truly's book, newest first: who wrote, where from, the chain it answers and when it came. The book counts letters by zone for your faction ("Westfall: 1 of 2") without naming the ones still to come.
+
+The book also keeps achievements: your first broken seal, letters from far and wide, one from every starting zone, a few tied to particular writers, and every letter your character can receive. Each comes with the game's fanfare and an achievement alert, which you can turn off in the settings.
 
 ## Compatibility
 
 Each game loads only the letters it can earn.
 
-If another addon replaces the game's mail window, the letter opens in its own window, which you can move wherever you like.
+If another addon replaces the game's mail window, the letter opens on its own, in a window you can move anywhere.
 
 Yours Truly is in English and French. On other clients the letters and the interface appear in English, while writers, places and quests keep the names your client gives them.
 
@@ -49,7 +52,7 @@ Yours Truly is in English and French. On other clients the letters and the inter
 
 Open the book with `/yourstruly` or the minimap button. The welcome page appears once per character and can be reopened with `/yourstruly welcome`.
 
-Settings are under **Options > AddOns > Yours Truly**, through `/yourstruly settings` or a right-click on the minimap button. Each character has its own. Copy another character's settings within the same game, or use `/yourstruly export` and `/yourstruly import CODE`.
+Settings are under **Options > AddOns > Yours Truly**, through `/yourstruly settings` or a right-click on the minimap button: the achievement alert and the minimap button. Each character has its own. Copy another character's settings within the same game, or use `/yourstruly export` and `/yourstruly import CODE`.
 
 - `/yourstruly achievements` opens the book at its achievements.
 - `/yourstruly minimap` shows or hides the minimap button.
