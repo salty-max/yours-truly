@@ -202,6 +202,20 @@ if G.FOREVER then
 else
   check(ns.earnedMilestone("where-it-began"), "every starting zone: Teldrassil, Elwynn, Dun Morogh")
 end
+-- (the alert's switch off for what follows: the chat lines still, no banner)
+ns.setOption("achievementToast", false)
+local function bannerShown()
+  for i = 1, 20 do
+    local b = _G["YoursTrulyBanner" .. i]
+    if b and b:IsShown() then return true end
+  end
+  return false
+end
+for i = 1, 20 do
+  local b = _G["YoursTrulyBanner" .. i]
+  if b then b:Hide() end
+end
+s.printed = {}
 G.turnIn(208)
 -- (Forever: the Skyborne's island writes too, Elaadrin to any Alliance race the
 -- quest allows, Falorne to the High Order alone: a dwarf never gets his)
@@ -241,6 +255,11 @@ if G.FOREVER then
   check(mine[18] and not mine[16], "Forever: Elaadrin's letter a dwarf may earn, Falorne's the High Order's alone")
 end
 check(ns.earnedMilestone("every") and ns.earnedMilestone("neutral"), "every letter, every neutral writer")
+check(
+  not bannerShown() and said(L["Achievement earned: %s."]:match("^(.-)%%s")),
+  "the alert's switch off: the chat lines, no banner"
+)
+ns.setOption("achievementToast", true)
 check(ns.earnedMilestone("ten") and ns.earnedMilestone("far-and-wide"), "ten letters, eight zones")
 check(ns.earnedMilestone("where-it-began"), "every starting zone that writes")
 check(
@@ -312,6 +331,27 @@ check(
   "the Horde's writers' achievements, not the Alliance's (earned ones stay listed)"
 )
 s.faction = nil
+
+-- ── /yourstruly ──────────────────────────────────────────────────────────────
+-- (the family's command: an unknown word prints the usage, the replies capitalised)
+s.printed = {}
+SlashCmdList.YOURSTRULY("nonsense")
+check(said("/yourstruly"), "/yourstruly nonsense: the usage")
+local hidden = ns.option("minimapHidden")
+s.printed = {}
+SlashCmdList.YOURSTRULY("minimap")
+check(
+  ns.option("minimapHidden") == not hidden
+    and said(L["Minimap button hidden (%s minimap shows it again)."]:format("/yourstruly")),
+  "/yourstruly minimap: the button hidden, said"
+)
+SlashCmdList.YOURSTRULY("minimap")
+check(ns.option("minimapHidden") == hidden and said(L["Minimap button shown."]), "… and shown again")
+SlashCmdList.YOURSTRULY("achievements")
+check(
+  YoursTrulyFrame:IsShown() and YoursTrulyFrame.selectedTab == ns.TAB.milestones,
+  "/yourstruly achievements: the book at its achievements"
+)
 
 io.write(
   ("Yours Truly: %d checks passed (%s, %s).\n"):format(count, G.LOCALE, G.FOREVER and "Forever" or "Classic Era")

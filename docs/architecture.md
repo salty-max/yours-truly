@@ -17,8 +17,8 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
 
 ## The files
 
-- `Locale.lua`: the client's words (`ns.translate`, the plural rule), which
-  game this is (`ns.forever`), the game's names by id from the Text file
+- `Locale.lua`: the client's words (`ns.translate`, the plural rule; which
+  game this is, `ns.forever`, the kit says), the game's names by id from the Text file
   (`ns.names`: the writers, the quests, this game's), and `ns.agree`: the
   game's own `$gmasc:fem;` tokens, a line agreed to the reader.
 - `Core.lua`: the book (`YoursTrulyChar`: played, letters, milestones; ids
@@ -42,8 +42,9 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
   there, agreed to the reader, `$N`, `$C`, `$R` filled, the class's name for
   a woman where the client has one), the writer's, the place's and the
   chain's names, a zone's count (`ns.zoneLine`: "Westfall: 1 of 2", only
-  once that zone has written), `/yourstruly` (`achievements`, `minimap`,
-  `settings`, `welcome`, `export`, `import CODE`).
+  once that zone has written), `/yourstruly`, the kit's command
+  (`achievements`, `minimap`, `settings`, `welcome`, `export`, `import
+  CODE`; an unknown word prints the usage, the replies capitalised).
 - `Panel.lua`: the panel beside the mail window (`ns.showPanel` at a
   mailbox with a letter or the backlog's bundle waiting, never empty;
   `ns.hidePanel` when it closes): the bundle first when there is one, on
@@ -70,7 +71,8 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
   and Better Late Than Never, the Felstone parcel's: Ol' Emma's to the
   Alliance, Jeremiah Payson's to the Horde).
   Each character's own, with when and at what level; announced with the
-  game's fanfare, a banner and a line in chat, quietly at the login. One a
+  game's fanfare, the game's own achievement alert (behind a switch,
+  `achievementToast`) and a line in chat, quietly at the login. One a
   character can't earn isn't listed, nor one the letters don't reach yet
   (none, since the first wave's sixty-nine: twenty-five and the capitals
   were unlisted until it): a wave brings it. Earned stays listed.
@@ -83,9 +85,10 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
   the seal"). Letters in the post never show. `AchievementsBook.lua`: the
   kit's board over both panels.
 - `Settings.lua`: each character's settings, the kit's profiles (a code
-  `YT1:...`, `/yourstruly export`, `/yourstruly import CODE`): the minimap
-  button and its place (120 degrees, clear of Goodwill's 140, Mealbook's 165
-  and the siblings'), the panel's place when it stands alone (never
+  `YT1:...`, `/yourstruly export`, `/yourstruly import CODE`, the alert a
+  `v`): the achievements' alert, the minimap button and its place (115
+  degrees, clear of Goodwill's 140, Mealbook's 165 and the siblings'), the
+  panel's place when it stands alone (never
   copied). `Welcome.lua`: the kit's welcome page, once per character.
   `Minimap.lua`: the book's button, as the siblings'.
 
@@ -103,8 +106,9 @@ in `assets/README.md`.
 
 ## Tests
 
-- `addon/test/game.lua` (the addon's files loaded as its TOC lists them;
-  Palaver's frames, events and timers, as Goodwill's; quests done and turned
+- `addon/test/game.lua` (the kit's game, `wowmock.lua`: frames, events,
+  timers, the character, the map, the Options panel; then Yours Truly's own
+  world and the addon loaded as its TOC lists it: quests done and turned
   in, the mail window, its inbox and open letter, MAIL_SHOW and MAIL_CLOSED,
   the mail's face, the client's area names, race, class and sex) and
   `addon/test/sim.lua`: a letter turned in, its fifteen minutes in the post,

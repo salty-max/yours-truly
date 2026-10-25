@@ -34,7 +34,6 @@ local B = K.book({
   search = "YoursTrulySearch",
   settle = 0.3,
 })
-ns.kitBook = B -- (for the tests)
 function ns.addTab(n, tab) B:add(n, tab) end
 function ns.refresh() B:refresh() end
 function ns.showTab(n) B:show(n) end

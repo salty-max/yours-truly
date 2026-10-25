@@ -12,9 +12,10 @@ local _, ns = ...
 local K = ns.kit
 local L = K.L
 
--- (minimapAngle: the button's place around the minimap, in degrees, 120 on
--- the upper left, above Goodwill's (140), Mealbook's (165) and the siblings'
--- (200 to 250); welcomed and the panel's place: never copied)
+-- (minimapAngle: the button's place around the minimap, in degrees, the
+-- kit's 115 on the upper left, above Goodwill's (140), Mealbook's (165) and
+-- the siblings' (200 to 275); achievementToast: the game's alert for an
+-- achievement; welcomed and the panel's place: never copied)
 local DEFAULTS = {
   minimapHidden = false,
   minimapAngle = K.MINIMAP_ANGLES.YoursTruly,

@@ -12,6 +12,7 @@ function ns.createMinimapButton()
   M = K.minimapButton({
     name = "YoursTrulyMinimapButton",
     icon = ns.ICON,
+    crop = true,
     title = "Yours Truly",
     lines = function()
       local n = #ns.received()

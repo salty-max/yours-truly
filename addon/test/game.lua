@@ -1,5 +1,4 @@
--- A small game for Yours Truly's tests (the kit's game, wowmock.lua: frames, events and timers,
--- as Goodwill's): the quests the character has done and turns in, a mailbox
+-- A small game for Yours Truly's tests (the kit's game, wowmock.lua: frames, events and timers): the quests the character has done and turns in, a mailbox
 -- (the game's mail window, its inbox and its open letter; MAIL_SHOW and
 -- MAIL_CLOSED), the mail's face, the client's area names, the character's
 -- side, race, class and sex. FOREVER=1 plays Forever's client, LOCALE=frFR a
