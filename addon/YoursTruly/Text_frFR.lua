@@ -5,6 +5,7 @@ ns.translate({
   plural = "fr",
   words = {
     ["/yourstruly opens the book, /yourstruly achievements its achievements and /yourstruly settings its settings. /yourstruly minimap shows or hides the button, /yourstruly welcome shows the welcome page again. /yourstruly export gives this character's settings as a code, and /yourstruly import CODE takes them."] = "/yourstruly ouvre le livre, /yourstruly achievements ses hauts faits et /yourstruly settings ses réglages. /yourstruly minimap affiche ou masque le bouton, /yourstruly welcome réaffiche la page d'accueil. /yourstruly export donne les réglages de ce personnage sous forme de code, et /yourstruly import CODE les reprend.",
+    ["%d %s"] = "%d %s",
     ["%d %s %d"] = "%d %s %d",
     ["%d letter"] = "%d lettre",
     ["%d letter received."] = "%d lettre reçue.",
@@ -14,6 +15,7 @@ ns.translate({
     ["%d more letters wait."] = "Encore %d lettres en attente.",
     ["%d of %d"] = "%d sur %d",
     ["%d of %d achievements"] = "%d hauts faits sur %d",
+    ["%s %02d:%02d"] = "%s %02d:%02d",
     ["%s: %d of %d"] = "%s : %d sur %d",
     ["%s's choices are this character's now."] = "Les choix de %s sont désormais ceux de ce personnage.",
     ["%s's settings copied."] = "Réglages de %s copiés.",

@@ -296,10 +296,7 @@ function ns.writer(id)
   return l and ns.npcNames and ns.npcNames[l.npc] or L["A friend"]
 end
 -- A place's name, the client's (an area id).
-function ns.areaName(area)
-  local name = area and C_Map and C_Map.GetAreaInfo and C_Map.GetAreaInfo(area)
-  return type(name) == "string" and name ~= "" and name or nil
-end
+function ns.areaName(area) return ns.kit.areaName(area) end
 function ns.place(id)
   local l = D.letters[id]
   return l and ns.areaName(l.place) or ""
