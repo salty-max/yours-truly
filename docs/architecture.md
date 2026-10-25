@@ -115,15 +115,16 @@ in `assets/README.md`.
   the mailbox, the envelope and its seal broken, the tokens filled, the other
   side's letters held back, a neutral writer's, the backlog as one bundle
   untied into the book (and a backlog of one by the post), the panel beside an open letter and alone for a mailbox
-  addon, the book's tabs, the achievements, a French reader who is a woman,
-  Classic Era's names, on Classic Era, Forever and a French client of each
-  (`bun run check` runs all four).
+  addon, the book's tabs, the achievements, a French and a German reader who
+  is a woman, Classic Era's names, on Classic Era, Forever and a French and
+  a German client of each (`bun run check` runs all six).
 
 ## Languages
 
 - Yours Truly's own words through `L` (`i18n/<locale>/words.json`, `bun run
-  locales`) and the letters (`i18n/<locale>/letters/`): English and French,
-  the other clients English until translated. The writers', quests' and
+  locales`) and the letters (`i18n/<locale>/letters/`): English, French and
+  German (flagged, a first translation, `meta.json`), the other clients
+  English until translated. The writers', quests' and
   places' names are the game's, by id, in the client's language.
 
 ## Not done yet

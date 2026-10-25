@@ -2,6 +2,7 @@
 ## Title: Yours Truly
 ## Notes: Finish a quest chain and the person it changed writes you a letter, sealed and waiting at your next mailbox.
 ## Notes-frFR: Achevez une suite de quêtes et la personne qu'elle a changée vous écrit une lettre, qui vous attend scellée à votre prochaine boîte aux lettres.
+## Notes-deDE: Schließe eine Questreihe ab, und die Person, deren Leben sie verändert hat, schreibt dir einen Brief, der versiegelt an deinem nächsten Briefkasten wartet.
 ## Category: Quests
 ## Author: salty-max
 ## Version: 0.1.0

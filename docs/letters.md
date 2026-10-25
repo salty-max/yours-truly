@@ -35,6 +35,12 @@ first writers' history: `../ideas/letters-voices.md`.
   of the sha256 of its English letter's paragraphs joined by a blank line
   (Mealbook's hash): a French letter whose English changed since is due a
   read.
+- **German** (26 October 2026, flagged): `i18n/deDE/`, the French's way.
+  The writers who vouvoient in French use the client's "Ihr/Euch", the
+  others "du". After a greeting with a comma the body starts in lower case.
+  Most names are the same on both German clients, the few that aren't
+  (Sturmwind and Stormwind) in `i18n/deDE/classic-names.json`, inflected
+  where the text inflects them ("der Gewundenen Tiefe").
 
 ## The build (`scripts/letters.ts`)
 
@@ -51,8 +57,9 @@ writers' and anchors' names in every language (`i18n/names.json`, read by
 It refuses: an anchor, writer or place missing from a game the letter
 claims; a duplicate id; a semicolon (the gender tokens' own aside);
 non-ASCII English; a token the game doesn't have; a game word or a time a
-late letter breaks (quest, level, loot, yesterday, last week; the French
-likewise); a body outside 70 to 180 words; a translation whose front
+late letter breaks (quest, level, loot, yesterday, last week; each
+language likewise, German's "morgen" only in lower case, the morning
+allowed); a body outside 70 to 180 words; a translation whose front
 matter, tokens or P.S. aren't its English's. It says: a body outside 100 to
 150, a translation a third longer than its English, one not translated yet,
 one whose English changed since its stamp.
@@ -153,7 +160,8 @@ French separately, 23 October 2026, and fixed; the six samples cold-read in
 `../ideas/letters-voices.md`. The 10 to 30 wave's fifteen likewise, 23
 October 2026, and the first wave's last thirty-nine (ids 35 to 73, three
 batches), so the plan's sixty-nine are all written. Waiting on the user's
-read.
+read. The German, all seventy-three, read cold by two prose-readers (ids 1
+to 36, 37 to 73), 26 October 2026, and fixed.
 
 Two anchors differ from the plan's table: Nimboya's is Saving Yenniku (592),
 where Yenniku's story ends, not Speaking with Gan'zulah (586), and the

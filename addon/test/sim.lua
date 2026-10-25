@@ -6,7 +6,7 @@
 -- one by the post), the mailbox's pace (one a visit, two when more than three
 -- wait), the panel docked beside
 -- an open letter or standing alone for a mailbox addon, the book's tabs, the
--- achievements, a French reader who is a woman. FOREVER=1, LOCALE=frFR: those
+-- achievements, a French and a German reader who is a woman. FOREVER=1, LOCALE=frFR or deDE: those
 -- clients.
 local G = dofile("addon/test/game.lua")
 local s, ns = G.state, G.ns
@@ -310,6 +310,28 @@ if G.LOCALE == "frFR" then
       this .. " as this client writes it, in Solomon's letter"
     )
   end
+  s.sex = 2
+end
+
+-- ── a German reader, a woman ─────────────────────────────────────────────────
+if G.LOCALE == "deDE" then
+  s.sex = 3
+  local b = ns.letter(BERNICE)
+  check(b.greeting:find("Liebe Tester", 1, true), "the reader agreed to: a woman")
+  check(not (b.greeting .. table.concat(b.body)):find("$g", 1, true), "no token left")
+  local sol = table.concat(ns.letter(21).body, " ") -- (Magistrate Solomon's)
+  local this, other = "Sturmwind", "Stormwind"
+  if not G.FOREVER then
+    this, other = other, this
+  end
+  check(
+    sol:find(this, 1, true) and not sol:find(other, 1, true),
+    this .. " as this client writes it, in Solomon's letter"
+  )
+  check(
+    sol:find("Seenhain", 1, true) and sol:find("Dunkelhain", 1, true),
+    "Lakeshire and Darkshire, the same on both clients"
+  )
   s.sex = 2
 end
 

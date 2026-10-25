@@ -15,7 +15,7 @@ family's CLAUDE.md (`../CLAUDE.md`) first.
 |---|---|
 | The addon file by file: the package, Core (the post, the mailbox), Panel, the book's tabs, Achievements, Settings, Welcome, the tests, languages | `docs/architecture.md` |
 | The letters: the files, their parts, the ids, the generator (`scripts/letters.ts`) and what it checks | `docs/letters.md` |
-| The letters themselves, each with its writer's card | `letters/<zone>/<writer>.md`, French in `i18n/frFR/letters/<zone>/` |
+| The letters themselves, each with its writer's card | `letters/<zone>/<writer>.md`, French and German in `i18n/<locale>/letters/<zone>/` |
 | The logo, its master, exports and exact generation prompt | `assets/README.md` |
 | The plan, the waves to come, the voices' rules and the six first letters' history | `../ideas/letters.md`, `../ideas/letters-voices.md` |
 | The store page (CurseForge, Wago), its summary (the TOCs' Notes) | `addon/CURSEFORGE.md` |
