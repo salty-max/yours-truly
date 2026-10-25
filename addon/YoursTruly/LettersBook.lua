@@ -62,7 +62,7 @@ local function refreshList(received)
   local shown = 0
   for _, id in ipairs(received) do
     local name, place = ns.writer(id), ns.place(id)
-    if q == "" or name:lower():find(q, 1, true) or place:lower():find(q, 1, true) then
+    if ns.kit.finds(name, q) or ns.kit.finds(place, q) then
       local row = list:add("letter", ("|T%s:16:16:0:0|t %s"):format(seal(id), name), place)
       row.line:SetText(firstLine(id))
       row:SetScript("OnClick", function()

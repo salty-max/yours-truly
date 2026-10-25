@@ -106,7 +106,7 @@ ns.onChange = function()
 end
 
 -- ── the parts every tab is made of ───────────────────────────────────────────
-local function query() return strtrim((book.search:GetText() or ""):lower()) end
+local function query() return ns.kit.query(book.search) end
 
 ns.ui = {
   T = T,

@@ -6,23 +6,9 @@
 local _, ns = ...
 local K = ns.kit
 
--- (is n the "one" form? English, German, Spanish: 1; French: 0 and 1)
-local PLURALS = {
-  one = function(n) return n == 1 end,
-  fr = function(n) return n == 0 or n == 1 end,
-  none = function() return false end,
-}
-
-function ns.translate(t)
-  for english, word in pairs(t.words or {}) do
-    K.L[english] = word
-  end
-  if t.plural and PLURALS[t.plural] then K.isOne = PLURALS[t.plural] end
-end
-
--- The game this is: Forever's client is a modern one (interface 1.60, 16001).
-local build = select(4, GetBuildInfo())
-ns.forever = build >= 16000 and build < 17000
+-- (the kit's: the language's plural rule, every word through it; which game
+-- this is the kit says too, ns.forever)
+function ns.translate(t) K.translate(t) end
 
 -- The game's own names in the reader's language (its Text file, from
 -- wow-data's databases): this game's writers and quests by id. A name the
@@ -36,8 +22,4 @@ end
 
 -- A line written to the reader, agreed to them: "$gCher:Chère;" (the game's
 -- own tokens, French above all) as the character is a man or a woman.
-function ns.agree(text)
-  if not text then return text end
-  local female = UnitSex and UnitSex("player") == 3
-  return (text:gsub("%$g([^:;]*):([^;]*);", function(masc, fem) return female and fem or masc end))
-end
+ns.agree = K.agree

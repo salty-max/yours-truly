@@ -17,7 +17,7 @@ local L = K.L
 -- (200 to 250); welcomed and the panel's place: never copied)
 local DEFAULTS = {
   minimapHidden = false,
-  minimapAngle = 120,
+  minimapAngle = K.MINIMAP_ANGLES.YoursTruly,
   welcomed = false,
   panelX = false,
   panelY = false,

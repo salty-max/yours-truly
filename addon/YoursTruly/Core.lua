@@ -41,38 +41,17 @@ local char
 function ns.book() return char end
 
 -- ── events ───────────────────────────────────────────────────────────────────
--- Every file listens through ns.on (an event a client doesn't know is never
--- heard). Nothing is heard before the login.
-local frame = CreateFrame("Frame")
-local listeners = {}
-
--- (one listener's error is reported, and the others still hear the event)
-local function run(fn, ...)
-  local ok, err = pcall(fn, ...)
-  if not ok then geterrorhandler()(err) end
-end
-
-frame:SetScript("OnEvent", function(_, event, ...)
-  if event == "PLAYER_LOGIN" then run(ns.login) end
-  if not char then return end
-  for _, fn in ipairs(listeners[event] or {}) do
-    run(fn, ...)
-  end
-end)
-frame:RegisterEvent("PLAYER_LOGIN")
-
-function ns.on(event, fn)
-  if not listeners[event] then
-    listeners[event] = {}
-    pcall(frame.RegisterEvent, frame, event)
-  end
-  table.insert(listeners[event], fn)
-end
+-- Every file listens through ns.on (the kit's events: each listener on its
+-- own, an event a client doesn't know never heard), nothing before the login
+-- has opened this character's book.
+local events = ns.kit.events({ login = function() ns.login() end, ready = function() return char ~= nil end })
+ns.on = events.on
 
 -- ── the clock ────────────────────────────────────────────────────────────────
 -- The time played, as Yours Truly counts it: every frame's seconds while the
 -- character is logged in.
-frame:SetScript("OnUpdate", function(_, elapsed)
+local clock = CreateFrame("Frame")
+clock:SetScript("OnUpdate", function(_, elapsed)
   if char then char.played = char.played + elapsed end
 end)
 
@@ -80,19 +59,9 @@ end)
 -- The character's side, as the data writes it (A, H; N: both).
 function ns.side() return UnitFactionGroup("player") == "Horde" and "H" or "A" end
 -- The character's race and class against a letter's masks (its anchors'):
--- a race's bit is its id's, one less, but where the client says otherwise
--- (Forever's Skyborne, races 95 and 96, are bits 32 and 33: the data's
--- raceBits). No mask: anyone.
-local function hasBit(mask, n)
-  if not mask or mask == 0 then return true end
-  return math.floor(mask / 2 ^ n) % 2 == 1
-end
-local function canEarn(l)
-  local _, _, race = UnitRace("player")
-  local _, _, class = UnitClass("player")
-  local raceBit = race and ((D.raceBits and D.raceBits[race]) or race - 1)
-  return (not raceBit or hasBit(l.races, raceBit)) and (not class or hasBit(l.classes, class - 1))
-end
+-- the kit's (a race's bit is its id's, one less, but where the data's
+-- raceBits say otherwise, Forever's Skyborne). No mask: anyone.
+local function canEarn(l) return ns.kit.forMe(l.races, l.classes, D.raceBits) end
 -- A letter this character may receive: this game's (the data holds it), its
 -- side's or both sides', its race's and class's (the Skyborne's own island).
 function ns.mine(id)
@@ -110,11 +79,7 @@ function ns.letters()
 end
 
 -- A quest done, as the game keeps it.
-function ns.done(quest)
-  if C_QuestLog and C_QuestLog.IsQuestFlaggedCompleted then return C_QuestLog.IsQuestFlaggedCompleted(quest) == true end
-  if IsQuestFlaggedCompleted then return IsQuestFlaggedCompleted(quest) == true end
-  return false
-end
+ns.done = ns.kit.questDone
 
 -- Every quest of the letter turned in (just: one the game is turning in now,
 -- which it may not have flagged yet).
@@ -296,10 +261,7 @@ end)
 -- names swapped in there, agreed to the reader, the game's tokens filled.
 local function swapped(text)
   if ns.forever or not ns.classicNames then return text end
-  for forever, classic in pairs(ns.classicNames) do
-    text = text:gsub(forever:gsub("%p", "%%%0"), (classic:gsub("%%", "%%%%")))
-  end
-  return text
+  return ns.kit.swap(text, ns.classicNames) -- (the longest first, found as written)
 end
 local function filled(text)
   local name = UnitName("player")
