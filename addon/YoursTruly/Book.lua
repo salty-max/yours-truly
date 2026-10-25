@@ -21,92 +21,32 @@ K.theme({
 local T = K.T
 
 -- ── the window ───────────────────────────────────────────────────────────────
-local book
+-- The kit's book (K.book): the window, its two panels, the search, the tabs;
+-- each tab a file of its own, registered with ns.addTab.
 local TAB = { letters = 1, milestones = 2 }
 ns.TAB = TAB
-local tabs, TITLES = {}, { L["Letters"], L["Achievements"] }
-function ns.addTab(n, tab) tabs[n] = tab end
-
-function ns.refresh()
-  local tab = book and tabs[book.selectedTab]
-  if tab and tab.built then tab.refresh() end
-end
-
-function ns.showTab(n)
-  if not book then return end
-  book.selectedTab = n
-  if PanelTemplates_SetTab then PanelTemplates_SetTab(book, n) end
-  local tab = tabs[n]
-  if not tab.built then
-    tab.build(book)
-    tab.built = true
-  end
-  -- (a tab over both panels, the achievements' board: the list, the sheet and
-  -- the search put away)
-  book.left:SetShown(not tab.whole)
-  book.sheet:SetShown(not tab.whole)
-  book.search:SetShown(not tab.whole)
-  for _, t in ipairs(tabs) do
-    if t.built then t.show(n) end
-  end
-  ns.refresh()
-end
-
-local function build()
-  local window = K.gameWindow("YoursTrulyFrame", "Yours Truly", ns.ICON)
-  book = window or K.dialog("YoursTrulyFrame", "Yours Truly")
-  K.movable(book, 780, 560)
-  local edge = window and 8 or 14
-  book.count = K.label(book, K.BODY_FONT, 11, T.gold)
-  book.count:SetPoint("TOPLEFT", 64, -36)
-  book.left = K.panel(book, true)
-  book.left:SetPoint("TOPLEFT", edge, -58)
-  book.left:SetPoint("BOTTOMLEFT", edge, edge)
-  book.left:SetWidth(244)
-  book.sheet = K.panel(book)
-  book.sheet:SetPoint("TOPLEFT", book.left, "TOPRIGHT", 4, 32)
-  book.sheet:SetPoint("BOTTOMRIGHT", -edge, edge)
-  book.search = CreateFrame("EditBox", "YoursTrulySearch", book, "SearchBoxTemplate")
-  book.search:SetHeight(20)
-  book.search:SetPoint("TOPLEFT", book.left, "TOPLEFT", 18, -10)
-  book.search:SetPoint("TOPRIGHT", book.left, "TOPRIGHT", -12, -10)
-  book.search:HookScript("OnTextChanged", function() ns.refresh() end)
-  book.selectedTab = TAB.letters
-  book:SetScript("OnShow", function() ns.showTab(book.selectedTab) end)
-  K.tabs(book, TITLES, function(n) ns.showTab(n) end)
-end
-
-local function window()
-  if not book then build() end
-  return book
-end
-
-function ns.toggle() window():SetShown(not book:IsShown()) end
-
-function ns.openTab(n)
-  window()
-  book.selectedTab = n
-  if book:IsShown() then
-    ns.showTab(n)
-  else
-    book:Show()
-  end
-end
+local B = K.book({
+  name = "YoursTrulyFrame",
+  title = "Yours Truly",
+  art = ns.ICON,
+  titles = { L["Letters"], L["Achievements"] },
+  first = TAB.letters,
+  search = "YoursTrulySearch",
+  settle = 0.3,
+})
+ns.kitBook = B -- (for the tests)
+function ns.addTab(n, tab) B:add(n, tab) end
+function ns.refresh() B:refresh() end
+function ns.showTab(n) B:show(n) end
+function ns.toggle() B:toggle() end
+function ns.openTab(n) B:open(n) end
 
 -- What changes while the book is open shows at once (a moment later: a
 -- mailbox's letters come together).
-local pending = false
-ns.onChange = function()
-  if not (book and book:IsShown()) or pending then return end
-  pending = true
-  C_Timer.After(0.3, function()
-    pending = false
-    ns.refresh()
-  end)
-end
+ns.onChange = function() B:changed() end
 
 -- ── the parts every tab is made of ───────────────────────────────────────────
-local function query() return ns.kit.query(book.search) end
+local function query() return ns.kit.query(B.frame.search) end
 
 ns.ui = {
   T = T,
