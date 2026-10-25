@@ -85,7 +85,10 @@ check(P.place:GetText() == ns.place(IVERRON), "the place line, the client's name
 check(P.footer:GetText():find(ns.chain(IVERRON), 1, true), "under it, the chain it answers")
 check(ns.earnedMilestone("first-seal"), "the first seal broken: an achievement")
 check(said("[" .. L["The First Seal"] .. "]"), "said in chat")
-check(YoursTrulyBanner1 and YoursTrulyBanner1:IsShown(), "and on a banner")
+check(
+  YoursTrulyBanner1 and YoursTrulyBanner1:IsShown(),
+  "and on the game's alert (here its banner stand-in: this test game has none)"
+)
 G.mailbox(false)
 check(not P.panel:IsShown(), "the mailbox closed: the panel too")
 

@@ -18,13 +18,14 @@ local L = K.L
 local DEFAULTS = {
   minimapHidden = false,
   minimapAngle = K.MINIMAP_ANGLES.YoursTruly,
+  achievementToast = true,
   welcomed = false,
   panelX = false,
   panelY = false,
 }
-local SHARED = { "minimapHidden", "minimapAngle" }
+local SHARED = { "minimapHidden", "minimapAngle", "achievementToast" }
 
--- The profiles: a code "YT1:h0:a120".
+-- The profiles: a code "YT1:h0:a115:v1".
 local P = K.profiles({
   saved = function()
     if type(YoursTrulySettings) ~= "table" then YoursTrulySettings = {} end
@@ -32,7 +33,7 @@ local P = K.profiles({
   end,
   defaults = DEFAULTS,
   shared = SHARED,
-  letters = { minimapHidden = "h", minimapAngle = "a" },
+  letters = { minimapHidden = "h", minimapAngle = "a", achievementToast = "v" },
   tag = "YT1",
   changed = function(key)
     if key == "minimapHidden" or key == "minimapAngle" then
@@ -46,36 +47,34 @@ function ns.loadProfile() P:load() end
 function ns.option(key) return P:get(key) end
 function ns.setOption(key, value) P:set(key, value) end
 
-local category
+-- The page in the game's Options (the kit's: K.options).
+local O
 
 function ns.createSettingsPanel()
-  if category or not (Settings and Settings.RegisterVerticalLayoutCategory) then return end
-  category = Settings.RegisterVerticalLayoutCategory("Yours Truly")
-
-  local setting = Settings.RegisterProxySetting(
-    category,
-    "YOURSTRULY_MINIMAP",
-    Settings.VarType.Boolean,
+  if O then return end
+  O = K.options({
+    title = "Yours Truly",
+    key = "YOURSTRULY",
+    get = ns.option,
+    set = ns.setOption,
+    defaults = DEFAULTS,
+    profiles = P,
+    slash = "/yourstruly",
+    prefix = ns.PREFIX,
+  })
+  O:check(
+    "achievementToast",
+    L["Alert for achievements"],
+    L["Show each achievement earned in the game's achievement alert. A click on it opens the achievements."]
+  )
+  O:check(
+    "minimapHidden",
     L["Minimap button"],
-    true,
-    function() return not ns.option("minimapHidden") end,
-    function(value) ns.setOption("minimapHidden", not value) end
+    L["The letters by the minimap: click to open the book, drag to move it."],
+    true
   )
-  Settings.CreateCheckbox(category, setting, L["The letters by the minimap: click to open the book, drag to move it."])
-
-  -- Another character's settings (of this game), for this one.
-  K.copySetting(
-    category,
-    "YOURSTRULY_COPYFROM",
-    P,
-    L["Another character's choices, for this one (of this game: Classic and Forever keep their own). From elsewhere: /yourstruly export there, then /yourstruly import CODE here."],
-    function(other) print(ns.PREFIX .. L["%s's settings copied."]:format(other)) end
-  )
-
-  Settings.RegisterAddOnCategory(category)
+  O:copy()
+  O:done()
 end
 
-function ns.openSettings()
-  if category then Settings.OpenToCategory(category:GetID()) end
-  return category ~= nil
-end
+function ns.openSettings() return O ~= nil and O:open() end

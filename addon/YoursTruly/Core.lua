@@ -349,27 +349,26 @@ function ns.login()
 end
 
 -- ── /yourstruly ──────────────────────────────────────────────────────────────
-SLASH_YOURSTRULY1 = "/yourstruly"
-SlashCmdList.YOURSTRULY = function(msg)
-  local raw = strtrim(msg or "") -- (a code's letters as typed)
-  msg = raw:lower()
-  if msg == "achievements" then
-    if ns.openMilestones then ns.openMilestones() end
-  elseif msg == "minimap" then
-    ns.setOption("minimapHidden", not ns.option("minimapHidden"))
-  elseif msg == "settings" then
-    if not ns.openSettings() then print(ns.PREFIX .. L["The game's Options have no page for addons here."]) end
-  elseif msg == "welcome" then
-    if ns.showWelcome then ns.showWelcome() end
-  elseif msg == "export" then
-    if ns.showWelcome then ns.showWelcome("export") end
-  elseif msg:match("^import%s") then
-    if ns.profiles:import(raw:match("^%a+%s+(.+)$")) then
-      print(ns.PREFIX .. L["Settings imported for this character."])
-    else
-      print(ns.PREFIX .. L["That isn't a Yours Truly settings code."])
-    end
-  elseif ns.toggle then
-    ns.toggle()
-  end
-end
+-- The kit's command (K.commands): alone it opens the book, an unknown word
+-- prints the usage.
+ns.kit.commands({
+  names = { "/yourstruly" },
+  key = "YOURSTRULY",
+  name = "Yours Truly",
+  prefix = ns.PREFIX,
+  profiles = function() return ns.profiles end, -- (Settings.lua makes them, after this file)
+  open = function()
+    if ns.toggle then ns.toggle() end
+  end,
+  usage = L["/yourstruly opens the book, /yourstruly achievements its achievements and /yourstruly settings its settings. /yourstruly minimap shows or hides the button, /yourstruly welcome shows the welcome page again. /yourstruly export gives this character's settings as a code, and /yourstruly import CODE takes them."],
+  settings = function() return ns.openSettings() end,
+  welcome = function(mode)
+    if ns.showWelcome then ns.showWelcome(mode) end
+  end,
+  minimap = { get = ns.option, set = ns.setOption },
+  commands = {
+    achievements = function()
+      if ns.openMilestones then ns.openMilestones() end
+    end,
+  },
+})

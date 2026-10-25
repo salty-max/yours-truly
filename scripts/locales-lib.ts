@@ -1,4 +1,4 @@
-// addon-kit 097ca7d: a copy (kit:sync); edit the addon-kit repository's locales-lib.ts instead
+// addon-kit 175357e: a copy (kit:sync); edit the addon-kit repository's locales-lib.ts instead
 /**
  * The family's languages, one core: each addon's scripts/locales.ts (its own
  * names, pages, chapters, letters) is built on it. A copy of addon-kit's in
@@ -36,6 +36,7 @@ export const PLURALS = ["one", "fr", "ru", "none"];
 /** A string as Lua writes it. */
 export const q = (s: string) => `"${s.replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/\n/g, "\\n")}"`;
 /** A JSON file, or what stands for it when there is none. */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- (a file's JSON is whatever it holds)
 export const json = <T = Record<string, any>>(file: string, empty = {} as T): T => (existsSync(file) ? JSON.parse(readFileSync(file, "utf8")) : empty);
 const unq = (s: string) => s.replace(/\\(["\\n])/g, (_, c) => (c === "n" ? "\n" : c));
 
@@ -89,9 +90,12 @@ export function problems(words: Record<string, string>, keys: string[]): { missi
   const errors: string[] = [];
   for (const [english, word] of Object.entries(words)) {
     if (!word) continue;
+    // (a sentence with blanks is formatted: its translation keeps them, and a
+    // lone % there would break it; one without is shown as written, "under 1%")
     const want = formatArgs(english);
-    const stray = word.replace(/%%|%(?:\d+\$)?0?\d*(?:\.\d+)?[sdfi]/g, "").includes("%");
-    if (want.join() !== formatArgs(word).join() || stray) errors.push(`the blanks differ: ${JSON.stringify(english)} → ${JSON.stringify(word)}`);
+    const got = formatArgs(word);
+    const stray = want.length > 0 && word.replace(/%%|%(?:\d+\$)?0?\d*(?:\.\d+)?[sdfi]/g, "").includes("%");
+    if (want.join() !== got.join() || stray) errors.push(`the blanks differ: ${JSON.stringify(english)} → ${JSON.stringify(word)}`);
     if (semicolon(word)) errors.push(`a semicolon in what players read: ${JSON.stringify(word)}`);
   }
   return { missing: keys.filter((k) => !words[k]), unused: Object.keys(words).filter((k) => !known.has(k)), errors };
