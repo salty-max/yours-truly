@@ -274,6 +274,12 @@ function gameData(game: Game) {
     };
     names[locale] = { npcs: pick("creature", facts.map((f) => f.npc)), quests: pick("quest", facts.flatMap((f) => f.quests)) };
   }
+  // A borrowing language (esMX) the database names nothing for (Forever's
+  // esMX beta, where Wowhead has no mx names yet): its lender's names stand
+  // in until it has its own, which then win (the user's call, 26 Oct 2026).
+  for (const [locale, lender] of Object.entries(BORROWS))
+    for (const kind of ["npcs", "quests"] as const)
+      for (const [id, name] of Object.entries(names[lender][kind])) names[locale][kind][Number(id)] ??= name;
   for (const f of facts) {
     if (!names.enUS.npcs[f.npc]) problems.push(`${english.get(f.key)?.file}: npc ${f.npc} has no English name in ${game}.db`);
     for (const q of f.quests) if (!names.enUS.quests[q]) problems.push(`${english.get(f.key)?.file}: quest ${q} has no English name in ${game}.db`);

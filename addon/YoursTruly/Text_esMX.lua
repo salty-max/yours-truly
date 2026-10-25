@@ -358,6 +358,8 @@ ns.names({
       [13278] = "Duque Hydraxis",
       [251371] = "Falorne Ventocaída",
       [251487] = "Ventaari Deseoalegre",
+      [251968] = "Ayessa Cantoalba",
+      [252475] = "Elaadrin Vendaval del Atardecer",
     },
     quests = {
       [55] = "Morbent Vil",
@@ -430,6 +432,10 @@ ns.names({
       [7486] = "Una recompensa de héroe",
       [7541] = "Un servicio para la Horda",
       [7731] = "Latigador con aguijón",
+      [92597] = "Lectura de líneas Ley",
+      [92598] = "El don de la Visión cielonata",
+      [92834] = "Venganza desmedida",
+      [93740] = "Sangre por sangre",
     },
   },
 })

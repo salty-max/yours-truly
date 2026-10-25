@@ -48,7 +48,12 @@ first writers' history: `../ideas/letters-voices.md`.
   its own names swapped in at the build (`i18n/esMX/regional.json`, the
   Codex's way: the longest first, once), and its own Classic Era swaps
   (`i18n/esMX/classic-names.json`, empty: its two clients agree where
-  esES's don't, Grom'gol and the Writhing Deep). Neutral Spanish: no
+  esES's don't, Grom'gol and the Writhing Deep). Where the database names
+  a writer or an anchor in esES and not in esMX (Forever's beta: Elaadrin
+  Evengale, Ayessa Dawnsinger and the four Zephras anchors, Wowhead has no
+  mx names yet), esES's name stands in, in the letters (no regional swap)
+  and in `i18n/names.json`, until wow-data has esMX's own, which then wins
+  (the user's call, 26 October 2026). Neutral Spanish: no
   "vosotros". Booty Bay's "Bahía del Botín" is let through the loot word's
   ban.
 
