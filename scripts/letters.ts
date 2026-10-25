@@ -69,10 +69,13 @@ const BANNED: Record<string, RegExp> = {
   en: /\b(quests?|level(s|ed)?|loot|yesterday|tomorrow|today|last (week|night|month)|this morning)\b/i,
   fr: /\b(quêtes?|niveaux?|butin|hier|demain|la semaine dernière|ce matin)\b/i,
   de: /\b(quests?|stufen?|gestern|heute|vorgestern|letzte woche|letzten monat|letzte nacht)\b/i,
-  es: /\b(misi[oó]n|misiones|nivel(es)?|botín|ayer|mañana|hoy|anoche|la semana pasada|el mes pasado)\b/i,
+  // ("mañana" is tomorrow, "la mañana" or "cada mañana" the morning, which "esta mañana" bans)
+  es: /\b(misi[oó]n|misiones|nivel(es)?|botín|ayer|hoy|anoche|esta mañana|la semana pasada|el mes pasado)\b|(?<!\b(la|las|cada|una|por la) )\bmañana\b/i,
 };
 // (as written: "morgen" is tomorrow, "Morgen" the morning, which "heute" bans)
 const BANNED_CASED: Record<string, RegExp> = { de: /\bmorgen\b/ };
+// (the game's names that hold a banned word: Booty Bay's Spanish "botín")
+const NAMES_OK: Record<string, RegExp> = { es: /Bahía del Botín/g };
 
 type Letter = {
   key: string;
@@ -122,7 +125,8 @@ function read(dir: string): Map<string, Letter> {
         .split(/\n\s*\n/)
         .map((p) => p.trim())
         .filter(Boolean);
-      const isPS = (p: string) => /^P\.-?S\./.test(p);
+      // (P.S., the French P.-S., the Spanish P. D.)
+      const isPS = (p: string) => /^P\.(-?S| ?D)\./.test(p);
       const main = paragraphs.filter((p) => !isPS(p));
       const ps = paragraphs.filter(isPS);
       if (main.length < 3) {
@@ -183,7 +187,8 @@ function verifyText(l: Letter, lang: string) {
   const stray = tokensOut(t).match(/\$(?![NCR]\b)\w*/);
   if (stray) problems.push(`${l.file}: a token the game doesn't have: ${stray[0]}`);
   if (/\$g[^;]*$/m.test(t.replace(/\$g[^:;]*:[^;]*;/g, ""))) problems.push(`${l.file}: a gender token not closed`);
-  const banned = tokensOut(t).match(BANNED[lang]) ?? (BANNED_CASED[lang] ? tokensOut(t).match(BANNED_CASED[lang]) : null);
+  const plain = NAMES_OK[lang] ? tokensOut(t).replace(NAMES_OK[lang], "") : tokensOut(t);
+  const banned = plain.match(BANNED[lang]) ?? (BANNED_CASED[lang] ? plain.match(BANNED_CASED[lang]) : null);
   if (banned) problems.push(`${l.file}: "${banned[0]}" (a game word, or a time a late letter breaks)`);
 }
 
@@ -456,7 +461,11 @@ for (const locale of LOCALES) {
         { ...l, greeting: words(l.greeting), body: l.body.map(words), signoff: words(l.signoff), ps: l.ps.map(words) },
       ]),
     );
-    const swaps = Object.fromEntries(Object.entries(swapsOf(lender)).map(([a, b]) => [words(a), words(b)]));
+    // (its own Classic Era swaps where its clients differ from the lender's, else the lender's in its names)
+    const own = join(ROOT, "i18n", locale, "classic-names.json");
+    const swaps = existsSync(own)
+      ? JSON.parse(readFileSync(own, "utf8"))
+      : Object.fromEntries(Object.entries(swapsOf(lender)).map(([a, b]) => [words(a), words(b)]));
     files[`Letters_${locale}.lua`] = textsLua(locale, mine, swaps);
   } else files[`Letters_${locale}.lua`] = textsLua(locale, translations.get(locale) ?? new Map(), swapsOf(locale));
 }

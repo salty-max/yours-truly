@@ -6,7 +6,7 @@
 -- one by the post), the mailbox's pace (one a visit, two when more than three
 -- wait), the panel docked beside
 -- an open letter or standing alone for a mailbox addon, the book's tabs, the
--- achievements, a French and a German reader who is a woman. FOREVER=1, LOCALE=frFR or deDE: those
+-- achievements, a French, a German and a Spanish reader who is a woman. FOREVER=1, LOCALE=frFR, deDE, esES or esMX: those
 -- clients.
 local G = dofile("addon/test/game.lua")
 local s, ns = G.state, G.ns
@@ -331,6 +331,26 @@ if G.LOCALE == "deDE" then
   check(
     sol:find("Seenhain", 1, true) and sol:find("Dunkelhain", 1, true),
     "Lakeshire and Darkshire, the same on both clients"
+  )
+  s.sex = 2
+end
+
+-- ── a Spanish reader, a woman (esMX: esES's letters, its own names) ─────────
+if G.LOCALE == "esES" or G.LOCALE == "esMX" then
+  s.sex = 3
+  local b = ns.letter(BERNICE)
+  check(b.greeting:find("Querida Tester", 1, true), "the reader agreed to: a woman")
+  check(not (b.greeting .. table.concat(b.body)):find("$g", 1, true), "no token left")
+  local mx = G.LOCALE == "esMX"
+  check(
+    ns.letter(HEMET).signoff:find(mx and "Hemet Nesingwary" or "Hemet Decautela", 1, true),
+    "Hemet as this client names him"
+  )
+  check(ns.letter(GAZLOWE).ps[1]:find("^P%. D%."), "the Spanish P. D.")
+  local nimboya = ns.letter(56).signoff -- (Grom'gol: its capital G on Classic Era's esES client only)
+  check(
+    nimboya:find((not mx and not G.FOREVER) and "Grom'Gol" or "Grom'gol", 1, true),
+    "Grom'gol as this client writes it"
   )
   s.sex = 2
 end

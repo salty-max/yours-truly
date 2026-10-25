@@ -46,7 +46,7 @@ Each game loads only the letters it can earn.
 
 If another addon replaces the game's mail window, the letter opens on its own, in a window you can move anywhere.
 
-Yours Truly is in English and French. On other clients the letters and the interface appear in English, while writers, places and quests keep the names your client gives them.
+Yours Truly is in English, French, German and Spanish: every letter in its writer's voice, and the interface. German and Spanish are first translations: corrections are welcome on GitHub. Both Spanish clients share the letters, each with its own game names. On other clients the letters and the interface appear in English, while writers, places and quests keep the names your client gives them.
 
 ## Settings and commands
 

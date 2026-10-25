@@ -21,7 +21,7 @@ first writers' history: `../ideas/letters-voices.md`.
   build.
 - **The letter**: paragraphs split by blank lines, a body paragraph on one
   line. The first paragraph is the greeting. The last paragraph not
-  starting "P.S." ("P.-S." in French) is the sign-off: its lines kept as
+  starting "P.S." ("P.-S." in French, "P. D." in Spanish) is the sign-off: its lines kept as
   written (a closing, the signature, perhaps a second line). Anything after
   it starting "P.S." is a postscript. The body, counted for length (100 to
   150 words, terse from 70, big to 180), is everything between greeting and
@@ -41,6 +41,16 @@ first writers' history: `../ideas/letters-voices.md`.
   Most names are the same on both German clients, the few that aren't
   (Sturmwind and Stormwind) in `i18n/deDE/classic-names.json`, inflected
   where the text inflects them ("der Gewundenen Tiefe").
+- **Spanish** (26 October 2026, flagged): `i18n/esES/`, "tú" for every
+  writer, as the Spanish client's quests say it, gender tokens wherever a
+  word agrees with the reader, greetings with a colon, postscripts "P. D.".
+  One catalogue for both Spanish clients: esMX's letters are esES's with
+  its own names swapped in at the build (`i18n/esMX/regional.json`, the
+  Codex's way: the longest first, once), and its own Classic Era swaps
+  (`i18n/esMX/classic-names.json`, empty: its two clients agree where
+  esES's don't, Grom'gol and the Writhing Deep). Neutral Spanish: no
+  "vosotros". Booty Bay's "Bahía del Botín" is let through the loot word's
+  ban.
 
 ## The build (`scripts/letters.ts`)
 
