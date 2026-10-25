@@ -10,6 +10,8 @@
 ## IconTexture: Interface\AddOns\YoursTruly\Media\Logo
 ## X-Website: https://github.com/salty-max/yours-truly
 ## X-License: MIT
+## X-Curse-Project-ID: 1765844
+## X-Wago-ID: j6jAx1NR
 
 # Each game loads its own TOC (_Vanilla: Classic Era, _Camelot: Forever), the
 # same but for the interface and its letters, Letters_<game>.lua
