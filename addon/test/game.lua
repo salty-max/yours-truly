@@ -301,7 +301,6 @@ SlashCmdList = {}
 STANDARD_TEXT_FONT = "Fonts\\FRIZQT__.TTF"
 UISpecialFrames = {}
 SOUNDKIT = {}
-function PlaySound() end
 function hooksecurefunc() end
 function PanelTemplates_SetNumTabs() end
 function PanelTemplates_SetTab(f, n) f.tab = n end
@@ -366,7 +365,11 @@ end
 -- the mail's face (MailTextFontNormal), the game's sounds
 MailTextFontNormal = { GetFont = function() return "Fonts\\MORPHEUS.TTF", 15, "" end }
 SOUNDKIT.IG_ABILITY_PAGE_TURN = 830
-function PlaySound(id) table.insert(state.calls, { "PlaySound", id }) end
+-- (the game's: whether it will play, as a client with the sound says)
+function PlaySound(id)
+  table.insert(state.calls, { "PlaySound", id })
+  return true
+end
 -- the class's name for a woman (French: Guerrière)
 LOCALIZED_CLASS_NAMES_FEMALE = { WARRIOR = LOCALE == "frFR" and "Guerrière" or "Warrior" }
 
