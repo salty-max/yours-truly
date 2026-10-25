@@ -45,9 +45,10 @@ scripts/release.sh [--version X.Y.Z] [--hold] NOTES.md   # check, tag, push; Act
   gone for good that the game brings back, nothing anachronic. If two
   writers could swap a paragraph, one of them is wrong.
 - Every new letter: the chain's texts from wow-data (`bun
-  ../wow-data/bin/card.ts quest`), the writer's card, the English, the French
-  written as French, the game's names by id in both; the prose-reader reads
-  each language cold before the user does.
+  ../wow-data/bin/card.ts quest`), the writer's card, the English, each
+  translation (French, German, Spanish) written in its own language, the
+  game's names by id in every one; the prose-reader reads each language
+  cold before the user does.
 - The game's data comes from wow-data's databases only (`scripts/letters.ts`,
   through `scripts/root.ts`, the kit's copy). Generated files
   (`Letters_*.lua`, `Text_*.lua`, `i18n/names.json`) are never edited by

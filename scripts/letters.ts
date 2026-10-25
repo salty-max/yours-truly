@@ -68,7 +68,7 @@ const LENGTH = { lo: 100, hi: 150, min: 70, max: 180 };
 const BANNED: Record<string, RegExp> = {
   en: /\b(quests?|level(s|ed)?|loot|yesterday|tomorrow|today|last (week|night|month)|this morning)\b/i,
   fr: /\b(quêtes?|niveaux?|butin|hier|demain|la semaine dernière|ce matin)\b/i,
-  de: /\b(quests?|stufen?|gestern|heute|vorgestern|letzte woche|letzten monat|letzte nacht)\b/i,
+  de: /\b(quests?|stufen?|beute|gestern|heute|vorgestern|letzte woche|letzten monat|letzte nacht)\b/i,
   // ("mañana" is tomorrow, "la mañana" or "cada mañana" the morning, which "esta mañana" bans)
   es: /\b(misi[oó]n|misiones|nivel(es)?|botín|ayer|hoy|anoche|esta mañana|la semana pasada|el mes pasado)\b|(?<!\b(la|las|cada|una|por la) )\bmañana\b/i,
 };
@@ -458,9 +458,19 @@ for (const locale of LOCALES) {
     const mine = new Map(
       [...(translations.get(lender) ?? new Map()).entries()].map(([k, l]) => [
         k,
-        { ...l, greeting: words(l.greeting), body: l.body.map(words), signoff: words(l.signoff), ps: l.ps.map(words) },
+        {
+          ...l,
+          file: `${l.file} (as ${locale})`,
+          paragraphs: l.paragraphs.map(words),
+          greeting: words(l.greeting),
+          body: l.body.map(words),
+          signoff: words(l.signoff),
+          ps: l.ps.map(words),
+        },
       ]),
     );
+    // (its names checked like any text: a semicolon or a banned word in regional.json)
+    for (const l of mine.values()) verifyText(l, lender.slice(0, 2));
     // (its own Classic Era swaps where its clients differ from the lender's, else the lender's in its names)
     const own = join(ROOT, "i18n", locale, "classic-names.json");
     const swaps = existsSync(own)

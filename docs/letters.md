@@ -49,9 +49,11 @@ first writers' history: `../ideas/letters-voices.md`.
   Codex's way: the longest first, once), and its own Classic Era swaps
   (`i18n/esMX/classic-names.json`, empty: its two clients agree where
   esES's don't, Grom'gol and the Writhing Deep). The writers' and anchors'
-  names come from wow-data, which gives esMX esES's where its client names
-  nothing (Forever's beta: Elaadrin Evengale, Ayessa Dawnsinger), so
-  regional.json swaps none of those. Neutral Spanish: no
+  names come from wow-data, which is to give esMX esES's where its client
+  names nothing (Forever's beta: Elaadrin Evengale, Ayessa Dawnsinger, the
+  four Zephras anchors), the user's call of 26 October 2026, so
+  regional.json swaps none of those. Until wow-data does, those two writers
+  show as "a friend" on Forever's esMX client and its sim fails. Neutral Spanish: no
   "vosotros". Booty Bay's "Bahía del Botín" is let through the loot word's
   ban.
 
@@ -174,7 +176,8 @@ French separately, 23 October 2026, and fixed; the six samples cold-read in
 October 2026, and the first wave's last thirty-nine (ids 35 to 73, three
 batches), so the plan's sixty-nine are all written. Waiting on the user's
 read. The German, all seventy-three, read cold by two prose-readers (ids 1
-to 36, 37 to 73), 26 October 2026, and fixed.
+to 36, 37 to 73), 26 October 2026, and fixed, and the Spanish likewise
+the same day.
 
 Two anchors differ from the plan's table: Nimboya's is Saving Yenniku (592),
 where Yenniku's story ends, not Speaking with Gan'zulah (586), and the
