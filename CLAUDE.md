@@ -15,7 +15,7 @@ family's CLAUDE.md (`../CLAUDE.md`) first.
 |---|---|
 | The addon file by file: the package, Core (the post, the mailbox), Panel, the book's tabs, Achievements, Settings, Welcome, the tests, languages | `docs/architecture.md` |
 | The letters: the files, their parts, the ids, the generator (`scripts/letters.ts`) and what it checks | `docs/letters.md` |
-| The letters themselves, each with its writer's card | `letters/<zone>/<writer>.md`, French, German and Spanish in `i18n/<locale>/letters/<zone>/` (esMX: esES's, `i18n/esMX/regional.json`) |
+| The letters themselves, each with its writer's card | `letters/<zone>/<writer>.md`, French, German and Spanish in `i18n/<locale>/letters/<zone>/` (esMX: esES's, `i18n/esMX/regional.json`, resolved into `regional.resolved.json` by addon-kit's regional.ts) |
 | The logo, its master, exports and exact generation prompt | `assets/README.md` |
 | The plan, the waves to come, the voices' rules and the six first letters' history | `../ideas/letters.md`, `../ideas/letters-voices.md` |
 | The store page (CurseForge, Wago), its summary (the TOCs' Notes) | `addon/CURSEFORGE.md` |
@@ -25,6 +25,7 @@ family's CLAUDE.md (`../CLAUDE.md`) first.
 ```bash
 bun run check        # kit, saved ids, letters, languages, lint, the sim on ten clients, TOCs
 bun run check:ci     # what CI and the release gate run: no family folder (the kit, the saved ids and the generators' checks aside)
+bun scripts/root.ts --run addon-kit/regional.ts   # esMX's game names from wow-data into i18n/esMX/regional.resolved.json (first, after a wow-data change; --check is in `check`)
 bun run ids          # every table saved-ids.json lists keeps the ids it had at the fork point from origin/main
 bun scripts/root.ts --run addon-kit/q.ts check -- bun run check   # the same, quiet, stamping the tree for the push
 bun run package      # dist/YoursTruly-<version>.zip for a test in the game
