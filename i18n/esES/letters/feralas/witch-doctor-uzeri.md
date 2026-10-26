@@ -9,7 +9,7 @@ place: 1099
 
 ## Letter
 
-¡$N!
+$N:
 
 ¡Ja! El recipiente está listo, mon, y los materiales que trajiste son mejores de lo que pedí. Madera astillada de antárbol, minerales de gigante, tendones de lechubestia, todos esos fragmentitos de metal. Clasifiqué cada pieza yo mismo, por el olor.
 

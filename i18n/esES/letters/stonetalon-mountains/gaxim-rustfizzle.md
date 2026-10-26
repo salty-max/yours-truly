@@ -17,7 +17,7 @@ Lomac es el mejor químico que me ha gritado jamás. Si te dijo que me saludaras
 
 Todo está en su sitio. No te voy a contar el plan, en parte porque un plan contado es un plan estropeado, y en parte porque cambia cada vez que lo miro. Hay carros. Hay dinamita, que no es tan peligrosa como piensa todo el mundo. Hay magia, combinaciones y mecanismos trabajando juntos, que es justo de lo que va la Asamblea y, francamente, de lo que voy yo.
 
-Los elfos de la noche todavía me miran como si fuera a estallar. Es justo. Demostrarles que un gnomo puede ayudar a salvar sus bosques es mi objetivo... no, ¡mi DEBER!
+Los elfos de la noche todavía me miran como si fuera a estallar. Con razón. Demostrarles que un gnomo puede ayudar a salvar sus bosques es mi objetivo... no, ¡mi DEBER!
 
 Gaxim Silvóxido
 Asamblea Iluminada de Arcanología, Alquimia e Ingeniería

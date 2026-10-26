@@ -15,6 +15,6 @@ Que un ogro torpe se mantuviera tanto tiempo fuera del alcance de la Dama Oscura
 
 La corona ha sido entregada. Se la llevé yo misma a la Dama Oscura, y confieso que la sostenía un poco apartada de mí, como quien lleva algo que podría morder.
 
-Ya sabe de tu papel en todo esto. Me encargué de ello, como dije que haría. Tu nombre se ha pronunciado en la corte de Entrañas, y eso es más de lo que pueden decir la mayoría de los vivos.
+Ya sabe de tu papel en todo esto. Me encargué de ello, como dije que haría. Tu nombre se ha pronunciado en el Barrio Real, y eso es más de lo que pueden decir la mayoría de los vivos.
 
 Sharlindra

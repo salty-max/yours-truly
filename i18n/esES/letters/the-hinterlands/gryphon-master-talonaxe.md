@@ -15,7 +15,7 @@ Picoafilado ha volado con toda la escuadra por primera vez. Iba demasiado abiert
 
 Mandé aviso a Thadius al Castillo de Nethergarde, por su parte en ello. Hace mucho que se fue tras un conocimiento más oscuro, y aquí hay quien todavía no quiere pronunciar su nombre. Pero fue su visión la que encontró al pequeño, y en el fondo sigue siendo un Martillo Salvaje.
 
-Los jinetes están componiendo una canción. No es una buena canción. Las canciones de los Martillo Salvaje nunca lo son, el primer año. La cantarán de todos modos durante mucho, mucho tiempo, y tu nombre figura en cada estrofa hecha hasta ahora.
+Los jinetes están componiendo una canción. No es una buena canción. Las canciones de los Martillo Salvaje nunca lo son, el primer año. La cantarán de todos modos durante mucho, mucho tiempo, y tu nombre figura en cada estrofa que llevan compuesta.
 
 Maestro de grifos Garracha
 Pico Nidal

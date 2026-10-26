@@ -15,9 +15,9 @@ Desde que los conozco, mis amigos siempre han sido los listos. Legacki, Roxio y 
 
 ¡Se acabó! El yeti ha vuelto a casa, un poco chamuscado de una oreja, y cada vez que lo miro pienso: eso lo hice yo. Un yeti entero. A partir de un dibujo.
 
-Por cierto, todos me contestaron. No te diré lo que escribieron, ya que estuviste allí para casi todo. Pero dos de ellos me preguntaron cómo funciona, y esa es la parte que no dejo de releer.
+Por cierto, todos me contestaron. No te diré lo que escribieron, ya que estuviste presente en casi todo. Pero dos de ellos me preguntaron cómo funciona, y esa es la parte que no dejo de releer.
 
-Llevaste un yeti mecánico por medio mundo por mí, $N. Nadie había hecho nunca algo tan disparatado por mí. Gracias.
+Llevaste un yeti mecánico por medio mundo por mí, $N. Nadie había hecho nunca algo tan disparatado en mi favor. Gracias.
 
 Umi Risitas
 Vista Eterna
