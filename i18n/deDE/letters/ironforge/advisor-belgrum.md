@@ -15,7 +15,7 @@ die Tafel ist bei den Magiern des Königs, hinter mehr Schlössern, als ich Schl
 
 Karnik erzählt mir, er habe mit Hammertoes Geist gesprochen. Ich bin Berater, kein Priester, und ich weiß nicht, was ich davon halten soll. Aber er sagt, Hammertoe habe seinen Frieden, und ich habe beschlossen, ihm zu glauben.
 
-Och. Ein Zwerg, der sein Leben lang gesucht hat, woher unser Volk kommt, und den Rest davon damit verbrachte, dafür zu sorgen, dass die falschen Hände es nicht zuerst fanden. Ich hätte es nicht halb so gut gemacht, weder an seiner Stelle noch an Eurer.
+Och. Ein Zwerg, der sein Leben lang gesucht hat, woher unser Volk kommt, und den Rest seiner Tage damit verbracht hat, dafür zu sorgen, dass die falschen Hände es nicht zuerst fanden. Ich hätte es nicht halb so gut gemacht, weder an seiner Stelle noch an Eurer.
 
 Das ist ein Leben, das den Brief eines Beraters wert ist, und Ihr seid der Grund, warum es nicht vergebens war.
 

@@ -11,7 +11,7 @@ place: 1497
 
 $N,
 
-dass sich ein ungeschickter Oger mit nichts als einer Krone so lange dem Willen der dunklen Fürstin entziehen konnte, beunruhigt mich mehr, als wäre sie aus Gold gewesen. Große Macht sollte wenigstens den Anstand haben, auch danach auszusehen.
+dass sich ein ungeschickter Oger mit nichts als einer Krone so lange dem Willen der dunklen Fürstin entziehen konnte, beunruhigt mich mehr, als wenn die Krone aus Gold gewesen wäre. Große Macht sollte wenigstens den Anstand haben, auch danach auszusehen.
 
 Die Krone ist überbracht. Ich habe sie der dunklen Fürstin selbst gebracht, und ich gestehe, ich hielt sie ein wenig von mir weg, wie man etwas trägt, das beißen könnte.
 
