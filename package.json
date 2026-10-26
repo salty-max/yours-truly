@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "kit:sync": "bun scripts/root.ts --run addon-kit/sync.ts addon/YoursTruly",
+    "regional": "bun scripts/root.ts --run addon-kit/regional.ts --check",
     "ids": "bun scripts/root.ts --run addon-kit/ids.ts check",
     "kit:check": "bun scripts/root.ts --run addon-kit/sync.ts --check addon/YoursTruly",
     "letters": "bun scripts/letters.ts",
@@ -12,7 +13,7 @@
     "lint:lua": "stylua --check addon && selene addon/YoursTruly",
     "format:lua": "stylua addon",
     "check:ci": "bun scripts/locales.ts --check && bun run lint:lua && luajit addon/test/sim.lua && FOREVER=1 luajit addon/test/sim.lua && LOCALE=frFR luajit addon/test/sim.lua && LOCALE=frFR FOREVER=1 luajit addon/test/sim.lua && LOCALE=deDE luajit addon/test/sim.lua && LOCALE=deDE FOREVER=1 luajit addon/test/sim.lua && LOCALE=esES luajit addon/test/sim.lua && LOCALE=esES FOREVER=1 luajit addon/test/sim.lua && LOCALE=esMX luajit addon/test/sim.lua && LOCALE=esMX FOREVER=1 luajit addon/test/sim.lua && bun scripts/package.ts --check",
-    "check": "bun run kit:check && bun run ids && bun scripts/letters.ts --check && bun run check:ci",
+    "check": "bun run kit:check && bun run ids && bun run regional && bun scripts/letters.ts --check && bun run check:ci",
     "package": "bun scripts/package.ts"
   }
 }

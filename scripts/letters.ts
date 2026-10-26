@@ -169,9 +169,10 @@ const questsOf = (l: Letter): number[] => {
 };
 
 // A borrowing language's own names in its lender's letters (the Codex's way):
-// i18n/<locale>/regional.json, the longest first, applied once, no cascade.
+// i18n/<locale>/regional.resolved.json (addon-kit/regional.ts: wow-data's names and
+// regional.json's words), the longest first, applied once, no cascade.
 function regionalWords(locale: string): (text: string) => string {
-  const file = join(ROOT, "i18n", locale, "regional.json");
+  const file = join(ROOT, "i18n", locale, "regional.resolved.json");
   if (!existsSync(file)) return (t) => t;
   const names: Record<string, string> = JSON.parse(readFileSync(file, "utf8"));
   const esc = (x: string) => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");

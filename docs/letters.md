@@ -45,15 +45,17 @@ first writers' history: `../ideas/letters-voices.md`.
   writer, as the Spanish client's quests say it, gender tokens wherever a
   word agrees with the reader, greetings with a colon, postscripts "P. D.".
   One catalogue for both Spanish clients: esMX's letters are esES's with
-  its own names swapped in at the build (`i18n/esMX/regional.json`, the
+  its own names swapped in at the build (`i18n/esMX/regional.json`, resolved, the
   Codex's way: the longest first, once), and its own Classic Era swaps
   (`i18n/esMX/classic-names.json`, empty: its two clients agree where
   esES's don't, Grom'gol and the Writhing Deep). The writers' and anchors'
-  names come from wow-data, which is to give esMX esES's where its client
+  names come from wow-data, which gives esMX esES's where its client
   names nothing (Forever's beta: Elaadrin Evengale, Ayessa Dawnsinger, the
-  four Zephras anchors), the user's call of 26 October 2026, so
-  regional.json swaps none of those. Until wow-data does, those two writers
-  show as "a friend" on Forever's esMX client and its sim fails. Neutral Spanish: no
+  four Zephras anchors; source esES, the user's call of 26 October 2026),
+  so regional.json swaps none of those. Its `names` list the esES game
+  names whose esMX comes from wow-data, its `words` what is no game name;
+  addon-kit's regional.ts writes `regional.resolved.json`, which the build
+  swaps. Neutral Spanish: no
   "vosotros". Booty Bay's "Bahía del Botín" is let through the loot word's
   ban.
 

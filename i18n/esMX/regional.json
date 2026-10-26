@@ -1,19 +1,23 @@
 {
-  "Altero": "Alterio",
-  "Magistrado Salomón": "Magistrado Solomon",
-  "Hemet Decautela": "Hemet Nesingwary",
-  "Dalar Tejalba": "Dalar Tejealba",
-  "Sumo Ejecutor Hadrec": "Sumo ejecutor Hadrec",
-  "Seereth Rompepedras": "Seereth Petrajada",
-  "Nara Bravacrín": "Nara Ferocrín",
-  "Aguijolatigador": "Latigador con aguijón",
-  "Falorne Trombaviento": "Falorne Ventocaída",
-  "Ventaari Deseo Claro": "Ventaari Deseoalegre",
-  "Orden Eminente": "Suma Orden",
-  "el Sindicato": "la Hermandad",
-  "Tía Bernice": "Tita Bernice",
-  "Valcorno": "Valstag",
-  "astacebras": "zhebras",
-  "Pozík": "Pozzik",
-  "volverá a cogernos": "volverá a atraparnos"
+  "names": [
+    "Altero",
+    "Magistrado Salomón",
+    "Hemet Decautela",
+    "Dalar Tejalba",
+    "Sumo Ejecutor Hadrec",
+    "Seereth Rompepedras",
+    "Nara Bravacrín",
+    "Aguijolatigador",
+    "Falorne Trombaviento",
+    "Ventaari Deseo Claro",
+    "Orden Eminente",
+    "Pozík"
+  ],
+  "words": {
+    "el Sindicato": "la Hermandad",
+    "Tía Bernice": "Tita Bernice",
+    "Valcorno": "Valstag",
+    "astacebras": "zhebras",
+    "volverá a cogernos": "volverá a atraparnos"
+  }
 }
