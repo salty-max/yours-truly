@@ -52,8 +52,9 @@ scripts/release.sh [--version X.Y.Z] [--hold] NOTES.md   # check, tag, push; Act
   cold before the user does.
 - The game's data comes from wow-data's databases only (`scripts/letters.ts`,
   through `scripts/root.ts`, the kit's copy). Generated files
-  (`Letters_*.lua`, `Text_*.lua`, `i18n/names.json`) are never edited by
-  hand; `--check` fails a stale one.
+  (`Letters_*.lua`, `Text_*.lua`, `i18n/names.json`,
+  `i18n/esMX/regional.resolved.json`) are never edited by hand; `--check`
+  fails a stale one.
 - A letter's id never changes and is never reused: characters keep it
   (`saved-ids.json`, `bun run ids` in the check). An id leaves only with the
   user's go, under `removed`.
