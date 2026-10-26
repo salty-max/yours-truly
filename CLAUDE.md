@@ -33,7 +33,7 @@ bun run letters      # the letters again, after a letters/ edit or wow-data's ch
 bun scripts/letters.ts --names   # the game's names each letter holds, those outside its chain marked, to look at
 bun run kit:sync     # after a change to the kit (Kit.lua, Media, scripts/root.ts)
 bun run locales      # after a new L["..."] (then --keys for i18n/words.json)
-scripts/release.sh [--version X.Y.Z] [--hold] NOTES.md   # check, tag, push; Actions publish
+scripts/release.sh --version X.Y.Z [--hold] NOTES.md   # check, tag, push; Actions publish
 ```
 
 ## Hard rules
