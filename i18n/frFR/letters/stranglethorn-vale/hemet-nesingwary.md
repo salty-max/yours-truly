@@ -15,7 +15,7 @@ Bangalash ! Tout le camp en crie encore à table, le soir ! Sire Erlgadin jure q
 
 Erlgadin, Ajeck et moi avons tous beaucoup à dire sur ce tigre que vous avez abattu ! Il y avait une éternité que je guettais ce diable blanc, et j'ai bien gagné le droit d'en dire un mot !
 
-Barnil a lu mon récit de la chasse et m'a demandé où vous y étiez. Excellente question ! Je me suis si bien emballé sur mes propres tentatives que je vous avais complètement oublié. C'est arrangé : vous y êtes, et à la place qui vous revient !
+Barnil a lu mon récit de la chasse et m'a demandé quelle place vous y teniez. Excellente question ! Je me suis si bien emballé sur mes propres tentatives que je vous avais complètement oublié. C'est arrangé : vous y êtes, et à la place qui vous revient !
 
 Sacrément bien joué ! À votre santé, nom d'une pipe ! À votre santé !
 

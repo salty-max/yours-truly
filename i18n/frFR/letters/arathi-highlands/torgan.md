@@ -17,7 +17,7 @@ Il a écouté. Il n'a pas souri, et je ne le lui ai pas demandé. Il m'a demand�
 
 Ce n'est pas un guerrier revenu. Mais c'est un guerrier qui a posé une question, et de toutes les années où il a erré seul, je ne crois pas qu'il ait jamais rien demandé à personne.
 
-Vous l'avez ramené une partie du chemin, $N, et le reste du chemin lui appartient.
+Vous lui avez fait faire une partie du chemin du retour, $N, et le reste du chemin lui appartient.
 
 Tor'gan
 Trépas-d'Orgrim

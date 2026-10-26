@@ -15,7 +15,7 @@ Je suis toujours Payson. Je tiens à ce que ce soit compris avant toute chose. J
 
 Je vous ai dit que vous étiez un vrai vautour. Vous n'en étiez pas un, finalement, et je découvre qu'avoir tort me dérange moins que je ne l'aurais cru.
 
-Mais j'ai gardé ce qu'elle m'a envoyé. Tout. Elles sont dans une boîte sous les caisses de cafards, là où personne ne pensera à regarder, et c'est un peu le but.
+Mais j'ai gardé ce qu'elle m'a envoyé. Tout. C'est dans une boîte sous les caisses de cafards, là où personne ne pensera à regarder, et c'est un peu le but.
 
 Jeremiah Payson
 Vendeur de cafards

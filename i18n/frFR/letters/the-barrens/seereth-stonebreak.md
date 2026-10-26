@@ -17,7 +17,7 @@ Mais la plupart des gémissements ont cessé. Pas le chagrin, les gémissements.
 
 Il se peut encore que les anciens doivent venir apaiser ce qui reste. Je vous l'ai déjà dit. Je vous le redis, pour que vous ne preniez jamais une victoire pour une forêt.
 
-Les esprits m'ont donné les marques de ces machines. Vous avez parlé à ces machines le seul langage que les gobelins comprennent. Je trouve le partage équitable.
+Les esprits m'ont désigné ces machines. Vous leur avez parlé le seul langage que les gobelins comprennent. Je trouve le partage équitable.
 
 Avec colère et avec espoir,
 Seereth Stonebreak
