@@ -179,7 +179,9 @@ October 2026, and the first wave's last thirty-nine (ids 35 to 73, three
 batches), so the plan's sixty-nine are all written. Waiting on the user's
 read. The German, all seventy-three, read cold by two prose-readers (ids 1
 to 36, 37 to 73), 26 October 2026, and fixed, and the Spanish likewise
-the same day.
+the same day. Before the first release, French, German and Spanish read
+cold again (two batches each, the words and esMX's swaps with them) and
+fixed, 26 October 2026.
 
 Two anchors differ from the plan's table: Nimboya's is Saving Yenniku (592),
 where Yenniku's story ends, not Speaking with Gan'zulah (586), and the
