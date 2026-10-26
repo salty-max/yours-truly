@@ -103,7 +103,7 @@ ns.translate({
     ["Read letters from eight different zones."] = "Lee cartas de ocho zonas distintas.",
     ["Read ten letters."] = "Lee diez cartas.",
     ["Read twenty-five letters."] = "Lee veinticinco cartas.",
-    ["Ready check"] = "Comprobación de preparados",
+    ["Ready check"] = "Control de disponibilidad",
     ["Received"] = "Recibida",
     ["Sealed"] = "Sellada",
     ["Sep"] = "sep",
