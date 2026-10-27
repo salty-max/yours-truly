@@ -50,11 +50,12 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
   `ns.hidePanel` when it closes): the bundle first when there is one, on
   the envelope's face ("From the road behind you", the count, "tied with
   string", the window titled a bundle of letters), a click untying it into
-  the book, then its note on the same face (the count, "in your book now,
-  sealed", a click or "Open the book" opening the book), "Next letter"
+  the book, the panel closing and the book opening on the first of them
+  (no page in between: the user's call, 27 October 2026), "Next letter"
   going round the bundle and the letters waiting; the sealed envelope (the logo's wax seal, the writer, the
   place; a click breaks it, the game's page sound), the letter on the mail
-  reader's own paper in its own face, scrolling as the game's reader does,
+  reader's own paper (the second sheet's see-through edge cut, the paper
+  filling the window's body under its title) in its own face, scrolling as the game's reader does,
   the chain and the zone's count under it, "Next letter" while another
   waits. Docked beside the open letter (OpenMailFrame) when one is open,
   else where that would stand (beside InboxFrame); on its own, movable and
@@ -80,9 +81,9 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
   of the game's sealing wax, a letter's ink warm), the parts every tab uses
   (`ns.ui`). `LettersBook.lua`: every letter delivered, newest first, each
   row its seal, writer, place and first line; the page the letter in the
-  kit's aside, signed, its P.S. apart, then the chain it answers, when it
-  came and its zone's count; a letter left sealed opens there too ("Break
-  the seal"). Letters in the post never show. `AchievementsBook.lua`: the
+  kit's voice, signed, its P.S. under the name, then the chain it answers,
+  when it came and its zone's count; a letter left sealed opens there too
+  (the kit's button, "Break the seal"). Letters in the post never show. `AchievementsBook.lua`: the
   kit's board over both panels.
 - `Settings.lua`: each character's settings, the kit's profiles (a code
   `YT1:...`, `/yourstruly export`, `/yourstruly import CODE`, the alert a

@@ -1,8 +1,8 @@
 -- The Letters tab: every letter delivered to this character, newest first,
 -- each row its seal (the logo's red wax until it is broken, then the game's
 -- open letter), its writer, its place and
--- its first line; the page the letter itself, in another hand (the kit's
--- aside, signed), then the chain it answers, when it came, and its zone's
+-- its first line; the page the letter itself (the kit's voice, signed, its
+-- P.S. under the name), then the chain it answers, when it came, and its zone's
 -- count ("Westfall: 1 of 2"). A letter delivered and left sealed (the mailbox
 -- closed on it) waits here for its seal to be broken. Letters still in the
 -- post are never shown: they arrive at a mailbox, unannounced.
@@ -19,7 +19,7 @@ local function style(row, kind)
     row.text:ClearAllPoints()
     row.text:SetPoint("TOPLEFT", 4, -3)
     row.text:SetPoint("RIGHT", -4, 0)
-    row.text:SetFont(ns.kit.TITLE_FONT, 13, "")
+    row.text:SetFont(ns.kit.BODY_FONT, 13, "")
     row.text:SetTextColor(unpack(T.text))
     row.count:ClearAllPoints()
     row.count:SetPoint("TOPLEFT", 22, -20)
@@ -38,11 +38,7 @@ local function style(row, kind)
     return 48
   end
   if row.line then row.line:Hide() end
-  row.text:SetPoint("LEFT", 4, 0)
-  row.text:SetPoint("RIGHT", -4, 0)
-  row.text:SetFont(ns.kit.BODY_FONT, 12, "")
-  row.text:SetTextColor(unpack(T.soft))
-  return 18
+  return ns.kit.listStyle(row, kind)
 end
 
 local function seal(id)
@@ -82,7 +78,7 @@ local function showLetter(id)
   page:start(ns.writer(id), ns.place(id), function(p) p.tex:SetTexture(seal(id)) end)
   if not r.read then
     page:paragraph(L["The seal is unbroken."], T.soft)
-    page:chips({
+    page:buttons({
       {
         L["Break the seal"],
         function()
@@ -90,14 +86,13 @@ local function showLetter(id)
           ns.read(id)
           ns.refresh()
         end,
-        true,
       },
     })
   else
     local t = ns.letter(id)
     if t then
-      local paragraphs = { { t.greeting .. "\n\n" .. table.concat(t.body, "\n\n"), aside = true, sign = t.signoff } }
-      if #t.ps > 0 then table.insert(paragraphs, { table.concat(t.ps, "\n\n"), aside = true }) end
+      local paragraphs = { { t.greeting .. "\n\n" .. table.concat(t.body, "\n\n"), voice = true, sign = t.signoff } }
+      if #t.ps > 0 then table.insert(paragraphs, table.concat(t.ps, "\n\n")) end
       page:text(paragraphs)
     end
   end

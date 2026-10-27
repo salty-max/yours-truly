@@ -3,8 +3,9 @@
 -- letter comes sealed: its seal, its writer, the place it was written. A click
 -- breaks the seal (the game's own page sound) and the letter opens on the mail
 -- reader's own paper (Interface\Stationery\StationeryTest1 and 2, drawn
--- 252 + 64 wide as the game's OpenMailFrame draws them, stretched to the
--- sheet: stacked, they show a seam), in the mail's own face
+-- 252 + 50 wide: the second's last 14 columns are see-through, cut so the
+-- paper reaches the window's edge; stretched to the sheet: stacked, they
+-- show a seam), filling the window's body under its title, in the mail's own face
 -- (MailTextFontNormal: Morpheus 15, dark brown), scrolling over the paper as
 -- the game's reader does. Taller than the game's reader (its 256 pixels of
 -- paper hold a third of a letter): 420 by 620 holds the longest whole, for a
@@ -14,9 +15,9 @@
 --
 -- The backlog's bundle (Core: ns.bundle) comes first when there is one: the
 -- same seal, "N letters from the road behind you, tied with string". A click
--- unties it: the letters go into the book, sealed, and the panel says so on
--- the same face ("N letters, in your book now, sealed"), a click or a button
--- opening the book. Fresh letters still wait behind it.
+-- unties it: the letters go into the book, sealed, the panel closes and the
+-- book opens on the first of them (the user's call, 27 October 2026: no page
+-- in between). Fresh letters wait for the next mailbox.
 --
 -- Docked to the mail window: beside the open letter (OpenMailFrame) when one
 -- is open, else where that would stand (beside the inbox). A mailbox addon
@@ -29,12 +30,13 @@ local W, H = 420, 620
 local PAPER = { "Interface\\Stationery\\StationeryTest1", "Interface\\Stationery\\StationeryTest2" }
 local INK = { 0.18, 0.12, 0.06 }
 local FADED = { 0.40, 0.30, 0.20 }
-local SHEET_W = W - 20
+local EDGE = 2 -- (the window's frame: the paper reaches it)
+local SHEET_W = W - 2 * EDGE
 local TEXT_W = SHEET_W - 18 - 44
+local BAR = 36 -- (the sheet's foot: a button, a line, over the paper)
 
 local panel, current
-local BUNDLE, UNTIED = "bundle", "untied" -- (the bundle shown, then its note)
-local untiedCount = 0 -- (how many the bundle held, for its note)
+local BUNDLE = "bundle"
 ns.panelParts = {} -- (for the tests)
 
 -- What the panel holds: the bundle first, if there is one, then each letter
@@ -58,6 +60,14 @@ local function ink(parent, size, colour)
   fs:SetJustifyH("LEFT")
   fs:SetSpacing(3)
   return fs
+end
+
+-- The bundle untied: the panel closed, the book open on its first letter.
+local function untie()
+  local first = ns.bundle()[1]
+  ns.untie()
+  panel:Hide()
+  if first and ns.openLetter then ns.openLetter(first) end
 end
 
 -- The window's title: "A letter", "A bundle of letters" while the bundle shows.
@@ -116,22 +126,23 @@ local function build()
 
   -- the paper
   local sheet = CreateFrame("Frame", nil, panel)
-  sheet:SetPoint("TOPLEFT", 10, -64)
-  sheet:SetPoint("BOTTOMRIGHT", -10, 40)
+  sheet:SetPoint("TOPLEFT", EDGE, -64)
+  sheet:SetPoint("BOTTOMRIGHT", -EDGE, EDGE)
   local left = sheet:CreateTexture(nil, "BACKGROUND")
   left:SetTexture(PAPER[1])
   left:SetPoint("TOPLEFT")
   left:SetPoint("BOTTOMLEFT")
-  left:SetWidth(math.floor(SHEET_W * 252 / 316 + 0.5))
+  left:SetWidth(math.floor(SHEET_W * 252 / 302 + 0.5))
   local right = sheet:CreateTexture(nil, "BACKGROUND")
   right:SetTexture(PAPER[2])
+  right:SetTexCoord(0, 50 / 64, 0, 1)
   right:SetPoint("TOPLEFT", left, "TOPRIGHT")
   right:SetPoint("BOTTOMRIGHT")
 
   -- the letter, scrolling over it
   local scroll = K.scrollArea(sheet, TEXT_W, "YoursTrulyPanelScroll")
   scroll:SetPoint("TOPLEFT", 18, -14)
-  scroll:SetPoint("BOTTOMRIGHT", -44, 12)
+  scroll:SetPoint("BOTTOMRIGHT", -44, BAR + 4)
   scroll.thumb:SetColorTexture(INK[1], INK[2], INK[3], 0.35)
   local c = scroll.child
   local place = ink(c, 15)
@@ -169,43 +180,27 @@ local function build()
   where:SetWidth(TEXT_W)
   where:SetJustifyH("CENTER")
   local hint = ink(envelope, 12, FADED)
-  hint:SetPoint("BOTTOM", envelope, "BOTTOM", 0, 26)
+  hint:SetPoint("BOTTOM", envelope, "BOTTOM", 0, BAR + 14)
   hint:SetWidth(TEXT_W)
   hint:SetJustifyH("CENTER")
   hint:SetText(L["Click to break the seal."])
   envelope:SetScript("OnClick", function()
     if not current then return end
     if PlaySound and SOUNDKIT and SOUNDKIT.IG_ABILITY_PAGE_TURN then PlaySound(SOUNDKIT.IG_ABILITY_PAGE_TURN) end
-    if current == BUNDLE then
-      untiedCount = ns.untie()
-      show(UNTIED)
-      return
-    end
-    if current == UNTIED then
-      if ns.openTab then ns.openTab(ns.TAB.letters) end
-      return
-    end
+    if current == BUNDLE then return untie() end
     ns.read(current)
     show(current)
   end)
 
-  -- (the bundle untied: to the book)
-  local bookButton = CreateFrame("Button", "YoursTrulyPanelBook", panel, "UIPanelButtonTemplate")
-  bookButton:SetSize(120, 22)
-  bookButton:SetPoint("BOTTOMLEFT", 12, 12)
-  bookButton:SetText(L["Open the book"])
-  bookButton:SetScript("OnClick", function()
-    if ns.openTab then ns.openTab(ns.TAB.letters) end
-  end)
-  bookButton:Hide()
-
-  -- the next one
-  local nextButton = CreateFrame("Button", "YoursTrulyPanelNext", panel, "UIPanelButtonTemplate")
-  nextButton:SetSize(120, 22)
-  nextButton:SetPoint("BOTTOMRIGHT", -12, 12)
-  nextButton:SetText(L["Next letter"])
-  local waitingLine = K.label(panel, K.BODY_FONT, 11, K.T.soft)
-  waitingLine:SetPoint("BOTTOMLEFT", 16, 17)
+  -- the next one, at the paper's foot (over the envelope: its own click)
+  local nextButton = K.button(panel, L["Next letter"], 120)
+  nextButton:SetFrameLevel(envelope:GetFrameLevel() + 2)
+  nextButton:SetPoint("BOTTOMRIGHT", -(EDGE + 44), EDGE + 8)
+  local foot = CreateFrame("Frame", nil, panel)
+  foot:SetAllPoints(sheet)
+  foot:SetFrameLevel(envelope:GetFrameLevel() + 1)
+  local waitingLine = ink(foot, 11, FADED)
+  waitingLine:SetPoint("BOTTOMLEFT", EDGE + 18, EDGE + 13)
   -- (the one after this one in the panel, round to the first)
   nextButton:SetScript("OnClick", function()
     local q = queue()
@@ -234,7 +229,7 @@ local function build()
   local P = ns.panelParts
   P.panel, P.scroll, P.place, P.main, P.signoff, P.ps, P.footer = panel, scroll, place, main, signoff, ps, footer
   P.envelope, P.writer, P.where, P.next, P.waiting = envelope, writer, where, nextButton, waitingLine
-  P.from, P.hint, P.book = from, hint, bookButton
+  P.from, P.hint = from, hint
 end
 
 -- A letter in the panel: sealed (its envelope) or open (its words).
@@ -253,8 +248,6 @@ show = function(id)
   P.waiting:SetText(
     others > 0 and ns.kit.plural(others, "%d more letter waits.", "%d more letters wait."):format(others) or ""
   )
-  P.book:SetShown(id == UNTIED)
-  P.waiting:SetShown(id ~= UNTIED)
   local y = 0
   local function lay(fs, text, gap)
     fs:ClearAllPoints()
@@ -267,7 +260,7 @@ show = function(id)
     fs:Show()
     y = y + fs:GetStringHeight() + gap
   end
-  title((id == BUNDLE or id == UNTIED) and L["A bundle of letters"] or L["A letter"])
+  title(id == BUNDLE and L["A bundle of letters"] or L["A letter"])
   if id == BUNDLE then
     local n = #ns.bundle()
     P.scroll:Hide()
@@ -280,15 +273,6 @@ show = function(id)
   end
   P.from:SetText(L["A letter from"])
   P.hint:SetText(L["Click to break the seal."])
-  if id == UNTIED then
-    P.scroll:Hide()
-    P.envelope:Show()
-    P.from:SetText("")
-    P.writer:SetText(ns.kit.plural(untiedCount, "%d letter", "%d letters"):format(untiedCount))
-    P.where:SetText(L["in your book now, sealed"])
-    P.hint:SetText(L["Open them there whenever you like."])
-    return
-  end
   local r = ns.record(id)
   if not (r and r.read) then
     P.scroll:Hide()

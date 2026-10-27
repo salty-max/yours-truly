@@ -2,7 +2,8 @@
 -- quest turned in (its letter in the post, fifteen minutes of play, then the
 -- next mailbox), the sealed envelope and its seal broken, the other side's
 -- letters held back, the backlog found at a login and come as one bundle
--- (untied into the book, sealed, a fresh letter still behind it, a backlog of
+-- (untied straight into the book, sealed, the panel closed, a fresh letter
+-- still behind it, its seal broken by the page's button, a backlog of
 -- one by the post), the mailbox's pace (one a visit, two when more than three
 -- wait), the panel docked beside
 -- an open letter or standing alone for a mailbox addon, the book's tabs, the
@@ -125,15 +126,34 @@ check(ns.panelLetter() == "bundle", "next: back to the bundle")
 G.mailbox(false)
 G.mailbox(true)
 check(ns.panelLetter() == "bundle", "the next visit: the bundle still there, untouched")
+local firstBundled = ns.bundle()[1]
 P.envelope.scripts.OnClick(P.envelope)
-check(ns.panelLetter() == "untied" and P.book:IsShown(), "untied: the note, and a button to the book")
-check(P.writer:GetText():find("5", 1, true), "the note keeps the count")
+check(not P.panel:IsShown(), "untied: the panel closed, no page in between")
+check(
+  YoursTrulyFrame and YoursTrulyFrame:IsShown() and YoursTrulyFrame.selectedTab == ns.TAB.letters,
+  "untied: the book open at its letters"
+)
 for _, id in ipairs({ GRYAN, SARA, MAYBELL, BERNICE, REJOLD }) do
   local r = char.letters[id]
   check(r.delivered and r.bundled and not r.read, "into the book, sealed: " .. id)
 end
 check(#ns.bundle() == 0 and #ns.waiting() == 0, "the bundle gone, nothing waiting at the mailbox")
-check(not P.next:IsShown(), "and no next")
+-- (the bundle's first, sealed in the book: a button breaks its seal)
+local letterPage = YoursTrulyLetterPage
+local seal = letterPage.buttonPool[1]
+check(
+  seal and seal:IsShown() and seal.text == L["Break the seal"] and not letterPage.chipPool[1],
+  "a sealed letter in the book: a button, not a chip"
+)
+seal.scripts.OnClick(seal)
+check(char.letters[firstBundled].read, "the button breaks the seal: " .. firstBundled)
+local voice = letterPage.voices[1]
+check(
+  voice and voice:IsShown() and voice.sign:GetText() == ns.letter(firstBundled).signoff and #letterPage.asides == 0,
+  "the letter in the book: the kit's voice, signed, no aside"
+)
+char.letters[firstBundled].read = nil
+YoursTrulyFrame:Hide()
 G.mailbox(false)
 G.mailbox(true)
 check(not ns.panelLetter(), "the next visit: no panel, the bundle's letters in the book")

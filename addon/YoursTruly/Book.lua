@@ -8,12 +8,11 @@ local K, L = ns.kit, ns.kit.L
 
 -- ── look ─────────────────────────────────────────────────────────────────────
 -- The kit's (Kit.lua), in Yours Truly's theme: the red of the wax on the
--- game's sealed letter, and a letter's ink the warm brown of its paper.
+-- game's sealed letter (a letter is the kit's voice, signed in it).
 K.theme({
   accent = { 0.90, 0.60, 0.48 },
   ring = { 0.62, 0.32, 0.26 },
   bar = { 0.76, 0.34, 0.28 },
-  aside = { 0.93, 0.85, 0.72 },
   tint = { 1.00, 0.95, 0.92 },
   shade = { 0.03, 0.015, 0.01, 0.55 },
   highlight = { 1.00, 0.86, 0.82 },
