@@ -7,16 +7,7 @@ local _, ns = ...
 local K, L = ns.kit, ns.kit.L
 
 -- ── look ─────────────────────────────────────────────────────────────────────
--- The kit's (Kit.lua), in Yours Truly's theme: the red of the wax on the
--- game's sealed letter (a letter is the kit's voice, signed in it).
-K.theme({
-  accent = { 0.90, 0.60, 0.48 },
-  ring = { 0.62, 0.32, 0.26 },
-  bar = { 0.76, 0.34, 0.28 },
-  tint = { 1.00, 0.95, 0.92 },
-  shade = { 0.03, 0.015, 0.01, 0.55 },
-  highlight = { 1.00, 0.86, 0.82 },
-})
+-- The kit's (Kit.lua), its theme (Yours Truly's: the wax's red) set first thing in Core.lua.
 local T = K.T
 
 -- ── the window ───────────────────────────────────────────────────────────────
@@ -27,6 +18,11 @@ ns.TAB = TAB
 local B = K.book({
   name = "YoursTrulyFrame",
   title = "Yours Truly",
+  -- (where it was left, kept with the account's settings)
+  place = function()
+    YoursTrulySettings = YoursTrulySettings or {}
+    return K.place(YoursTrulySettings, "book")
+  end,
   art = ns.ICON,
   titles = { L["Letters"], L["Achievements"] },
   first = TAB.letters,

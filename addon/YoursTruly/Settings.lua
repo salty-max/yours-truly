@@ -20,13 +20,15 @@ local DEFAULTS = {
   minimapHidden = false,
   minimapAngle = K.MINIMAP_ANGLES.YoursTruly,
   achievementToast = true,
+  achievementSound = K.ACHIEVEMENT_SOUND,
+  bannerSeconds = K.BANNER_SECONDS,
   welcomed = false,
   panelX = false,
   panelY = false,
 }
-local SHARED = { "minimapHidden", "minimapAngle", "achievementToast" }
+local SHARED = { "minimapHidden", "minimapAngle", "achievementToast", "achievementSound", "bannerSeconds" }
 
--- The profiles: a code "YT1:h0:a115:v1".
+-- The profiles: a code "YT1:h0:a115:v1:f12891:n10".
 local P = K.profiles({
   saved = function()
     if type(YoursTrulySettings) ~= "table" then YoursTrulySettings = {} end
@@ -34,7 +36,13 @@ local P = K.profiles({
   end,
   defaults = DEFAULTS,
   shared = SHARED,
-  letters = { minimapHidden = "h", minimapAngle = "a", achievementToast = "v" },
+  letters = {
+    minimapHidden = "h",
+    minimapAngle = "a",
+    achievementToast = "v",
+    achievementSound = "f",
+    bannerSeconds = "n",
+  },
   tag = "YT1",
   changed = function(key)
     if key == "minimapHidden" or key == "minimapAngle" then
@@ -68,6 +76,8 @@ function ns.createSettingsPanel()
     L["Alert for achievements"],
     L["Show each achievement earned in the game's achievement alert. A click on it opens the achievements."]
   )
+  O:achievementSound("achievementSound")
+  O:bannerSeconds("bannerSeconds")
   O:check(
     "minimapHidden",
     L["Minimap button"],

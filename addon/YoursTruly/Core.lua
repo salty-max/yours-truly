@@ -26,7 +26,18 @@
 -- client's language, when shown.
 local _, ns = ...
 local L, D = ns.kit.L, ns.data
-ns.PREFIX = "|cffe8a08aYours Truly:|r "
+-- The kit's look (Kit.lua), in Yours Truly's theme: the red of the wax on the
+-- game's sealed letter (a letter is the kit's voice, signed in it).
+ns.kit.theme({
+  accent = { 0.90, 0.60, 0.48 },
+  ring = { 0.62, 0.32, 0.26 },
+  bar = { 0.76, 0.34, 0.28 },
+  tint = { 1.00, 0.95, 0.92 },
+  shade = { 0.03, 0.015, 0.01, 0.55 },
+  highlight = { 1.00, 0.86, 0.82 },
+})
+
+ns.PREFIX = ns.kit.prefix("Yours Truly")
 -- The addon's mark (its logo: the book's and the panel's portrait, the
 -- minimap button, the welcome page, the banners); its wax seal cut round
 -- (Media/Seal, assets/README.md): a letter still sealed, on its envelope and in

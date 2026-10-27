@@ -16,7 +16,7 @@ function ns.createMinimapButton()
     title = "Yours Truly",
     lines = function()
       local n = #ns.received()
-      return { K.plural(n, "%d letter received.", "%d letters received."):format(n) }
+      return { K.plural(n, "%d letter received", "%d letters received"):format(n) }
     end,
     click = function() ns.toggle() end,
     rightClick = function() ns.openSettings() end,

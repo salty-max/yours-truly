@@ -111,7 +111,7 @@ end
 
 local function refresh()
   local received = ns.received()
-  book.count:SetText(ns.kit.plural(#received, "%d letter received.", "%d letters received."):format(#received))
+  book.count:SetText(ns.kit.plural(#received, "%d letter received", "%d letters received"):format(#received))
   if current and not (ns.record(current) and ns.record(current).delivered) then current = nil end
   current = current or received[1]
   refreshList(received)
