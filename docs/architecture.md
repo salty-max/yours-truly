@@ -78,7 +78,7 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
   (none, since the first wave's sixty-nine: twenty-five and the capitals
   were unlisted until it): a wave brings it. Earned stays listed.
 - `Book.lua`: the family's window and tabs in Yours Truly's theme (the red
-  of the game's sealing wax, a letter's ink warm), the parts every tab uses
+  of the game's sealing wax), the parts every tab uses
   (`ns.ui`). `LettersBook.lua`: every letter delivered, newest first, each
   row its seal, writer, place and first line; the page the letter in the
   kit's voice, signed, its P.S. under the name, then the chain it answers,

@@ -119,8 +119,6 @@ check(P.writer:GetText():find("5", 1, true), "its count on it")
 check(P.next:IsShown(), "and the fresh letter behind it")
 P.next.scripts.OnClick(P.next)
 check(ns.panelLetter() == GAZLOWE and P.next:IsShown(), "next: the fresh letter, sealed, the bundle still behind it")
-P.envelope.scripts.OnClick(P.envelope)
-check(char.letters[GAZLOWE].read and P.next:IsShown(), "its seal broken: the bundle still reachable")
 P.next.scripts.OnClick(P.next)
 check(ns.panelLetter() == "bundle", "next: back to the bundle")
 G.mailbox(false)
@@ -137,7 +135,10 @@ for _, id in ipairs({ GRYAN, SARA, MAYBELL, BERNICE, REJOLD }) do
   local r = char.letters[id]
   check(r.delivered and r.bundled and not r.read, "into the book, sealed: " .. id)
 end
-check(#ns.bundle() == 0 and #ns.waiting() == 0, "the bundle gone, nothing waiting at the mailbox")
+check(
+  #ns.bundle() == 0 and #ns.waiting() == 1 and ns.waiting()[1] == GAZLOWE,
+  "the bundle gone, the fresh letter still waiting at the mailbox, sealed"
+)
 -- (the bundle's first, sealed in the book: a button breaks its seal)
 local letterPage = YoursTrulyLetterPage
 local seal = letterPage.buttonPool[1]
@@ -156,7 +157,12 @@ char.letters[firstBundled].read = nil
 YoursTrulyFrame:Hide()
 G.mailbox(false)
 G.mailbox(true)
-check(not ns.panelLetter(), "the next visit: no panel, the bundle's letters in the book")
+check(ns.panelLetter() == GAZLOWE and not P.next:IsShown(), "the next visit: the fresh letter, and nothing behind it")
+P.envelope.scripts.OnClick(P.envelope)
+check(char.letters[GAZLOWE].read, "its seal broken at the mailbox")
+G.mailbox(false)
+G.mailbox(true)
+check(not ns.panelLetter(), "the visit after: no panel, the bundle's letters in the book")
 G.mailbox(false)
 -- (one alone is a letter like any other: by the post)
 local lone = 20 -- (Hinderweir's: A Dark Threat Looms)
