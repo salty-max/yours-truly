@@ -1,14 +1,16 @@
--- The panel beside the mail window, the inbox's own look with our content in
--- it (28 October 2026, the user's call): the window's grey stone,
--- the kit's panel under the title, the inbox's parchment inside it (file
--- 530419, cropped to its paper; the reader's stationery, Interface\Stationery\
--- StationeryTest1 and 2, where the game has not that file), the game's text
--- face. Shown when a mailbox opens and a letter waits there for this character
--- (never empty), hidden when it closes.
+-- The panel beside the mail window, the game's inbox with our content in it
+-- (28 October 2026, the user's call). It is laid out as the inbox lays itself
+-- out, from Blizzard's own MailFrame.xml (Classic Era): the window's grey
+-- stone and inset, the inbox's paper (Interface\MailFrame\UI-MailFrameBG,
+-- 320 by 356 in the top left of its 512 square), a row as MailItemTemplate
+-- draws one (MailItemBorder, the slot, GameFontNormal over
+-- GameFontHighlightSmall), the pager and the button 114 above the foot. Shown
+-- when a mailbox opens and a letter waits there for this character (never
+-- empty), hidden when it closes.
 --
--- The list, as the inbox lists mail: a row for each (the seal in a slot, the
--- writer, the place it was written), a page of seven, Prev and Next at the
--- foot with "Open all" between them (it breaks every seal at once). A click
+-- The list, as the inbox lists mail: a row for each (the seal in its slot, the
+-- writer, the place it was written), a page of seven, Prev and Next with
+-- "Open all" between them (it breaks every seal at once). A click
 -- on a row breaks that seal (the game's page sound) and the letter opens in
 -- the panel, in the mail's own face (MailTextFontNormal, dark brown),
 -- scrolling over the paper as the game's reader does, the chain it answers
@@ -28,18 +30,12 @@ local _, ns = ...
 local K, L = ns.kit, ns.kit.L
 
 local W, H = 384, 512 -- (the mail window's own size, read again when the panel is built)
-local PAPER = { "Interface\\Stationery\\StationeryTest1", "Interface\\Stationery\\StationeryTest2" }
-local GOLD = { 1, 0.82, 0 }
-local PARCHMENT = 530419 -- (the inbox's list paper)
 local INK = { 0.18, 0.12, 0.06 }
 local FADED = { 0.40, 0.30, 0.20 }
-local MARGIN = 8 -- (the window's frame, as the kit's panels stand in it)
-local EDGE = MARGIN + 3 -- (and the panel's own border)
-local SHEET_W, TEXT_W
-local BAR = 36 -- (the sheet's foot: a button, a line, over the paper)
+local TEXT_W = 276 -- (the paper's width, less its margins)
 
 local panel, current, page = nil, nil, 1
-local ROW_H, PER = 44, 7
+local PER = 7 -- (the inbox's page)
 ns.panelParts = {} -- (for the tests)
 
 -- What the panel holds: each letter waiting at the mailbox.
@@ -108,9 +104,6 @@ local function build()
     end
     W, H = math.floor(W + 0.5), math.floor(H + 0.5)
   end
-  SHEET_W = W - 2 * EDGE
-  PER = math.min(7, math.max(1, math.floor((H - 58 - MARGIN - 6 - BAR - 8) / ROW_H)))
-  TEXT_W = SHEET_W - 18 - 44
   local window = K.gameWindow("YoursTrulyPanel", L["A letter"], ns.ICON)
   panel = window or K.dialog("YoursTrulyPanel", L["A letter"])
   -- the body the mail window's own grey stone (the kit darkens it: the inbox
@@ -144,41 +137,32 @@ local function build()
   table.insert(UISpecialFrames, "YoursTrulyPanel")
   panel:Hide()
 
-  -- the paper, in the kit's panel as the mail window's own inbox has its list
-  -- (dark window, the panel's border, the paper inside it)
-  local frame = K.panel(panel)
-  frame:SetPoint("TOPLEFT", MARGIN, -58)
-  frame:SetPoint("BOTTOMRIGHT", -MARGIN, MARGIN)
-  local sheet = CreateFrame("Frame", nil, frame)
-  sheet:SetPoint("TOPLEFT", 3, -3)
-  sheet:SetPoint("BOTTOMRIGHT", -3, 3)
-  -- the inbox's own parchment (a file of the game, 530419: the paper fills
-  -- 320 by 356 of its 512 square, stretched over the box as the inbox does),
-  -- the reader's stationery where the game's isn't that file
-  local bg = InboxFrameBg
-  local inbox = bg and ((bg.GetTextureFileID and bg:GetTextureFileID()) or (bg.GetTexture and bg:GetTexture()))
-  if inbox == PARCHMENT then
-    local art = sheet:CreateTexture(nil, "BACKGROUND")
-    art:SetTexture(PARCHMENT)
-    art:SetTexCoord(0, 320 / 512, 0, 356 / 512)
-    art:SetAllPoints()
+  -- Everything below is laid out as the game's inbox lays out its own
+  -- (Blizzard's MailFrame.xml, Classic Era), in its coordinates, from the
+  -- panel's top left: the window's inset at (4, -58), the paper at (7, -62)
+  -- 320 by 356 (the file's 512 square holds it in its top left corner), the
+  -- rows 305 by 45 from (13, -70), the pager's row 114 above the foot.
+  if type(panel.Inset) == "table" and panel.Inset.SetPoint then
+    panel.Inset:Show()
+    panel.Inset:SetPoint("TOPLEFT", 4, -58)
   else
-    local left = sheet:CreateTexture(nil, "BACKGROUND")
-    left:SetTexture(PAPER[1])
-    left:SetPoint("TOPLEFT")
-    left:SetPoint("BOTTOMLEFT")
-    left:SetWidth(math.floor(SHEET_W * 252 / 302 + 0.5))
-    local right = sheet:CreateTexture(nil, "BACKGROUND")
-    right:SetTexture(PAPER[2])
-    right:SetTexCoord(0, 50 / 64, 0, 1)
-    right:SetPoint("TOPLEFT", left, "TOPRIGHT")
-    right:SetPoint("BOTTOMRIGHT")
+    local frame = K.panel(panel)
+    frame:SetPoint("TOPLEFT", 4, -58)
+    frame:SetPoint("BOTTOMRIGHT", -6, 4)
   end
+  local sheet = CreateFrame("Frame", nil, panel)
+  sheet:SetAllPoints()
+  local paper = sheet:CreateTexture(nil, "BACKGROUND")
+  paper:SetTexture("Interface\\MailFrame\\UI-MailFrameBG")
+  paper:SetTexCoord(0, 320 / 512, 0, 356 / 512)
+  paper:SetSize(320, 356)
+  paper:SetPoint("TOPLEFT", 7, -62)
 
   -- the letter, scrolling over it
   local scroll = K.scrollArea(sheet, TEXT_W, "YoursTrulyPanelScroll")
-  scroll:SetPoint("TOPLEFT", 18, -14)
-  scroll:SetPoint("BOTTOMRIGHT", -44, BAR + 4)
+  scroll:SetPoint("TOPLEFT", 21, -76)
+  scroll:SetPoint("TOPRIGHT", sheet, "TOPLEFT", 297, -76)
+  scroll:SetPoint("BOTTOM", sheet, "BOTTOM", 0, 60)
   scroll.thumb:SetColorTexture(INK[1], INK[2], INK[3], 0.35)
   local c = scroll.child
   local place = ink(c, 15)
@@ -194,58 +178,52 @@ local function build()
   local footer = ink(c, 11, FADED, true)
   footer:SetWidth(TEXT_W)
 
-  -- the list, as the inbox has it: a row for each, a page of them, a pager
-  -- and the button to open all at its foot
+  -- the list: a row each, as MailItemTemplate draws one
   local rows = {}
   for i = 1, PER do
     local row = CreateFrame("Button", nil, sheet)
-    row:SetHeight(ROW_H)
-    row:SetPoint("TOPLEFT", 8, -(8 + (i - 1) * ROW_H))
-    row:SetPoint("TOPRIGHT", -8, -(8 + (i - 1) * ROW_H))
-    local light = row:CreateTexture(nil, "HIGHLIGHT")
-    light:SetAllPoints()
-    light:SetColorTexture(1, 1, 1, 0.12)
-    -- the separator the inbox draws under a row: a dark brown rule from the
-    -- slot's right edge, a light one under it
-    local line = row:CreateTexture(nil, "ARTWORK")
-    line:SetPoint("BOTTOMLEFT", 44, 1)
-    line:SetPoint("BOTTOMRIGHT", 0, 1)
-    line:SetHeight(2)
-    line:SetColorTexture(0.38, 0.22, 0.06, 0.85)
-    local lit = row:CreateTexture(nil, "ARTWORK")
-    lit:SetPoint("TOPLEFT", line, "BOTTOMLEFT")
-    lit:SetPoint("TOPRIGHT", line, "BOTTOMRIGHT")
-    lit:SetHeight(1)
-    lit:SetColorTexture(1, 0.9, 0.6, 0.3)
-    -- (the inbox's own slot where the game names it: its empty slot, 64 wide
-    -- on a button of 37, gold as an unread one is; else a flat brown square)
-    local slot = row:CreateTexture(nil, "BORDER")
-    local own = MailItem1ButtonSlot and MailItem1ButtonSlot.GetTexture and MailItem1ButtonSlot:GetTexture()
-    if own then
-      slot:SetTexture(own)
-      slot:SetSize(62, 62)
-      slot:SetVertexColor(1, 0.82, 0)
-    else
-      slot:SetColorTexture(0.28, 0.13, 0.03, 0.9)
-      slot:SetSize(36, 36)
-    end
-    slot:SetPoint("CENTER", row, "LEFT", 20, 0)
+    row:SetSize(305, 45)
+    row:SetPoint("TOPLEFT", 13, -70 - (i - 1) * 45)
+    -- (its border and separator: one file, the slot's bevel and the row's rule)
+    local edge = row:CreateTexture(nil, "BACKGROUND")
+    edge:SetTexture("Interface\\MailFrame\\MailItemBorder")
+    edge:SetSize(42, 48)
+    edge:SetPoint("TOPLEFT")
+    edge:SetTexCoord(0, 0.1640625, 0, 0.75)
+    local rule = row:CreateTexture(nil, "BACKGROUND")
+    rule:SetTexture("Interface\\MailFrame\\MailItemBorder")
+    rule:SetSize(263, 48)
+    rule:SetPoint("TOPRIGHT")
+    rule:SetTexCoord(0.1640625, 1, 0, 0.75)
+    local bar = row:CreateTexture(nil, "BACKGROUND")
+    bar:SetSize(322, 2)
+    bar:SetPoint("TOP", row, "BOTTOM", 0, 2)
+    bar:SetColorTexture(0.33, 0.16, 0, 0.3)
+    -- (the button: its empty slot, 64 on 37, gold as an unread one; the seal in it)
+    local slot = row:CreateTexture(nil, "BACKGROUND")
+    slot:SetTexture("Interface\\Buttons\\UI-EmptySlot-White")
+    slot:SetSize(64, 64)
+    slot:SetPoint("CENTER", row, "TOPLEFT", 22.5, -21.5)
+    slot:SetVertexColor(1, 0.82, 0)
     local seal = row:CreateTexture(nil, "ARTWORK")
     seal:SetTexture(ns.SEAL)
-    seal:SetSize(30, 30)
-    seal:SetPoint("CENTER", row, "LEFT", 20, 0)
-    -- the words as the inbox sets them: the name in the game's gold, the line
-    -- under it white, both shadowed
-    row.name = ink(row, 14, GOLD, true)
-    row.name:SetShadowOffset(1, -1)
-    row.name:SetPoint("TOPLEFT", row, "TOPLEFT", 48, -5)
-    row.name:SetWidth(SHEET_W - 90)
-    row.sub = ink(row, 12, { 1, 1, 1 }, true)
-    row.sub:SetShadowOffset(1, -1)
-    row.sub:SetPoint("TOPLEFT", row.name, "BOTTOMLEFT", 0, -3)
-    row.sub:SetWidth(SHEET_W - 90)
-    row.name:SetMaxLines(1)
-    row.sub:SetMaxLines(1)
+    seal:SetSize(36, 36)
+    seal:SetPoint("TOPLEFT", 4, -3)
+    local light = row:CreateTexture(nil, "HIGHLIGHT")
+    light:SetTexture("Interface\\Buttons\\ButtonHilight-Square")
+    light:SetBlendMode("ADD")
+    light:SetSize(37, 37)
+    light:SetPoint("TOPLEFT", 4, -3)
+    -- (the sender in the game's gold, the subject under it in its small white)
+    row.name = row:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+    row.name:SetSize(200, 16)
+    row.name:SetJustifyH("LEFT")
+    row.name:SetPoint("TOPLEFT", 47, -4)
+    row.sub = row:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
+    row.sub:SetSize(248, 18)
+    row.sub:SetJustifyH("LEFT")
+    row.sub:SetJustifyV("TOP")
+    row.sub:SetPoint("TOPLEFT", row.name, "BOTTOMLEFT", 0, 0)
     row:SetScript("OnClick", function(self)
       if self.id then ns.openInPanel(self.id) end
     end)
@@ -253,34 +231,28 @@ local function build()
     rows[i] = row
   end
 
-  -- an arrow of the pager: the inbox's own button's textures where the game
-  -- names it (its Prev and Next), else the spellbook's page arrows
-  local function arrow(text, art, side, own)
+  -- the pager and the button, as the inbox puts them (a row 114 above the foot)
+  local function arrow(text, art, anchor, x, side)
     local b = CreateFrame("Button", nil, sheet)
-    b:SetSize(28, 28)
-    b:SetPoint("BOTTOM" .. side, side == "LEFT" and 10 or -10, 8)
-    local function of(get, fallback)
-      local t = own and own[get] and own[get](own)
-      local path = t and t.GetTexture and t:GetTexture()
-      return path or fallback
-    end
-    b:SetNormalTexture(of("GetNormalTexture", "Interface\\Buttons\\UI-SpellbookIcon-" .. art .. "-Up"))
-    b:SetPushedTexture(of("GetPushedTexture", "Interface\\Buttons\\UI-SpellbookIcon-" .. art .. "-Down"))
-    b:SetDisabledTexture(of("GetDisabledTexture", "Interface\\Buttons\\UI-SpellbookIcon-" .. art .. "-Disabled"))
-    b:SetHighlightTexture(of("GetHighlightTexture", "Interface\\Buttons\\UI-Common-MouseHilight"), "ADD")
-    if own and own.GetWidth and own:GetWidth() > 0 then b:SetSize(own:GetWidth(), own:GetHeight()) end
-    local fs = ink(b, 13, GOLD, true)
-    fs:SetShadowOffset(1, -1)
+    b:SetSize(32, 32)
+    b:SetPoint("CENTER", panel, anchor, x, 114)
+    b:SetNormalTexture("Interface\\Buttons\\UI-SpellbookIcon-" .. art .. "-Up")
+    b:SetPushedTexture("Interface\\Buttons\\UI-SpellbookIcon-" .. art .. "-Down")
+    b:SetDisabledTexture("Interface\\Buttons\\UI-SpellbookIcon-" .. art .. "-Disabled")
+    b:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight", "ADD")
+    local fs = b:CreateFontString(nil, "ARTWORK", "GameFontNormal")
     fs:SetText(text)
     if side == "LEFT" then
-      fs:SetPoint("LEFT", b, "RIGHT", 4, 0)
+      fs:SetJustifyH("LEFT")
+      fs:SetPoint("LEFT", b, "RIGHT")
     else
-      fs:SetPoint("RIGHT", b, "LEFT", -4, 0)
+      fs:SetJustifyH("RIGHT")
+      fs:SetPoint("RIGHT", b, "LEFT")
     end
     return b
   end
-  local prev = arrow(L["Prev"], "PrevPage", "LEFT", InboxPrevPageButton)
-  local nextPage = arrow(L["Next"], "NextPage", "RIGHT", InboxNextPageButton)
+  local prev = arrow(L["Prev"], "PrevPage", "BOTTOMLEFT", 30, "LEFT")
+  local nextPage = arrow(L["Next"], "NextPage", "BOTTOMLEFT", 305, "RIGHT")
   prev:SetScript("OnClick", function()
     page = page - 1
     list()
@@ -289,17 +261,17 @@ local function build()
     page = page + 1
     list()
   end)
-  local openAll = K.button(sheet, L["Open all"], 130)
-  openAll:SetPoint("BOTTOM", 0, 10)
+  local openAll = K.button(sheet, L["Open all"], 120)
+  openAll:SetPoint("CENTER", panel, "BOTTOM", -21, 114)
   openAll:SetScript("OnClick", function()
     for _, id in ipairs(ns.waiting()) do
       ns.read(id)
     end
     list()
   end)
-  -- the letter open: back to the list
-  local back = K.button(sheet, L["Back"], 90)
-  back:SetPoint("BOTTOMLEFT", 12, 10)
+  -- the letter open: back to the list, where the button stands
+  local back = K.button(sheet, L["Back"], 120)
+  back:SetPoint("CENTER", panel, "BOTTOM", -21, 114)
   back:SetScript("OnClick", function() list() end)
   back:Hide()
 
@@ -318,7 +290,7 @@ local function build()
   local P = ns.panelParts
   P.panel, P.scroll, P.place, P.main, P.signoff, P.ps, P.footer = panel, scroll, place, main, signoff, ps, footer
   P.rows, P.prev, P.next, P.openAll, P.back = rows, prev, nextPage, openAll, back
-  P.sheet, P.frame = sheet, frame
+  P.sheet = sheet
 end
 
 -- The list: each letter waiting, a page at a time.

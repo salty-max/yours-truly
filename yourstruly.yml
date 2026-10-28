@@ -14,11 +14,3 @@ globals:
     any: true
   HasNewMail:
     any: true
-  InboxFrameBg:
-    any: true
-  MailItem1ButtonSlot:
-    any: true
-  InboxPrevPageButton:
-    any: true
-  InboxNextPageButton:
-    any: true
