@@ -1,23 +1,25 @@
--- The panel beside the mail window: shown when a mailbox opens and a letter
--- waits there for this character (never empty), hidden when it closes. A
--- letter comes sealed: its seal, its writer, the place it was written. A click
--- breaks the seal (the game's own page sound) and the letter opens on the inbox's
--- own parchment (file 530419, cropped to its paper) or, where the game has not
--- that file, the reader's paper (Interface\Stationery\StationeryTest1 and 2, drawn
--- 252 + 50 wide: the second's last 14 columns are see-through, cut so the
--- paper reaches the window's edge; stretched to the sheet: stacked, they
--- show a seam), in a panel under the window's title (the inbox's look), in the mail's own face
--- (MailTextFontNormal: Morpheus 15, dark brown), scrolling over the paper as
--- the game's reader does. Taller than the game's reader (its 256 pixels of
--- paper hold a third of a letter): as big as the mail window beside it
--- (the longest letters scroll), the right margin clear of the paper's torn edge. Under it, small:
--- the chain it answers and its zone's count. "Next letter" when another waits.
+-- The panel beside the mail window, the inbox's own look with our content in
+-- it (28 October 2026, the user's call): the window's grey stone,
+-- the kit's panel under the title, the inbox's parchment inside it (file
+-- 530419, cropped to its paper; the reader's stationery, Interface\Stationery\
+-- StationeryTest1 and 2, where the game has not that file), the game's text
+-- face. Shown when a mailbox opens and a letter waits there for this character
+-- (never empty), hidden when it closes.
 --
--- The backlog's bundle (Core: ns.bundle) comes first when there is one: the
--- same seal, "N letters from the road behind you, tied with string". A click
--- unties it: the letters go into the book, sealed, the panel closes and the
--- book opens on the first of them (the user's call, 27 October 2026: no page
--- in between). Fresh letters wait for the next mailbox.
+-- The list, as the inbox lists mail: a row for each (the seal in a slot, the
+-- writer, the place it was written), a page of seven, Prev and Next at the
+-- foot with "Open all" between them (it breaks every seal at once). A click
+-- on a row breaks that seal (the game's page sound) and the letter opens in
+-- the panel, in the mail's own face (MailTextFontNormal, dark brown),
+-- scrolling over the paper as the game's reader does, the chain it answers
+-- and its zone's count under it; Back returns to the list. The panel is as
+-- big as the mail window beside it (the longest letters scroll).
+--
+-- The backlog's bundle (Core: ns.bundle) comes first when there is one, as a
+-- row of its own: "N letters, tied with string". A click unties it: the
+-- letters go into the book, sealed, the panel closes and the book opens on
+-- the first of them (the user's call, 27 October 2026: no page in between).
+-- Fresh letters wait for the next mailbox.
 --
 -- Docked to the mail window: beside the open letter (OpenMailFrame) when one
 -- is open, else where that would stand (beside the inbox). A mailbox addon
@@ -36,7 +38,8 @@ local EDGE = MARGIN + 3 -- (and the panel's own border)
 local SHEET_W, TEXT_W
 local BAR = 36 -- (the sheet's foot: a button, a line, over the paper)
 
-local panel, current
+local panel, current, page = nil, nil, 1
+local ROW_H, PER = 44, 7
 local BUNDLE = "bundle"
 ns.panelParts = {} -- (for the tests)
 
@@ -106,7 +109,7 @@ local function dock()
 end
 
 -- ── the panel ────────────────────────────────────────────────────────────────
-local show
+local show, list
 
 local function build()
   -- as big as the mail window it stands beside
@@ -120,6 +123,7 @@ local function build()
     W, H = math.floor(W + 0.5), math.floor(H + 0.5)
   end
   SHEET_W = W - 2 * EDGE
+  PER = math.min(7, math.max(1, math.floor((H - 58 - MARGIN - 6 - BAR - 8) / ROW_H)))
   TEXT_W = SHEET_W - 18 - 44
   local window = K.gameWindow("YoursTrulyPanel", L["A letter"], ns.ICON)
   panel = window or K.dialog("YoursTrulyPanel", L["A letter"])
@@ -204,61 +208,85 @@ local function build()
   local footer = ink(c, 11, FADED, true)
   footer:SetWidth(TEXT_W)
 
-  -- the envelope: a click breaks the seal
-  local envelope = CreateFrame("Button", "YoursTrulyEnvelope", sheet)
-  envelope:SetAllPoints()
-  -- (the logo's wax seal, on the paper as a seal is)
-  local seal = envelope:CreateTexture(nil, "ARTWORK")
-  seal:SetTexture(ns.SEAL)
-  seal:SetSize(72, 72)
-  seal:SetPoint("CENTER", 0, 70)
-  local from = ink(envelope, 13, FADED, true)
-  from:SetPoint("TOP", seal, "BOTTOM", 0, -20)
-  from:SetWidth(TEXT_W)
-  from:SetJustifyH("CENTER")
-  from:SetText(L["A letter from"])
-  local writer = ink(envelope, 22, nil, true)
-  writer:SetPoint("TOP", from, "BOTTOM", 0, -6)
-  writer:SetWidth(TEXT_W)
-  writer:SetJustifyH("CENTER")
-  local where = ink(envelope, 15, FADED, true)
-  where:SetPoint("TOP", writer, "BOTTOM", 0, -6)
-  where:SetWidth(TEXT_W)
-  where:SetJustifyH("CENTER")
-  local hint = ink(envelope, 12, FADED, true)
-  hint:SetPoint("BOTTOM", envelope, "BOTTOM", 0, BAR + 14)
-  hint:SetWidth(TEXT_W)
-  hint:SetJustifyH("CENTER")
-  hint:SetText(L["Click to break the seal."])
-  envelope:SetScript("OnClick", function()
-    if not current then return end
-    if PlaySound and SOUNDKIT and SOUNDKIT.IG_ABILITY_PAGE_TURN then PlaySound(SOUNDKIT.IG_ABILITY_PAGE_TURN) end
-    if current == BUNDLE then return untie() end
-    ns.read(current)
-    show(current)
-  end)
+  -- the list, as the inbox has it: a row for each, a page of them, a pager
+  -- and the button to open all at its foot
+  local rows = {}
+  for i = 1, PER do
+    local row = CreateFrame("Button", nil, sheet)
+    row:SetHeight(ROW_H)
+    row:SetPoint("TOPLEFT", 8, -(8 + (i - 1) * ROW_H))
+    row:SetPoint("TOPRIGHT", -8, -(8 + (i - 1) * ROW_H))
+    local light = row:CreateTexture(nil, "HIGHLIGHT")
+    light:SetAllPoints()
+    light:SetColorTexture(1, 1, 1, 0.12)
+    local line = row:CreateTexture(nil, "ARTWORK")
+    line:SetPoint("BOTTOMLEFT")
+    line:SetPoint("BOTTOMRIGHT")
+    line:SetHeight(1)
+    line:SetColorTexture(INK[1], INK[2], INK[3], 0.3)
+    local slot = row:CreateTexture(nil, "BORDER")
+    slot:SetSize(36, 36)
+    slot:SetPoint("LEFT", 2, 0)
+    slot:SetColorTexture(0.28, 0.13, 0.03, 0.9)
+    local seal = row:CreateTexture(nil, "ARTWORK")
+    seal:SetTexture(ns.SEAL)
+    seal:SetSize(30, 30)
+    seal:SetPoint("CENTER", slot, "CENTER")
+    row.name = ink(row, 14, nil, true)
+    row.name:SetPoint("TOPLEFT", slot, "TOPRIGHT", 10, -3)
+    row.name:SetWidth(SHEET_W - 90)
+    row.sub = ink(row, 11, FADED, true)
+    row.sub:SetPoint("TOPLEFT", row.name, "BOTTOMLEFT", 0, -3)
+    row.sub:SetWidth(SHEET_W - 90)
+    row:SetScript("OnClick", function(self)
+      if self.id then ns.openInPanel(self.id) end
+    end)
+    row:Hide()
+    rows[i] = row
+  end
 
-  -- the next one, at the paper's foot (over the envelope: its own click)
-  local nextButton = K.button(panel, L["Next letter"], 120)
-  nextButton:SetFrameLevel(envelope:GetFrameLevel() + 2)
-  nextButton:SetPoint("BOTTOMRIGHT", -(EDGE + 44), EDGE + 8)
-  local foot = CreateFrame("Frame", nil, panel)
-  foot:SetAllPoints(sheet)
-  foot:SetFrameLevel(envelope:GetFrameLevel() + 1)
-  local waitingLine = ink(foot, 11, FADED, true)
-  waitingLine:SetPoint("BOTTOMLEFT", 18, 13)
-  -- (the one after this one in the panel, round to the first)
-  nextButton:SetScript("OnClick", function()
-    local q = queue()
-    for i, id in ipairs(q) do
-      if id == current then
-        local after = q[i % #q + 1]
-        if after ~= current then show(after) end
-        return
-      end
+  local GOLD = { 1, 0.82, 0 }
+  local function arrow(text, art, side)
+    local b = CreateFrame("Button", nil, sheet)
+    b:SetSize(28, 28)
+    b:SetPoint("BOTTOM" .. side, side == "LEFT" and 10 or -10, 8)
+    b:SetNormalTexture("Interface\\Buttons\\UI-SpellbookIcon-" .. art .. "-Up")
+    b:SetPushedTexture("Interface\\Buttons\\UI-SpellbookIcon-" .. art .. "-Down")
+    b:SetDisabledTexture("Interface\\Buttons\\UI-SpellbookIcon-" .. art .. "-Disabled")
+    b:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight", "ADD")
+    local fs = ink(b, 13, GOLD, true)
+    fs:SetShadowOffset(1, -1)
+    fs:SetText(text)
+    if side == "LEFT" then
+      fs:SetPoint("LEFT", b, "RIGHT", 4, 0)
+    else
+      fs:SetPoint("RIGHT", b, "LEFT", -4, 0)
     end
-    if q[1] then show(q[1]) end
+    return b
+  end
+  local prev = arrow(L["Prev"], "PrevPage", "LEFT")
+  local nextPage = arrow(L["Next"], "NextPage", "RIGHT")
+  prev:SetScript("OnClick", function()
+    page = page - 1
+    list()
   end)
+  nextPage:SetScript("OnClick", function()
+    page = page + 1
+    list()
+  end)
+  local openAll = K.button(sheet, L["Open all"], 110)
+  openAll:SetPoint("BOTTOM", 0, 10)
+  openAll:SetScript("OnClick", function()
+    for _, id in ipairs(ns.waiting()) do
+      ns.read(id)
+    end
+    list()
+  end)
+  -- the letter open: back to the list
+  local back = K.button(sheet, L["Back"], 90)
+  back:SetPoint("BOTTOMLEFT", 12, 10)
+  back:SetScript("OnClick", function() list() end)
+  back:Hide()
 
   -- (the mail window shown late, a letter opened beside it: the panel moves)
   for _, f in ipairs({ MailFrame, OpenMailFrame }) do
@@ -274,26 +302,56 @@ local function build()
 
   local P = ns.panelParts
   P.panel, P.scroll, P.place, P.main, P.signoff, P.ps, P.footer = panel, scroll, place, main, signoff, ps, footer
-  P.envelope, P.writer, P.where, P.next, P.waiting = envelope, writer, where, nextButton, waitingLine
-  P.from, P.hint, P.sheet, P.frame = from, hint, sheet, frame
+  P.rows, P.prev, P.next, P.openAll, P.back = rows, prev, nextPage, openAll, back
+  P.sheet, P.frame = sheet, frame
 end
 
--- A letter in the panel: sealed (its envelope) or open (its words).
+-- The list: the bundle first, then each letter waiting, a page at a time.
+-- Nothing left to list: the panel closes.
+list = function()
+  local P = ns.panelParts
+  current = nil
+  local q = queue()
+  if #q == 0 then return panel:Hide() end
+  local pages = math.ceil(#q / PER)
+  page = math.max(1, math.min(page, pages))
+  title("Yours Truly")
+  P.scroll:Hide()
+  P.back:Hide()
+  for i, row in ipairs(P.rows) do
+    local id = q[(page - 1) * PER + i]
+    row.id = id
+    row:SetShown(id ~= nil)
+    if id == BUNDLE then
+      local n = #ns.bundle()
+      row.name:SetText(ns.kit.plural(n, "%d letter", "%d letters"):format(n))
+      row.sub:SetText(L["tied with string"])
+    elseif id then
+      row.name:SetText(ns.writer(id))
+      row.sub:SetText(ns.place(id))
+    end
+  end
+  P.prev:SetShown(pages > 1)
+  P.next:SetShown(pages > 1)
+  P.prev:SetEnabled(page > 1)
+  P.next:SetEnabled(page < pages)
+  P.openAll:Show()
+  P.openAll:SetEnabled(#ns.waiting() > 0)
+end
+
+-- A letter opened from its row: the seal broken (the game's page sound) and
+-- its words in the panel; the bundle untied.
+function ns.openInPanel(id)
+  if PlaySound and SOUNDKIT and SOUNDKIT.IG_ABILITY_PAGE_TURN then PlaySound(SOUNDKIT.IG_ABILITY_PAGE_TURN) end
+  if id == BUNDLE then return untie() end
+  ns.read(id)
+  show(id)
+end
+
+-- A letter in the panel, its words.
 show = function(id)
   local P = ns.panelParts
   current = id
-  local q = queue()
-  local others, rest = 0, 0 -- (letters besides this one, and anything besides it)
-  for _, w in ipairs(q) do
-    if w ~= id then
-      rest = rest + 1
-      if w ~= BUNDLE then others = others + 1 end
-    end
-  end
-  P.next:SetShown(rest > 0)
-  P.waiting:SetText(
-    others > 0 and ns.kit.plural(others, "%d more letter waits.", "%d more letters wait."):format(others) or ""
-  )
   local y = 0
   local function lay(fs, text, gap)
     fs:ClearAllPoints()
@@ -306,28 +364,14 @@ show = function(id)
     fs:Show()
     y = y + fs:GetStringHeight() + gap
   end
-  title(id == BUNDLE and L["A bundle of letters"] or L["A letter"])
-  if id == BUNDLE then
-    local n = #ns.bundle()
-    P.scroll:Hide()
-    P.envelope:Show()
-    P.from:SetText(L["From the road behind you"])
-    P.writer:SetText(ns.kit.plural(n, "%d letter", "%d letters"):format(n))
-    P.where:SetText(L["tied with string"])
-    P.hint:SetText(L["Click to untie them."])
-    return
+  title(L["A letter"])
+  for _, row in ipairs(P.rows) do
+    row:Hide()
   end
-  P.from:SetText(L["A letter from"])
-  P.hint:SetText(L["Click to break the seal."])
-  local r = ns.record(id)
-  if not (r and r.read) then
-    P.scroll:Hide()
-    P.envelope:Show()
-    P.writer:SetText(ns.writer(id))
-    P.where:SetText(ns.place(id))
-    return
-  end
-  P.envelope:Hide()
+  P.prev:Hide()
+  P.next:Hide()
+  P.openAll:Hide()
+  P.back:Show()
   P.scroll:Show()
   local t = ns.letter(id)
   if not t then return end
@@ -346,13 +390,14 @@ show = function(id)
   P.scroll:ScrollTo(0)
 end
 
--- At a mailbox: the bundle if there is one, else the oldest letter waiting, sealed.
+-- At a mailbox: the list of what waits there.
 function ns.showPanel()
   local q = queue()
   if #q == 0 then return end
   if not panel then build() end
   dock()
-  show(q[1])
+  page = 1
+  list()
   panel:Show()
 end
 
@@ -361,4 +406,4 @@ function ns.hidePanel()
 end
 
 -- (the letter the panel shows: for the tests)
-function ns.panelLetter() return panel and panel:IsShown() and current or nil end
+function ns.panelLetter() return panel and panel:IsShown() and (current or "list") or nil end

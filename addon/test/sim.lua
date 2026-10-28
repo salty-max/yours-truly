@@ -78,11 +78,13 @@ check(P.panel:GetWidth() == 349 and P.panel:GetHeight() == 437, "the panel as bi
 check(P.panel.point and P.panel.point[4] == -35, "docked against the art, not the frame's empty margin")
 check(ns.mailBadgeShown(), "delivered and unread: the icon still there")
 check(char.letters[IVERRON].delivered, "delivered at the next mailbox")
-check(ns.panelLetter() == IVERRON, "the panel shows it")
+check(ns.panelLetter() == "list", "the panel shows the list")
 check(P.panel.docked, "docked to the mail window")
-check(P.envelope:IsShown() and not P.scroll:IsShown(), "sealed: its envelope")
-check(P.writer:GetText() == ns.writer(IVERRON), "the writer's name on it")
-check(not P.next:IsShown(), "nothing else waits: no next")
+check(P.rows[1]:IsShown() and not P.rows[2]:IsShown(), "one row: the letter")
+check(not P.scroll:IsShown(), "sealed: no words yet")
+check(P.rows[1].name:GetText() == ns.writer(IVERRON), "the writer's name on its row")
+check(P.rows[1].sub:GetText() == ns.place(IVERRON), "the place under it")
+check(not P.next:IsShown() and P.openAll:IsShown(), "one page: no pager, the button to open all")
 -- a letter opened beside it: the panel moves beside that
 OpenMailFrame:Show()
 check(P.panel.point and P.panel.point[2] == OpenMailFrame, "beside the open letter")
@@ -90,14 +92,14 @@ OpenMailFrame:Hide()
 check(P.panel.point and P.panel.point[2] == InboxFrame, "and back beside the inbox")
 -- the seal broken
 G.forget()
-P.envelope.scripts.OnClick(P.envelope)
+P.rows[1].scripts.OnClick(P.rows[1])
 local paged = false
 for _, c in ipairs(s.calls) do
   if c[1] == "PlaySound" and c[2] == SOUNDKIT.IG_ABILITY_PAGE_TURN then paged = true end
 end
 check(paged, "the page's sound")
 check(char.letters[IVERRON].read, "read")
-check(P.scroll:IsShown() and not P.envelope:IsShown(), "open: its words")
+check(ns.panelLetter() == IVERRON and P.scroll:IsShown() and not P.rows[1]:IsShown(), "open: its words")
 local text = P.main:GetText()
 check(text:find("Tester", 1, true) and not text:find("$", 1, true), "the reader's name filled in, no token left")
 check(P.place:GetText() == ns.place(IVERRON), "the place line, the client's name")
@@ -132,18 +134,14 @@ check(#ns.due() == 1 and ns.due()[1] == GAZLOWE, "the bundle's letters aren't in
 G.mailbox(true)
 check(char.letters[GAZLOWE].delivered, "a fresh letter still comes by the post")
 check(not char.letters[GRYAN].delivered, "the bundle not untied yet")
-check(ns.panelLetter() == "bundle", "the bundle first in the panel")
-check(P.writer:GetText():find("5", 1, true), "its count on it")
-check(P.next:IsShown(), "and the fresh letter behind it")
-P.next.scripts.OnClick(P.next)
-check(ns.panelLetter() == GAZLOWE and P.next:IsShown(), "next: the fresh letter, sealed, the bundle still behind it")
-P.next.scripts.OnClick(P.next)
-check(ns.panelLetter() == "bundle", "next: back to the bundle")
+check(ns.panelLetter() == "list" and P.rows[1].id == "bundle", "the bundle first in the list")
+check(P.rows[1].name:GetText():find("5", 1, true), "its count on its row")
+check(P.rows[2]:IsShown() and P.rows[2].id == GAZLOWE, "and the fresh letter's row behind it")
 G.mailbox(false)
 G.mailbox(true)
-check(ns.panelLetter() == "bundle", "the next visit: the bundle still there, untouched")
+check(P.rows[1].id == "bundle", "the next visit: the bundle still there, untouched")
 local firstBundled = ns.bundle()[1]
-P.envelope.scripts.OnClick(P.envelope)
+P.rows[1].scripts.OnClick(P.rows[1])
 check(not P.panel:IsShown(), "untied: the panel closed, no page in between")
 check(
   YoursTrulyFrame and YoursTrulyFrame:IsShown() and YoursTrulyFrame.selectedTab == ns.TAB.letters,
@@ -182,8 +180,8 @@ check(#ns.bundle() == 0 and char.letters[firstBundled].bundled, "and untied once
 YoursTrulyFrame:Hide()
 G.mailbox(false)
 G.mailbox(true)
-check(ns.panelLetter() == GAZLOWE and not P.next:IsShown(), "the next visit: the fresh letter, and nothing behind it")
-P.envelope.scripts.OnClick(P.envelope)
+check(P.rows[1].id == GAZLOWE and not P.rows[2]:IsShown(), "the next visit: the fresh letter, and nothing behind it")
+P.rows[1].scripts.OnClick(P.rows[1])
 check(char.letters[GAZLOWE].read, "its seal broken at the mailbox")
 G.mailbox(false)
 G.mailbox(true)
@@ -206,7 +204,7 @@ play(ns.POST + 1)
 s.noMailFrame = true
 G.mailbox(true)
 check(char.letters[DENALAN].delivered, "delivered without the game's mail window")
-check(ns.panelLetter() == lone and not P.panel.docked, "the panel on its own, the oldest sealed letter first")
+check(P.rows[1].id == lone and not P.panel.docked, "the panel on its own, the oldest sealed letter first")
 G.mailbox(false)
 s.noMailFrame = nil
 -- (a mailbox addon that keeps the game's window open but transparent)
@@ -218,11 +216,11 @@ G.mailbox(false)
 MailFrame:SetAlpha(1)
 -- (a language lacking the chain's name: the footer without it, no error)
 G.mailbox(true)
-local shown = ns.panelLetter()
+local shown = P.rows[1].id
 local q = D.letters[shown].quests[#D.letters[shown].quests]
 local name = ns.questNames[q]
 ns.questNames[q] = nil
-P.envelope.scripts.OnClick(P.envelope)
+P.rows[1].scripts.OnClick(P.rows[1])
 check(
   char.letters[shown].read and not P.footer:GetText():find(name, 1, true),
   "a chain without its name: the footer without it"
@@ -284,9 +282,14 @@ do
   local due = #ns.due()
   G.mailbox(true)
   check(due > 3 and #ns.due() == due - 2, "more than three due: two a visit")
-  check(P.next:IsShown(), "the second behind the first")
-  P.envelope.scripts.OnClick(P.envelope)
-  check(P.next:IsShown(), "the first's seal broken: the second still reachable")
+  check(P.rows[2]:IsShown(), "the second behind the first")
+  local second = P.rows[2].id
+  P.rows[1].scripts.OnClick(P.rows[1])
+  P.back.scripts.OnClick(P.back)
+  check(P.rows[1].id == second, "the first's seal broken: back to the list, the second still there")
+  -- the button breaks every seal left, the list empty and the panel closed
+  P.openAll.scripts.OnClick(P.openAll)
+  check(#ns.waiting() == 0 and not P.panel:IsShown(), "open all: every seal broken, nothing left to list")
   G.mailbox(false)
 end
 for _ = 1, 20 do

@@ -51,18 +51,21 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
   mailbox is the server's, no addon call puts a message in it), so the panel
   beside the mail window stands for the letter, as it did.
 - `Panel.lua`: the panel beside the mail window (`ns.showPanel()`:
-  at a mailbox, with a letter or the
-  backlog's bundle waiting, never empty; `ns.hidePanel` when it closes): the bundle first when there is one, on
-  the envelope's face ("From the road behind you", the count, "tied with
-  string", the window titled a bundle of letters), a click untying it into
-  the book, the panel closing and the book opening on the first of them
-  (no page in between: the user's call, 27 October 2026), "Next letter"
-  going round the bundle and the letters waiting; the sealed envelope (the logo's wax seal, the writer, the
-  place; a click breaks it, the game's page sound), the letter on the mail
-  inbox's own parchment (file 530419 cropped to its paper, in the kit's panel
-  under the title, on the mail window's stone; the reader's stationery, its second sheet's see-through edge cut, where the game has not that file) in its own face, scrolling as the game's reader does,
-  the chain and the zone's count under it, "Next letter" while another
-  waits. Docked beside the open letter (OpenMailFrame) when one is open,
+  at a mailbox, with a letter or the backlog's bundle waiting, never empty;
+  `ns.hidePanel` when it closes), the game's inbox with our content in it
+  (28 October 2026, the user's call): the mail window's stone, the kit's panel
+  under the title, the inbox's parchment inside it (file 530419 cropped to its
+  paper, the reader's stationery where the game has not that file), the game's
+  text face. The list: a row for each (the seal in a slot, the writer, the
+  place), seven to a page, Prev and Next at the foot with "Open all" between
+  them (every seal broken at once); the bundle first when there is one, as a row
+  ("3 letters, tied with string"), a click untying it into the book, the panel
+  closing and the book opening on the first of them (no page in between: the
+  user's call, 27 October 2026). A click on a letter's row breaks its seal (the
+  game's page sound) and the letter opens in the panel in its own face,
+  scrolling as the game's reader does, the chain and the zone's count under it,
+  Back returning to the list. The size is the mail window's visible one.
+  Docked beside the open letter (OpenMailFrame) when one is open,
   else where that would stand (beside InboxFrame); on its own, movable and
   remembered (`panelX`, `panelY`), when a mailbox addon keeps the game's
   mail window hidden.
@@ -129,7 +132,7 @@ in `assets/README.md`.
   in, the mail window, its inbox and open letter, MAIL_SHOW and MAIL_CLOSED,
   the mail's face, the client's area names, race, class and sex) and
   `addon/test/sim.lua`: a letter turned in, its fifteen minutes in the post,
-  the mailbox, the envelope and its seal broken, the tokens filled, the other
+  the mailbox, the list of rows and a seal broken, the tokens filled, the other
   side's letters held back, a neutral writer's, the backlog as one bundle
   untied into the book (and a backlog of one by the post), the panel beside an open letter and alone for a mailbox
   addon, the book's tabs, the achievements, a French, a German and a Spanish
