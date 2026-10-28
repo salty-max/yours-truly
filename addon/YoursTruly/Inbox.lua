@@ -100,16 +100,18 @@ local function build()
   strip:SetFrameLevel(InboxFrame:GetFrameLevel() + 5)
   strip:EnableMouse(true)
   strip:Hide()
-  local bg = strip:CreateTexture(nil, "BACKGROUND")
-  bg:SetAllPoints()
-  bg:SetColorTexture(0.16, 0.11, 0.07, 0.96)
+  -- (the inbox's own parchment, a plain stretch of it, so the rows' slot
+  -- borders sit on paper as the game's do)
+  strip.paper = strip:CreateTexture(nil, "BACKGROUND")
+  strip.paper:SetAllPoints()
+  strip.paper:SetTexture("Interface\\MailFrame\\UI-MailFrameBG")
   for _, e in ipairs({
-    { "BOTTOMLEFT", "BOTTOMRIGHT", nil, 1 },
-    { "TOPLEFT", "BOTTOMLEFT", 1, nil },
-    { "TOPRIGHT", "BOTTOMRIGHT", 1, nil },
+    { "BOTTOMLEFT", "BOTTOMRIGHT", nil, 3 },
+    { "TOPLEFT", "BOTTOMLEFT", 3, nil },
+    { "TOPRIGHT", "BOTTOMRIGHT", 3, nil },
   }) do
     local t = strip:CreateTexture(nil, "BORDER")
-    t:SetColorTexture(0.42, 0.35, 0.23, 1)
+    t:SetColorTexture(0.27, 0.29, 0.33, 1)
     t:SetPoint(e[1])
     t:SetPoint(e[2])
     if e[3] then t:SetWidth(e[3]) end
@@ -153,7 +155,10 @@ function ns.refreshInbox()
   end
   strip:ClearAllPoints()
   strip:SetPoint("TOPLEFT", MailFrame, "BOTTOMLEFT", 0, 8 - GAP)
-  strip:SetSize(PAD * 2 + ROW_W, GAP + n * ROW_H + 4)
+  local w, h = PAD * 2 + ROW_W, GAP + n * ROW_H + 4
+  strip:SetSize(w, h)
+  -- (a stretch of the paper clear of its torn edges, 1:1)
+  strip.paper:SetTexCoord(25 / 512, (25 + w) / 512, 60 / 512, (60 + h) / 512)
   for i = 1, MAX_ROWS do
     if i > n then
       if rows[i] then rows[i]:Hide() end
