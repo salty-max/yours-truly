@@ -18,7 +18,7 @@ local W = K.welcome({
   intro = function()
     return L["Some quest chains change someone's life. When you finish one, the person it changed may write to you, in their own voice, about what happened and what came after."]
       .. "\n\n"
-      .. L["Their letter waits at the next mailbox you open, sealed. Nothing tells you it is coming. Keep every letter in the book."]
+      .. L["Their letter waits at the next mailbox you open, sealed. The mail icon on the minimap tells you when one is waiting. Keep every letter in the book."]
   end,
   profiles = ns.profiles,
   choices = function()
