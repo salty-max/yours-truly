@@ -14,3 +14,5 @@ globals:
     any: true
   HasNewMail:
     any: true
+  InboxFrameBg:
+    any: true

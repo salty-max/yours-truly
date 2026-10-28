@@ -154,7 +154,7 @@ local function build()
   sheet:SetPoint("BOTTOMRIGHT", -3, 3)
   -- the inbox's own parchment where the game names it (InboxFrameBg), else
   -- the reader's stationery
-  local bg = _G.InboxFrameBg
+  local bg = InboxFrameBg
   local inbox = bg and bg.GetTexture and bg:GetTexture()
   if inbox then
     local art = sheet:CreateTexture(nil, "BACKGROUND")
