@@ -20,8 +20,8 @@ local function pending() return #ns.due() > 0 or #ns.waiting() > 0 or #ns.bundle
 -- addon keeps it hidden, our own small icon on the book's button stands in.
 local hooked
 local function gameIcon()
-  local f = _G.MiniMapMailFrame
-  if not f and _G.MinimapCluster and type(MinimapCluster.IndicatorFrame) == "table" then
+  local f = MiniMapMailFrame
+  if not f and MinimapCluster and type(MinimapCluster.IndicatorFrame) == "table" then
     f = MinimapCluster.IndicatorFrame.MailFrame
   end
   if type(f) == "table" and f.Show and f.IsShown then return f end

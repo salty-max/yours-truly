@@ -10,3 +10,9 @@ globals:
     any: true
   InboxFrame_Update:
     any: true
+  MiniMapMailFrame:
+    any: true
+  MinimapCluster:
+    any: true
+  HasNewMail:
+    any: true
