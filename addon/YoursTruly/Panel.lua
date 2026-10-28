@@ -5,7 +5,7 @@
 -- reader's own paper (Interface\Stationery\StationeryTest1 and 2, drawn
 -- 252 + 50 wide: the second's last 14 columns are see-through, cut so the
 -- paper reaches the window's edge; stretched to the sheet: stacked, they
--- show a seam), filling the window's body under its title, in the mail's own face
+-- show a seam), in a panel under the window's title (the inbox's look), in the mail's own face
 -- (MailTextFontNormal: Morpheus 15, dark brown), scrolling over the paper as
 -- the game's reader does. Taller than the game's reader (its 256 pixels of
 -- paper hold a third of a letter): as big as the mail window beside it
@@ -29,7 +29,8 @@ local W, H = 384, 512 -- (the mail window's own size, read again when the panel 
 local PAPER = { "Interface\\Stationery\\StationeryTest1", "Interface\\Stationery\\StationeryTest2" }
 local INK = { 0.18, 0.12, 0.06 }
 local FADED = { 0.40, 0.30, 0.20 }
-local EDGE = 3 -- (the window's frame, its lip about 1.5 wide: the paper reaches it, short of its top under the portrait)
+local MARGIN = 8 -- (the window's frame, as the kit's panels stand in it)
+local EDGE = MARGIN + 3 -- (and the panel's own border)
 local SHEET_W, TEXT_W
 local BAR = 36 -- (the sheet's foot: a button, a line, over the paper)
 
@@ -136,44 +137,24 @@ local function build()
   table.insert(UISpecialFrames, "YoursTrulyPanel")
   panel:Hide()
 
-  -- the paper
-  local sheet = CreateFrame("Frame", nil, panel)
-  sheet:SetPoint("TOPLEFT", EDGE, -64)
-  sheet:SetPoint("BOTTOMRIGHT", -EDGE, EDGE)
-  -- The paper reaches up under the title bar, but not under the portrait:
-  -- two clipped windows onto one sheet of paper, the main one right of the
-  -- portrait, a short one below it (the empty band the portrait left).
-  local PORTRAIT_W, TITLE_H = 66, 36
-  local reach = 64 - TITLE_H
-  local paper = CreateFrame("Frame", nil, panel)
-  paper:SetPoint("TOPLEFT", EDGE, -TITLE_H)
-  paper:SetPoint("BOTTOMRIGHT", -EDGE, EDGE)
-  -- (the sheet's content above the paper: raised before its children exist)
-  sheet:SetFrameLevel(paper:GetFrameLevel() + 2)
-  local function clip(x0, x1, top)
-    local c = CreateFrame("Frame", nil, paper)
-    c:SetPoint("TOPLEFT", paper, "TOPLEFT", x0, -top)
-    c:SetPoint("BOTTOMRIGHT", paper, x1 and "BOTTOMLEFT" or "BOTTOMRIGHT", x1 or 0, 0)
-    if c.SetClipsChildren then c:SetClipsChildren(true) end
-    local left = c:CreateTexture(nil, "BACKGROUND")
-    left:SetTexture(PAPER[1])
-    left:SetPoint("TOPLEFT", paper, "TOPLEFT")
-    left:SetPoint("BOTTOMLEFT", paper, "BOTTOMLEFT")
-    left:SetWidth(math.floor(SHEET_W * 252 / 302 + 0.5))
-    local right = c:CreateTexture(nil, "BACKGROUND")
-    right:SetTexture(PAPER[2])
-    right:SetTexCoord(0, 50 / 64, 0, 1)
-    right:SetPoint("TOPLEFT", left, "TOPRIGHT")
-    right:SetPoint("BOTTOMRIGHT", paper, "BOTTOMRIGHT")
-  end
-  clip(PORTRAIT_W - EDGE, nil, 0)
-  clip(0, PORTRAIT_W - EDGE, reach)
-  -- (a client lacking clipping: the paper stays below the portrait as before)
-  if not paper.SetClipsChildren then
-    paper:ClearAllPoints()
-    paper:SetPoint("TOPLEFT", EDGE, -64)
-    paper:SetPoint("BOTTOMRIGHT", -EDGE, EDGE)
-  end
+  -- the paper, in the kit's panel as the mail window's own inbox has its list
+  -- (dark window, the panel's border, the paper inside it)
+  local frame = K.panel(panel)
+  frame:SetPoint("TOPLEFT", MARGIN, -58)
+  frame:SetPoint("BOTTOMRIGHT", -MARGIN, MARGIN)
+  local sheet = CreateFrame("Frame", nil, frame)
+  sheet:SetPoint("TOPLEFT", 3, -3)
+  sheet:SetPoint("BOTTOMRIGHT", -3, 3)
+  local left = sheet:CreateTexture(nil, "BACKGROUND")
+  left:SetTexture(PAPER[1])
+  left:SetPoint("TOPLEFT")
+  left:SetPoint("BOTTOMLEFT")
+  left:SetWidth(math.floor(SHEET_W * 252 / 302 + 0.5))
+  local right = sheet:CreateTexture(nil, "BACKGROUND")
+  right:SetTexture(PAPER[2])
+  right:SetTexCoord(0, 50 / 64, 0, 1)
+  right:SetPoint("TOPLEFT", left, "TOPRIGHT")
+  right:SetPoint("BOTTOMRIGHT")
 
   -- the letter, scrolling over it
   local scroll = K.scrollArea(sheet, TEXT_W, "YoursTrulyPanelScroll")
@@ -265,7 +246,7 @@ local function build()
   local P = ns.panelParts
   P.panel, P.scroll, P.place, P.main, P.signoff, P.ps, P.footer = panel, scroll, place, main, signoff, ps, footer
   P.envelope, P.writer, P.where, P.next, P.waiting = envelope, writer, where, nextButton, waitingLine
-  P.from, P.hint, P.sheet, P.paper = from, hint, sheet, paper
+  P.from, P.hint, P.sheet, P.frame = from, hint, sheet, frame
 end
 
 -- A letter in the panel: sealed (its envelope) or open (its words).
