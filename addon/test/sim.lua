@@ -59,6 +59,28 @@ check(#ns.due() == 0, "not before fifteen minutes of play")
 play(10)
 check(#ns.due() == 1, "then due")
 G.mailbox(true)
+local R = ns.inboxRows()
+check(
+  R.strip:IsShown() and R[1]:IsShown() and not (R[2] and R[2]:IsShown()),
+  "the letter is one row on the inbox strip, no panel yet"
+)
+check(
+  R[1].name:GetText() == ns.writer(IVERRON) and R[1].subject:GetText() == ns.place(IVERRON),
+  "the writer and the place on it"
+)
+check(not ns.panelLetter(), "the panel waits for a click")
+R[1].scripts.OnEnter(R[1])
+check(
+  GameTooltip.lines[#GameTooltip.lines] == L["Not real mail: it can't be taken, deleted or returned."],
+  "its tooltip says it is not mail"
+)
+InboxFrame.pageNum = 2
+G.inboxUpdate()
+check(not R.strip:IsShown(), "a later page of the inbox: no strip")
+InboxFrame.pageNum = 1
+G.inboxUpdate()
+check(R.strip:IsShown(), "back on the first: the strip again")
+ns.showPanel()
 check(char.letters[IVERRON].delivered, "delivered at the next mailbox")
 check(ns.panelLetter() == IVERRON, "the panel shows it")
 check(P.panel.docked, "docked to the mail window")
@@ -112,6 +134,7 @@ check(#ns.bundle() == 5, "five found: one bundle")
 play(ns.POST + 1)
 check(#ns.due() == 1 and ns.due()[1] == GAZLOWE, "the bundle's letters aren't in the post: only the fresh one is due")
 G.mailbox(true)
+ns.showPanel() -- (a click on the strip's first row)
 check(char.letters[GAZLOWE].delivered, "a fresh letter still comes by the post")
 check(not char.letters[GRYAN].delivered, "the bundle not untied yet")
 check(ns.panelLetter() == "bundle", "the bundle first in the panel")
@@ -123,6 +146,7 @@ P.next.scripts.OnClick(P.next)
 check(ns.panelLetter() == "bundle", "next: back to the bundle")
 G.mailbox(false)
 G.mailbox(true)
+ns.showPanel() -- (a click on the strip's first row)
 check(ns.panelLetter() == "bundle", "the next visit: the bundle still there, untouched")
 local firstBundled = ns.bundle()[1]
 P.envelope.scripts.OnClick(P.envelope)
@@ -157,6 +181,7 @@ char.letters[firstBundled].read = nil
 YoursTrulyFrame:Hide()
 G.mailbox(false)
 G.mailbox(true)
+ns.showPanel() -- (a click on the strip's first row)
 check(ns.panelLetter() == GAZLOWE and not P.next:IsShown(), "the next visit: the fresh letter, and nothing behind it")
 P.envelope.scripts.OnClick(P.envelope)
 check(char.letters[GAZLOWE].read, "its seal broken at the mailbox")
@@ -191,8 +216,42 @@ G.mailbox(true)
 check(ns.panelLetter() and not P.panel.docked, "a transparent mail window: the panel on its own")
 G.mailbox(false)
 MailFrame:SetAlpha(1)
+-- (the screen's top leaving no room above the window: the panel on its own)
+s.mailTop = 760
+G.mailbox(true)
+check(
+  not ns.inboxServes() and ns.panelLetter(),
+  "no room above the mail window: the panel, as when a mailbox addon hides it"
+)
+G.mailbox(false)
+check(not (ns.inboxRows().strip:IsShown()), "the mailbox closed: no strip")
+s.mailTop = nil
+-- (the strip at a mailbox: a row a letter, a click breaks the seal and opens it)
+G.mailbox(true)
+do
+  local q = ns.queue()
+  local R = ns.inboxRows()
+  local shownRows = (R[1] and R[1]:IsShown() and 1 or 0) + (R[2] and R[2]:IsShown() and 1 or 0)
+  check(#q > 0 and shownRows == math.min(#q, 2), "a row each, two at most")
+  if #q > 2 then
+    check(R[2].name:GetText():find(tostring(#q - 1), 1, true), "more than two: the second row counts the rest")
+  end
+  local first = q[1]
+  R[1].scripts.OnClick(R[1])
+  if first ~= "bundle" then
+    check(
+      char.letters[first].read and ns.panelLetter() == first and P.scroll:IsShown(),
+      "a click on a letter's row opens it"
+    )
+    check(#ns.queue() == #q - 1, "and the row goes")
+  else
+    check(ns.panelLetter() == "bundle" and P.envelope:IsShown(), "a click on the bundle's row shows the bundle tied")
+  end
+  G.mailbox(false)
+end
 -- (a language lacking the chain's name: the footer without it, no error)
 G.mailbox(true)
+ns.showPanel() -- (a click on the strip's first row)
 local shown = ns.panelLetter()
 local q = D.letters[shown].quests[#D.letters[shown].quests]
 local name = ns.questNames[q]
@@ -258,6 +317,7 @@ play(ns.POST + 1)
 do
   local due = #ns.due()
   G.mailbox(true)
+  ns.showPanel() -- (a click on the strip's first row)
   check(due > 3 and #ns.due() == due - 2, "more than three due: two a visit")
   check(P.next:IsShown(), "the second behind the first")
   P.envelope.scripts.OnClick(P.envelope)

@@ -8,3 +8,5 @@ globals:
     any: true
   YoursTrulySettings:
     any: true
+  InboxFrame_Update:
+    any: true

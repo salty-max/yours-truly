@@ -28,6 +28,7 @@ Core.lua
 Settings.lua
 Achievements.lua
 Panel.lua
+Inbox.lua
 Book.lua
 LettersBook.lua
 AchievementsBook.lua

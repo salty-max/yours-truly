@@ -2,7 +2,8 @@
 
 A World of Warcraft addon: the people whose quest chains you finished write
 you a letter, in their own voice, about what the chain changed for them. It
-waits at the next mailbox you open, sealed, in a panel beside the game's mail
+waits at the next mailbox you open, sealed, as a row on the game's own inbox
+(never real mail: no addon can make one) opening in a panel beside the mail
 window, and stays in the book. Planned in `../ideas/letters.md` (every call
 the user's, 23 October 2026: its Decided section), the voices and their rules
 in `../ideas/letters-voices.md`. Started 23 October 2026. On GitHub (salty-max/yours-truly, public,

@@ -46,6 +46,7 @@ local function queue()
   if #ns.bundle() > 0 then table.insert(q, 1, BUNDLE) end
   return q
 end
+ns.queue = queue
 
 -- The mail's own face where the client has it, else the books' display face.
 local function ink(parent, size, colour)
@@ -300,14 +301,16 @@ show = function(id)
   P.scroll:ScrollTo(0)
 end
 
--- At a mailbox: the bundle if there is one, else the oldest letter waiting,
--- sealed.
-function ns.showPanel()
+-- At a mailbox with no inbox strip to stand in (Inbox.lua), or from a row of
+-- it: the bundle if there is one, else the oldest letter waiting, sealed (or
+-- the one asked for, its seal broken at once when `open`).
+function ns.showPanel(id, open)
   local q = queue()
   if #q == 0 then return end
   if not panel then build() end
   dock()
-  show(q[1])
+  if open and id and id ~= BUNDLE then ns.read(id) end
+  show(id or q[1])
   panel:Show()
 end
 

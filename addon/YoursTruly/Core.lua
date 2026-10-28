@@ -258,7 +258,10 @@ ns.on("MAIL_SHOW", function()
   visiting = true
   ns.deliver()
   C_Timer.After(0, function()
-    if visiting and (#ns.waiting() > 0 or #ns.bundle() > 0) and ns.showPanel then ns.showPanel() end
+    if not visiting or (#ns.waiting() == 0 and #ns.bundle() == 0) then return end
+    -- (the rows in the game's own inbox, else the panel by itself)
+    if ns.atMailbox and ns.atMailbox() then return end
+    if ns.showPanel then ns.showPanel() end
   end)
   if ns.onChange then ns.onChange() end
 end)

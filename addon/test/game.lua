@@ -25,6 +25,39 @@ MailFrame = CreateFrame("Frame", "MailFrame", UIParent, "ButtonFrameTemplate")
 InboxFrame = CreateFrame("Frame", "InboxFrame", MailFrame)
 InboxFrame.shown = true
 OpenMailFrame = CreateFrame("Frame", "OpenMailFrame", UIParent, "ButtonFrameTemplate")
+-- hooksecurefunc as the game's: a function by name, or a method of a table,
+-- run after the original (the inbox's Update: Forever's is InboxFrame:Update,
+-- Classic Era's the global InboxFrame_Update; G.inboxUpdate redraws it, as
+-- the page buttons do)
+function hooksecurefunc(a, b, c)
+  local tbl, name, f = _G, a, b
+  if type(a) == "table" then
+    tbl, name, f = a, b, c
+  end
+  local orig = tbl[name] or function() end
+  tbl[name] = function(...)
+    local out = orig(...)
+    f(...)
+    return out
+  end
+end
+InboxFrame.pageNum = 1
+-- (the screen 768 high, the mail window's top at 600: room for two rows)
+UIParent.GetTop = function() return 768 end
+MailFrame.GetTop = function() return state.mailTop or 600 end
+if FOREVER then
+  function InboxFrame:Update() end
+else
+  InboxFrame.Update = false -- (the mock's frames answer any capitalised method: Classic Era's has none)
+  function InboxFrame_Update() end
+end
+function G.inboxUpdate()
+  if FOREVER then
+    InboxFrame:Update()
+  else
+    InboxFrame_Update()
+  end
+end
 function G.mailbox(open)
   if open then
     if not state.noMailFrame then MailFrame:Show() end
