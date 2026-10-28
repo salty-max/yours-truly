@@ -185,6 +185,7 @@ for _, name in ipairs({ "read", "untie" }) do
   ns[name] = function(...)
     local out = f(...)
     ns.refreshInbox()
+    if ns.refreshMail then ns.refreshMail() end
     return out
   end
 end

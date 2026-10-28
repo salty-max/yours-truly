@@ -29,6 +29,7 @@ ns.translate({
     ["A Full Satchel"] = "Una cartera llena",
     ["A letter"] = "Una carta",
     ["A letter from"] = "Remitente",
+    ["A letter waits at the mailbox."] = "Una carta espera en el buzón.",
     ["Achievement earned: %s."] = "Logro obtenido: %s.",
     ["Achievement sound"] = "Sonido de logros",
     ["Achievements"] = "Logros",

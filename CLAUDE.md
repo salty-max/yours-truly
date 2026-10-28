@@ -65,7 +65,7 @@ scripts/release.sh --version X.Y.Z [--hold] NOTES.md   # check, tag, push; Actio
 - Letters in plain ASCII in English, no semicolons in any language, 100 to
   150 words of body (terse from 70, a few big to 180), the game's tokens
   only. A translation is stamped against its English.
-- No notice before the mailbox: nothing says a letter is in the post.
+- Notice only by the minimap button's mail icon (28 October 2026, the user's call, lifting the plan's "no notice before the mailbox"): shown once a letter is due, delivered and unread, or a bundle waits. No chat line, no toast.
 - `Kit.lua`, `Media/`, `scripts/root.ts` (and `root.py`), `scripts/locales-lib.ts`, `scripts/package-lib.ts`,
   `i18n/kit/` (the kit's words, translated once), `wow.yml`, `stylua.toml` and
   `addon/test/wowmock.lua` (the tests' game) are the kit's copies: edit addon-kit, then `bun run kit:sync`. The addon's

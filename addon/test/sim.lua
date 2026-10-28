@@ -58,6 +58,7 @@ play(ns.POST - 5)
 check(#ns.due() == 0, "not before fifteen minutes of play")
 play(10)
 check(#ns.due() == 1, "then due")
+check(ns.mailBadgeShown(), "a letter due: the mail icon on the minimap button")
 G.mailbox(true)
 local R = ns.inboxRows()
 check(
@@ -69,6 +70,7 @@ check(
   "the writer and the place on it"
 )
 check(not ns.panelLetter(), "the panel waits for a click")
+check(ns.mailBadgeShown(), "delivered and unread: the icon still there")
 R[1].scripts.OnEnter(R[1])
 check(
   GameTooltip.lines[#GameTooltip.lines] == L["Not real mail: it can't be taken, deleted or returned."],

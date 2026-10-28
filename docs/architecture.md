@@ -116,7 +116,10 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
   degrees, clear of Goodwill's 140, Mealbook's 165 and the siblings'), the
   panel's place when it stands alone (never
   copied). `Welcome.lua`: the kit's welcome page, once per character.
-  `Minimap.lua`: the book's button, as the siblings'.
+  `Minimap.lua`: the book's button, as the siblings'. The game's mail icon (INV_Letter_15) on its
+  corner while a letter is due, delivered and unread, or a bundle waits, and a
+  tooltip line (28 October 2026, the user's call): looked at every 30 seconds
+  and after a letter is read or a bundle untied.
 
 ## Artwork
 

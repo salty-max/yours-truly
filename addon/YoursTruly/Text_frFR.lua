@@ -28,6 +28,7 @@ ns.translate({
     ["A Full Satchel"] = "Une sacoche pleine",
     ["A letter"] = "Une lettre",
     ["A letter from"] = "Expéditeur",
+    ["A letter waits at the mailbox."] = "Une lettre attend à la boîte aux lettres.",
     ["Achievement earned: %s."] = "Haut fait obtenu : %s.",
     ["Achievement sound"] = "Son des hauts faits",
     ["Achievements"] = "Hauts faits",
