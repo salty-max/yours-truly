@@ -46,13 +46,14 @@ local function queue()
   return q
 end
 
--- The mail's own face where the client has it, else the books' display face.
-local function ink(parent, size, colour)
+-- The mail's own face for a letter's words where the client has it, else the books'
+-- display face; plain: the game's own text face, as the inbox's words are.
+local function ink(parent, size, colour, plain)
   local fs = parent:CreateFontString(nil, "OVERLAY")
-  if size == 15 and MailTextFontNormal then
+  if size == 15 and MailTextFontNormal and not plain then
     fs:SetFontObject(MailTextFontNormal)
   else
-    fs:SetFont(K.TITLE_FONT, size, "")
+    fs:SetFont(plain and K.BODY_FONT or K.TITLE_FONT, size, "")
   end
   fs:SetTextColor(unpack(colour or INK))
   fs:SetShadowOffset(0, 0)
@@ -118,6 +119,12 @@ local function build()
   TEXT_W = SHEET_W - 18 - 44
   local window = K.gameWindow("YoursTrulyPanel", L["A letter"], ns.ICON)
   panel = window or K.dialog("YoursTrulyPanel", L["A letter"])
+  -- the body the mail window's own grey stone (the kit darkens it: the inbox
+  -- beside is not dark), read off the game's window where it can be
+  if window and type(window.Bg) == "table" and window.Bg.SetTexture then
+    local stone = MailFrame and type(MailFrame.Bg) == "table" and MailFrame.Bg.GetTexture and MailFrame.Bg:GetTexture()
+    window.Bg:SetTexture(stone or "Interface\\FrameGeneral\\UI-Background-Rock", "REPEAT", "REPEAT")
+  end
   panel:SetSize(W, H)
   panel:SetToplevel(true)
   panel:EnableMouse(true)
@@ -145,16 +152,27 @@ local function build()
   local sheet = CreateFrame("Frame", nil, frame)
   sheet:SetPoint("TOPLEFT", 3, -3)
   sheet:SetPoint("BOTTOMRIGHT", -3, 3)
-  local left = sheet:CreateTexture(nil, "BACKGROUND")
-  left:SetTexture(PAPER[1])
-  left:SetPoint("TOPLEFT")
-  left:SetPoint("BOTTOMLEFT")
-  left:SetWidth(math.floor(SHEET_W * 252 / 302 + 0.5))
-  local right = sheet:CreateTexture(nil, "BACKGROUND")
-  right:SetTexture(PAPER[2])
-  right:SetTexCoord(0, 50 / 64, 0, 1)
-  right:SetPoint("TOPLEFT", left, "TOPRIGHT")
-  right:SetPoint("BOTTOMRIGHT")
+  -- the inbox's own parchment where the game names it (InboxFrameBg), else
+  -- the reader's stationery
+  local bg = _G.InboxFrameBg
+  local inbox = bg and bg.GetTexture and bg:GetTexture()
+  if inbox then
+    local art = sheet:CreateTexture(nil, "BACKGROUND")
+    art:SetTexture(inbox)
+    if bg.GetTexCoord then art:SetTexCoord(bg:GetTexCoord()) end
+    art:SetAllPoints()
+  else
+    local left = sheet:CreateTexture(nil, "BACKGROUND")
+    left:SetTexture(PAPER[1])
+    left:SetPoint("TOPLEFT")
+    left:SetPoint("BOTTOMLEFT")
+    left:SetWidth(math.floor(SHEET_W * 252 / 302 + 0.5))
+    local right = sheet:CreateTexture(nil, "BACKGROUND")
+    right:SetTexture(PAPER[2])
+    right:SetTexCoord(0, 50 / 64, 0, 1)
+    right:SetPoint("TOPLEFT", left, "TOPRIGHT")
+    right:SetPoint("BOTTOMRIGHT")
+  end
 
   -- the letter, scrolling over it
   local scroll = K.scrollArea(sheet, TEXT_W, "YoursTrulyPanelScroll")
@@ -172,7 +190,7 @@ local function build()
   signoff:SetJustifyH("RIGHT")
   local ps = ink(c, 15)
   ps:SetWidth(TEXT_W)
-  local footer = ink(c, 11, FADED)
+  local footer = ink(c, 11, FADED, true)
   footer:SetWidth(TEXT_W)
 
   -- the envelope: a click breaks the seal
@@ -183,20 +201,20 @@ local function build()
   seal:SetTexture(ns.SEAL)
   seal:SetSize(72, 72)
   seal:SetPoint("CENTER", 0, 70)
-  local from = ink(envelope, 13, FADED)
+  local from = ink(envelope, 13, FADED, true)
   from:SetPoint("TOP", seal, "BOTTOM", 0, -20)
   from:SetWidth(TEXT_W)
   from:SetJustifyH("CENTER")
   from:SetText(L["A letter from"])
-  local writer = ink(envelope, 22)
+  local writer = ink(envelope, 22, nil, true)
   writer:SetPoint("TOP", from, "BOTTOM", 0, -6)
   writer:SetWidth(TEXT_W)
   writer:SetJustifyH("CENTER")
-  local where = ink(envelope, 15, FADED)
+  local where = ink(envelope, 15, FADED, true)
   where:SetPoint("TOP", writer, "BOTTOM", 0, -6)
   where:SetWidth(TEXT_W)
   where:SetJustifyH("CENTER")
-  local hint = ink(envelope, 12, FADED)
+  local hint = ink(envelope, 12, FADED, true)
   hint:SetPoint("BOTTOM", envelope, "BOTTOM", 0, BAR + 14)
   hint:SetWidth(TEXT_W)
   hint:SetJustifyH("CENTER")
@@ -216,7 +234,7 @@ local function build()
   local foot = CreateFrame("Frame", nil, panel)
   foot:SetAllPoints(sheet)
   foot:SetFrameLevel(envelope:GetFrameLevel() + 1)
-  local waitingLine = ink(foot, 11, FADED)
+  local waitingLine = ink(foot, 11, FADED, true)
   waitingLine:SetPoint("BOTTOMLEFT", EDGE + 18, EDGE + 13)
   -- (the one after this one in the panel, round to the first)
   nextButton:SetScript("OnClick", function()
