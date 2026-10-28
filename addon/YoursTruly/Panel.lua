@@ -26,13 +26,12 @@
 local _, ns = ...
 local K, L = ns.kit, ns.kit.L
 
-local W, H = 420, 620
+local W, H = 384, 512 -- (the mail window's own size, read again when the panel is built)
 local PAPER = { "Interface\\Stationery\\StationeryTest1", "Interface\\Stationery\\StationeryTest2" }
 local INK = { 0.18, 0.12, 0.06 }
 local FADED = { 0.40, 0.30, 0.20 }
 local EDGE = 3 -- (the window's frame, its lip about 1.5 wide: the paper reaches it, short of its top under the portrait)
-local SHEET_W = W - 2 * EDGE
-local TEXT_W = SHEET_W - 18 - 44
+local SHEET_W, TEXT_W
 local BAR = 36 -- (the sheet's foot: a button, a line, over the paper)
 
 local panel, current
@@ -103,6 +102,12 @@ end
 local show
 
 local function build()
+  -- as big as the mail window it stands beside
+  if MailFrame and MailFrame.GetWidth and MailFrame:GetWidth() > 200 then
+    W, H = math.floor(MailFrame:GetWidth() + 0.5), math.floor(MailFrame:GetHeight() + 0.5)
+  end
+  SHEET_W = W - 2 * EDGE
+  TEXT_W = SHEET_W - 18 - 44
   local window = K.gameWindow("YoursTrulyPanel", L["A letter"], ns.ICON)
   panel = window or K.dialog("YoursTrulyPanel", L["A letter"])
   panel:SetSize(W, H)
