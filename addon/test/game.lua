@@ -25,38 +25,6 @@ MailFrame = CreateFrame("Frame", "MailFrame", UIParent, "ButtonFrameTemplate")
 InboxFrame = CreateFrame("Frame", "InboxFrame", MailFrame)
 InboxFrame.shown = true
 OpenMailFrame = CreateFrame("Frame", "OpenMailFrame", UIParent, "ButtonFrameTemplate")
--- hooksecurefunc as the game's: a function by name, or a method of a table,
--- run after the original (the inbox's Update: Forever's is InboxFrame:Update,
--- Classic Era's the global InboxFrame_Update; G.inboxUpdate redraws it, as
--- the page buttons do)
-function hooksecurefunc(a, b, c)
-  local tbl, name, f = _G, a, b
-  if type(a) == "table" then
-    tbl, name, f = a, b, c
-  end
-  local orig = tbl[name] or function() end
-  tbl[name] = function(...)
-    local out = orig(...)
-    f(...)
-    return out
-  end
-end
-InboxFrame.pageNum = 1
--- (the mail window's foot 300 above the screen's: room for two rows)
-MailFrame.GetBottom = function() return state.mailFoot or 300 end
-if FOREVER then
-  function InboxFrame:Update() end
-else
-  InboxFrame.Update = false -- (the mock's frames answer any capitalised method: Classic Era's has none)
-  function InboxFrame_Update() end
-end
-function G.inboxUpdate()
-  if FOREVER then
-    InboxFrame:Update()
-  else
-    InboxFrame_Update()
-  end
-end
 function G.mailbox(open)
   if open then
     if not state.noMailFrame then MailFrame:Show() end
@@ -71,6 +39,8 @@ end
 -- the minimap's mail icon, the game's own (shown for real mail: HasNewMail)
 MiniMapMailFrame = CreateFrame("Frame", "MiniMapMailFrame", UIParent)
 MiniMapMailFrame:Hide()
+-- (the game's own handler: shown for real mail, hidden otherwise)
+MiniMapMailFrame:SetScript("OnEvent", function(self) self:SetShown(HasNewMail()) end)
 function HasNewMail() return state.newMail == true end
 -- the mail's face (MailTextFontNormal), the game's sounds
 MailTextFontNormal = { GetFont = function() return "Fonts\\MORPHEUS.TTF", 15, "" end }

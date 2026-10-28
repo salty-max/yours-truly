@@ -399,7 +399,7 @@ ns.kit.commands({
     -- unread backlog, to untie the bundle once more)
     retie = function()
       local n = ns.retie()
-      print(ns.kit.plural(n, "%d letter", "%d letters"):format(n))
+      print(ns.PREFIX .. ns.kit.plural(n, "%d letter", "%d letters"):format(n))
     end,
   },
 })

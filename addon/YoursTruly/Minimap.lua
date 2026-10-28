@@ -38,6 +38,8 @@ local function sync()
       if parent and parent.Layout then parent:Layout() end
     elseif not want and f:IsShown() then
       f:Hide()
+      local parent = f.GetParent and f:GetParent()
+      if parent and parent.Layout then parent:Layout() end
     end
   end
   if badge then badge:SetShown(want and not (f and f:IsShown())) end
@@ -50,7 +52,12 @@ local function hookIcon()
   f:HookScript("OnEvent", function() sync() end)
   f:HookScript("OnEnter", function()
     if pending() and GameTooltip:IsOwned(f) then
-      GameTooltip:AddLine(L["A letter waits at the mailbox."], 1, 1, 1)
+      -- (with no real mail the game's own line says "You have mail": ours replaces it)
+      if HasNewMail and HasNewMail() then
+        GameTooltip:AddLine(L["A letter waits at the mailbox."], 1, 1, 1)
+      else
+        GameTooltip:SetText(L["A letter waits at the mailbox."], 1, 1, 1)
+      end
       GameTooltip:Show()
     end
   end)
@@ -92,7 +99,9 @@ function ns.createMinimapButton()
   })
   if M.button then
     badge = M.button:CreateTexture(nil, "OVERLAY")
+    badge:SetDrawLayer("OVERLAY", 2)
     badge:SetTexture("Interface\\Icons\\INV_Letter_15")
+    badge:SetTexCoord(0.08, 0.92, 0.08, 0.92)
     badge:SetSize(16, 16)
     badge:SetPoint("BOTTOMRIGHT", 2, -2)
     badge:Hide()

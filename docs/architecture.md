@@ -50,7 +50,7 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
   read ugly beside the game's own window). A real mail is impossible (the
   mailbox is the server's, no addon call puts a message in it), so the panel
   beside the mail window stands for the letter, as it did.
-- `Panel.lua`: the panel beside the mail window (`ns.showPanel(id, open)`:
+- `Panel.lua`: the panel beside the mail window (`ns.showPanel()`:
   at a mailbox, with a letter or the
   backlog's bundle waiting, never empty; `ns.hidePanel` when it closes): the bundle first when there is one, on
   the envelope's face ("From the road behind you", the count, "tied with
