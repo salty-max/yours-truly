@@ -24,6 +24,7 @@ ns.translate({
     ["A letter"] = "Une lettre",
     ["A letter waits at the mailbox."] = "Une lettre vous attend à la boîte.",
     ["Achievement earned: %s."] = "Haut fait obtenu : %s.",
+    ["Achievement fanfare"] = "Fanfare des hauts faits",
     ["Achievement sound"] = "Son des hauts faits",
     ["Achievements"] = "Hauts faits",
     ["Alert for achievements"] = "Alerte pour les hauts faits",

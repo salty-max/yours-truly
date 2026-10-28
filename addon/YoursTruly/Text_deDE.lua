@@ -25,6 +25,7 @@ ns.translate({
     ["A letter"] = "Ein Brief",
     ["A letter waits at the mailbox."] = "Ein Brief wartet am Briefkasten.",
     ["Achievement earned: %s."] = "Erfolg errungen: %s.",
+    ["Achievement fanfare"] = "Erfolgsfanfare",
     ["Achievement sound"] = "Erfolgsklang",
     ["Achievements"] = "Erfolge",
     ["Alert for achievements"] = "Meldung für Erfolge",
