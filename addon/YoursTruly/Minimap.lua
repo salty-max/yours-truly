@@ -42,7 +42,9 @@ local function sync()
       if parent and parent.Layout then parent:Layout() end
     end
   end
-  if badge then badge:SetShown(want and not (f and f:IsShown())) end
+  -- (drawn: a minimap addon may keep the icon hidden by a hidden parent)
+  local drawn = f ~= nil and (f.IsVisible and f:IsVisible() or (not f.IsVisible and f:IsShown()))
+  if badge then badge:SetShown(want and not drawn) end
 end
 
 local function hookIcon()
