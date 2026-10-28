@@ -27,6 +27,7 @@ local K, L = ns.kit, ns.kit.L
 
 local W, H = 384, 512 -- (the mail window's own size, read again when the panel is built)
 local PAPER = { "Interface\\Stationery\\StationeryTest1", "Interface\\Stationery\\StationeryTest2" }
+local PARCHMENT = 530419 -- (the inbox's list paper)
 local INK = { 0.18, 0.12, 0.06 }
 local FADED = { 0.40, 0.30, 0.20 }
 local MARGIN = 8 -- (the window's frame, as the kit's panels stand in it)
@@ -152,14 +153,18 @@ local function build()
   local sheet = CreateFrame("Frame", nil, frame)
   sheet:SetPoint("TOPLEFT", 3, -3)
   sheet:SetPoint("BOTTOMRIGHT", -3, 3)
-  -- the inbox's own parchment where the game names it (InboxFrameBg), else
-  -- the reader's stationery
+  -- the inbox's own parchment (a file of the game, 530419: the paper fills
+  -- 320 by 356 of its 512 square, stretched over the box as the inbox does)
   local bg = InboxFrameBg
   local inbox = bg and bg.GetTexture and bg:GetTexture()
   if inbox then
     local art = sheet:CreateTexture(nil, "BACKGROUND")
     art:SetTexture(inbox)
-    if bg.GetTexCoord then art:SetTexCoord(bg:GetTexCoord()) end
+    if inbox == PARCHMENT then
+      art:SetTexCoord(0, 320 / 512, 0, 356 / 512)
+    elseif bg.GetTexCoord then
+      art:SetTexCoord(bg:GetTexCoord())
+    end
     art:SetAllPoints()
   else
     local left = sheet:CreateTexture(nil, "BACKGROUND")

@@ -69,6 +69,7 @@ MiniMapMailFrame.scripts.OnEvent(MiniMapMailFrame, "UPDATE_PENDING_MAIL")
 check(MiniMapMailFrame:IsShown(), "the real mail gone, a letter still waiting: still shown")
 -- the mail window as the old client draws it: 384x512, its art short of the frame
 MailFrame:SetSize(384, 512)
+InboxFrameBg = { GetTexture = function() return 530419 end } -- (the inbox's own parchment)
 for _, f in ipairs({ MailFrame, InboxFrame, OpenMailFrame }) do
   f.GetHitRectInsets = function() return 0, 35, 0, 75 end
 end
