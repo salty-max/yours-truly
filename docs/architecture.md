@@ -110,6 +110,7 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
   when it came and its zone's count; a letter left sealed opens there too
   (the kit's button, "Break the seal"). Letters in the post never show. `AchievementsBook.lua`: the
   kit's board over both panels.
+- `/yourstruly retie` (a test aid, not in the usage): the untied bundle tied again, its letters back as unread backlog, to untie it once more (`ns.retie`, Core.lua).
 - `Settings.lua`: each character's settings, the kit's profiles (a code
   `YT1:...`, `/yourstruly export`, `/yourstruly import CODE`, the alert a
   `v`): the achievements' alert, the minimap button and its place (115

@@ -169,6 +169,21 @@ function ns.untie()
   return #bundle
 end
 
+-- The untied bundle tied again (/yourstruly retie, to test it once more): its
+-- letters back in the post as backlog, sealed and not delivered.
+function ns.retie()
+  local n = 0
+  for _, r in pairs(char.letters) do
+    if r.bundled then
+      r.delivered, r.bundled, r.read = nil, nil, nil
+      n = n + 1
+    end
+  end
+  if n > 0 and ns.onChange then ns.onChange() end
+  if ns.refreshMail then ns.refreshMail() end
+  return n
+end
+
 -- In the post, their time up: the next mailbox may deliver them, oldest first
 -- (the bundle's letters aren't: they come together).
 function ns.due()
@@ -381,6 +396,12 @@ ns.kit.commands({
   commands = {
     achievements = function()
       if ns.openMilestones then ns.openMilestones() end
+    end,
+    -- (a test aid, not in the usage: the bundled letters tied up again, as
+    -- unread backlog, to untie the bundle once more)
+    retie = function()
+      local n = ns.retie()
+      print(ns.kit.plural(n, "%d letter", "%d letters"):format(n))
     end,
   },
 })

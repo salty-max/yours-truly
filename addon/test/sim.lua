@@ -186,6 +186,13 @@ check(
   "the letter in the book: the kit's voice, signed, no aside"
 )
 char.letters[firstBundled].read = nil
+-- (a test aid: the bundle tied again, then untied as before)
+check(
+  ns.retie() >= 2 and #ns.bundle() >= 2 and not char.letters[firstBundled].bundled,
+  "retie: the bundle is there again"
+)
+ns.untie()
+check(#ns.bundle() == 0 and char.letters[firstBundled].bundled, "and untied once more")
 YoursTrulyFrame:Hide()
 G.mailbox(false)
 G.mailbox(true)
