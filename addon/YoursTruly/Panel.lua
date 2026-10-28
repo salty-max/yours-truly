@@ -4,7 +4,8 @@
 -- stone and inset, the inbox's paper (Interface\MailFrame\UI-MailFrameBG,
 -- 320 by 356 in the top left of its 512 square), a row as MailItemTemplate
 -- draws one (MailItemBorder, the slot, GameFontNormal over
--- GameFontHighlightSmall), the pager and the button 114 above the foot. Shown
+-- GameFontHighlightSmall), the pager and the button 114 above the foot
+-- (Forever's MailFrame.xml, the same paper and rows: its pager at the foot). Shown
 -- when a mailbox opens and a letter waits there for this character (never
 -- empty), hidden when it closes.
 --
@@ -232,10 +233,17 @@ local function build()
   end
 
   -- the pager and the button, as the inbox puts them (a row 114 above the foot)
+  -- (Forever's inbox puts them at the foot instead: its Prev at (14, 10) of the
+  -- window's bottom left, its Next at (-14, 10) of its bottom right, the
+  -- button's centre 26 above the middle of the foot)
   local function arrow(text, art, anchor, x, side)
     local b = CreateFrame("Button", nil, sheet)
     b:SetSize(32, 32)
-    b:SetPoint("CENTER", panel, anchor, x, 114)
+    if ns.forever then
+      b:SetPoint(anchor, panel, anchor, side == "LEFT" and 14 or -14, 10)
+    else
+      b:SetPoint("CENTER", panel, anchor, x, 114)
+    end
     b:SetNormalTexture("Interface\\Buttons\\UI-SpellbookIcon-" .. art .. "-Up")
     b:SetPushedTexture("Interface\\Buttons\\UI-SpellbookIcon-" .. art .. "-Down")
     b:SetDisabledTexture("Interface\\Buttons\\UI-SpellbookIcon-" .. art .. "-Disabled")
@@ -252,7 +260,7 @@ local function build()
     return b
   end
   local prev = arrow(L["Prev"], "PrevPage", "BOTTOMLEFT", 30, "LEFT")
-  local nextPage = arrow(L["Next"], "NextPage", "BOTTOMLEFT", 305, "RIGHT")
+  local nextPage = arrow(L["Next"], "NextPage", ns.forever and "BOTTOMRIGHT" or "BOTTOMLEFT", 305, "RIGHT")
   prev:SetScript("OnClick", function()
     page = page - 1
     list()
@@ -261,8 +269,12 @@ local function build()
     page = page + 1
     list()
   end)
+  local footX, footY = -21, 114
+  if ns.forever then
+    footX, footY = 0, 26
+  end
   local openAll = K.button(sheet, L["Open all"], 120)
-  openAll:SetPoint("CENTER", panel, "BOTTOM", -21, 114)
+  openAll:SetPoint("CENTER", panel, "BOTTOM", footX, footY)
   openAll:SetScript("OnClick", function()
     for _, id in ipairs(ns.waiting()) do
       ns.read(id)
@@ -271,7 +283,7 @@ local function build()
   end)
   -- the letter open: back to the list, where the button stands
   local back = K.button(sheet, L["Back"], 120)
-  back:SetPoint("CENTER", panel, "BOTTOM", -21, 114)
+  back:SetPoint("CENTER", panel, "BOTTOM", footX, footY)
   back:SetScript("OnClick", function() list() end)
   back:Hide()
 
