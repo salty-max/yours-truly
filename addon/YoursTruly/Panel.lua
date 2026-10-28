@@ -8,9 +8,8 @@
 -- show a seam), filling the window's body under its title, in the mail's own face
 -- (MailTextFontNormal: Morpheus 15, dark brown), scrolling over the paper as
 -- the game's reader does. Taller than the game's reader (its 256 pixels of
--- paper hold a third of a letter): 420 by 620 holds the longest whole, for a
--- screenshot (rendered with the game's paper, 23 October 2026), the right
--- margin clear of the paper's torn edge. Under it, small:
+-- paper hold a third of a letter): as big as the mail window beside it
+-- (the longest letters scroll), the right margin clear of the paper's torn edge. Under it, small:
 -- the chain it answers and its zone's count. "Next letter" when another waits.
 --
 -- The backlog's bundle (Core: ns.bundle) comes first when there is one: the
@@ -104,7 +103,13 @@ local show
 local function build()
   -- as big as the mail window it stands beside
   if MailFrame and MailFrame.GetWidth and MailFrame:GetWidth() > 200 then
-    W, H = math.floor(MailFrame:GetWidth() + 0.5), math.floor(MailFrame:GetHeight() + 0.5)
+    W, H = MailFrame:GetWidth(), MailFrame:GetHeight()
+    -- (the old art doesn't fill the frame: its hit rect is the window you see)
+    if MailFrame.GetHitRectInsets then
+      local l, r, t, b = MailFrame:GetHitRectInsets()
+      W, H = W - (l or 0) - (r or 0), H - (t or 0) - (b or 0)
+    end
+    W, H = math.floor(W + 0.5), math.floor(H + 0.5)
   end
   SHEET_W = W - 2 * EDGE
   TEXT_W = SHEET_W - 18 - 44
@@ -141,6 +146,8 @@ local function build()
   local paper = CreateFrame("Frame", nil, panel)
   paper:SetPoint("TOPLEFT", EDGE, -TITLE_H)
   paper:SetPoint("BOTTOMRIGHT", -EDGE, EDGE)
+  -- (the sheet's content above the paper: raised before its children exist)
+  sheet:SetFrameLevel(paper:GetFrameLevel() + 2)
   local function clip(x0, x1, top)
     local c = CreateFrame("Frame", nil, paper)
     c:SetPoint("TOPLEFT", paper, "TOPLEFT", x0, -top)
