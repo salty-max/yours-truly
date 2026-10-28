@@ -51,21 +51,22 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
   server's and no addon call puts a message in it, so the rows are ours and
   say so (their tooltip: not real mail, it can't be taken, deleted or
   returned). A strip (`YoursTrulyInbox`, a child of InboxFrame, so it goes
-  with the Send Mail tab and the closing mailbox) stands on the mail window's
-  top edge, a row each (the bundle first, then each letter waiting, two rows
+  with the Send Mail tab and the closing mailbox) hangs from the mail window's
+  foot, a row each (the bundle first, then each letter waiting, two rows
   at most: a second row reading "N more letters wait." opens the rest in the
   panel), the mail rows' own border (`Interface\MailFrame\MailItemBorder`,
   the template's texcoords), the seal for the icon, the writer's name and the
-  place. It sits above the window because inside there is no room: the game's
+  place. It hangs under the window because inside there is no room (and above, on
+  Classic Era, stand the player's and target's frames, which it would hide): the game's
   7 rows of 45 pixels fill it down to the page buttons, and moving them breaks
   paging and the mail addons that hang off them (Postal's checkboxes). It
-  moves, covers and replaces nothing of the game's. First page only (`pageNum`);
+  moves and replaces nothing of the game's. First page only (`pageNum`);
   redrawn through `hooksecurefunc` on the inbox's Update (Classic Era: the
   global `InboxFrame_Update`, Forever: `InboxFrame:Update`, which the page
   buttons call) and InboxFrame's OnShow, and after `ns.read` and `ns.untie`.
   A click on a letter's row breaks its seal and opens it in the panel
   (`ns.showPanel(id, true)`), on the bundle's shows the bundle tied. Fewer rows
-  where the screen's top leaves no room above the window (`room()`), none if
+  where the screen's foot leaves no room under the window (`room()`), none if
   there is none: then, like a mailbox addon hiding the window or making it
   transparent (`ns.inboxServes()` false), the panel stands by itself as it did
   (Core's visit, `ns.atMailbox`). No other addon's code is touched.

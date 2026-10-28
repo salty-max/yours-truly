@@ -1,30 +1,32 @@
--- The letters in the game's own inbox: a strip of rows sitting on the mail
--- window's top edge, one row for each letter waiting at the mailbox (the
+-- The letters in the game's own inbox: a strip of rows hanging from the mail
+-- window's foot, one row for each letter waiting at the mailbox (the
 -- backlog's bundle one row), drawn in the mail rows' own look: the envelope's
 -- seal, the writer, the place. A click opens it in the panel beside the mail
 -- window (Panel.lua). A real mail can't be made by an addon (the mailbox is the
 -- server's, no API puts a message in it), so these are never mail: they can't
 -- be taken, deleted or returned, and the row's tooltip says so.
 --
--- Nothing of the game's is moved, covered or replaced: the strip is a frame of
--- ours, a child of InboxFrame (so it goes with the Send Mail tab and the
--- mailbox closing), standing above MailFrame where the window has no room
--- inside (its rows fill it down to the page buttons, 7 of 45 pixels). Both
--- clients keep the names it hangs from: InboxFrame, its pageNum, and an Update
--- (Classic Era: the global InboxFrame_Update, Forever: InboxFrame:Update, the
--- paging's buttons calling it), hooked with hooksecurefunc so the game's own
--- code and a mail addon's run unchanged. The strip shows on the first page
--- only, two rows at most (a third and more: "N more letters" opening the
--- panel's queue), fewer where the screen's top leaves no room.
+-- Nothing of the game's is moved or replaced: the strip is a frame of ours, a
+-- child of InboxFrame (so it goes with the Send Mail tab and the mailbox
+-- closing), standing under MailFrame because the window has no room inside
+-- (its rows fill it down to the page buttons, 7 of 45 pixels). Not above it:
+-- on Classic Era the player's and the target's frames stand there, which a
+-- strip would hide and take the clicks of. Both clients keep the names it
+-- hangs from: InboxFrame, its pageNum, and an Update (Classic Era: the global
+-- InboxFrame_Update, Forever: InboxFrame:Update, the paging's buttons calling
+-- it), hooked with hooksecurefunc so the game's own code and a mail addon's
+-- run unchanged. The strip shows on the first page only, two rows at most (a
+-- third and more: "N more letters" opening the panel's queue), fewer where the
+-- screen's foot leaves no room.
 --
 -- Where the strip can't stand (no InboxFrame, a mailbox addon that hides the
--- game's window, no room above it) the panel stands by itself as before
--- (ns.inboxServes, the mailbox's visit).
+-- game's window, no room under it, the inbox left on a later page) the panel
+-- stands by itself as before (ns.atMailbox, the mailbox's visit).
 local _, ns = ...
 local L = ns.kit.L
 
 local ROW_W, ROW_H = 305, 45
-local PAD, GAP = 13, 8 -- (the rows' left, as the game's: the strip's rise over the window's top)
+local PAD, GAP = 13, 8 -- (the rows' left, as the game's: the strip's gap under the window's foot)
 local MAX_ROWS = 2
 
 local strip
@@ -34,11 +36,11 @@ local function mailShown()
   return MailFrame and MailFrame:IsVisible() and (MailFrame:GetAlpha() or 1) > 0 and InboxFrame ~= nil
 end
 
--- How many rows the screen's top leaves room for above the window.
+-- How many rows the screen's foot leaves room for under the window.
 local function room()
-  local top, screen = MailFrame.GetTop and MailFrame:GetTop(), UIParent.GetTop and UIParent:GetTop()
-  if not (top and screen) then return MAX_ROWS end
-  return math.max(0, math.min(MAX_ROWS, math.floor((screen - top - GAP - 6) / ROW_H)))
+  local foot = MailFrame.GetBottom and MailFrame:GetBottom()
+  if not foot then return MAX_ROWS end
+  return math.max(0, math.min(MAX_ROWS, math.floor((foot - GAP - 8) / ROW_H)))
 end
 
 -- The strip can stand: the game's window is up and the screen has room.
@@ -50,7 +52,7 @@ local function row(i)
   if rows[i] then return rows[i] end
   local b = CreateFrame("Button", "YoursTrulyInboxRow" .. i, strip)
   b:SetSize(ROW_W, ROW_H)
-  b:SetPoint("TOPLEFT", PAD, -(6 + (i - 1) * ROW_H))
+  b:SetPoint("TOPLEFT", PAD, -(GAP + (i - 1) * ROW_H))
   b:RegisterForClicks("LeftButtonUp")
   local left = b:CreateTexture(nil, "BACKGROUND")
   left:SetTexture("Interface\\MailFrame\\MailItemBorder")
@@ -102,7 +104,7 @@ local function build()
   bg:SetAllPoints()
   bg:SetColorTexture(0.16, 0.11, 0.07, 0.96)
   for _, e in ipairs({
-    { "TOPLEFT", "TOPRIGHT", nil, 1 },
+    { "BOTTOMLEFT", "BOTTOMRIGHT", nil, 1 },
     { "TOPLEFT", "BOTTOMLEFT", 1, nil },
     { "TOPRIGHT", "BOTTOMRIGHT", 1, nil },
   }) do
@@ -150,8 +152,8 @@ function ns.refreshInbox()
     return
   end
   strip:ClearAllPoints()
-  strip:SetPoint("BOTTOMLEFT", MailFrame, "TOPLEFT", 0, GAP - 8)
-  strip:SetSize(PAD * 2 + ROW_W, 6 + n * ROW_H + 2)
+  strip:SetPoint("TOPLEFT", MailFrame, "BOTTOMLEFT", 0, 8 - GAP)
+  strip:SetSize(PAD * 2 + ROW_W, GAP + n * ROW_H + 4)
   for i = 1, MAX_ROWS do
     if i > n then
       if rows[i] then rows[i]:Hide() end
@@ -192,7 +194,9 @@ end
 function ns.atMailbox()
   hook()
   ns.refreshInbox()
-  return ns.inboxServes()
+  -- (served only if a strip is up: the inbox left on page 2 shows none, and
+  -- the panel must then stand by itself, or the letter comes with nothing seen)
+  return ns.inboxServes() and strip ~= nil and strip:IsShown()
 end
 
 -- (the window hides with the mailbox, the strip a child of it: this is for a

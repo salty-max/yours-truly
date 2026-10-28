@@ -42,9 +42,8 @@ function hooksecurefunc(a, b, c)
   end
 end
 InboxFrame.pageNum = 1
--- (the screen 768 high, the mail window's top at 600: room for two rows)
-UIParent.GetTop = function() return 768 end
-MailFrame.GetTop = function() return state.mailTop or 600 end
+-- (the mail window's foot 300 above the screen's: room for two rows)
+MailFrame.GetBottom = function() return state.mailFoot or 300 end
 if FOREVER then
   function InboxFrame:Update() end
 else

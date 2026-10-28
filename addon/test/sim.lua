@@ -216,16 +216,22 @@ G.mailbox(true)
 check(ns.panelLetter() and not P.panel.docked, "a transparent mail window: the panel on its own")
 G.mailbox(false)
 MailFrame:SetAlpha(1)
--- (the screen's top leaving no room above the window: the panel on its own)
-s.mailTop = 760
+-- (the screen's foot leaving no room under the window: the panel on its own)
+s.mailFoot = 40
 G.mailbox(true)
 check(
   not ns.inboxServes() and ns.panelLetter(),
-  "no room above the mail window: the panel, as when a mailbox addon hides it"
+  "no room under the mail window: the panel, as when a mailbox addon hides it"
 )
 G.mailbox(false)
 check(not (ns.inboxRows().strip:IsShown()), "the mailbox closed: no strip")
-s.mailTop = nil
+s.mailFoot = nil
+-- (the inbox left on page 2: no strip, so the panel stands and the letter is not lost)
+InboxFrame.pageNum = 2
+G.mailbox(true)
+check(ns.panelLetter(), "a mailbox on page 2 of the inbox: the panel stands, not nothing")
+G.mailbox(false)
+InboxFrame.pageNum = 1
 -- (the strip at a mailbox: a row a letter, a click breaks the seal and opens it)
 G.mailbox(true)
 do
