@@ -9,8 +9,9 @@ letters from the people you helped.
   dead, Gazlowe, who still owes you. Each in their own voice, about what
   happened and what came after.
 - **The mailbox.** The letter spends a little while in the post, then waits
-  at the next mailbox you open, sealed, beside the game's mail window. Click
-  to break the seal. Nothing tells you it's coming.
+  at the next mailbox you open, sealed, beside the game's mail window, a row each
+  as the game's inbox lists mail. Click one to break its seal, or open them
+  all at once.
 - **The book.** Every letter you receive, kept: who wrote, from where, the
   chain it answers. A few achievements along the way.
 

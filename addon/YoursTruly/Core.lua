@@ -14,8 +14,8 @@
 --                     at, level,  when, and the character's level then
 --                     backlog,    true: found done at a login, not turned in
 --                     delivered,  when it reached a mailbox (or the book)
---                     bundled,    true: came in the backlog's bundle,
---                                 straight into the book
+--                     bundled,    true: an old save's bundle letter, straight
+--                                 into the book (no bundle any more)
 --                     read }      when its seal was broken
 --     milestones[id] = { at, level, retro }   (Achievements.lua)
 --   YoursTrulySettings (SavedVariables): each character's settings, the kit's
@@ -112,11 +112,11 @@ function ns.post(id, backlog)
 end
 
 -- The letters earned before (the addon newly on, off for a while, or a new
--- wave of letters for chains already done): found at the login, quietly. One
--- alone goes by the post's rule. Two or more come as one bundle at the next
--- mailbox, with no wait: untied, they go into the book, sealed, to open
--- there when the player likes (ns.bundle, ns.untie). A level 60 installing
--- the addon gets one bundle, not a dozen visits of old news.
+-- wave of letters for chains already done): found at the login, quietly, and
+-- all of them at the next mailbox, with no wait: a row each in the panel, the
+-- seals broken one by one or all at once (the user's call, 28 October 2026:
+-- no bundle). A level 60 installing the addon gets one long list, not a dozen
+-- visits of old news.
 function ns.catchUp()
   for _, id in ipairs(ns.letters()) do
     if not char.letters[id] and earned(D.letters[id]) then ns.post(id, true) end
@@ -147,52 +147,22 @@ local function older(a, b)
   return a < b
 end
 
--- The bundle: the backlog's letters not yet delivered, when there are two or
--- more (one alone is a letter like any other), in the chains' order.
-function ns.bundle()
+-- The backlog's letters not yet delivered, in the chains' order.
+function ns.backlog()
   local out = {}
   for id, r in pairs(char.letters) do
     if D.letters[id] and r.backlog and not r.delivered then table.insert(out, id) end
   end
-  if #out < 2 then return {} end
   table.sort(out, older)
   return out
 end
--- Untied: every letter of the bundle in the book, sealed.
-function ns.untie()
-  local bundle = ns.bundle()
-  for _, id in ipairs(bundle) do
-    local r = char.letters[id]
-    r.delivered, r.bundled = time(), true
-  end
-  if #bundle > 0 and ns.onChange then ns.onChange() end
-  return #bundle
-end
-
--- The untied bundle tied again (/yourstruly retie, to test it once more): its
--- letters back in the post as backlog, sealed and not delivered.
-function ns.retie()
-  local n = 0
-  for _, r in pairs(char.letters) do
-    if r.bundled then
-      r.delivered, r.bundled, r.read = nil, nil, nil
-      n = n + 1
-    end
-  end
-  if n > 0 and ns.onChange then ns.onChange() end
-  if ns.refreshMail then ns.refreshMail() end
-  return n
-end
 
 -- In the post, their time up: the next mailbox may deliver them, oldest first
--- (the bundle's letters aren't: they come together).
+-- (the backlog's aren't: they all come at the first mailbox).
 function ns.due()
-  local out, bundled = {}, {}
-  for _, id in ipairs(ns.bundle()) do
-    bundled[id] = true
-  end
+  local out = {}
   for id, r in pairs(char.letters) do
-    if D.letters[id] and not r.delivered and not bundled[id] and char.played - r.posted >= ns.POST then
+    if D.letters[id] and not r.delivered and not r.backlog and char.played - r.posted >= ns.POST then
       table.insert(out, id)
     end
   end
@@ -208,7 +178,7 @@ function ns.inThePost()
   return n
 end
 -- Delivered to the mailbox, the seal unbroken: the oldest delivered first
--- (a bundle's letters wait in the book, not at the mailbox).
+-- (an old save's bundle letters wait in the book, not at the mailbox).
 function ns.waiting()
   local out = {}
   for id, r in pairs(char.letters) do
@@ -242,14 +212,21 @@ function ns.readCount()
   return n
 end
 
--- A mailbox opened: one letter of those due, two when more than three are.
+-- A mailbox opened: the whole backlog, and one letter of those due, two when
+-- more than three are.
 function ns.deliver()
-  local due = ns.due()
-  local n = #due > 3 and 2 or math.min(#due, 1)
-  for i = 1, n do
-    char.letters[due[i]].delivered = time()
+  local now = time()
+  local n = 0
+  for _, id in ipairs(ns.backlog()) do
+    char.letters[id].delivered = now
+    n = n + 1
   end
-  return n
+  local due = ns.due()
+  local more = #due > 3 and 2 or math.min(#due, 1)
+  for i = 1, more do
+    char.letters[due[i]].delivered = now
+  end
+  return n + more
 end
 
 -- The seal broken.
@@ -273,7 +250,7 @@ ns.on("MAIL_SHOW", function()
   visiting = true
   ns.deliver()
   C_Timer.After(0, function()
-    if not visiting or (#ns.waiting() == 0 and #ns.bundle() == 0) then return end
+    if not visiting or #ns.waiting() == 0 then return end
     if ns.showPanel then ns.showPanel() end
   end)
   if ns.onChange then ns.onChange() end
@@ -394,12 +371,6 @@ ns.kit.commands({
   commands = {
     achievements = function()
       if ns.openMilestones then ns.openMilestones() end
-    end,
-    -- (a test aid, not in the usage: the bundled letters tied up again, as
-    -- unread backlog, to untie the bundle once more)
-    retie = function()
-      local n = ns.retie()
-      print(ns.PREFIX .. ns.kit.plural(n, "%d letter", "%d letters"):format(n))
     end,
   },
 })

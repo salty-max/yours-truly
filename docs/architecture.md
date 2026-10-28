@@ -30,11 +30,12 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
   Skyborne are bits 32 and 33, so a dwarf never counts Falorne's letter), the post (`QUEST_TURNED_IN`: a
   letter's last quest posts it, the game flagging the quest or not yet; at
   each login, `ns.catchUp`: every letter earned before, posted at once,
-  `backlog`), the bundle (`ns.bundle`: two or more backlog letters come
-  together at the next mailbox, with no wait, and `ns.untie` files them in
-  the book, sealed, `bundled`: a level 60 installing the addon, or a new
-  wave of letters for chains already done, gets one bundle and not a dozen
-  visits of old news; one alone goes by the post), the delivery
+  `backlog`), the backlog (`ns.backlog`: all of it comes at the next
+  mailbox, with no wait, a row each in the panel, the seals broken one by one
+  or by "Open all": a level 60 installing the addon, or a new wave of letters
+  for chains already done, gets one long list and not a dozen visits of old
+  news; no bundle since 28 October 2026, the user's call; `bundled` stays on
+  an old save's letters), the delivery
   (`MAIL_SHOW`, once a visit until `MAIL_CLOSED`: the letters fifteen
   minutes of play in the post, oldest first, then the chain's level; one,
   two when more than three wait), the seal broken
@@ -51,17 +52,14 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
   mailbox is the server's, no addon call puts a message in it), so the panel
   beside the mail window stands for the letter, as it did.
 - `Panel.lua`: the panel beside the mail window (`ns.showPanel()`:
-  at a mailbox, with a letter or the backlog's bundle waiting, never empty;
+  at a mailbox, with a letter waiting, never empty;
   `ns.hidePanel` when it closes), the game's inbox with our content in it
   (28 October 2026, the user's call): the mail window's stone, the kit's panel
   under the title, the inbox's parchment inside it (file 530419 cropped to its
   paper, the reader's stationery where the game has not that file), the game's
   text face. The list: a row for each (the seal in a slot, the writer, the
   place), seven to a page, Prev and Next at the foot with "Open all" between
-  them (every seal broken at once); the bundle first when there is one, as a row
-  ("3 letters, tied with string"), a click untying it into the book, the panel
-  closing and the book opening on the first of them (no page in between: the
-  user's call, 27 October 2026). A click on a letter's row breaks its seal (the
+  them (every seal broken at once); the backlog's are in it too. A click on a letter's row breaks its seal (the
   game's page sound) and the letter opens in the panel in its own face,
   scrolling as the game's reader does, the chain and the zone's count under it,
   Back returning to the list. The size is the mail window's visible one.
@@ -93,7 +91,6 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
   when it came and its zone's count; a letter left sealed opens there too
   (the kit's button, "Break the seal"). Letters in the post never show. `AchievementsBook.lua`: the
   kit's board over both panels.
-- `/yourstruly retie` (a test aid, not in the usage): the untied bundle tied again, its letters back as unread backlog, to untie it once more (`ns.retie`, Core.lua).
 - `Settings.lua`: each character's settings, the kit's profiles (a code
   `YT1:...`, `/yourstruly export`, `/yourstruly import CODE`, the alert a
   `v`): the achievements' alert, the minimap button and its place (115
@@ -102,13 +99,13 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
   copied). `Welcome.lua`: the kit's welcome page, once per character.
   `Minimap.lua`: the book's button, as the siblings'. The game's own mail icon on the minimap (Classic Era's
   MiniMapMailFrame, Forever's in the minimap's indicator row) shown while a
-  letter is due, delivered and unread, or a bundle waits (28 October 2026, the
+  letter is due, delivered and unread, or the backlog waits (28 October 2026, the
   user's call): the frame and its code are the game's, only shown and hidden
   from a HookScript on its event (it hides itself on UPDATE_PENDING_MAIL, we
   show it again), never hidden while real mail keeps it (HasNewMail), a line of
   ours in its tooltip. Where it isn't found or another addon keeps it hidden,
   a small icon of ours on the book's button stands in. Looked at every 30
-  seconds and after a letter is read or a bundle untied. Forever's frame name
+  seconds and after a letter is read. Forever's frame name
   (`MinimapCluster.IndicatorFrame.MailFrame`) is from the source, not yet
   seen in the client.
 
@@ -119,7 +116,7 @@ The sealed parchment envelope, red wax and ivory quill mark is kept in
 generation prompt. `Media/Logo.tga` is the uncompressed 256px RGBA game
 texture with rounded corners. Both TOCs and `ns.ICON` use it, covering the
 book, welcome page, minimap and achievement banners. `Media/Seal.tga` is its
-wax seal cut round (`ns.SEAL`): a sealed letter's seal on the envelope in the
+wax seal cut round (`ns.SEAL`): a sealed letter's seal on its row in the
 mailbox panel, in the book's list and on its page. `ns.ICON_READ` keeps the
 game's open-letter icon so read letters remain distinct. Export details are
 in `assets/README.md`.
@@ -133,8 +130,8 @@ in `assets/README.md`.
   the mail's face, the client's area names, race, class and sex) and
   `addon/test/sim.lua`: a letter turned in, its fifteen minutes in the post,
   the mailbox, the list of rows and a seal broken, the tokens filled, the other
-  side's letters held back, a neutral writer's, the backlog as one bundle
-  untied into the book (and a backlog of one by the post), the panel beside an open letter and alone for a mailbox
+  side's letters held back, a neutral writer's, the backlog all at the first mailbox
+  (a row each, open all, the pager), the panel beside an open letter and alone for a mailbox
   addon, the book's tabs, the achievements, a French, a German and a Spanish
   reader who is a woman, Classic Era's names, on Classic Era, Forever and a
   French, German, Spanish and Mexican client of each (`bun run check` runs

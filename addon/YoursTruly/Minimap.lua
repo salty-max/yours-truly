@@ -3,13 +3,13 @@
 -- Its place (and whether it shows) is kept with this character's settings
 -- (Settings.lua). The game's own mail icon while a letter waits for a mailbox
 -- (the user's call, 28 October 2026: it lifts the plan's "no notice before the
--- mailbox"): one due in the post, delivered and unread, or a bundle.
+-- mailbox"): one due in the post, delivered and unread, or the backlog waiting.
 local _, ns = ...
 local K, L = ns.kit, ns.kit.L
 
 local M, badge
 
-local function pending() return #ns.due() > 0 or #ns.waiting() > 0 or #ns.bundle() > 0 end
+local function pending() return #ns.due() > 0 or #ns.waiting() > 0 or #ns.backlog() > 0 end
 
 -- The game's own mail icon: Classic Era's MiniMapMailFrame, Forever's in the
 -- minimap's indicator row. The game shows it for real mail and hides it again
@@ -69,8 +69,8 @@ local function refresh()
 end
 ns.refreshMail = refresh
 
--- A letter read or a bundle untied: the icon follows.
-for _, name in ipairs({ "read", "untie" }) do
+-- A letter read: the icon follows.
+for _, name in ipairs({ "read" }) do
   local f = ns[name]
   ns[name] = function(...)
     local out = f(...)

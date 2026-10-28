@@ -15,11 +15,10 @@
 -- and its zone's count under it; Back returns to the list. The panel is as
 -- big as the mail window beside it (the longest letters scroll).
 --
--- The backlog's bundle (Core: ns.bundle) comes first when there is one, as a
--- row of its own: "N letters, tied with string". A click unties it: the
--- letters go into the book, sealed, the panel closes and the book opens on
--- the first of them (the user's call, 27 October 2026: no page in between).
--- Fresh letters wait for the next mailbox.
+-- The backlog (letters earned before the addon, Core: ns.backlog) is in the
+-- list too, all of it at the first mailbox: no bundle, rows and the one
+-- button (the user's call, 28 October 2026). Fresh letters wait for the next
+-- mailbox.
 --
 -- Docked to the mail window: beside the open letter (OpenMailFrame) when one
 -- is open, else where that would stand (beside the inbox). A mailbox addon
@@ -40,16 +39,10 @@ local BAR = 36 -- (the sheet's foot: a button, a line, over the paper)
 
 local panel, current, page = nil, nil, 1
 local ROW_H, PER = 44, 7
-local BUNDLE = "bundle"
 ns.panelParts = {} -- (for the tests)
 
--- What the panel holds: the bundle first, if there is one, then each letter
--- waiting at the mailbox.
-local function queue()
-  local q = ns.waiting()
-  if #ns.bundle() > 0 then table.insert(q, 1, BUNDLE) end
-  return q
-end
+-- What the panel holds: each letter waiting at the mailbox.
+local queue = ns.waiting
 
 -- The mail's own face for a letter's words where the client has it, else the books'
 -- display face; plain: the game's own text face, as the inbox's words are.
@@ -67,15 +60,7 @@ local function ink(parent, size, colour, plain)
   return fs
 end
 
--- The bundle untied: the panel closed, the book open on its first letter.
-local function untie()
-  local first = ns.bundle()[1]
-  ns.untie()
-  panel:Hide()
-  if first and ns.openLetter then ns.openLetter(first) end
-end
-
--- The window's title: "A letter", "A bundle of letters" while the bundle shows.
+-- The window's title: the addon's name over the list, "A letter" over a letter.
 local function title(text)
   if panel.SetTitle then
     panel:SetTitle(text)
@@ -227,7 +212,14 @@ local function build()
     local slot = row:CreateTexture(nil, "BORDER")
     slot:SetSize(36, 36)
     slot:SetPoint("LEFT", 2, 0)
-    slot:SetColorTexture(0.28, 0.13, 0.03, 0.9)
+    -- (the inbox's own slot where the game names it, else a flat brown square)
+    local own = MailItem1ButtonSlot and MailItem1ButtonSlot.GetTexture and MailItem1ButtonSlot:GetTexture()
+    if own then
+      slot:SetTexture(own)
+      if MailItem1ButtonSlot.GetTexCoord then slot:SetTexCoord(MailItem1ButtonSlot:GetTexCoord()) end
+    else
+      slot:SetColorTexture(0.28, 0.13, 0.03, 0.9)
+    end
     local seal = row:CreateTexture(nil, "ARTWORK")
     seal:SetTexture(ns.SEAL)
     seal:SetSize(30, 30)
@@ -238,6 +230,8 @@ local function build()
     row.sub = ink(row, 11, FADED, true)
     row.sub:SetPoint("TOPLEFT", row.name, "BOTTOMLEFT", 0, -3)
     row.sub:SetWidth(SHEET_W - 90)
+    row.name:SetMaxLines(1)
+    row.sub:SetMaxLines(1)
     row:SetScript("OnClick", function(self)
       if self.id then ns.openInPanel(self.id) end
     end)
@@ -306,7 +300,7 @@ local function build()
   P.sheet, P.frame = sheet, frame
 end
 
--- The list: the bundle first, then each letter waiting, a page at a time.
+-- The list: each letter waiting, a page at a time.
 -- Nothing left to list: the panel closes.
 list = function()
   local P = ns.panelParts
@@ -322,11 +316,7 @@ list = function()
     local id = q[(page - 1) * PER + i]
     row.id = id
     row:SetShown(id ~= nil)
-    if id == BUNDLE then
-      local n = #ns.bundle()
-      row.name:SetText(ns.kit.plural(n, "%d letter", "%d letters"):format(n))
-      row.sub:SetText(L["tied with string"])
-    elseif id then
+    if id then
       row.name:SetText(ns.writer(id))
       row.sub:SetText(ns.place(id))
     end
@@ -340,10 +330,9 @@ list = function()
 end
 
 -- A letter opened from its row: the seal broken (the game's page sound) and
--- its words in the panel; the bundle untied.
+-- its words in the panel.
 function ns.openInPanel(id)
   if PlaySound and SOUNDKIT and SOUNDKIT.IG_ABILITY_PAGE_TURN then PlaySound(SOUNDKIT.IG_ABILITY_PAGE_TURN) end
-  if id == BUNDLE then return untie() end
   ns.read(id)
   show(id)
 end

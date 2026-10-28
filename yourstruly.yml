@@ -16,3 +16,5 @@ globals:
     any: true
   InboxFrameBg:
     any: true
+  MailItem1ButtonSlot:
+    any: true

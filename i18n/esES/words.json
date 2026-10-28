@@ -1,7 +1,5 @@
 {
-  "%d letter": "%d carta",
   "%d letter received": "%d carta recibida",
-  "%d letters": "%d cartas",
   "%d letters received": "%d cartas recibidas",
   "%s: %d of %d": "%s: %d de %d",
   "/yourstruly opens the book, /yourstruly achievements its achievements and /yourstruly settings its settings. /yourstruly minimap shows or hides the button, /yourstruly welcome shows the welcome page again. /yourstruly export gives this character's settings as a code, and /yourstruly import CODE takes them.": "/yourstruly abre el libro, /yourstruly achievements sus logros y /yourstruly settings sus opciones. /yourstruly minimap muestra u oculta el botón y /yourstruly welcome vuelve a mostrar la bienvenida. /yourstruly export convierte las opciones de este personaje en un código y /yourstruly import CODE las importa.",
@@ -64,7 +62,6 @@
   "Where Is My Brush?": "¿Dónde está mi pincel?",
   "Where It All Began": "Donde todo empezó",
   "Yours Truly achievement": "Logro de Yours Truly",
-  "tied with string": "atadas con un cordel",
   "Prev": "Ant.",
   "Next": "Sig.",
   "Back": "Volver",

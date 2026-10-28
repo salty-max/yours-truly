@@ -1,10 +1,9 @@
 -- Yours Truly played through: a first login with nothing done, a chain's last
 -- quest turned in (its letter in the post, fifteen minutes of play, then the
--- next mailbox), the sealed envelope and its seal broken, the other side's
--- letters held back, the backlog found at a login and come as one bundle
--- (untied straight into the book, sealed, the panel closed, a fresh letter
--- still behind it, its seal broken by the page's button, a backlog of
--- one by the post), the mailbox's pace (one a visit, two when more than three
+-- next mailbox), the list and a seal broken, the other side's
+-- letters held back, the backlog found at a login and come all at the first
+-- mailbox (a row each, its seal broken by the page's button, a backlog of
+-- one too), the mailbox's pace (one a visit, two when more than three
 -- wait), the panel docked beside
 -- an open letter or standing alone for a mailbox addon, the book's tabs, the
 -- achievements, a French, a German and a Spanish reader who is a woman. FOREVER=1, LOCALE=frFR, deDE, esES or esMX: those
@@ -120,7 +119,7 @@ G.turnIn(888, false) -- (Stolen Booty: the game tells it before flagging it)
 check(char.letters[GAZLOWE], "a neutral writer writes to either side")
 play(60)
 
--- ── the backlog: one bundle ─────────────────────────────────────────────────
+-- ── the backlog: all of it at the first mailbox, a row each ────────────────
 for _, q in ipairs({ 166, 700, 114, 87, 414, 6163 }) do
   s.done[q] = true
 end
@@ -128,34 +127,18 @@ G.login()
 check(char.letters[GRYAN] and char.letters[GRYAN].backlog, "a chain done before: found at the login")
 check(not char.letters[NATHANOS], "not the other side's")
 check(#s.printed == 0 or not said("letter"), "quietly")
-check(#ns.bundle() == 5, "five found: one bundle")
+check(#ns.backlog() == 5, "five found")
 play(ns.POST + 1)
-check(#ns.due() == 1 and ns.due()[1] == GAZLOWE, "the bundle's letters aren't in the post: only the fresh one is due")
+check(#ns.due() == 1 and ns.due()[1] == GAZLOWE, "the backlog isn't in the post: only the fresh one is due")
 G.mailbox(true)
 check(char.letters[GAZLOWE].delivered, "a fresh letter still comes by the post")
-check(not char.letters[GRYAN].delivered, "the bundle not untied yet")
-check(ns.panelLetter() == "list" and P.rows[1].id == "bundle", "the bundle first in the list")
-check(P.rows[1].name:GetText():find("5", 1, true), "its count on its row")
-check(P.rows[2]:IsShown() and P.rows[2].id == GAZLOWE, "and the fresh letter's row behind it")
-G.mailbox(false)
-G.mailbox(true)
-check(P.rows[1].id == "bundle", "the next visit: the bundle still there, untouched")
-local firstBundled = ns.bundle()[1]
-P.rows[1].scripts.OnClick(P.rows[1])
-check(not P.panel:IsShown(), "untied: the panel closed, no page in between")
-check(
-  YoursTrulyFrame and YoursTrulyFrame:IsShown() and YoursTrulyFrame.selectedTab == ns.TAB.letters,
-  "untied: the book open at its letters"
-)
 for _, id in ipairs({ GRYAN, SARA, MAYBELL, BERNICE, REJOLD }) do
-  local r = char.letters[id]
-  check(r.delivered and r.bundled and not r.read, "into the book, sealed: " .. id)
+  check(char.letters[id].delivered and not char.letters[id].read, "the backlog's letter at the mailbox, sealed: " .. id)
 end
-check(
-  #ns.bundle() == 0 and #ns.waiting() == 1 and ns.waiting()[1] == GAZLOWE,
-  "the bundle gone, the fresh letter still waiting at the mailbox, sealed"
-)
--- (the bundle's first, sealed in the book: a button breaks its seal)
+check(#ns.backlog() == 0 and #ns.waiting() == 6, "all six waiting, none held back")
+check(ns.panelLetter() == "list" and P.rows[6]:IsShown() and not P.rows[7]:IsShown(), "a row each")
+-- (a sealed letter in the book: a button breaks its seal)
+ns.openLetter(GRYAN)
 local letterPage = YoursTrulyLetterPage
 local seal = letterPage.buttonPool[1]
 check(
@@ -163,39 +146,31 @@ check(
   "a sealed letter in the book: a button, not a chip"
 )
 seal.scripts.OnClick(seal)
-check(char.letters[firstBundled].read, "the button breaks the seal: " .. firstBundled)
+check(char.letters[GRYAN].read, "the button breaks the seal: " .. GRYAN)
 local voice = letterPage.voices[1]
 check(
-  voice and voice:IsShown() and voice.sign:GetText() == ns.letter(firstBundled).signoff and #letterPage.asides == 0,
+  voice and voice:IsShown() and voice.sign:GetText() == ns.letter(GRYAN).signoff and #letterPage.asides == 0,
   "the letter in the book: the kit's voice, signed, no aside"
 )
-char.letters[firstBundled].read = nil
--- (a test aid: the bundle tied again, then untied as before)
-check(
-  ns.retie() >= 2 and #ns.bundle() >= 2 and not char.letters[firstBundled].bundled,
-  "retie: the bundle is there again"
-)
-ns.untie()
-check(#ns.bundle() == 0 and char.letters[firstBundled].bundled, "and untied once more")
 YoursTrulyFrame:Hide()
+-- (the button: every seal still whole broken at once, the panel closed)
 G.mailbox(false)
 G.mailbox(true)
-check(P.rows[1].id == GAZLOWE and not P.rows[2]:IsShown(), "the next visit: the fresh letter, and nothing behind it")
-P.rows[1].scripts.OnClick(P.rows[1])
-check(char.letters[GAZLOWE].read, "its seal broken at the mailbox")
+check(#P.rows == 7 and P.rows[5]:IsShown() and not P.rows[6]:IsShown(), "the next visit: the five still sealed")
+P.openAll.scripts.OnClick(P.openAll)
+check(#ns.waiting() == 0 and not P.panel:IsShown(), "open all: every seal broken, the panel closed")
 G.mailbox(false)
 G.mailbox(true)
-check(not ns.panelLetter(), "the visit after: no panel, the bundle's letters in the book")
+check(not ns.panelLetter(), "the visit after: no panel, nothing left")
 G.mailbox(false)
--- (one alone is a letter like any other: by the post)
+-- (one alone: at the mailbox like the others)
 local lone = 20 -- (Hinderweir's: A Dark Threat Looms)
 s.done[283] = true
 G.login()
-check(char.letters[lone] and char.letters[lone].backlog and #ns.bundle() == 0, "a backlog of one: no bundle")
-play(ns.POST + 1)
-check(ns.due()[1] == lone, "it goes by the post")
+check(char.letters[lone] and char.letters[lone].backlog, "a backlog of one")
+check(not ns.due()[1], "not in the post")
 G.mailbox(true)
-check(char.letters[lone].delivered and not char.letters[lone].bundled, "and reaches the mailbox as a letter")
+check(char.letters[lone].delivered, "it reaches the mailbox at once")
 G.mailbox(false)
 
 -- ── a mailbox addon: the game's window hidden ────────────────────────────────
@@ -448,6 +423,30 @@ check(
   YoursTrulyFrame:IsShown() and YoursTrulyFrame.selectedTab == ns.TAB.milestones,
   "/yourstruly achievements: the book at its achievements"
 )
+
+-- ── a long list: a page of seven, the pager, the page clamped ───────────────
+do
+  local got = ns.received()
+  check(#got >= 9, "letters enough for two pages")
+  for i = 1, 9 do
+    char.letters[got[i]].read = nil
+  end
+  G.mailbox(true)
+  check(#ns.waiting() == 9 and P.rows[7]:IsShown(), "nine waiting: a full page")
+  check(P.next:IsShown() and P.prev:IsShown() and not P.prev.disabled, "the pager shown")
+  local first = P.rows[1].id
+  P.next.scripts.OnClick(P.next)
+  check(P.rows[1].id ~= first and P.rows[2]:IsShown() and not P.rows[3]:IsShown(), "next: the two left on page two")
+  P.prev.scripts.OnClick(P.prev)
+  check(P.rows[1].id == first, "prev: page one again")
+  P.next.scripts.OnClick(P.next)
+  P.rows[1].scripts.OnClick(P.rows[1])
+  P.back.scripts.OnClick(P.back)
+  check(P.rows[1]:IsShown() and #ns.waiting() == 8, "back: the list, one seal fewer")
+  P.openAll.scripts.OnClick(P.openAll)
+  check(#ns.waiting() == 0 and not P.panel:IsShown(), "open all: every page's seals broken, the panel closed")
+  G.mailbox(false)
+end
 
 io.write(
   ("Yours Truly: %d checks passed (%s, %s).\n"):format(count, G.LOCALE, G.FOREVER and "Forever" or "Classic Era")

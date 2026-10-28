@@ -1,7 +1,5 @@
 {
-  "%d letter": "",
   "%d letter received": "",
-  "%d letters": "",
   "%d letters received": "",
   "%s: %d of %d": "",
   "/yourstruly opens the book, /yourstruly achievements its achievements and /yourstruly settings its settings. /yourstruly minimap shows or hides the button, /yourstruly welcome shows the welcome page again. /yourstruly export gives this character's settings as a code, and /yourstruly import CODE takes them.": "",
@@ -67,6 +65,5 @@
   "When you finish a quest chain that changed someone's life, they may write to you. Their letter waits at the next mailbox you open.": "",
   "Where Is My Brush?": "",
   "Where It All Began": "",
-  "Yours Truly achievement": "",
-  "tied with string": ""
+  "Yours Truly achievement": ""
 }
