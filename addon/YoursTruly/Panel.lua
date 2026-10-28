@@ -1,8 +1,9 @@
 -- The panel beside the mail window: shown when a mailbox opens and a letter
 -- waits there for this character (never empty), hidden when it closes. A
 -- letter comes sealed: its seal, its writer, the place it was written. A click
--- breaks the seal (the game's own page sound) and the letter opens on the mail
--- reader's own paper (Interface\Stationery\StationeryTest1 and 2, drawn
+-- breaks the seal (the game's own page sound) and the letter opens on the inbox's
+-- own parchment (file 530419, cropped to its paper) or, where the game has not
+-- that file, the reader's paper (Interface\Stationery\StationeryTest1 and 2, drawn
 -- 252 + 50 wide: the second's last 14 columns are see-through, cut so the
 -- paper reaches the window's edge; stretched to the sheet: stacked, they
 -- show a seam), in a panel under the window's title (the inbox's look), in the mail's own face
@@ -89,7 +90,9 @@ local function dock()
     panel.docked = true
     local beside = (OpenMailFrame and OpenMailFrame:IsShown() and OpenMailFrame) or InboxFrame or MailFrame
     -- (the old art stops short of its frame's right edge: against the art)
-    local right = beside.GetHitRectInsets and select(2, beside:GetHitRectInsets()) or 0
+    -- (the inbox's frame is the mail window's own, whole: its insets are MailFrame's)
+    local src = beside == InboxFrame and MailFrame or beside
+    local right = src.GetHitRectInsets and select(2, src:GetHitRectInsets()) or 0
     panel:SetPoint("TOPLEFT", beside, "TOPRIGHT", -(right or 0), 0)
   else
     panel.docked = false
@@ -123,8 +126,14 @@ local function build()
   -- the body the mail window's own grey stone (the kit darkens it: the inbox
   -- beside is not dark), read off the game's window where it can be
   if window and type(window.Bg) == "table" and window.Bg.SetTexture then
-    local stone = MailFrame and type(MailFrame.Bg) == "table" and MailFrame.Bg.GetTexture and MailFrame.Bg:GetTexture()
-    window.Bg:SetTexture(stone or "Interface\\FrameGeneral\\UI-Background-Rock", "REPEAT", "REPEAT")
+    local mail = MailFrame and type(MailFrame.Bg) == "table" and MailFrame.Bg
+    local atlas = mail and mail.GetAtlas and mail:GetAtlas()
+    local stone = mail and mail.GetTexture and mail:GetTexture()
+    if atlas and window.Bg.SetAtlas then
+      window.Bg:SetAtlas(atlas)
+    else
+      window.Bg:SetTexture(stone or "Interface\\FrameGeneral\\UI-Background-Rock", "REPEAT", "REPEAT")
+    end
   end
   panel:SetSize(W, H)
   panel:SetToplevel(true)
@@ -154,17 +163,14 @@ local function build()
   sheet:SetPoint("TOPLEFT", 3, -3)
   sheet:SetPoint("BOTTOMRIGHT", -3, 3)
   -- the inbox's own parchment (a file of the game, 530419: the paper fills
-  -- 320 by 356 of its 512 square, stretched over the box as the inbox does)
+  -- 320 by 356 of its 512 square, stretched over the box as the inbox does),
+  -- the reader's stationery where the game's isn't that file
   local bg = InboxFrameBg
-  local inbox = bg and bg.GetTexture and bg:GetTexture()
-  if inbox then
+  local inbox = bg and ((bg.GetTextureFileID and bg:GetTextureFileID()) or (bg.GetTexture and bg:GetTexture()))
+  if inbox == PARCHMENT then
     local art = sheet:CreateTexture(nil, "BACKGROUND")
-    art:SetTexture(inbox)
-    if inbox == PARCHMENT then
-      art:SetTexCoord(0, 320 / 512, 0, 356 / 512)
-    elseif bg.GetTexCoord then
-      art:SetTexCoord(bg:GetTexCoord())
-    end
+    art:SetTexture(PARCHMENT)
+    art:SetTexCoord(0, 320 / 512, 0, 356 / 512)
     art:SetAllPoints()
   else
     local left = sheet:CreateTexture(nil, "BACKGROUND")
@@ -240,7 +246,7 @@ local function build()
   foot:SetAllPoints(sheet)
   foot:SetFrameLevel(envelope:GetFrameLevel() + 1)
   local waitingLine = ink(foot, 11, FADED, true)
-  waitingLine:SetPoint("BOTTOMLEFT", EDGE + 18, EDGE + 13)
+  waitingLine:SetPoint("BOTTOMLEFT", 18, 13)
   -- (the one after this one in the panel, round to the first)
   nextButton:SetScript("OnClick", function()
     local q = queue()

@@ -59,8 +59,8 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
   (no page in between: the user's call, 27 October 2026), "Next letter"
   going round the bundle and the letters waiting; the sealed envelope (the logo's wax seal, the writer, the
   place; a click breaks it, the game's page sound), the letter on the mail
-  reader's own paper (the second sheet's see-through edge cut, the paper
-  filling the window's body under its title) in its own face, scrolling as the game's reader does,
+  inbox's own parchment (file 530419 cropped to its paper, in the kit's panel
+  under the title, on the mail window's stone; the reader's stationery, its second sheet's see-through edge cut, where the game has not that file) in its own face, scrolling as the game's reader does,
   the chain and the zone's count under it, "Next letter" while another
   waits. Docked beside the open letter (OpenMailFrame) when one is open,
   else where that would stand (beside InboxFrame); on its own, movable and
