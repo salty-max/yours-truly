@@ -301,8 +301,7 @@ show = function(id)
   P.scroll:ScrollTo(0)
 end
 
--- At a mailbox with no inbox strip to stand in (Inbox.lua), or from a row of
--- it: the bundle if there is one, else the oldest letter waiting, sealed (or
+-- At a mailbox: the bundle if there is one, else the oldest letter waiting, sealed (or
 -- the one asked for, its seal broken at once when `open`).
 function ns.showPanel(id, open)
   local q = queue()

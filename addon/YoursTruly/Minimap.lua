@@ -62,6 +62,16 @@ local function refresh()
 end
 ns.refreshMail = refresh
 
+-- A letter read or a bundle untied: the icon follows.
+for _, name in ipairs({ "read", "untie" }) do
+  local f = ns[name]
+  ns[name] = function(...)
+    local out = f(...)
+    refresh()
+    return out
+  end
+end
+
 function ns.createMinimapButton()
   if M then return end
   M = K.minimapButton({

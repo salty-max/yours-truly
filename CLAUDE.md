@@ -2,9 +2,8 @@
 
 A World of Warcraft addon: the people whose quest chains you finished write
 you a letter, in their own voice, about what the chain changed for them. It
-waits at the next mailbox you open, sealed, as a row on the game's own inbox
-(never real mail: no addon can make one) opening in a panel beside the mail
-window, and stays in the book. Planned in `../ideas/letters.md` (every call
+waits at the next mailbox you open, sealed, in a panel beside the mail
+window (never real mail: no addon can make one), and stays in the book. Planned in `../ideas/letters.md` (every call
 the user's, 23 October 2026: its Decided section), the voices and their rules
 in `../ideas/letters-voices.md`. Started 23 October 2026. On GitHub (salty-max/yours-truly, public,
 23 October 2026), not yet released. Classic Era (11509) and Forever (16001), one package. Read the
@@ -65,7 +64,7 @@ scripts/release.sh --version X.Y.Z [--hold] NOTES.md   # check, tag, push; Actio
 - Letters in plain ASCII in English, no semicolons in any language, 100 to
   150 words of body (terse from 70, a few big to 180), the game's tokens
   only. A translation is stamped against its English.
-- Notice only by the minimap button's mail icon (28 October 2026, the user's call, lifting the plan's "no notice before the mailbox"): shown once a letter is due, delivered and unread, or a bundle waits. No chat line, no toast.
+- Notice only by the minimap's mail icon (the game's own) (28 October 2026, the user's call, lifting the plan's "no notice before the mailbox"): shown once a letter is due, delivered and unread, or a bundle waits. No chat line, no toast.
 - `Kit.lua`, `Media/`, `scripts/root.ts` (and `root.py`), `scripts/locales-lib.ts`, `scripts/package-lib.ts`,
   `i18n/kit/` (the kit's words, translated once), `wow.yml`, `stylua.toml` and
   `addon/test/wowmock.lua` (the tests' game) are the kit's copies: edit addon-kit, then `bun run kit:sync`. The addon's

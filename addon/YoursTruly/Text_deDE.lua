@@ -90,7 +90,6 @@ ns.translate({
     ["No letter yet."] = "Noch kein Brief.",
     ["No other character yet"] = "Noch kein anderer Charakter",
     ["No sound"] = "Kein Ton",
-    ["Not real mail: it can't be taken, deleted or returned."] = "Keine echte Post: Der Brief lässt sich weder entnehmen noch löschen oder zurücksenden.",
     ["Nov"] = "Nov.",
     ["Oct"] = "Okt.",
     ["Open the book"] = "Buch öffnen",
