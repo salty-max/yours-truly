@@ -4,8 +4,9 @@
 -- stone and inset, the inbox's paper (Interface\MailFrame\UI-MailFrameBG,
 -- 320 by 356 in the top left of its 512 square), a row as MailItemTemplate
 -- draws one (MailItemBorder, the slot, GameFontNormal over
--- GameFontHighlightSmall), the pager and the button 114 above the foot
--- (Forever's MailFrame.xml, the same paper and rows: its pager at the foot). Shown
+-- GameFontHighlightSmall), the pager and the button 398 below the top (the
+-- InboxFrame's 512, less 114; Forever's MailFrame.xml, the same paper and rows,
+-- puts them at the window's foot). Shown
 -- when a mailbox opens and a letter waits there for this character (never
 -- empty), hidden when it closes.
 --
@@ -37,6 +38,7 @@ local TEXT_W = 276 -- (the paper's width, less its margins)
 
 local panel, current, page = nil, nil, 1
 local PER = 7 -- (the inbox's page)
+local INBOX_FOOT = 398 -- (the pager's row below the window's top: InboxFrame is 512 tall, the row 114 above its foot)
 ns.panelParts = {} -- (for the tests)
 
 -- What the panel holds: each letter waiting at the mailbox.
@@ -142,7 +144,7 @@ local function build()
   -- (Blizzard's MailFrame.xml, Classic Era), in its coordinates, from the
   -- panel's top left: the window's inset at (4, -58), the paper at (7, -62)
   -- 320 by 356 (the file's 512 square holds it in its top left corner), the
-  -- rows 305 by 45 from (13, -70), the pager's row 114 above the foot.
+  -- rows 305 by 45 from (13, -70), the pager's row 398 below the top.
   if type(panel.Inset) == "table" and panel.Inset.SetPoint then
     panel.Inset:Show()
     panel.Inset:SetPoint("TOPLEFT", 4, -58)
@@ -163,7 +165,7 @@ local function build()
   local scroll = K.scrollArea(sheet, TEXT_W, "YoursTrulyPanelScroll")
   scroll:SetPoint("TOPLEFT", 21, -76)
   scroll:SetPoint("TOPRIGHT", sheet, "TOPLEFT", 297, -76)
-  scroll:SetPoint("BOTTOM", sheet, "BOTTOM", 0, 60)
+  scroll:SetPoint("BOTTOMRIGHT", sheet, "TOPLEFT", 297, -(INBOX_FOOT - 22))
   scroll.thumb:SetColorTexture(INK[1], INK[2], INK[3], 0.35)
   local c = scroll.child
   local place = ink(c, 15)
@@ -232,7 +234,7 @@ local function build()
     rows[i] = row
   end
 
-  -- the pager and the button, as the inbox puts them (a row 114 above the foot)
+  -- the pager and the button, as the inbox puts them (a row 398 below the top)
   -- (Forever's inbox puts them at the foot instead: its Prev at (14, 10) of the
   -- window's bottom left, its Next at (-14, 10) of its bottom right, the
   -- button's centre 26 above the middle of the foot)
@@ -242,7 +244,7 @@ local function build()
     if ns.forever then
       b:SetPoint(anchor, panel, anchor, side == "LEFT" and 14 or -14, 10)
     else
-      b:SetPoint("CENTER", panel, anchor, x, 114)
+      b:SetPoint("CENTER", panel, "TOPLEFT", x, -INBOX_FOOT)
     end
     b:SetNormalTexture("Interface\\Buttons\\UI-SpellbookIcon-" .. art .. "-Up")
     b:SetPushedTexture("Interface\\Buttons\\UI-SpellbookIcon-" .. art .. "-Down")
@@ -269,12 +271,15 @@ local function build()
     page = page + 1
     list()
   end)
-  local footX, footY = -21, 114
-  if ns.forever then
-    footX, footY = 0, 26
+  local function foot(b)
+    if ns.forever then
+      b:SetPoint("CENTER", panel, "BOTTOM", 0, 26)
+    else
+      b:SetPoint("CENTER", panel, "TOPLEFT", 171, -INBOX_FOOT)
+    end
   end
   local openAll = K.button(sheet, L["Open all"], 120)
-  openAll:SetPoint("CENTER", panel, "BOTTOM", footX, footY)
+  foot(openAll)
   openAll:SetScript("OnClick", function()
     for _, id in ipairs(ns.waiting()) do
       ns.read(id)
@@ -283,7 +288,7 @@ local function build()
   end)
   -- the letter open: back to the list, where the button stands
   local back = K.button(sheet, L["Back"], 120)
-  back:SetPoint("CENTER", panel, "BOTTOM", footX, footY)
+  foot(back)
   back:SetScript("OnClick", function() list() end)
   back:Hide()
 
