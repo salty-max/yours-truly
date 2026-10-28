@@ -67,7 +67,13 @@ check(MiniMapMailFrame:IsShown(), "real mail: shown, by the game's state")
 s.newMail = nil
 MiniMapMailFrame.scripts.OnEvent(MiniMapMailFrame, "UPDATE_PENDING_MAIL")
 check(MiniMapMailFrame:IsShown(), "the real mail gone, a letter still waiting: still shown")
+-- the mail window as the old client draws it: 384x512, its art short of the frame
+local mailFrame = CreateFrame("Frame", "MailFrame", UIParent)
+mailFrame:SetSize(384, 512)
+mailFrame.GetHitRectInsets = function() return 0, 35, 0, 75 end
 G.mailbox(true)
+check(P.panel:GetWidth() == 349 and P.panel:GetHeight() == 437, "the panel as big as the mail window you see")
+check(P.sheet:GetFrameLevel() >= P.paper:GetFrameLevel() + 2, "the letter's content above its paper")
 check(ns.mailBadgeShown(), "delivered and unread: the icon still there")
 check(char.letters[IVERRON].delivered, "delivered at the next mailbox")
 check(ns.panelLetter() == IVERRON, "the panel shows it")

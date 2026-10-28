@@ -263,7 +263,7 @@ local function build()
   local P = ns.panelParts
   P.panel, P.scroll, P.place, P.main, P.signoff, P.ps, P.footer = panel, scroll, place, main, signoff, ps, footer
   P.envelope, P.writer, P.where, P.next, P.waiting = envelope, writer, where, nextButton, waitingLine
-  P.from, P.hint = from, hint
+  P.from, P.hint, P.sheet, P.paper = from, hint, sheet, paper
 end
 
 -- A letter in the panel: sealed (its envelope) or open (its words).
