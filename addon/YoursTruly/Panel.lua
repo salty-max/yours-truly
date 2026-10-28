@@ -128,16 +128,38 @@ local function build()
   local sheet = CreateFrame("Frame", nil, panel)
   sheet:SetPoint("TOPLEFT", EDGE, -64)
   sheet:SetPoint("BOTTOMRIGHT", -EDGE, EDGE)
-  local left = sheet:CreateTexture(nil, "BACKGROUND")
-  left:SetTexture(PAPER[1])
-  left:SetPoint("TOPLEFT")
-  left:SetPoint("BOTTOMLEFT")
-  left:SetWidth(math.floor(SHEET_W * 252 / 302 + 0.5))
-  local right = sheet:CreateTexture(nil, "BACKGROUND")
-  right:SetTexture(PAPER[2])
-  right:SetTexCoord(0, 50 / 64, 0, 1)
-  right:SetPoint("TOPLEFT", left, "TOPRIGHT")
-  right:SetPoint("BOTTOMRIGHT")
+  -- The paper reaches up under the title bar, but not under the portrait:
+  -- two clipped windows onto one sheet of paper, the main one right of the
+  -- portrait, a short one below it (the empty band the portrait left).
+  local PORTRAIT_W, TITLE_H = 66, 36
+  local reach = 64 - TITLE_H
+  local paper = CreateFrame("Frame", nil, panel)
+  paper:SetPoint("TOPLEFT", EDGE, -TITLE_H)
+  paper:SetPoint("BOTTOMRIGHT", -EDGE, EDGE)
+  local function clip(x0, x1, top)
+    local c = CreateFrame("Frame", nil, paper)
+    c:SetPoint("TOPLEFT", paper, "TOPLEFT", x0, -top)
+    c:SetPoint("BOTTOMRIGHT", paper, x1 and "BOTTOMLEFT" or "BOTTOMRIGHT", x1 or 0, 0)
+    if c.SetClipsChildren then c:SetClipsChildren(true) end
+    local left = c:CreateTexture(nil, "BACKGROUND")
+    left:SetTexture(PAPER[1])
+    left:SetPoint("TOPLEFT", paper, "TOPLEFT")
+    left:SetPoint("BOTTOMLEFT", paper, "BOTTOMLEFT")
+    left:SetWidth(math.floor(SHEET_W * 252 / 302 + 0.5))
+    local right = c:CreateTexture(nil, "BACKGROUND")
+    right:SetTexture(PAPER[2])
+    right:SetTexCoord(0, 50 / 64, 0, 1)
+    right:SetPoint("TOPLEFT", left, "TOPRIGHT")
+    right:SetPoint("BOTTOMRIGHT", paper, "BOTTOMRIGHT")
+  end
+  clip(PORTRAIT_W - EDGE, nil, 0)
+  clip(0, PORTRAIT_W - EDGE, reach)
+  -- (a client lacking clipping: the paper stays below the portrait as before)
+  if not paper.SetClipsChildren then
+    paper:ClearAllPoints()
+    paper:SetPoint("TOPLEFT", EDGE, -64)
+    paper:SetPoint("BOTTOMRIGHT", -EDGE, EDGE)
+  end
 
   -- the letter, scrolling over it
   local scroll = K.scrollArea(sheet, TEXT_W, "YoursTrulyPanelScroll")
