@@ -106,8 +106,10 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
   ours in its tooltip. Where it isn't found or another addon keeps it hidden,
   a small icon of ours on the book's button stands in. Looked at every 30
   seconds and after a letter is read. Forever's frame name
-  (`MinimapCluster.IndicatorFrame.MailFrame`) is from the source, not yet
-  seen in the client.
+  (`MinimapCluster.IndicatorFrame.MailFrame`, its `MailIcon` key too) is
+  confirmed in the pinned source (`bun wow-data/bin/ui.ts frame
+  MinimapCluster.IndicatorFrame.MailFrame`: Forever's source is a few builds
+  behind its client), not yet seen in the client.
 
 ## Artwork
 
