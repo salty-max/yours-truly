@@ -85,7 +85,9 @@ local function dock()
   if MailFrame and MailFrame:IsVisible() and (MailFrame:GetAlpha() or 1) > 0 then
     panel.docked = true
     local beside = (OpenMailFrame and OpenMailFrame:IsShown() and OpenMailFrame) or InboxFrame or MailFrame
-    panel:SetPoint("TOPLEFT", beside, "TOPRIGHT", 0, 0)
+    -- (the old art stops short of its frame's right edge: against the art)
+    local right = beside.GetHitRectInsets and select(2, beside:GetHitRectInsets()) or 0
+    panel:SetPoint("TOPLEFT", beside, "TOPRIGHT", -(right or 0), 0)
   else
     panel.docked = false
     local x, y = ns.option("panelX"), ns.option("panelY")
