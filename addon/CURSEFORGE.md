@@ -3,12 +3,9 @@
 <!-- Project description for curseforge.com and Wago (bun addon-kit/store.ts).
 The project's title on the stores: "Yours Truly: Letters from the People You
 Helped" (the addon's own name stays Yours Truly: the words players search
-for in the title, ../ideas/letters.md §9). A draft, 23 October 2026: Yours
-Truly is not released yet. Read it again against
-what ships (the count of letters: 69 in Classic Era, 73 in Forever on 23
-October, still so on 25 October, the writers named) before the first
-release. The siblings' "Other addons" lists take Yours Truly in once it's
-on the stores, and this one takes Goodwill in once it is. -->
+for in the title, ../ideas/letters.md §9). Read against what ships on 29
+October 2026 for its first store release (69 letters in Classic Era, 73 in
+Forever, the writers named, the inbox's list and the minimap's mail icon). -->
 
 <!-- Summary (the project's summary on CurseForge and Wago, and the TOCs' Notes):
 Finish a quest chain and the person it changed writes you a letter, sealed and waiting at your next mailbox. -->
@@ -52,7 +49,7 @@ Yours Truly is in English, French, German and Spanish: every letter in its write
 
 Open the book with `/yourstruly` or the minimap button. The welcome page appears once per character and can be reopened with `/yourstruly welcome`.
 
-Settings are under **Options > AddOns > Yours Truly**, through `/yourstruly settings` or a right-click on the minimap button: the achievement alert and the minimap button. Each character has its own. Copy another character's settings within the same game, or use `/yourstruly export` and `/yourstruly import CODE`.
+Settings are under **Options > AddOns > Yours Truly**, through `/yourstruly settings` or a right-click on the minimap button: the achievement alert and its sound, how long banners stay and the minimap button. Each character has its own. Copy another character's settings within the same game, or use `/yourstruly export` and `/yourstruly import CODE`.
 
 - `/yourstruly achievements` opens the book at its achievements.
 - `/yourstruly minimap` shows or hides the minimap button.
@@ -67,6 +64,7 @@ These share Yours Truly's look and work independently:
 - **[Second Wind](https://www.curseforge.com/wow/addons/second-wind)** ([Wago](https://addons.wago.io/addons/XKqEjbKy)) gives you a debrief after a close call or death.
 - **[Mealbook](https://www.curseforge.com/wow/addons/mealbook)** ([Wago](https://addons.wago.io/addons/YK9xja6L)) keeps a chef's cookbook that fills in as you learn to cook, and plans your road to 300.
 - **[Palaver](https://www.curseforge.com/wow/addons/palaver)** ([Wago](https://addons.wago.io/addons/ZKbqbO61)) puts quests and NPC conversations in a large panel beside the one you speak to, read and answered from the keyboard.
+- **[Goodwill](https://www.curseforge.com/wow/addons/goodwill)** ([Wago](https://addons.wago.io/addons/ZKbqa961)) shows every faction's road to Exalted from where you stand, and tells a chapter of its story at each standing.
 
 ## Support
 
