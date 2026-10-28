@@ -116,10 +116,17 @@ The addon file by file (the map is CLAUDE.md). The letters and their build:
   degrees, clear of Goodwill's 140, Mealbook's 165 and the siblings'), the
   panel's place when it stands alone (never
   copied). `Welcome.lua`: the kit's welcome page, once per character.
-  `Minimap.lua`: the book's button, as the siblings'. The game's mail icon (INV_Letter_15) on its
-  corner while a letter is due, delivered and unread, or a bundle waits, and a
-  tooltip line (28 October 2026, the user's call): looked at every 30 seconds
-  and after a letter is read or a bundle untied.
+  `Minimap.lua`: the book's button, as the siblings'. The game's own mail icon on the minimap (Classic Era's
+  MiniMapMailFrame, Forever's in the minimap's indicator row) shown while a
+  letter is due, delivered and unread, or a bundle waits (28 October 2026, the
+  user's call): the frame and its code are the game's, only shown and hidden
+  from a HookScript on its event (it hides itself on UPDATE_PENDING_MAIL, we
+  show it again), never hidden while real mail keeps it (HasNewMail), a line of
+  ours in its tooltip. Where it isn't found or another addon keeps it hidden,
+  a small icon of ours on the book's button stands in. Looked at every 30
+  seconds and after a letter is read or a bundle untied. Forever's frame name
+  (`MinimapCluster.IndicatorFrame.MailFrame`) is from the source, not yet
+  seen in the client.
 
 ## Artwork
 

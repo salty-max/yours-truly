@@ -68,6 +68,10 @@ function G.mailbox(open)
     G.fire("MAIL_CLOSED")
   end
 end
+-- the minimap's mail icon, the game's own (shown for real mail: HasNewMail)
+MiniMapMailFrame = CreateFrame("Frame", "MiniMapMailFrame", UIParent)
+MiniMapMailFrame:Hide()
+function HasNewMail() return state.newMail == true end
 -- the mail's face (MailTextFontNormal), the game's sounds
 MailTextFontNormal = { GetFont = function() return "Fonts\\MORPHEUS.TTF", 15, "" end }
 SOUNDKIT.IG_ABILITY_PAGE_TURN = 830

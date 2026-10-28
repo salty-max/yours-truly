@@ -58,7 +58,13 @@ play(ns.POST - 5)
 check(#ns.due() == 0, "not before fifteen minutes of play")
 play(10)
 check(#ns.due() == 1, "then due")
-check(ns.mailBadgeShown(), "a letter due: the mail icon on the minimap button")
+check(MiniMapMailFrame:IsShown(), "a letter due: the game's own mail icon on the minimap")
+check(not ns.mailBadgeShown() or MiniMapMailFrame:IsShown(), "(and our own stands in only without it)")
+MiniMapMailFrame.scripts.OnEvent(MiniMapMailFrame, "UPDATE_PENDING_MAIL")
+check(MiniMapMailFrame:IsShown(), "the game hides it on its event, no real mail: ours shows it again")
+s.newMail = true
+ns.refreshMail()
+s.newMail = nil
 G.mailbox(true)
 local R = ns.inboxRows()
 check(
