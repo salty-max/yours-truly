@@ -66,9 +66,8 @@ check(MiniMapMailFrame:IsShown(), "real mail: shown, by the game's state")
 s.newMail = nil
 MiniMapMailFrame.scripts.OnEvent(MiniMapMailFrame, "UPDATE_PENDING_MAIL")
 check(MiniMapMailFrame:IsShown(), "the real mail gone, a letter still waiting: still shown")
--- the mail window as the old client draws it: 384x512, its art short of the frame
+-- the mail window as ButtonFrameTemplate draws it: 338x424
 MailFrame:SetSize(338, 424)
-InboxFrameBg = { GetTexture = function() return 530419 end } -- (the inbox's own parchment)
 for _, f in ipairs({ MailFrame, OpenMailFrame }) do
   f.GetHitRectInsets = function() return 0, 0, 0, 0 end
 end
@@ -77,8 +76,12 @@ check(P.panel:GetWidth() == 338 and P.panel:GetHeight() == 424, "the panel as bi
 check(P.panel.point and P.panel.point[4] == 0, "docked against the mail window")
 if not G.FOREVER then
   check(
-    P.prev.point[5] == -398 and P.openAll.point[5] == -398,
-    "the pager and the button below the seventh row, as the inbox has them"
+    P.prev.point[4] == 30 and P.next.point[4] == 305 and P.openAll.point[4] == 171,
+    "the pager and the button where the inbox puts them across"
+  )
+  check(
+    P.prev.point[5] == -398 and P.next.point[5] == -398 and P.openAll.point[5] == -398,
+    "and down, on the row under the seventh"
   )
   check(P.back.point[5] == -398, "Back where the button stands")
 end
