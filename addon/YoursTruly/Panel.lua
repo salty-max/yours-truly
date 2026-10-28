@@ -29,6 +29,7 @@ local K, L = ns.kit, ns.kit.L
 
 local W, H = 384, 512 -- (the mail window's own size, read again when the panel is built)
 local PAPER = { "Interface\\Stationery\\StationeryTest1", "Interface\\Stationery\\StationeryTest2" }
+local GOLD = { 1, 0.82, 0 }
 local PARCHMENT = 530419 -- (the inbox's list paper)
 local INK = { 0.18, 0.12, 0.06 }
 local FADED = { 0.40, 0.30, 0.20 }
@@ -204,11 +205,18 @@ local function build()
     local light = row:CreateTexture(nil, "HIGHLIGHT")
     light:SetAllPoints()
     light:SetColorTexture(1, 1, 1, 0.12)
+    -- the separator the inbox draws under a row: a dark brown rule from the
+    -- slot's right edge, a light one under it
     local line = row:CreateTexture(nil, "ARTWORK")
-    line:SetPoint("BOTTOMLEFT")
-    line:SetPoint("BOTTOMRIGHT")
-    line:SetHeight(1)
-    line:SetColorTexture(INK[1], INK[2], INK[3], 0.3)
+    line:SetPoint("BOTTOMLEFT", 44, 1)
+    line:SetPoint("BOTTOMRIGHT", 0, 1)
+    line:SetHeight(2)
+    line:SetColorTexture(0.38, 0.22, 0.06, 0.85)
+    local lit = row:CreateTexture(nil, "ARTWORK")
+    lit:SetPoint("TOPLEFT", line, "BOTTOMLEFT")
+    lit:SetPoint("TOPRIGHT", line, "BOTTOMRIGHT")
+    lit:SetHeight(1)
+    lit:SetColorTexture(1, 0.9, 0.6, 0.3)
     -- (the inbox's own slot where the game names it: its empty slot, 64 wide
     -- on a button of 37, gold as an unread one is; else a flat brown square)
     local slot = row:CreateTexture(nil, "BORDER")
@@ -226,10 +234,14 @@ local function build()
     seal:SetTexture(ns.SEAL)
     seal:SetSize(30, 30)
     seal:SetPoint("CENTER", row, "LEFT", 20, 0)
-    row.name = ink(row, 14, nil, true)
+    -- the words as the inbox sets them: the name in the game's gold, the line
+    -- under it white, both shadowed
+    row.name = ink(row, 14, GOLD, true)
+    row.name:SetShadowOffset(1, -1)
     row.name:SetPoint("TOPLEFT", row, "TOPLEFT", 48, -5)
     row.name:SetWidth(SHEET_W - 90)
-    row.sub = ink(row, 11, FADED, true)
+    row.sub = ink(row, 12, { 1, 1, 1 }, true)
+    row.sub:SetShadowOffset(1, -1)
     row.sub:SetPoint("TOPLEFT", row.name, "BOTTOMLEFT", 0, -3)
     row.sub:SetWidth(SHEET_W - 90)
     row.name:SetMaxLines(1)
@@ -241,15 +253,22 @@ local function build()
     rows[i] = row
   end
 
-  local GOLD = { 1, 0.82, 0 }
-  local function arrow(text, art, side)
+  -- an arrow of the pager: the inbox's own button's textures where the game
+  -- names it (its Prev and Next), else the spellbook's page arrows
+  local function arrow(text, art, side, own)
     local b = CreateFrame("Button", nil, sheet)
     b:SetSize(28, 28)
     b:SetPoint("BOTTOM" .. side, side == "LEFT" and 10 or -10, 8)
-    b:SetNormalTexture("Interface\\Buttons\\UI-SpellbookIcon-" .. art .. "-Up")
-    b:SetPushedTexture("Interface\\Buttons\\UI-SpellbookIcon-" .. art .. "-Down")
-    b:SetDisabledTexture("Interface\\Buttons\\UI-SpellbookIcon-" .. art .. "-Disabled")
-    b:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight", "ADD")
+    local function of(get, fallback)
+      local t = own and own[get] and own[get](own)
+      local path = t and t.GetTexture and t:GetTexture()
+      return path or fallback
+    end
+    b:SetNormalTexture(of("GetNormalTexture", "Interface\\Buttons\\UI-SpellbookIcon-" .. art .. "-Up"))
+    b:SetPushedTexture(of("GetPushedTexture", "Interface\\Buttons\\UI-SpellbookIcon-" .. art .. "-Down"))
+    b:SetDisabledTexture(of("GetDisabledTexture", "Interface\\Buttons\\UI-SpellbookIcon-" .. art .. "-Disabled"))
+    b:SetHighlightTexture(of("GetHighlightTexture", "Interface\\Buttons\\UI-Common-MouseHilight"), "ADD")
+    if own and own.GetWidth and own:GetWidth() > 0 then b:SetSize(own:GetWidth(), own:GetHeight()) end
     local fs = ink(b, 13, GOLD, true)
     fs:SetShadowOffset(1, -1)
     fs:SetText(text)
@@ -260,8 +279,8 @@ local function build()
     end
     return b
   end
-  local prev = arrow(L["Prev"], "PrevPage", "LEFT")
-  local nextPage = arrow(L["Next"], "NextPage", "RIGHT")
+  local prev = arrow(L["Prev"], "PrevPage", "LEFT", InboxPrevPageButton)
+  local nextPage = arrow(L["Next"], "NextPage", "RIGHT", InboxNextPageButton)
   prev:SetScript("OnClick", function()
     page = page - 1
     list()
@@ -270,7 +289,7 @@ local function build()
     page = page + 1
     list()
   end)
-  local openAll = K.button(sheet, L["Open all"], 110)
+  local openAll = K.button(sheet, L["Open all"], 130)
   openAll:SetPoint("BOTTOM", 0, 10)
   openAll:SetScript("OnClick", function()
     for _, id in ipairs(ns.waiting()) do
@@ -323,8 +342,8 @@ list = function()
       row.sub:SetText(ns.place(id))
     end
   end
-  P.prev:SetShown(pages > 1)
-  P.next:SetShown(pages > 1)
+  P.prev:Show()
+  P.next:Show()
   P.prev:SetEnabled(page > 1)
   P.next:SetEnabled(page < pages)
   P.openAll:Show()

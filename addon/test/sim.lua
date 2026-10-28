@@ -83,7 +83,10 @@ check(P.rows[1]:IsShown() and not P.rows[2]:IsShown(), "one row: the letter")
 check(not P.scroll:IsShown(), "sealed: no words yet")
 check(P.rows[1].name:GetText() == ns.writer(IVERRON), "the writer's name on its row")
 check(P.rows[1].sub:GetText() == ns.place(IVERRON), "the place under it")
-check(not P.next:IsShown() and P.openAll:IsShown(), "one page: no pager, the button to open all")
+check(
+  P.prev:IsShown() and P.next:IsShown() and P.openAll:IsShown(),
+  "the pager and the button always there, as the inbox has them"
+)
 -- a letter opened beside it: the panel moves beside that
 OpenMailFrame:Show()
 check(P.panel.point and P.panel.point[2] == OpenMailFrame, "beside the open letter")
@@ -443,13 +446,10 @@ do
   P.rows[1].scripts.OnClick(P.rows[1])
   P.back.scripts.OnClick(P.back)
   check(P.rows[1]:IsShown() and #ns.waiting() == 8, "back: the list, one seal fewer")
-  -- (the last page emptied: back to the page before it, no pager)
+  -- (the last page emptied: back to the page before it)
   P.rows[1].scripts.OnClick(P.rows[1])
   P.back.scripts.OnClick(P.back)
-  check(
-    #ns.waiting() == 7 and P.rows[7]:IsShown() and not P.next:IsShown(),
-    "the last page emptied: the page clamped, one page"
-  )
+  check(#ns.waiting() == 7 and P.rows[7]:IsShown(), "the last page emptied: the page clamped, one page")
   P.openAll.scripts.OnClick(P.openAll)
   check(#ns.waiting() == 0 and not P.panel:IsShown(), "open all: every page's seals broken, the panel closed")
   G.mailbox(false)
