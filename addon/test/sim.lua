@@ -433,7 +433,7 @@ do
   end
   G.mailbox(true)
   check(#ns.waiting() == 9 and P.rows[7]:IsShown(), "nine waiting: a full page")
-  check(P.next:IsShown() and P.prev:IsShown() and not P.prev.disabled, "the pager shown")
+  check(P.next:IsShown() and P.prev:IsShown(), "the pager shown")
   local first = P.rows[1].id
   P.next.scripts.OnClick(P.next)
   check(P.rows[1].id ~= first and P.rows[2]:IsShown() and not P.rows[3]:IsShown(), "next: the two left on page two")
@@ -443,6 +443,13 @@ do
   P.rows[1].scripts.OnClick(P.rows[1])
   P.back.scripts.OnClick(P.back)
   check(P.rows[1]:IsShown() and #ns.waiting() == 8, "back: the list, one seal fewer")
+  -- (the last page emptied: back to the page before it, no pager)
+  P.rows[1].scripts.OnClick(P.rows[1])
+  P.back.scripts.OnClick(P.back)
+  check(
+    #ns.waiting() == 7 and P.rows[7]:IsShown() and not P.next:IsShown(),
+    "the last page emptied: the page clamped, one page"
+  )
   P.openAll.scripts.OnClick(P.openAll)
   check(#ns.waiting() == 0 and not P.panel:IsShown(), "open all: every page's seals broken, the panel closed")
   G.mailbox(false)

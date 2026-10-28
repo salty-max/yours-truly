@@ -30,9 +30,9 @@ A letter tells what the chain itself told you, then a little of the writer's lif
 ## At the mailbox
 
 - A letter waits fifteen minutes of play after you finish its chain, then comes with the next mailbox you open.
-- Nothing warns you a letter is on its way. It opens in a window beside the mail, on the game's own letter paper, signed by its writer, with the chain it answers named at the bottom.
+- The mail icon on the minimap tells you a letter waits. At the mailbox they are listed in a window beside the mail, as the game lists mail, and each opens on the game's own paper, signed by its writer, with the chain it answers named at the bottom.
 - New letters never pile up: one or two arrive per visit.
-- Chains you finished before installing Yours Truly count too. If there are several, they all come at the next mailbox, with no wait, a row each in the list: break the seals one by one, or all at once.
+- Chains you finished before installing Yours Truly count too. They come at the next mailbox, with no wait, a row each in the list: break the seals one by one, or all at once.
 
 ## The book
 
