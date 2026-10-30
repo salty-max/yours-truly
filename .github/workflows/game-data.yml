@@ -30,8 +30,8 @@ jobs:
         bun scripts/root.ts --run addon-kit/regional.ts
         bun scripts/letters.ts
         bun scripts/locales.ts
-        mkdir -p trial && date -u +%FT%TZ > trial/stamp.txt
+        date -u +%FT%TZ > docs/trial-stamp.txt
       paths: |
-        trial
+        docs/trial-stamp.txt
         i18n
         addon/YoursTruly
