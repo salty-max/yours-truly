@@ -8,9 +8,3 @@ globals:
     any: true
   YoursTrulySettings:
     any: true
-  MiniMapMailFrame:
-    any: true
-  MinimapCluster:
-    any: true
-  HasNewMail:
-    any: true

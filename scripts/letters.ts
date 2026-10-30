@@ -46,6 +46,7 @@ import { createHash } from "node:crypto";
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type * as WowDb from "../../wow-data/src/db";
+import { LOCALES } from "./locales-lib";
 import { familyPath } from "./root";
 
 // through the family folder, from a worktree too (scripts/root.ts)
@@ -55,7 +56,6 @@ const ROOT = join(import.meta.dir, "..");
 const ADDON = join(ROOT, "addon", "YoursTruly");
 type Game = "classic" | "forever";
 const GAMES: Game[] = ["classic", "forever"];
-const LOCALES = ["enUS", "enGB", "deDE", "frFR", "esES", "esMX", "ruRU", "ptBR", "itIT", "koKR", "zhCN", "zhTW"];
 const TRANSLATED = ["frFR", "deDE", "esES"];
 // (a language that reads another's letters, its own names swapped in: i18n/<locale>/regional.json)
 const BORROWS: Record<string, string> = { esMX: "esES" };
