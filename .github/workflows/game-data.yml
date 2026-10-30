@@ -7,9 +7,9 @@
 # then merged by itself and told to the owner's phone.
 name: Game data
 
+# (the CI gate's trial, a scratch branch: wow-data's ci-gate branch, and a
+# stamp file so every run has a change to open a pull request with)
 on:
-  schedule:
-    - cron: "4 7 * * *"
   workflow_dispatch:
 
 permissions:
@@ -20,7 +20,7 @@ permissions:
 
 jobs:
   data:
-    uses: salty-max/wow-data/.github/workflows/addon-data.yml@main
+    uses: salty-max/wow-data/.github/workflows/addon-data.yml@ci-gate
     secrets:
       INBOX_EVENTS_TOKEN: ${{ secrets.INBOX_EVENTS_TOKEN }}
     with:
@@ -30,6 +30,8 @@ jobs:
         bun scripts/root.ts --run addon-kit/regional.ts
         bun scripts/letters.ts
         bun scripts/locales.ts
+        mkdir -p trial && date -u +%FT%TZ > trial/stamp.txt
       paths: |
+        trial
         i18n
         addon/YoursTruly
