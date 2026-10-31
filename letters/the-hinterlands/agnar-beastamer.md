@@ -17,7 +17,7 @@ place: 348
 
 **French.** Vouvoie, "$gpapa:maman;" as the game's "dadda:momma".
 
-**The game's.** The sprite darter, faerie dragon, meat and greens, raw flanks, the egg going early, the hour to reach him, a parent... kinda, the responsibility, the laugh (3841 to 4298). **Ours.** Wondering how the wee one is, feeding it more than the player would like, the look when it's hungry, kids, look after yourself and the wee one if kept.
+**The game's.** The sprite darter, faerie dragon, meat and greens, raw flanks, the egg more ready than he thought, the hour to reach him, a parent... kinda, the responsibility, the laugh (3841 to 4298). **Ours.** Wondering how the wee one is, feeding it more than the player would like, the look when it's hungry, kids, look after yourself and the wee one if kept.
 
 ## Letter
 
@@ -25,11 +25,11 @@ $N,
 
 How's the wee one? I've been wondering, and an old animal handler is allowed to wonder.
 
-A few things worth saying twice, what with the egg going off early. Sprite darters eat meat and greens both, so don't let anyone tell ye otherwise. Raw flanks, mind, and plenty of them.
+A few things worth saying twice, since the egg was readier than I thought. Sprite darters eat meat and greens both, so don't let anyone tell ye otherwise. Raw flanks, mind, and plenty of them. A hungry one gives ye a look, and there's no mistaking it.
 
-Kids, eh? One minute ye're running an egg halfway across the world with an hour to spare, and the next ye're a parent. Kinda.
+Kids, eh? One minute you're running an egg from Thousand Needles to the Hinterlands against the hour, and the next you're a parent. Kinda.
 
-Haha. Look after yerself, and the wee one too, if ye kept it.
+Haha. Look after yourself, and the wee one too, if ye kept it.
 
 Agnar Beastamer
 Aerie Peak

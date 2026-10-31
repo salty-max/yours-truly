@@ -29,7 +29,7 @@ But most of the wailing has stopped. Not the grief, the wailing. The spirits are
 
 The elders may yet have to come and calm what is left. I said as much to you before. I say it again so that you never mistake one victory for a forest.
 
-The spirits gave me the marks on those machines. You gave the machines the only language the goblins understand. I think that is a fair division of the work.
+The spirits gave me the names of those machines. You gave the machines the only language the goblins understand. I think that is a fair division of the work.
 
 In anger and in hope,
 Seereth Stonebreak

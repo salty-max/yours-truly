@@ -25,9 +25,9 @@ $N,
 
 I have drawn what I could from the Pyrewood shackles you brought me. It was not enough. I suspected as much, and I believe I said so. A limited sample is a limited sample.
 
-Still, I understand the remedy now, or most of it, and the more I understand it, the less I think of the man who cast it. The Kirin Tor let him into their halls. I have stopped asking how.
+Still, I understand the remedy now, or most of it, and the more I understand it, the less I think of the man who cast the curse. The Kirin Tor let him into their halls. I have given up wondering why.
 
-In Pyrewood they are still men and women by day, and still something else when the sun goes down. Arugal did that to a whole village with a spell any apprentice would be ashamed to sign. That is what I find hardest to forgive. Not the curse. The workmanship.
+In Pyrewood they are still men and women by day, and still something else when the sun goes down. Arugal did that to a whole village with a spell any apprentice would be ashamed to sign. That is what I forgive least. Not the curse. The workmanship.
 
 It will take longer than I thought. Everything to do with Arugal takes longer than I think. It may be his one talent.
 

@@ -23,10 +23,10 @@ place: 1497
 
 $N,
 
-A clumsy ogre kept himself out of the Dark Lady's reach for as long as he did, with nothing but a crown. I find that more unsettling than if it had been made of gold. Great power ought at least to have the decency to look the part.
+A clumsy ogre kept himself out of the Dark Lady's reach for as long as he did, with nothing but a crown. That unsettles me more than if it had been made of gold. Great power ought at least to have the decency to look the part.
 
 The crown has been delivered. I carried it to the Dark Lady myself, and I confess I held it a little away from me, as one carries something that might bite.
 
-She has heard of your part in it. I saw to that, as I said I would. Your name has been spoken in the Royal Quarter, which is more than most of the living can say.
+She has heard of your part in it. I saw to that. Your name has been spoken in the Royal Quarter, which is more than most of the living can say.
 
 Sharlindra

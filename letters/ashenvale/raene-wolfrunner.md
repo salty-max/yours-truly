@@ -17,7 +17,7 @@ place: 415
 
 **French.** Vouvoie.
 
-**The game's.** Teronis, her friend, his death, the journal and the gem the player found, mourning that will come, the furbolg not always enemies, the road east, defense (991 to 1025), Elune (her people's). **Ours.** The mourning come at no chosen hour, the shortest letter to his family, more than she dared hope and not enough, never drawing a bow on one when she was young, wanting it written.
+**The game's.** Teronis, her friend, his death, the journal and the gem the player found, mourning that will come, the furbolg not always enemies, the road east, defence (991 to 1025), Elune (her people's). **Ours.** The mourning come at no chosen hour, the shortest letter to his family, more than she dared hope and not enough, never drawing a bow on one when she was young, wanting it written.
 
 ## Letter
 
@@ -25,9 +25,9 @@ $N,
 
 The time for mourning has come, as I said it would, and it keeps no hour I would choose. I wrote to Teronis's family. It was the shortest letter I have ever written, and it took me all night.
 
-You found him, and you found what he died looking for. It was more than I dared hope, and it is not enough.
+You found him, and you found what he died looking for. It was more than I had let myself hope, and it is not enough.
 
-The furbolg were not always our enemy. When I was young, I never once drew a bow on one. Now I have sent you down the road to their camps and called it defense, and it was. I only want it written somewhere that I remember the quieter time.
+The furbolg were not always our enemy. When I was young, I never once drew a bow on one. Now I have sent you down the road to their camps and called it defence, and it was. I only want it written somewhere that I remember the quieter time.
 
 Elune keep you,
 Raene Wolfrunner

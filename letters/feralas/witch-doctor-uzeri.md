@@ -23,7 +23,7 @@ place: 1099
 
 $N,
 
-Hah! The vessel is ready, mon, and the materials you brought are better than I asked for. Splintered treant, giant's minerals, owlbeast sinew, all those little metal fragments. I sorted every piece myself, by smell.
+Hah! The vessel is ready, mon, and the materials you brought are better than I asked for. Splintered treant, encrusted minerals, resilient sinew, all those little metal fragments. I sorted every piece myself, by smell.
 
 Neeru says he was satisfied with the head. A good customer, that one. He asks no questions, and he pays in herbs.
 

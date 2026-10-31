@@ -17,16 +17,16 @@ place: 2619
 
 **French.** Vouvoie. Hearthglen is "Âtreval" on Forever's French client, Classic Era's name swapped in.
 
-**The game's.** Taelan's dreams, standing at his side, the induction, fighting side by side, honor to Lordaeron, wanting not to dream any more, the toy hammer, the standard thrown down at Northdale, Hearthglen, his son's death at the monsters' hands, the Order reborn, Highlord, may we meet again in better times (5542 to 5944). **Ours.** Dreaming now himself, the boy with the toy hammer and the man in armor and then gone, waking before the end as the Light's mercy, not wanting to take the Order up like this, not letting the standard fall a second time.
+**The game's.** Taelan's dreams, standing at his side, the induction, fighting side by side, honor to Lordaeron, wanting not to dream any more, the toy hammer, the standard thrown down at Northdale, Hearthglen, his son's death at the monsters' hands, the Order reborn, Highlord, may we meet again in better times (5542 to 5944). **Ours.** Dreaming now himself, the boy with the toy hammer and the man in armour and then gone, waking before the end as the Light's mercy, not wanting to take the Order up like this, not letting the standard fall a second time.
 
 ## Letter
 
 $N,
 
-My son told you of his dream, that I stood beside him in the Order at last. He wanted it to end.
+My son told you of his dream, that I stood beside him in the Order at last. He wanted the dream to end.
 
-I dream now. The same dream, I think. I stand beside him. He is a boy with a toy hammer, and then he is a man in his armor, and then he is gone. I wake before the end. The Light is merciful in that much.
+I dream now. The same dream, I think. I stand beside him. He is a boy with a toy hammer, and then he is a man in his armour, and then he is gone. I wake before the end. The Light is merciful in that much.
 
-The Order is reborn. I did not want to take it up like this. But Taelan threw its standard down once, and you carried it back to him, and I will not let it fall a second time.
+The Order is reborn. I did not want to take it up like this. But Taelan threw its standard down once, and you brought it back to me, and I will not let it fall a second time.
 
 Tirion Fordring

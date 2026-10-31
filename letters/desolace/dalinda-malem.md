@@ -29,6 +29,6 @@ I thanked you for my brother's death. I have thought about that more than about 
 
 My father will ask what Tyranis wanted out here. I will tell him the truth: knowledge, more than was good for him, more than our people allow. I will not tell him how it ended.
 
-You brought me out of that fortress and let me walk it on my own feet. That part I will remember best.
+You brought me out of that fortress and let me walk out on my own feet. That part I will remember best.
 
 Dalinda Malem

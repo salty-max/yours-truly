@@ -29,7 +29,7 @@ Tommy Joe was at the river, just where he always is. Of course he couldn't see m
 
 I know it was wicked to deceive my family. I would do it again in a heartbeat!
 
-I can't even thank Mr. Pestle or Gramma Stonefield, because I'm not supposed to know either of them!
+I can't even thank Mr Pestle or Gramma Stonefield, because I'm not supposed to know either of them!
 
 You carried my letter to Tommy Joe. This one is for you.
 

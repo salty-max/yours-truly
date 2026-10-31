@@ -23,13 +23,13 @@ place: 16635
 
 $N,
 
-Do you still feel it, the hum near the standing stones? Yes? Good. Then it took, and you will feel it again in many places.
+Do you still feel it, the hum near the standing stones? Yes? Good. Then it has taken hold, and you will feel it again in many places.
 
-Ley lines used to live in old books. Now they come up through the grass to meet us. Gift or warning, it is knowledge, and I mean to have all of it before anyone else decides what I may know.
+Ley lines used to live in old books. Now they come up through the grass to meet us. Gift or warning, it is knowledge, and I mean to have all of it.
 
 Rorian gave you your relic and told you the winds of home would be with you wherever you travel. Rorian believes that, and it is a kind thing to believe. I prefer what I can measure.
 
-These are hard times for the shen'dorei, and I know which I want first: knowledge, then power.
+These are hard times for the shen'dorei. Knowledge first, then power.
 
 Make the unknown known,
 Falorne Fallwind

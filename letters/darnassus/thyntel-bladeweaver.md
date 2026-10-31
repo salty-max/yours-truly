@@ -25,7 +25,7 @@ $N,
 
 I have told the high priestess. What passed between us I will keep. I will say only that I took the long way back to the bunkhouse.
 
-Velinde's chest is still in the bunkhouse. I find I cannot have it emptied. The Sentinels believed she had her own reasons for leaving and would come back when she chose. I believed it too, and said so to you. I would rather have been wrong about almost anything else.
+Velinde's chest is still in the bunkhouse. I cannot bring myself to have it emptied. The Sentinels believed she had her own reasons for leaving and would come back when she chose. I believed it too, and said so to you. I would rather have been wrong about almost anything else.
 
 It unsettles me that the Scythe of Elune has fallen out of her servants' hands.
 

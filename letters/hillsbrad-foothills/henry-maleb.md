@@ -29,7 +29,7 @@ Dibbs has been through every book he owns looking for it, and found nothing.
 
 You dealt with the mages in the Uplands, and the Syndicate is the poorer for it. I wish that were the end. But whoever Nagaz served is still out there, further off than Alterac, and I am a man who likes to know where his worries live.
 
-So I look north in the evenings, where I used to look at the water. Thank you for bringing me what I did not want to know. Better me than no one.
+So I look north in the evenings, where I used to look at the water. Thank you for bringing me what I did not want to know. Better I know it than no one does.
 
 Magistrate Henry Maleb
 Southshore

@@ -23,7 +23,7 @@ place: 42
 
 $N,
 
-I laid the cards for Alyssa again. Death did not come up. What came up was a card I had not seen in a long while, a plain one, of no importance at all. It means an ordinary day. I sat and looked at it until my tea went cold.
+I laid the cards for Alyssa again. Death did not come up. What came up was a card I had not seen in years, a plain one, of no importance at all. It means an ordinary day. I sat and looked at it until my tea went cold.
 
 You followed a name out of my trance to the registry, to Moonbrook and Goldshire and Stormwind and back again, and every door you knocked on opened onto something older and worse. I sent you down that road. I am sorry for some of what you found at the end of it.
 

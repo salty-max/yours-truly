@@ -9,7 +9,7 @@ place: 108
 
 # Gryan Stoutmantle
 
-**Who.** Gryan Stoutmantle (234), who heads the People's Militia from the stone tower on Sentinel Hill. The anchor is The Defias Brotherhood (166): Edwin VanCleef killed in his hideout, his head brought back. The chain before it: Wiley in Lakeshire, who owed Gryan a favor, Mathias Shaw of SI:7, the Stonemasons' Guild that rebuilt Stormwind under VanCleef, the Defias Traitor who led the way to the hideout. Gryan knew VanCleef's name "well", was unnerved that "a man so industrious and talented" turned scoundrel, and was saddened to sentence any man to death.
+**Who.** Gryan Stoutmantle (234), who heads the People's Militia from the stone tower on Sentinel Hill. The anchor is The Defias Brotherhood (166): Edwin VanCleef killed in his hideout, his head brought back. The chain before it: Wiley in Lakeshire, who owed Gryan a favour, Mathias Shaw of SI:7, the Stonemasons' Guild that rebuilt Stormwind under VanCleef, the Defias Traitor who led the way to the hideout. Gryan knew VanCleef's name "well", was unnerved that "a man so industrious and talented" turned scoundrel, and was saddened to sentence any man to death.
 
 **The voice.** A militia captain who writes the way he gives orders: plainly, in short paragraphs, no flourish. Decent and responsible for the people still there. The chain cost him something: he asked for a man's death and knew what that man had built. He will not give a promise just because someone needs to hear one. His thanks are straightforward.
 

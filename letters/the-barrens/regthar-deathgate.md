@@ -11,7 +11,7 @@ place: 386
 
 **Who.** Regthar Deathgate (3389), who holds the bunkers west of the Crossroads in the Barrens against the Kolkar. The chain (850 to 4021): "recently, the Kolkar centaurs of the Barrens have grown into a real threat... new leaders have risen among them"; Barak Kodobane ("a few have the wit and vision to lead. And those are the most dangerous... It is good that he is dead"), Verog the Dervish drawn out at the Stagnant Oasis ("You should be proud of your deed, $N. There is much bravery in you"), Hezrul Bloodmark, the Kolkar's leader in the Barrens, at the Lushwater Oasis ("In defeating them, your valor is proven"). The anchor, Counterattack! (4021): Kolkar from Desolace seeking vengeance move against the bunkers, Warlord Krom'zar, a piece of his banner. "You have done it! You have defeated the Kolkar! I will be sure Thrall receives word of your actions here, $N. Stand tall. You do yourself, and the Horde, proud."
 
-**The voice.** A soldier's: plain, brief, proud of the player without fuss. Respects an enemy's cunning. A grim humour in one line. He counts the leaders, not the word sent to Thrall.
+**The voice.** A soldier's: plain, brief, proud of the player without fuss. Respects an enemy's cunning. A grim humour in one line. He counts the leaders, not the word sent to Thrall. Terse by card: under 100 words, and the letter reads complete.
 
 **Never.** The Kolkar gone (they come again), Thrall's reply or praise (a leader never writes, and isn't quoted), the heads (the chain keeps them, the letter doesn't need them), anything after Krom'zar.
 

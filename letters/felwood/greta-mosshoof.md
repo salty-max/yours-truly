@@ -25,9 +25,9 @@ $N,
 
 I watched you, you know. When the last brazier went dark in Shadow Hold, my spells could see again, and the first thing they showed me was you, standing in the smoke. I have scried a great many things in my life. I do not think I have ever been so glad to see one.
 
-Islen sent her regards with the water, and a warning I have not stopped turning over: that what I am tackling is larger than I know, and that I will find out soon enough. She is rarely wrong. The Council was struck at its head in Jaedenar, but a serpent like that has more than one.
+Islen sent her regards with the water, and a warning I have not stopped turning over: that what I am tackling is larger than I know, and that I will find out soon enough. I have never known her to be wrong. The Council was struck at its head in Jaedenar, but a serpent like that has more than one.
 
-Felwood is still sick, and it will be sick a long while yet. But it is a little less sick in one dark corner, and the Earthmother sees that, even where no one else does.
+Felwood is still sick, and it will be sick for some time yet. But it is a little less sick in one dark corner, and the Earthmother sees that, even where no one else does.
 
 Earthmother keep you,
 Greta Mosshoof

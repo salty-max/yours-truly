@@ -23,7 +23,7 @@ place: 1519
 
 Dear valued customer,
 
-Regarding your recent inquiry. The wheel you were looking for left Menethil by ship well before you started asking, as you found out in Menethil. Our friend at the harbor sends his regards and says he misses the excitement, which he asked me not to repeat, so I'll pretend I didn't write it.
+Regarding your recent inquiry. The wheel you were looking for left Menethil by ship well before you started asking, as you found out there. Our friend at the harbour sends his regards and says he misses the excitement, which he asked me not to repeat, so I'll pretend I didn't write it.
 
 The rest of the order is with our friends in Theramore now, and they are careful people. Whether the wheel turns up again is out of my hands.
 

@@ -27,7 +27,7 @@ Before you left for Fenris Isle, I wrote two reports for the Undercity. One said
 
 Renferrel tells me the energies released when Thule fell were felt as far as the Sepulcher. He is right. I felt it myself, and I knew what you had done before anyone told me.
 
-The Scourge are not finished in Silverpine. The rot hides still hold the island, and they will not leave it for one dead mage. But they have lost ground, and they lost it to one of ours.
+The Scourge are not finished in Silverpine. The Rot Hides still hold the island, and they will not leave it for one dead mage. But they have lost ground, and they lost it to one of ours.
 
 Your value to us grows.
 

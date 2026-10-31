@@ -17,7 +17,7 @@ place: 976
 
 **French.** Vouvoie.
 
-**The game's.** The dew gland and the terrible thirst, it tasted terrible, some kick to it, Sprinkle and her secret ingredient, the Violet Tragan, the fabulous Noggenfogger Elixir, millions, blocking his business, the favor and such a kidder (2605 to 2662). **Ours.** Hundreds and climbing, customers back smaller or bonier, the genius in the stirring, the dew collector's taste at the beginning, remembering it when he is famous.
+**The game's.** The dew gland and the terrible thirst, it tasted terrible, some kick to it, Sprinkle and her secret ingredient, the Violet Tragan, the fabulous Noggenfogger Elixir, millions, blocking his business, the favour and such a kidder (2605 to 2662). **Ours.** Hundreds and climbing, customers back smaller or bonier, the genius in the stirring, the dew collector's taste at the beginning, remembering it when he is famous.
 
 ## Letter
 
@@ -27,7 +27,7 @@ Millions! Well. Thousands, nearly. Well, a very encouraging number of hundreds, 
 
 The fabulous Noggenfogger Elixir is selling better than anything in Gadgetzan that isn't water. Customers come back for more, which is the sign of a quality product. Some of them come back a little smaller, or a little bonier, or floating down from somewhere, but they come back, and that's what counts.
 
-Sprinkle keeps telling people I owe her a favor. Funny woman. The powder was her idea, sure, but the genius was in the stirring.
+Sprinkle keeps telling people I owe her a favour. Funny woman. The powder was her idea, sure, but the genius was in the stirring.
 
 You were there at the very beginning, $N, when it tasted like the inside of a dew gland, and I'll remember it when I'm famous.
 

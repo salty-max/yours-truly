@@ -27,7 +27,7 @@ The fetishes are ash. I burned them myself at the edge of the Pool of Tears, and
 
 I keep thinking about that exile in the Hinterlands. He looked at his high priest's prophecy and said what he saw, and they wrote his sentence in blood on dried flesh and sent him to live among the Witherbark. Every army I have served in had a man like that. Most of them were right.
 
-Jammal'an still believes his god will make the Atal'ai immortal, and the green dragons watch the water for the day he tries.
+Jammal'an still believes his god will make the Atal'ai immortal, and the green dragons are still watching the water.
 
 Fel'zerul
 Stonard

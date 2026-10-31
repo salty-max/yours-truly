@@ -17,7 +17,7 @@ place: 541
 
 **French.** Vouvoie.
 
-**The game's.** No memory, a secret to everybody, the sword finished, the true warrior at heart, the last step of a journey, no longer the hero, the Golden Flame going home to be protected, dangerous to go alone, without you no idea who I am (3844 to 3962). **Ours.** Memories coming back in pieces, salt and a field and a song, knowing the way home now, the advice he gave and didn't take, the player the part he means to keep.
+**The game's.** No memory, a secret to everybody, the sword finished, the true warrior at heart, the last step of a journey, no longer the hero, the Golden Flame going home to be protected, dangerous to go alone, without you no idea who I am (3844 to 3962). **Ours.** Memories coming back in pieces, the Golden Flame brought out of the cave and his delight in it, salt and a field and a song, knowing the way home now, the advice he gave and didn't take, the player the part he means to keep.
 
 ## Letter
 
@@ -25,7 +25,7 @@ $N,
 
 It keeps coming back in pieces. A smell of salt. A wide field I think I grew up beside. A song somebody hummed while they sharpened blades. None of it in order, and none of it very useful, but all of it mine.
 
-The Golden Flame is going home, where it can be kept safe. I remember the way now. That's new.
+You went after Blazerunner and came back with the Golden Flame, and I could not stop grinning at the sight of it. It is going home, where it can be kept safe. I remember the way now. That's new.
 
 I gave you some advice once: it's dangerous to go alone. I'd have done well to take it myself.
 

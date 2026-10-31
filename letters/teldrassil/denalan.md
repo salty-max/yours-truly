@@ -17,7 +17,7 @@ place: 259
 
 **French.** Vouvoie.
 
-**The game's.** The rare earth from Dolanaar (997), the seeds and the special soil, the angry timberlings and his worry about the soil (918), the fruit found under the plant's fronds, exotic, perhaps from far off, reacting strangely with Teldrassil's soil (930). **Ours.** The fruit kept wrapped and away from the soil, his preference that the fault be the fruit's, the watched seed, his tally of what he knows, the rare earth gone into the special soil, the player's eye, lent to him.
+**The game's.** The rare earth from Dolanaar (997), the seeds and the special soil, the angry timberlings and his worry about the soil (918), the fruit found under the plant's fronds, exotic, perhaps from far off, reacting strangely with Teldrassil's soil (930). **Ours.** The fruit kept wrapped and away from the soil, his preference that the fault be the fruit's, the watched seed (a translator uses the language's own watched-pot saying), his tally of what he knows, the rare earth gone into the special soil, the player's eye, lent to him.
 
 ## Letter
 

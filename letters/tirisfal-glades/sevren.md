@@ -27,7 +27,7 @@ I write to acknowledge receipt of Deathguard Linnea's report, delivered by your 
 
 The report said what she told you. The Bulwark holds the greater part of the Scourge, and some slip through. I have filed it with the others that say the same.
 
-The graves by Garren's Haunt aren't safe, but the dead in them remain dead, which was the object. They were spared what was done to us. I find I have a personal interest in keeping it so, and your work among the Rot Hides served it. The Apothecaries have the ichor. They have told me nothing, which in my experience means they are pleased.
+The graves by Garren's Haunt are not safe, but the dead in them remain dead, which was the object. They were spared what was done to us. I take a personal interest in keeping it so, and your work among the Rot Hides served it. The Apothecaries have the ichor. They have told me nothing, which in my experience means they are pleased.
 
 The Lich King and his minions are ceaseless in their assaults. He will not take us again.
 

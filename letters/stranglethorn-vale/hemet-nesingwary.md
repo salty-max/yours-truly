@@ -25,7 +25,7 @@ My dear $N!
 
 Bangalash! The whole camp is still shouting about him over supper! Sir Erlgadin swears his panther was the harder quarry, and Ajeck won't hear a word of it. I have moved the kettle twice to save it from their demonstrations.
 
-Erlgadin, Ajeck and I all have a great deal to say about a tiger you brought down! I had my sights on that white devil for a very long time, old chap, and I have earned a word or two on the subject.
+I had my sights on that white devil for a very long time, old chap, and I have earned a word or two on the subject.
 
 Barnil read my account of the hunt and asked where you came into it. A fair question! I'm afraid I got quite carried away with my own attempts and forgot you entirely. Right-o, I have put you back where you belong.
 

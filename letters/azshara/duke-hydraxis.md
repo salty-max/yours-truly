@@ -17,16 +17,16 @@ place: 16
 
 **French.** Vouvoie. The Duke's own agreements masculine.
 
-**The game's.** Not understanding mortal gratitude or rewarding good works, a reward warranted, the coffer, the hands of the four captains, the chambers of the Waterlords, waves among them, small and fragile forms, a legend one day (6804 to 7486). **Ours.** Told that mortals write when grateful, ink on a thin skin, a slow way to say what a tide says, mortals thanking each other for small things, not knowing how large a letter must be, this one having to do.
+**The game's.** Not understanding mortal gratitude or rewarding good works, a reward warranted, the coffer, the hands of the four captains, the chambers of the Waterlords, waves among them, small and fragile forms, a legend one day (6804 to 7486). **Ours.** Told that mortals write when grateful, ink on a thin skin, a great deal of effort for so few words, mortals thanking each other for small things, not knowing how large a letter must be, this one having to do.
 
 ## Letter
 
 $N,
 
-I am told that your kind, when it is grateful, writes. Marks on a thin skin, folded and carried from hand to hand. It is a slow way to say what a tide says at once. But you brought us the hands of four captains of fire, and so I will try your way.
+I am told that your kind, when it is grateful, writes. Marks on a thin skin, folded and carried from hand to hand. It seems a great deal of effort for so few words. But you went down into the Molten Core and struck at the fire where it lives, four times, and so I will try your way.
 
 I do not understand how your kind measures gratitude. I have watched mortals for a long time, and I have seen them thank each other for very small things: a door held, a cup filled. You did not do a small thing. I do not know how large a letter must be, among you, for a thing that large.
 
-This one will have to do. The war goes on. But word of you has gone through the chambers of the Waterlords.
+I wrote this letter twice, and found no better way to say it the second time. It will have to do. The war goes on.
 
 Duke Hydraxis

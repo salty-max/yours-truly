@@ -17,13 +17,13 @@ place: 1637
 
 **French.** Vouvoie.
 
-**The game's.** The temper of a rabid kodo bull, his own fault, sending travelers below, Bazzalan and Jergosh slain by Thrall's do-gooders, minimizing the damage below, his agents in the Barrens and Ashenvale (the forest), the lieutenant, the insignia (5726 to 5730). **Ours.** The apology on paper, wanting their names, the tidying, the right mark at the right moment, the comfort of one who is what they seem, signing as a friend in the Cleft.
+**The game's.** The temper of a rabid kodo bull, his own fault, sending travellers below, Bazzalan and Jergosh slain by Thrall's do-gooders, minimizing the damage below, his agents in the Barrens and Ashenvale (the forest), the lieutenant, the insignia (5726 to 5730). **Ours.** The apology on paper, wanting their names, the tidying, the right mark at the right moment, the comfort of one who is what they seem, signing as a friend in the Cleft.
 
 ## Letter
 
 $C,
 
-Forgive my temper when you came to see me. It rivaled a rabid kodo bull's, and you had done nothing to earn it. The fault was mine. I sent travelers below the city without a thought for who else might follow them, and two friends paid for my carelessness. Thrall's do-gooders, whoever they were. I would give a great deal for their names.
+Forgive my temper when you came to see me. It rivalled a rabid kodo bull's, and you had done nothing to earn it. The fault was mine. I sent travellers below the city without a thought for who else might follow them, and two friends paid for my carelessness. Thrall's do-gooders, whoever they were. I would give a great deal for their names.
 
 I am tidying what I can below. Our friends in the Barrens and in the forest have begun their own work.
 

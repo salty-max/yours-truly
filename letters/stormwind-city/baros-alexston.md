@@ -27,7 +27,7 @@ I walk to City Hall every morning past walls the Stonemasons raised after the wa
 
 You carried his unsent letter to me, and then followed it through the Stockade and beyond. I have heard that Lord Lescovar was found dead. I have not asked how, and I will not. I am grateful. I say it first, because the rest is harder to say.
 
-When the nobles refused to pay us, some of us were offered posts. I took mine. Edwin refused his, out of loyalty to the others, and swore revenge. I told you he did not care who he hurt, and that I was not sure I could blame him. I have not changed my mind about either.
+When the nobles refused to pay us, some of us were offered posts. I took mine. Edwin refused his, out of loyalty to the others, and swore revenge.
 
 The city stands, and I keep its plans. Some mornings that feels like an answer to him, and some mornings it feels like the post he would not take.
 

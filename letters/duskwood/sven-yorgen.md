@@ -25,9 +25,9 @@ $N,
 
 I went back to the farm. It is the first time since that night. The barn still stands, and so does the old stump where the book was buried. I stood there a long while. Then I came back to my camp, and I slept.
 
-Morbent Fel is beaten. The dark riders are not, and I will not pretend otherwise. But a small piece of what I had stopped hoping for has come to pass, by your hand and by that blade from Stormwind.
+Morbent Fel is beaten. The dark riders are not, and I will not pretend otherwise. But a small piece of what I had stopped hoping for has come to pass, by your hand and by that weapon from Stormwind.
 
-I know who Jitters is now. He watched my family die and could do nothing, and he wrote it all down because he could not carry it alone. I find I cannot hate a man for that. I am trying not to.
+I know who Jitters is now. He watched my family die and could do nothing, and he wrote it all down because he could not carry it alone. I cannot hate a man for that. I am trying not to.
 
 Perhaps one day fate may bring you back to me. I mean it as I did then.
 

@@ -17,7 +17,7 @@ place: 321
 
 **French.** Vouvoie.
 
-**The game's.** Gor'mul left behind, years alone without hope, Doomhammer's fall, Thrall with Orgrim's armor and hammer, the shamans' new power, the amulet thrown down, the orb and the raptor's guile, convinced for the time being, the talk after the enchantment, back to the land of the living (655 to 847). **Ours.** The guile wearing off, the talk, the question about the young Warchief, the quiet, the little shown and not thrown down, the first question in years, the rest of the way theirs to walk.
+**The game's.** Gor'mul left behind, years alone without hope, Doomhammer's fall, Thrall with Orgrim's armour and hammer, the shamans' new power, the amulet thrown down, the orb and the raptor's guile, convinced for the time being, the talk after the enchantment, back to the land of the living (655 to 847). **Ours.** The guile wearing off, the talk, the question about the young Warchief, the quiet, the little shown and not thrown down, the first question in years, the rest of the way theirs to walk.
 
 ## Letter
 
@@ -25,7 +25,7 @@ $N,
 
 The raptor's guile wore off, as I knew it would. Then Gor'mul and I talked, the way I had hoped we might.
 
-He listened. He did not smile, and I did not ask him to. He asked whether the young Warchief truly wears Orgrim's armor and carries his hammer, and I told him yes. He was quiet a long while after that. Then he asked what the shamans can do now, and I showed him a little, and he did not throw it on the ground.
+He listened. He did not smile, and I did not ask him to. He asked whether the young Warchief truly wears Orgrim's armour and carries his hammer, and I told him yes. He was quiet for some time after that. Then he asked what the shamans can do now, and I showed him a little, and he did not throw it on the ground.
 
 That is not a warrior returned. But it is a warrior who asked a question, and in all the years he wandered alone, I do not think he asked anyone anything.
 
