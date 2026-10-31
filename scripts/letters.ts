@@ -37,7 +37,7 @@
  *
  *   bun scripts/letters.ts           write them
  *   bun scripts/letters.ts --check   fail if one isn't up to date or a rule breaks
- *   bun scripts/letters.ts --stamp   record each translation's English as read
+ *   bun scripts/letters.ts --stamp frFR   record that translation's English as read (a language, or all)
  *   bun scripts/letters.ts --names   list the game's names each English letter
  *                                    holds, those outside its chain marked, for
  *                                    a person to look at (nothing written)
@@ -47,6 +47,7 @@ import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type * as WowDb from "../../wow-data/src/db";
 import { LOCALES } from "./locales-lib";
+import { stampLocales } from "./stamp";
 import { familyPath } from "./root";
 
 // through the family folder, from a worktree too (scripts/root.ts)
@@ -351,6 +352,12 @@ function textsLua(locale: string, letters: Map<string, Letter>, swaps: Record<st
 
 // ── the translations: checked against their English, stamped
 const translations = new Map<string, Map<string, Letter>>();
+const stamping = stampLocales(process.argv.slice(2), TRANSLATED);
+if (typeof stamping === "string") {
+  console.error(`✗ ${stamping}`);
+  process.exit(2);
+}
+const summary: string[] = [];
 for (const locale of TRANSLATED) {
   const mine = read(join(ROOT, "i18n", locale, "letters"));
   translations.set(locale, mine);
@@ -374,13 +381,21 @@ for (const locale of TRANSLATED) {
   const stampFile = join(ROOT, "i18n", locale, "letters-stamp.json");
   const stamps: Record<string, string> = existsSync(stampFile) ? JSON.parse(readFileSync(stampFile, "utf8")) : {};
   const fresh: Record<string, string> = {};
+  let stale = 0;
   for (const k of [...mine.keys()].sort()) {
     const en = english.get(k);
     if (!en) continue;
     fresh[k] = hash(en);
-    if (stamps[k] !== hash(en)) notes.push(`${locale}: ${k}: its English changed since it was translated (--stamp once read)`);
+    if (stamps[k] !== hash(en)) {
+      stale++;
+      if (!stamping.includes(locale)) notes.push(`${locale}: ${k}: its English changed since it was translated (--stamp ${locale} once read)`);
+    }
   }
-  if (process.argv.includes("--stamp") && mine.size) writeFileSync(stampFile, `${JSON.stringify(fresh, null, 2)}\n`);
+  if (stamping.includes(locale) && mine.size) {
+    stale = 0;
+    writeFileSync(stampFile, `${JSON.stringify(fresh, null, 2)}\n`);
+  }
+  summary.push(`${locale}: ${Object.keys(fresh).length} translations (${stale} stale)`);
 }
 
 const args = process.argv.slice(2);
@@ -482,6 +497,7 @@ for (const locale of LOCALES) {
 }
 
 for (const n of notes) console.log(`  ${n}`);
+for (const l of summary) console.log(l);
 if (problems.length) {
   for (const p of problems) console.error(`✗ ${p}`);
   process.exit(1);

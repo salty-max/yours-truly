@@ -30,7 +30,7 @@ bun scripts/root.ts --run addon-kit/regional.ts   # esMX's game names from wow-d
 bun run ids          # every table saved-ids.json lists keeps the ids it had at the fork point from origin/main
 bun scripts/root.ts --run addon-kit/q.ts check -- bun run check   # the same, quiet, stamping the tree for the push
 bun run package      # dist/YoursTruly-<version>.zip for a test in the game
-bun run letters      # the letters again, after a letters/ edit or wow-data's change (--stamp once a translation is read)
+bun run letters      # the letters again, after a letters/ edit or wow-data's change (`--stamp <language>` once that translation is read: one language, never all by default)
 bun scripts/letters.ts --names   # the game's names each letter holds, those outside its chain marked, to look at
 bun run kit:sync     # after a change to the kit (Kit.lua, Media, scripts/root.ts)
 bun run locales      # after a new L["..."] (then --keys for i18n/words.json)
