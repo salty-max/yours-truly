@@ -2,8 +2,9 @@
 
 Written in `../ideas/letters/` on 23 October 2026, in this layout, and moved
 here as they were. The plan (which chains earn a letter, the rules of
-invention, the waves): `../ideas/letters.md`; how a letter reads and the six
-first writers' history: `../ideas/letters-voices.md`.
+invention, the waves): `../ideas/letters.md` (outside git); how a letter reads
+and the registers by writer: `voices.md`, beside this file; the six first
+writers' history: `../ideas/letters-voices.md`.
 
 ## The files
 

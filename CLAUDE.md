@@ -5,8 +5,8 @@ you a letter, in their own voice, about what the chain changed for them. It
 waits at the next mailbox you open, sealed, in a panel beside the mail
 window (never real mail: no addon can make one), and stays in the book. Planned in `../ideas/letters.md` (every call
 the user's, 23 October 2026: its Decided section), the voices and their rules
-in `../ideas/letters-voices.md`. Started 23 October 2026. On GitHub (salty-max/yours-truly, public,
-23 October 2026), not yet released. Classic Era (11509) and Forever (16001), one package. Read the
+in `docs/voices.md`. Started 23 October 2026. On GitHub (salty-max/yours-truly, public,
+23 October 2026), released since v0.1.0. Classic Era (11509) and Forever (16001), one package. Read the
 family's CLAUDE.md (`../CLAUDE.md`) first.
 
 ## Where things are
@@ -17,7 +17,8 @@ family's CLAUDE.md (`../CLAUDE.md`) first.
 | The letters: the files, their parts, the ids, the generator (`scripts/letters.ts`) and what it checks | `docs/letters.md` |
 | The letters themselves, each with its writer's card | `letters/<zone>/<writer>.md`, French, German and Spanish in `i18n/<locale>/letters/<zone>/` (esMX: esES's, `i18n/esMX/regional.json`, resolved into `regional.resolved.json` by addon-kit's regional.ts) |
 | The logo, its master, exports and exact generation prompt | `assets/README.md` |
-| The plan, the waves to come, the voices' rules and the six first letters' history | `../ideas/letters.md`, `../ideas/letters-voices.md` |
+| The voices' rules: what is ours and the game's, how a letter reads, the registers by writer | `docs/voices.md` |
+| The plan, the waves to come and the six first letters' history | `../ideas/letters.md`, `../ideas/letters-voices.md` |
 | The store page (CurseForge, Wago), its summary (the TOCs' Notes) | `addon/CURSEFORGE.md` |
 
 ## Commands
@@ -38,7 +39,7 @@ scripts/release.sh --version X.Y.Z [--hold] NOTES.md   # check, tag, push; Actio
 
 ## Hard rules
 
-- The letters' rules are the plan's (`../ideas/letters.md` §1, §4, §6):
+- The letters' rules are `docs/voices.md` (from the plan, `../ideas/letters.md` §1, §4, §6):
   the writer's life since the chain is ours, small and off-screen; who the
   writer is, what the player did and what happened are the game's, exactly,
   from the quests the anchor requires and nothing else. Nothing enclosed,

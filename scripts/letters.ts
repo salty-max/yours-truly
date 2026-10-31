@@ -24,7 +24,7 @@
  * the body, the sign-off (the last paragraph not starting "P.S.", its lines
  * kept), any P.S. A translation: the same front matter, only "## Letter".
  *
- * The rules the build can check (docs/letters.md, ../ideas/letters.md):
+ * The rules the build can check (docs/letters.md, docs/voices.md):
  *   - an anchor, a writer or a place missing from a game the letter claims
  *   - no semicolons in any language (the gender tokens' own aside), plain
  *     ASCII in the English, the game's tokens only ($N, $C, $R, $gm:f;)
