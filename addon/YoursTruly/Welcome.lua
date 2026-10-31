@@ -31,7 +31,9 @@ local W = K.welcome({
       },
     }
   end,
-  footnote = L["Change it any time: /yourstruly settings, or a right-click on the minimap button. /yourstruly opens the book."],
+  footnote = L["Change it any time: %s, or a right-click on the minimap button."]:format("/yourstruly settings")
+    .. " "
+    .. L["/yourstruly opens the book."],
   open = { text = L["Open the book"], click = function() ns.toggle() end },
   exportHint = L["Copy it (Ctrl+C), then on another character: Use a code, or /yourstruly import CODE."],
   importHint = L["Paste the code (/yourstruly export on the other character), then press Enter."],
