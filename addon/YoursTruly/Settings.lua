@@ -78,12 +78,7 @@ function ns.createSettingsPanel()
   )
   O:achievementSound("achievementSound")
   O:bannerSeconds("bannerSeconds")
-  O:check(
-    "minimapHidden",
-    L["Minimap button"],
-    L["The letters by the minimap: click to open the book, drag to move it."],
-    true
-  )
+  O:check("minimapHidden", L["Minimap button"], L["The book by the minimap: click to open it, drag to move it."], true)
   O:copy()
   O:done()
 end

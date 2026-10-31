@@ -18,13 +18,13 @@ local W = K.welcome({
   intro = function()
     return L["Some quest chains change someone's life. When you finish one, the person it changed may write to you, in their own voice, about what happened and what came after."]
       .. "\n\n"
-      .. L["Their letter waits at the next mailbox you open, sealed. The mail icon on the minimap tells you when one is waiting. Keep every letter in the book."]
+      .. L["A letter waits at the next mailbox you open, sealed. The mail icon on the minimap tells you when one is waiting. Every letter stays in the book."]
   end,
   profiles = ns.profiles,
   choices = function()
     return {
       {
-        text = L["The letters by the minimap"],
+        text = L["The book by the minimap"],
         hint = L["Click it to open the book, or drag it around the minimap."],
         get = function() return not ns.option("minimapHidden") end,
         set = function(v) ns.setOption("minimapHidden", not v) end,

@@ -51,7 +51,9 @@ does not give) would leave nothing to write after "thank you".
 - **Names by id.** A name in a letter is one wow-data holds (an NPC, a place,
   an item, a quest), so every language gets the client's. A name found only in
   an English quest text is left out (Gazlowe's "Vice Admiral Grezzlik" becomes
-  "the trade fleet").
+  "the trade fleet"). A name every language's quest text carries but wow-data
+  holds no creature or place for (the Argus Wake) is taken by the translator
+  from the client's own quest text.
 
 ## How a letter reads
 
@@ -69,18 +71,21 @@ does not give) would leave nothing to write after "thank you".
   one of them is wrong.
 - **Dialects** show in word choice and rhythm, never in phonetic spelling: a
   troll's "mon" once in a letter at most, a goblin's sums, an orc's short
-  sentences, a Forsaken's dryness.
+  sentences, a Forsaken's dryness. A dialect word is not a spelling (Agnar's
+  "ye" and "wee" stand, "ye're" and "yerself" would not: "you're" or "ye
+  are", "yourself").
 - **What the player did** is named once, concretely, never recapped quest by
   quest. The game told it already: the letter is what it meant to someone.
 - **Length.** 100 to 150 words of body (the paragraphs and any P.S., not the
-  place line, greeting or signature). A terse writer (Mankrik, Nathanos) may
-  stop at 70. A few big letters (Sara Balloo, Tirion Fordring) go up to 180.
+  place line, greeting or signature). A terse writer may stop at 70: Mankrik and
+  Nathanos, Gadrin and Thazz'ril, and Payson, Razzeric, Regthar and Dorn,
+  whose cards say so. A few big letters (Sara Balloo, Tirion Fordring) go up to 180.
   French a fifth longer.
 - **Time.** No "yesterday", no "last week": a letter may arrive late (a
   character who did the chain before installing the addon gets it at the next
   mailbox, perhaps thirty levels on). "Since you left", "these days".
-- **The P.S.** About one letter in four, where people put the true thing or
-  the joke they could not resist. Never as a habit.
+- **The P.S.** Now and then, where people put the true thing or the joke
+  they could not resist. Never as a habit, and a letter is whole without one.
 - **Never**, besides the above: a semicolon in any language, a change in the
   world the player would not find there. What else a writer never does (a real
   con, meanness, a promise the world cannot keep) is on that writer's card,
@@ -88,9 +93,8 @@ does not give) would leave nothing to write after "thank you".
 - **Tokens.** The player's name `$N`, class `$C`, race `$R`, the game's own,
   and gendered words through the gender tokens (`$gcher:chère;`), which French
   needs often and English almost never. Plain ASCII in the English.
-- Spelling is British, game names as the game spells them. (One shipped
-  letter slips: "owe her a favor" in `letters/tanaris/marin-noggenfogger.md`
-  should read "favour", a word change that rides the next release.)
+- Spelling is British (harbour, armour, defence, travellers, favour, "Mr" with
+  no full stop), game names as the game spells them (Menethil Harbor).
 
 ## Registers by writer
 
@@ -119,8 +123,8 @@ sentences, idioms that travel). Two letters show both registers. Hawkwind
 tutoies in French, uses "du" in German and "tú" in Spanish
 (`letters/mulgore/hawkwind.md`):
 
-> My mother was glad to hear you stood before Cairne, child, and her first
-> thought was whether you had eaten before the climb.
+> My mother was glad to hear that you had stood before Cairne, young one, and
+> her first thought was whether you had eaten before the climb.
 
 > Ma mère a été heureuse d'apprendre que tu avais rencontré Cairne, mon enfant,
 > et sa première pensée a été de savoir si tu avais mangé avant de monter
