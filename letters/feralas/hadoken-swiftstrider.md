@@ -23,9 +23,9 @@ place: 1099
 
 $N,
 
-The camp holds, and the Woodpaw come at it less, or so my sentries say. For years I took them for simple savages. The Woodpaw battle plans you found showed me otherwise. They were fighting on two fronts, and the one to the south was the one wearing them down. Something was pushing them north, and we were standing in the way.
+The camp holds, and the Woodpaw come at it less, or so my sentries say. For years I took them for simple savages. The battle plans you found showed me otherwise. They were fighting on two fronts, and the one to the south was the one wearing them down. Something was pushing them north, and we were standing in the way.
 
-I have studied the glands you cut from Stinglasher until I could draw them from memory. Whatever lives in the Writhing Deep is organized, and patient, and closer than I like. It is my charge to see that we hold long enough to learn from it.
+I have studied the glands you cut from Stinglasher until I could draw them from memory. Whatever lives in the Writhing Deep is organised, and patient, and closer than I like. It is my charge to see that we hold long enough to learn from it.
 
 For the first time in my life I pity a gnoll, and hating them was easier.
 

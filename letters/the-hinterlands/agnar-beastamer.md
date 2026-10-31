@@ -25,7 +25,7 @@ $N,
 
 How's the wee one? I've been wondering, and an old animal handler is allowed to wonder.
 
-A few things worth saying twice, since the egg was readier than I thought. Sprite darters eat meat and greens both, so don't let anyone tell ye otherwise. Raw flanks, mind, and plenty of them. A hungry one gives ye a look, and there's no mistaking it.
+A few things worth saying again, since that egg was readier than I thought and I rushed them the first time. Sprite darters eat meat and greens both, so don't let anyone tell ye otherwise. Raw flanks, mind, and plenty of them. A hungry one gives ye a look, and there's no mistaking it.
 
 Kids, eh? One minute you're running an egg from Thousand Needles to the Hinterlands against the hour, and the next you're a parent. Kinda.
 

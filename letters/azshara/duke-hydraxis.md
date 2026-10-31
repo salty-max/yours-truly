@@ -23,10 +23,10 @@ place: 16
 
 $N,
 
-I am told that your kind, when it is grateful, writes. Marks on a thin skin, folded and carried from hand to hand. It seems a great deal of effort for so few words. But you went down into the Molten Core and struck at the fire where it lives, four times, and so I will try your way.
+I am told that your kind, when it is grateful, writes. Marks on a thin skin, folded and carried from hand to hand. It seems a great deal of effort for so few words. But you went down into the Molten Core and struck at the fire four times, where it thought itself safest, and so I will try your way.
 
 I do not understand how your kind measures gratitude. I have watched mortals for a long time, and I have seen them thank each other for very small things: a door held, a cup filled. You did not do a small thing. I do not know how large a letter must be, among you, for a thing that large.
 
-I wrote this letter twice, and found no better way to say it the second time. It will have to do. The war goes on.
+This one will have to do. I wrote it twice, and the second was no larger than the first. The war goes on.
 
 Duke Hydraxis

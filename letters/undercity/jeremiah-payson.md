@@ -27,7 +27,7 @@ I am still Payson. I want that understood before anything else. I took the name 
 
 I called you a vulture. You were not one, as it turned out, and I find I mind being wrong less than I expected.
 
-But I kept what she sent. All of it. It is all in a box under the cockroach crates, where no one will think to look, which is rather the point.
+But I kept what she sent. All of it. It is in a box under the cockroach crates, where no one will think to look, which is rather the point.
 
 Jeremiah Payson
 Cockroach Vendor
