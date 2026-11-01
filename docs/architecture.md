@@ -3,6 +3,8 @@
 The addon file by file (the map is CLAUDE.md). The letters and their build:
 `docs/letters.md`.
 
+German and Spanish (deDE, esES, esMX) are held back from players since 1 November 2026 (`HIDDEN_LOCALES` in addon-kit's `locales-lib.ts`): their language files are stubs with the game's names or English, their tests skip (`addon/test/held.lua`), and their `i18n/` stays. Restoring them starts by emptying that list.
+
 ## The package
 
 - `addon/YoursTruly`: one package for every game (`YoursTruly_Vanilla.toc`:

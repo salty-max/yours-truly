@@ -9,6 +9,10 @@
 -- achievements, a French, a German and a Spanish reader who is a woman. FOREVER=1, LOCALE=frFR, deDE, esES or esMX: those
 -- clients.
 local G = dofile("addon/test/game.lua")
+if dofile("addon/test/held.lua")(G.LOCALE) then
+  print("skipped: " .. G.LOCALE .. " held back (HIDDEN_LOCALES)")
+  os.exit(0)
+end
 local s, ns = G.state, G.ns
 local count = 0
 local function check(ok, what)

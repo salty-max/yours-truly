@@ -15,7 +15,7 @@ letters from the people you helped.
 - **The book.** Every letter you receive, kept: who wrote, from where, the
   chain it answers. A few achievements along the way.
 
-English, French, German and Spanish. `/yourstruly` opens the book.
+English and French. `/yourstruly` opens the book.
 
 The game's data comes from [wow-data](https://github.com/salty-max/wow-data):
 the game clients' tables, [Questie](https://github.com/Questie/Questie)'s

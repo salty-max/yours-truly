@@ -46,7 +46,7 @@ import { createHash } from "node:crypto";
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type * as WowDb from "../../wow-data/src/db";
-import { LOCALES } from "./locales-lib";
+import { HIDDEN_LOCALES, holdBack, LOCALES } from "./locales-lib";
 import { stampLocales } from "./stamp";
 import { familyPath } from "./root";
 
@@ -494,6 +494,8 @@ for (const locale of LOCALES) {
       : Object.fromEntries(Object.entries(swapsOf(lender)).map(([a, b]) => [words(a), words(b)]));
     files[`Letters_${locale}.lua`] = textsLua(locale, mine, swaps);
   } else files[`Letters_${locale}.lua`] = textsLua(locale, translations.get(locale) ?? new Map(), swapsOf(locale));
+  // (a language held back, HIDDEN_LOCALES: checked above, shipped without letters, the English)
+  if (HIDDEN_LOCALES.includes(locale)) files[`Letters_${locale}.lua`] = holdBack(textsLua(locale, new Map(), {}));
 }
 
 for (const n of notes) console.log(`  ${n}`);
