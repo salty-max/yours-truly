@@ -11,7 +11,7 @@ place: 363
 
 $N,
 
-Bois : pas assez. Péons : endormis. Deux sous le même arbre, un sur le tas de bois, et un debout. Je ne les savais pas capables de ça.
+Bois : pas assez. Péons : endormis. Deux sous le même arbre, un sur le tas de bois, et un debout. Je ne savais pas qu'ils en étaient capables.
 
 Ils se souviennent de toi, en tout cas. Le bruit a couru que tu traînais dans la vallée avec ma masse. Depuis, dès qu'un péon entend des pas, il est debout, la hache à la main, avant même d'avoir ouvert les yeux. Ça ne dure pas. C'est mieux que rien.
 

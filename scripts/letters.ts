@@ -75,8 +75,8 @@ const BANNED: Record<string, RegExp> = {
 };
 // (as written: "morgen" is tomorrow, "Morgen" the morning, which "heute" bans)
 const BANNED_CASED: Record<string, RegExp> = { de: /\bmorgen\b/ };
-// (the game's names that hold a banned word: Booty Bay's Spanish "botín")
-const NAMES_OK: Record<string, RegExp> = { es: /Bahía del Botín/g };
+// (the game's names that hold a banned word: Booty Bay's Spanish "botín" and French "Butin")
+const NAMES_OK: Record<string, RegExp> = { es: /Bahía del Botín/g, fr: /Baie-du-Butin/g };
 
 type Letter = {
   key: string;

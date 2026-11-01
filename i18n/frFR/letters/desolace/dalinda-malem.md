@@ -17,6 +17,6 @@ Je vous ai dit merci pour la mort de mon frère. J'y ai pensé plus qu'à tout c
 
 Mon père me demandera ce que Tyranis cherchait ici. Je lui dirai la vérité : le savoir, plus qu'il n'était bon pour lui, plus que notre peuple ne le permet. Je ne lui dirai pas comment cela a fini.
 
-Vous m'avez fait sortir de cette forteresse, et vous m'avez laissée marcher seule jusqu'au bout. C'est ce dont je me souviendrai le mieux.
+Vous m'avez fait sortir de cette forteresse, et vous m'avez laissée la quitter sur mes propres jambes. C'est ce dont je me souviendrai le mieux.
 
 Dalinda Malem

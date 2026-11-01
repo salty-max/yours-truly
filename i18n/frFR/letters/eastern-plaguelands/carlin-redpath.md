@@ -11,7 +11,7 @@ place: 2268
 
 $N,
 
-Je dors mal depuis que vous m'avez apporté ce livre. Les Annales de Darrowshire. Ma patrie, écrite par quelqu'un qui n'y était pas, puis prolongée par quelque chose que je ne comprends pas.
+Je dors mal depuis que vous m'avez apporté ce livre. Les Annales de Darrowshire. Mon village, écrit par quelqu'un qui n'y était pas, puis prolongé par quelque chose que je ne comprends pas.
 
 Elles disent que mon frère Joseph a changé de camp. Qu'il a été corrompu, qu'il a trahi les défenseurs, et qu'ils en sont morts. J'étais l'un des défenseurs. J'ai survécu. Avant de lire ce livre, je ne savais pas qui nous avait trahis.
 

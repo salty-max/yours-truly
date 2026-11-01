@@ -15,8 +15,8 @@ Au sujet de votre récente demande. La meule que vous cherchiez a quitté Meneth
 
 Le reste de la commande est désormais entre les mains de nos amis de Theramore, et ce sont des gens prudents. Que la meule refasse surface ou non ne dépend plus de moi.
 
-Je dirai une chose clairement. Vous avez fait plus de chemin que je ne vous en ai payé, et pas un mot de tout cela n'est arrivé jusqu'à ma boutique par quelqu'un d'autre que vous. Je l'ai remarqué. Je remarque presque tout.
+Je dirai une chose sans détour. Vous avez fait plus de démarches que je ne vous en ai payé, et pas un mot de tout cela n'est arrivé jusqu'à ma boutique par quelqu'un d'autre que vous. Je l'ai remarqué. Je remarque presque tout.
 
 Avec mes remerciements pour votre fidélité,
 Elling Trias
-Maître fromager, quartier commerçant
+Fromagerie Trias, quartier commerçant

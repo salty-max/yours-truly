@@ -11,7 +11,7 @@ place: 99
 
 $N,
 
-Vous avez arraché la Vue de l'esprit aux mains de Mai'Zoth, et la première chose que j'ai décidée, c'est de ne pas regarder dedans. Un homme qui cherche à savoir si une chose peut servir le Bien ne devrait pas commencer par la laisser se servir de lui.
+Vous avez tiré la Vue de l'esprit des mains de Mai'Zoth, et la première chose que j'ai décidée, c'est de ne pas regarder dedans. Un homme qui cherche à savoir si une chose peut servir le Bien ne devrait pas commencer par la laisser se servir de lui.
 
 Elle est enveloppée et rangée. Je prie à côté d'elle, et je lis ce que d'autres ont écrit sur ces choses-là. S'il y a du bon en elle, je le trouverai. Sinon, elle sera détruite, et je ne la pleurerai pas.
 

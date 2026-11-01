@@ -13,8 +13,8 @@ $N,
 
 Qu'un ogre maladroit, armé d'une simple couronne, ait échappé si longtemps à la volonté de la Dame noire me trouble davantage que si la couronne avait été d'or. Un grand pouvoir devrait au moins avoir la décence d'en avoir l'air.
 
-La Couronne a été remise. Je l'ai portée moi-même à la Dame noire, et j'avoue que je la tenais un peu à distance, comme on porte une chose qui pourrait mordre.
+La couronne a été remise. Je l'ai portée moi-même à la Dame noire, et j'avoue que je la tenais un peu à distance, comme on porte une chose qui pourrait mordre.
 
-Elle a eu vent de votre part dans cette affaire. J'y ai veillé, comme je l'avais promis. Votre nom a été prononcé dans le Quartier royal, ce que bien peu de vivants peuvent dire.
+Elle a eu vent de votre part dans cette affaire. J'y ai veillé. Votre nom a été prononcé dans le Quartier royal, ce que bien peu de vivants peuvent dire.
 
 Sharlindra

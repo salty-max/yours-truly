@@ -11,7 +11,7 @@ place: 152
 
 $N,
 
-Oserai-je le redire ? Un triomphe ! Je l'ai dit à tous ceux qui, à la Barricade, voulaient bien rester immobiles pour l'entendre.
+Oserai-je le redire ? Un triomphe ! Je l'ai dit à tous ceux qui, à la Barricade, voulaient bien s'arrêter pour l'entendre.
 
 J'aime les plans qui marchent, et le nôtre a marché trois fois. On me dit que la Croisade a trouvé notre bannière et s'est jetée sur le Fléau, exactement comme prévu. Les tours se sont allumées sur les traqueurs de mes prêtres comme des balises sur une carte. Et puis vous avez pénétré dans Andorhal et vous m'avez rapporté un éclat du phylactère d'Araj, la seule partie dont aucun de mes plans ne peut s'attribuer le mérite.
 

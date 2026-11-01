@@ -11,7 +11,7 @@ place: 2255
 
 $N,
 
-Depuis que je les connais, mes amis ont toujours été les plus malins. Legacki, Sprinkle et sa cuisine, Quixxil et ce que fait Quixxil, quoi que ce soit. C'étaient mes idées à moi dont on riait, alors je les gardais dans ma poche.
+Depuis que je les connais, mes amis ont toujours été les plus malins. Legacki, Sprinkle et sa cuisine, Quixxil et tout ce que Quixxil peut bien fabriquer. C'étaient mes idées à moi dont on riait, alors je les gardais dans ma poche.
 
 Plus maintenant ! Le yéti est rentré à la maison, un peu roussi à une oreille, et chaque fois que je le regarde, je me dis : c'est moi qui ai fait ça. Un yéti entier. À partir d'un dessin.
 

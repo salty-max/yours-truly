@@ -15,7 +15,7 @@ Le mémorial est achevé, me dit-on, et le maître-maçon Marblesten est satisfa
 
 J'ai rangé la lettre de Sully plusieurs fois. Chaque fois, l'un des garçons me demande ce que son père a écrit, et je la ressors. Le petit Edgar sait où je m'arrête, maintenant, et il m'attend là avant que je tourne la page.
 
-Cette lettre contient des choses que Sully ne m'a jamais dites à la maison. Il est étrange de les lire aujourd'hui, de sa main. J'aurais voulu pouvoir lui répondre.
+Cette lettre contient des choses que Sully ne m'a jamais dites à la maison. Il est étrange de les entendre aujourd'hui, de sa main. J'aurais voulu pouvoir lui répondre.
 
 Merci de nous l'avoir rapportée. Je n'aurais pas supporté de perdre cela aussi.
 

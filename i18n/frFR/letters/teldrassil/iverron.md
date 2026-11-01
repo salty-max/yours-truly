@@ -13,7 +13,7 @@ Le bonjour de la grotte, $N !
 
 Je suis toujours là où tu m'as trouvé. Je me sens tout à fait rétabli, promis. Enfin, presque. Il reste beaucoup d'araignées Tissebois entre le reste de Sombrevallon et moi, et un elfe raisonnable attend qu'elles aient l'air occupées.
 
-Dirania me fait dire que je suis assez remis pour rentrer à pied. Elle me rappelle aussi, chaque fois, qu'elle m'avait mis en garde contre ces araignées. Bon, elle n'a pas tort.
+Dirania me fait dire que je suis assez remis pour rentrer à pied. Elle me rappelle aussi, chaque fois, qu'elle m'avait mis en garde contre ces araignées. Bon, c'est vrai, elle m'avait prévenu.
 
 Avant, j'allais la voir chaque jour à la même heure. Maintenant, elle sait où je suis du matin au soir, et je crois qu'elle préfère ça.
 

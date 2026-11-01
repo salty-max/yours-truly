@@ -11,10 +11,10 @@ place: 16
 
 $N,
 
-On me dit que les vôtres, quand ils sont reconnaissants, écrivent. Des marques sur une peau mince, pliée et portée de main en main. C'est une façon bien lente de dire ce qu'une marée dit en une fois. Mais vous nous avez rapporté les mains de quatre capitaines du feu, alors j'essaierai votre manière.
+On me dit que les vôtres, quand ils sont reconnaissants, écrivent. Des marques sur une peau mince, pliée et portée de main en main. Cela me semble beaucoup d'efforts pour si peu de mots. Mais vous avez frappé le feu quatre fois jusque dans le Cœur du Magma, là où il se croyait le plus à l'abri, alors j'essaierai votre manière.
 
 Je ne comprends pas comment les vôtres mesurent la gratitude. J'observe les mortels depuis longtemps, et je les ai vus se remercier pour de toutes petites choses : une porte tenue, une coupe remplie. Ce que vous avez fait n'était pas une petite chose. J'ignore quelle taille doit avoir une lettre, chez vous, pour une chose aussi grande.
 
-Celle-ci devra suffire. La guerre continue. Mais votre nom a parcouru les chambres des Seigneurs des eaux.
+Celle-ci devra suffire. Je l'ai écrite deux fois, et la seconde n'était pas plus grande que la première. La guerre continue.
 
 Duc Hydraxis

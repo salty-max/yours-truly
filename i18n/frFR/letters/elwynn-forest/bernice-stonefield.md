@@ -17,7 +17,7 @@ Ce Billy Maclure raconte à qui veut l'entendre que ma tourte était la meilleur
 
 Je t'ai donné les gants de mon mari parce qu'ils ne servaient à personne, pendus au crochet près de la porte. Il disait toujours qu'ils portaient chance, et puis il est parti pour sa dernière campagne sans eux. J'ai longtemps regardé ce crochet. Mieux vaut qu'ils passent la porte avec quelqu'un.
 
-Merci, va. Tu as bel et bien réchauffé le cœur d'une pauvre veuve, mais je le nierai devant n'importe quel Maclure.
+Merci, va. Tu as bel et bien réchauffé le cœur d'une vieille veuve, mais je le nierai devant n'importe quel Maclure.
 
 Tatie Bernice
 

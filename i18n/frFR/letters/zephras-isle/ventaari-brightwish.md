@@ -11,7 +11,7 @@ place: 16635
 
 $N,
 
-La vue céleste est comme un muscle, et un muscle qu'on néglige s'affaiblit. Servez-vous-en sur la route, à l'auberge, sous la pluie. La plupart du temps, vous ne verrez rien qui vaille. Servez-vous-en quand même.
+La vue céleste, ce don des esprits, reste un muscle, et un muscle qu'on néglige s'affaiblit. Servez-vous-en sur la route, à l'auberge, sous la pluie. La plupart du temps, vous ne verrez rien qui vaille. Servez-vous-en quand même.
 
 Je garde la mienne ouverte un moment chaque soir, ici, au village, avant de dormir. Certains soirs, je saisis un mot ou deux, faibles comme une voix derrière un mur. D'autres soirs, rien. J'ai appris à ne pas en vouloir aux soirs silencieux. Ils font partie de l'entraînement.
 
