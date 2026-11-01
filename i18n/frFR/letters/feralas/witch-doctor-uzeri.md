@@ -11,7 +11,7 @@ place: 1099
 
 $N,
 
-Ha ! Le récipient est prêt, et les matériaux que vous m'avez apportés valent mieux que ce que j'avais demandé. Bûches fendues de tréant, minerais incrustés, tendons résistants, tous ces petits fragments de métal. J'ai trié chaque morceau moi-même, à l'odeur.
+Ha ! Le récipient est prêt, et les matériaux que vous m'avez apportés valent mieux que ce que j'avais demandé. Bûches fendues de tréant, minerais incrustés, tendons résistants, tous ces petits fragments de métal. J'ai trié chaque morceau moi-même, à l'odeur.
 
 Neeru dit qu'il est très content de la tête. Un bon client, celui-là. Il ne pose pas de questions, et il paie en herbes.
 

@@ -11,7 +11,7 @@ place: 16638
 
 $N,
 
-Je vous dois une meilleure réponse que celle que je vous ai donnée quand vous m'avez rapporté les charmes. « Une journée éprouvante », c'était bien peu dire.
+Je vous dois une meilleure réponse que celle que je vous ai donnée quand vous m'avez rapporté les charmes. « Une journée éprouvante », c'était bien peu dire.
 
 Les Sculpte-vents répondent au sang par le sang. Je l'ai dit toute ma vie, et je le pensais en vous envoyant au nord. Je le pense encore. Les novices que nous avons retrouvés dans les hautes-terres étaient des nôtres, et quelqu'un répondra de chacun d'eux.
 

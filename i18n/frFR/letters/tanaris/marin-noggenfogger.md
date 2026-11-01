@@ -11,7 +11,7 @@ place: 976
 
 $N,
 
-Des millions ! Enfin. Des milliers, presque. Enfin, un nombre très encourageant de centaines, et ça monte !
+Des millions ! Enfin. Des milliers, presque. Enfin, un nombre très encourageant de centaines, et ça monte !
 
 Le fabuleux Élixir Noggenfogger se vend mieux que tout ce qui n'est pas de l'eau à Gadgetzan. Les clients en redemandent, et c'est la marque d'un produit de qualité. Certains reviennent un peu plus petits, ou un peu plus osseux, ou redescendent en flottant de je ne sais où, mais ils reviennent, et c'est ce qui compte.
 

@@ -11,7 +11,7 @@ place: 16635
 
 $N,
 
-La sentez-vous encore, cette vibration près des pierres dressées ? Oui ? Bien. Alors cela a pris, et vous la sentirez de nouveau en bien des lieux.
+La sentez-vous encore, cette vibration près des pierres dressées ? Oui ? Bien. Alors cela a pris, et vous la sentirez de nouveau en bien des lieux.
 
 Les lignes telluriques vivaient autrefois dans les vieux livres. Aujourd'hui, elles percent l'herbe pour venir à notre rencontre. Don ou avertissement, c'est du savoir, et je compte bien l'avoir tout entier.
 

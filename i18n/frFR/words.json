@@ -1,7 +1,7 @@
 {
   "%d letter received": "%d lettre reçue",
   "%d letters received": "%d lettres reçues",
-  "%s: %d of %d": "%s : %d sur %d",
+  "%s: %d of %d": "%s : %d sur %d",
   "/yourstruly opens the book, /yourstruly achievements its achievements and /yourstruly settings its settings. /yourstruly minimap shows or hides the button, /yourstruly welcome shows the welcome page again. /yourstruly export gives this character's settings as a code, and /yourstruly import CODE takes them.": "/yourstruly ouvre le livre, /yourstruly achievements ses hauts faits et /yourstruly settings ses réglages. /yourstruly minimap affiche ou masque le bouton, /yourstruly welcome réaffiche la page d'accueil. /yourstruly export donne les réglages de ce personnage sous forme de code, et /yourstruly import CODE les reprend.",
   "/yourstruly opens the book.": "/yourstruly ouvre le livre.",
   "A Bundle of Letters": "Une liasse de lettres",
@@ -14,7 +14,7 @@
   "Better Late Than Never": "Mieux vaut tard que jamais",
   "Break the seal": "Briser le sceau",
   "Break the seal of your first letter.": "Brisez le sceau de votre première lettre.",
-  "Copy it (Ctrl+C), then on another character: Use a code, or /yourstruly import CODE.": "Copiez-le (Ctrl+C), puis sur un autre personnage : Utiliser un code, ou /yourstruly import CODE.",
+  "Copy it (Ctrl+C), then on another character: Use a code, or /yourstruly import CODE.": "Copiez-le (Ctrl+C), puis sur un autre personnage : Utiliser un code, ou /yourstruly import CODE.",
   "Correspondents": "Correspondants",
   "Double Agent": "Agent double",
   "Every Last One": "Jusqu'à la dernière",
@@ -56,7 +56,7 @@
   "A letter waits at the next mailbox you open, sealed. The mail icon on the minimap tells you when one is waiting. Every letter stays in the book.": "Une lettre vous attend, scellée, à la prochaine boîte aux lettres que vous ouvrez. L'icône de courrier de la minicarte vous prévient quand il y en a une. Chaque lettre reste dans le livre.",
   "Welcome to Yours Truly": "Bienvenue dans Yours Truly",
   "When you finish a quest chain that changed someone's life, they may write to you. Their letter waits at the next mailbox you open.": "Quand vous terminez une suite de quêtes qui a changé la vie de quelqu'un, cette personne peut vous écrire. Sa lettre vous attend à la prochaine boîte aux lettres que vous ouvrez.",
-  "Where Is My Brush?": "Où est mon pinceau ?",
+  "Where Is My Brush?": "Où est mon pinceau ?",
   "Where It All Began": "Là où tout a commencé",
   "Yours Truly achievement": "Haut fait de Yours Truly"
 }

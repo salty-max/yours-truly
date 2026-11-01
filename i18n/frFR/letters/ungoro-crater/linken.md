@@ -15,7 +15,7 @@ $N,
 
 Vous avez affronté Blazerunner et rapporté la Flamme dorée, et je n'ai pas pu m'empêcher de sourire jusqu'aux oreilles en la voyant. Elle rentre chez elle, là où on pourra la protéger. Je me souviens du chemin, maintenant. C'est nouveau.
 
-Je vous ai donné un conseil, un jour : c'est dangereux d'y aller $gseul:seule;. J'aurais bien fait de le suivre moi-même.
+Je vous ai donné un conseil, un jour : c'est dangereux d'y aller $gseul:seule;. J'aurais bien fait de le suivre moi-même.
 
 Sans vous, j'errerais encore dans ce cratère à demander mon propre nom aux inconnus.
 

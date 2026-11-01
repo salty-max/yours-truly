@@ -13,7 +13,7 @@ $N,
 
 Depuis que je les connais, mes amis ont toujours été les plus malins. Legacki, Sprinkle et sa cuisine, Quixxil et tout ce que Quixxil peut bien fabriquer. C'étaient mes idées à moi dont on riait, alors je les gardais dans ma poche.
 
-Plus maintenant ! Le yéti est rentré à la maison, un peu roussi à une oreille, et chaque fois que je le regarde, je me dis : c'est moi qui ai fait ça. Un yéti entier. À partir d'un dessin.
+Plus maintenant ! Le yéti est rentré à la maison, un peu roussi à une oreille, et chaque fois que je le regarde, je me dis : c'est moi qui ai fait ça. Un yéti entier. À partir d'un dessin.
 
 Ils m'ont tous répondu, d'ailleurs. Je ne vous dirai pas ce qu'ils ont écrit, puisque vous étiez là pour presque tout. Mais deux d'entre eux m'ont demandé comment il marche, et c'est le passage que je relis sans arrêt.
 

@@ -9,7 +9,7 @@ place: 188
 
 ## Letter
 
-Le bonjour de la grotte, $N !
+Le bonjour de la grotte, $N !
 
 Je suis toujours là où tu m'as trouvé. Je me sens tout à fait rétabli, promis. Enfin, presque. Il reste beaucoup d'araignées Tissebois entre le reste de Sombrevallon et moi, et un elfe raisonnable attend qu'elles aient l'air occupées.
 

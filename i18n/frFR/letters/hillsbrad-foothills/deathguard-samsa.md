@@ -11,7 +11,7 @@ place: 272
 
 $gChanceux:Chanceuse; $N,
 
-Trente ! Trente précieux crânes, et tous plus beaux les uns que les autres ! Je les compte à chaque relève de la garde, au cas où l'un d'eux aurait roulé quelque part. Aucun n'a bougé. Ils sont très sages.
+Trente ! Trente précieux crânes, et tous plus beaux les uns que les autres ! Je les compte à chaque relève de la garde, au cas où l'un d'eux aurait roulé quelque part. Aucun n'a bougé. Ils sont très sages.
 
 Je les garde à l'abri des regards, là où Darthalia ne peut pas les voir. Elle estime qu'un Garde noir de service devrait monter la garde. C'est ce que je fais. Je les garde avec le plus grand soin.
 

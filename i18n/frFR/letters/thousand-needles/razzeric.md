@@ -11,11 +11,11 @@ place: 439
 
 $N,
 
-Toujours le dix-huitième pilote ! Je sais. Je suis aussi surpris que vous.
+Toujours le dix-huitième pilote ! Je sais. Je suis aussi surpris que vous.
 
-Le lance-hydroglycérine est parti exactement comme Shreev l'avait dit, c'est-à-dire d'un seul coup. Le record ? Pulvérisé. Avec deux caisses et la plupart de mes sourcils. Les sourcils repoussent.
+Le lance-hydroglycérine est parti exactement comme Shreev l'avait dit, c'est-à-dire d'un seul coup. Le record ? Pulvérisé. Avec deux caisses et la plupart de mes sourcils. Les sourcils repoussent.
 
-Je voulais regarder les gnomes me regarder. Raté. Trop vite. C'est le problème quand on pousse jusqu'à onze : on rate le paysage.
+Je voulais regarder les gnomes me regarder. Raté. Trop vite. C'est le problème quand on pousse jusqu'à onze : on rate le paysage.
 
 Pozzik est déjà en train de bricoler le nouveau régulateur en marmonnant des histoires de sûreté.
 
