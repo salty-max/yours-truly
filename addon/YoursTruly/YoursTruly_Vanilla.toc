@@ -4,7 +4,7 @@
 ## Notes-frFR: Achevez une suite de quêtes et la personne qu'elle a changée vous écrit une lettre, qui vous attend scellée à votre prochaine boîte aux lettres.
 ## Category: Quests
 ## Author: salty-max
-## Version: 0.3.1
+## Version: 0.3.2
 ## SavedVariablesPerCharacter: YoursTrulyChar
 ## SavedVariables: YoursTrulySettings
 ## IconTexture: Interface\AddOns\YoursTruly\Media\Logo
