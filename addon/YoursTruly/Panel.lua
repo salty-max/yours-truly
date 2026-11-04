@@ -74,7 +74,10 @@ local function dock()
   panel:ClearAllPoints()
   -- (a mailbox addon may hide the game's window without closing it: parented
   -- to a hidden frame, or made transparent)
-  if MailFrame and MailFrame:IsVisible() and (MailFrame:GetAlpha() or 1) > 0 then
+  -- (an alpha the game keeps secret: the window is taken as seen)
+  local alpha = MailFrame and MailFrame:GetAlpha()
+  if K.secret(alpha) then alpha = 1 end
+  if MailFrame and MailFrame:IsVisible() and (alpha or 1) > 0 then
     panel.docked = true
     local beside = (OpenMailFrame and OpenMailFrame:IsShown() and OpenMailFrame) or InboxFrame or MailFrame
     -- (the old art stops short of its frame's right edge: against the art)

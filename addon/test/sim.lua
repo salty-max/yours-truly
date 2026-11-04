@@ -206,6 +206,17 @@ G.mailbox(true)
 check(ns.panelLetter() and not P.panel.docked, "a transparent mail window: the panel on its own")
 G.mailbox(false)
 MailFrame:SetAlpha(1)
+-- (an alpha the game keeps secret: the mail window taken as seen, the panel docked, no error)
+do
+  local hidden, was = setmetatable({}, { __lt = function() error("secret value compared") end }), ns.kit.secret
+  ns.kit.secret = function(v) return rawequal(v, hidden) end
+  MailFrame:SetAlpha(hidden)
+  local ok, err = pcall(G.mailbox, true)
+  check(ok and P.panel.docked, "a secret alpha on the mail window: docked to it, no error " .. tostring(err))
+  G.mailbox(false)
+  MailFrame:SetAlpha(1)
+  ns.kit.secret = was
+end
 -- (a language lacking the chain's name: the footer without it, no error)
 G.mailbox(true)
 local shown = P.rows[1].id
