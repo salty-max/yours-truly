@@ -126,7 +126,7 @@ end
 ns.addTab(ns.TAB.letters, {
   build = function(b)
     book = b
-    list = ui.newList(book.left, style, rows, true)
+    list = ui.newList(book.left, style, rows, false)
     page = ui.newPage(book.sheet, "YoursTrulyLetterPage")
   end,
   show = function(n)
