@@ -1,0 +1,5 @@
+<Bindings>
+	<Binding name="YOURSTRULY_OPEN" category="BINDING_HEADER_YOURSTRULY">
+		YoursTrulyBinding();
+	</Binding>
+</Bindings>

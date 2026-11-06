@@ -123,3 +123,12 @@ end
 
 -- (for the tests)
 function ns.mailBadgeShown() return (badge ~= nil and badge:IsShown()) or (gameIcon() ~= nil and gameIcon():IsShown()) end
+
+-- The key binding (the kit's K.binding, Bindings.xml): one key or pad button opens and closes the window as the
+-- minimap button's click does.
+ns.kit.binding({
+  key = "YOURSTRULY",
+  name = "Yours Truly",
+  global = "YoursTrulyBinding",
+  toggle = function() ns.toggle() end,
+})

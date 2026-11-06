@@ -480,6 +480,17 @@ do
   G.mailbox(false)
 end
 
+-- the key binding (Bindings.xml calls this global): it opens and closes the window as ns.toggle does
+do
+  check(type(YoursTrulyBinding) == "function", "the key binding's function is there")
+  local was = YoursTrulyFrame and YoursTrulyFrame:IsShown() or false
+  YoursTrulyBinding()
+  check(YoursTrulyFrame and YoursTrulyFrame:IsShown() == not was, "the key binding opens the window")
+  YoursTrulyBinding()
+  check(YoursTrulyFrame:IsShown() == was, "… and a second press closes it")
+  check(BINDING_HEADER_YOURSTRULY ~= nil, "… under the addon's own heading")
+end
+
 io.write(
   ("Yours Truly: %d checks passed (%s, %s).\n"):format(count, G.LOCALE, G.FOREVER and "Forever" or "Classic Era")
 )

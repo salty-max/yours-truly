@@ -165,3 +165,7 @@ in `assets/README.md`.
 - The rest of the first wave (`../ideas/letters.md` §2): 54 letters, written
   in waves by level band.
 - The opt-in collector (`K.collect`), as the siblings carry it.
+
+## The key binding
+
+For a controller player (no keyboard for the slash command, a cursor to steer to the minimap button). `addon/YoursTruly/Bindings.xml` and `ns.kit.binding(...)` at the end of `Minimap.lua`: one key or pad button, chosen in the game's Key Bindings under the addon's own heading ("Open <the addon>"), opens and closes the book through `ns.toggle`, as the minimap button's click does. The binding does nothing until the player puts a key on it. The kit's `K.binding`, the file, what the game does in each game and what is not verified: `addon-kit/docs/controller.md`, "Opening by a pad button". `bun run bindings` (part of `check`) checks the file, the function and the package.
