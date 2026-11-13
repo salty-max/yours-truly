@@ -6,7 +6,7 @@
 -- button; the welcome page (Welcome.lua) offers them too.
 --
 --   YoursTrulySettings.profiles["Name - Realm"] = { minimapHidden,
---     minimapAngle, welcomed, panelX, panelY (where the mailbox panel stands
+--     minimapAngle, bookSize, paper, welcomed, panelX, panelY (where the mailbox panel stands
 --     when no game mail window shows: a mailbox addon's) }
 local _, ns = ...
 local K = ns.kit
@@ -22,13 +22,16 @@ local DEFAULTS = {
   achievementToast = true,
   achievementSound = K.ACHIEVEMENT_SOUND,
   bannerSeconds = K.BANNER_SECONDS,
+  bookSize = 1,
+  paper = false,
   welcomed = false,
   panelX = false,
   panelY = false,
 }
-local SHARED = { "minimapHidden", "minimapAngle", "achievementToast", "achievementSound", "bannerSeconds" }
+local SHARED =
+  { "minimapHidden", "minimapAngle", "achievementToast", "achievementSound", "bannerSeconds", "bookSize", "paper" }
 
--- The profiles: a code "YT1:h0:a115:v1:f12891:n10".
+-- The profiles: a code "YT1:h0:a115:v1:f12891:n10:z1:p0" (z: the book size 1 to 4, p: the paper look 0 or 1).
 local P = K.profiles({
   saved = function()
     if type(YoursTrulySettings) ~= "table" then YoursTrulySettings = {} end
@@ -42,6 +45,8 @@ local P = K.profiles({
     achievementToast = "v",
     achievementSound = "f",
     bannerSeconds = "n",
+    bookSize = "z",
+    paper = "p",
   },
   tag = "YT1",
   changed = function(key)
@@ -79,6 +84,7 @@ function ns.createSettingsPanel()
   O:achievementSound("achievementSound")
   O:bannerSeconds("bannerSeconds")
   O:check("minimapHidden", L["Minimap button"], L["The book by the minimap: click to open it, drag to move it."], true)
+  O:look()
   O:copy()
   O:done()
 end
