@@ -51,6 +51,10 @@ Open the book with `/yourstruly` or the minimap button. The welcome page appears
 
 Settings are under **Options > AddOns > Yours Truly**, through `/yourstruly settings` or a right-click on the minimap button: the achievement alert and its sound, how long banners stay and the minimap button. Each character has its own. Copy another character's settings within the same game, or use `/yourstruly export` and `/yourstruly import CODE`.
 
+Two choices change how the book looks. **Book size** makes the whole window larger, in four steps from Normal to Largest. **Paper colours** replace the dark look with dark ink on tan paper, which some players find easier on the eyes. Paper colours take effect after a reload, and the settings page ends with a **Reload** button for it.
+
+**Options > Key Bindings** lists **Open Yours Truly** under a heading of its own. Put a key on it, or on Forever a controller button, and one press opens or closes the book. Nothing is bound until you choose.
+
 - `/yourstruly achievements` opens the book at its achievements.
 - `/yourstruly minimap` shows or hides the minimap button.
 
